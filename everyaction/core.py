@@ -724,6 +724,9 @@ class EAMeta(ABCMeta):
         name_key = ea_type._name_key()
 
         if _prefix:
+            # Assume ID is prefixed  if present (or in other words, only use a prefix if the ID is prefixed).
+            if id_key:
+                _prefixed |= {id_key}
             for prop_name in _prefixed:
                 # Assume property is camel-cased in EveryAction, so capitalize the first letter of the prefixed name
                 # when prepending the prefix.

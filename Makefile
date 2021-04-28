@@ -8,18 +8,11 @@ VENV_DIR := venv
 VENV_ACTIVATE := source $(VENV_DIR)/bin/activate
 
 .PHONY: clean
-clean: doc-clean
+clean:
 	rm -rf .pytest_cache
-
-.PHONY: doc
-doc: $(VENV_DIR)
-	$(VENV_ACTIVATE) && sphinx-build -b html $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
-
-.PHONY: doc-clean
-doc-clean:
 	rm -rf $(SPHINX_SOURCE_DIR)/classes
 
-.PHONY: doc-force
+.PHONY: doc
 doc-force:
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
 
