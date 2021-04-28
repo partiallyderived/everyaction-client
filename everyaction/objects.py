@@ -1859,8 +1859,7 @@ EAProperty.share(
     phones=EAProperty(singular_alias='phone', factory=Phone),
     recordedAddresses=EAProperty(singular_alias='recorded_address', factory=Address),
     responses=EAProperty(singular_alias='response', factory=ScriptResponse.make),
-    surveyQuestions=EAProperty('questions', singular_alias='question', factory=SurveyCanvassResponse),
-    surveyQuestionResponses=EAProperty('responses', singular_alias='response', factory=SurveyCanvassResponse),
+    surveyQuestionResponses=EAProperty('responses', singular_alias='response', factory=SurveyResponse),
     tags=EAProperty(singular_alias='tag', factory=Code),
     voterRegistrationBatches=EAProperty(
         'registration_batches',
@@ -1995,31 +1994,6 @@ class EmailMessage(
     """
 
     # TODO: Is emailMessageContent really an array? If so, can it actually contain multiple entities?
-
-
-class ExportJob(
-    EAObjectWithID,
-    _prefix='exportJob',
-    _prefixed={'guid'},
-    _keys={
-        'activistCodes',
-        'canvassFileRequestId',
-        'canvassFileRequestGuid',
-        'customFields',
-        'dateExpired',
-        'districtFields',
-        'downloadUrl',
-        'errorCode',
-        'savedListId',
-        'status',
-        'surveyQuestions',
-        'type',
-        'webhookUrl'
-    }
-):
-    """Represents an `Export Job
-    <https://developers.everyaction.com/van-api#export-jobs-common-models>`__.
-    """
 
 
 class FileLoadingJob(
@@ -2162,6 +2136,7 @@ EAProperty.share(
     locations=EAProperty(singular_alias='location', factory=Location),
     mappingTypes=EAProperty('mappings', singular_alias='mapping', factory=MappingType),
     person=EAProperty(factory=Person),
+    surveyQuestions=EAProperty('questions', singular_alias='question', factory=SurveyQuestion),
     worksites=EAProperty(singular_alias='worksite', factory=Worksite)
 )
 
@@ -2218,6 +2193,31 @@ class EventType(
 ):
     """Represents an `Event Type
     <https://developers.everyaction.com/van-api#event-types-common-models>`__.
+    """
+
+
+class ExportJob(
+    EAObjectWithID,
+    _prefix='exportJob',
+    _prefixed={'guid'},
+    _keys={
+        'activistCodes',
+        'canvassFileRequestId',
+        'canvassFileRequestGuid',
+        'customFields',
+        'dateExpired',
+        'districtFields',
+        'downloadUrl',
+        'errorCode',
+        'savedListId',
+        'status',
+        'surveyQuestions',
+        'type',
+        'webhookUrl'
+    }
+):
+    """Represents an `Export Job
+    <https://developers.everyaction.com/van-api#export-jobs-common-models>`__.
     """
 
 

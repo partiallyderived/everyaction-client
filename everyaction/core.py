@@ -629,17 +629,19 @@ class EAProperties(Mapping):
         prop_indent = ' ' * (indentation + 4)
 
         for name, prop in sorted(list(self.items()), key=lambda x: x[0]):
-            # Put property as a bolded list element.
-            prop_str = f'{prop_indent}* *{name}*'
             if isinstance(prop.factory, type) and issubclass(prop.factory, EAObject):
-                prop_str += f' (:class:`.{prop.factory.__name__}`)'
+                # Put property as a link to the expected type.
+                prop_str = f'{prop_indent}* :class:`{name} <.{prop.factory.__name__}>`'
+            else:
+                # Put property as a bolded list element.
+                prop_str = f'{prop_indent}* **{name}**'
             if prop.aliases or prop.singular_alias:
-                components.append(f'{prop_str} --')
+                components.append(f'{prop_str}')
                 # List each alias separated by commas in descending order of length.
                 aliases = [f':code:`{alias}`' for alias in sorted(list(prop.aliases), key=lambda x: -len(x))]
                 if prop.singular_alias:
                     aliases.append(f':code:`{prop.singular_alias}` (Singular)')
-                components.append(f'{prop_indent}  **Aliases**: {", ".join(aliases)}')
+                components.append(f'{prop_indent}  (Aliases: {", ".join(aliases)})')
             else:
                 components.append(prop_str)
         properties_doc = '\n'.join(components)

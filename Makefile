@@ -13,7 +13,7 @@ clean:
 	rm -rf $(SPHINX_SOURCE_DIR)/classes
 
 .PHONY: doc
-doc-force:
+doc:
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
 
 .PHONY: test
