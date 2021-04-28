@@ -188,7 +188,7 @@ needed to specify one voter registration batch with the ID 141, we could use the
         batch=141
     )
 
-The utility of singular batches is even more apparent in the case of methods such as :meth:`.Person.find`, where it is
+The utility of singular aliases is even more apparent in the case of methods such as :meth:`.Person.find`, where it is
 common to specify a single phone and/or email to lookup a person. Since phones may take a phone number as their first
 constructor argument, and emails may take the email address, the singular aliases :code:`phone` and :code:`email`
 allow us to translate the following "vanilla" call to find:
