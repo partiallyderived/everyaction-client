@@ -1,0 +1,40 @@
+﻿everyaction.services.Ballots
+============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Ballots
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Ballots.request_type
+   
+   
+      ~Ballots.request_types
+   
+   
+      ~Ballots.return_status
+   
+   
+      ~Ballots.return_statuses
+   
+   
+      ~Ballots.type
+   
+   
+      ~Ballots.types
+   
+   
+   
+
+   
+   
+   

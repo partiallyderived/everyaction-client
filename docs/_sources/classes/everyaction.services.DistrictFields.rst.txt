@@ -1,0 +1,28 @@
+﻿everyaction.services.DistrictFields
+===================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: DistrictFields
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~DistrictFields.get
+   
+   
+      ~DistrictFields.list
+   
+   
+   
+
+   
+   
+   

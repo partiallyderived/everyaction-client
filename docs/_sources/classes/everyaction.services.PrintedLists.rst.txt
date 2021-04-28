@@ -1,0 +1,28 @@
+﻿everyaction.services.PrintedLists
+=================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: PrintedLists
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~PrintedLists.get
+   
+   
+      ~PrintedLists.list
+   
+   
+   
+
+   
+   
+   

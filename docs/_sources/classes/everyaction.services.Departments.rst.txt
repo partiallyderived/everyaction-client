@@ -1,0 +1,28 @@
+﻿everyaction.services.Departments
+================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Departments
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Departments.get
+   
+   
+      ~Departments.list
+   
+   
+   
+
+   
+   
+   

@@ -1,0 +1,31 @@
+﻿everyaction.services.ScoreUpdates
+=================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: ScoreUpdates
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~ScoreUpdates.get
+   
+   
+      ~ScoreUpdates.list
+   
+   
+      ~ScoreUpdates.patch
+   
+   
+   
+
+   
+   
+   

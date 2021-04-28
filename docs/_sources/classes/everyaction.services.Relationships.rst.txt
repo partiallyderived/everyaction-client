@@ -1,0 +1,25 @@
+﻿everyaction.services.Relationships
+==================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Relationships
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Relationships.list
+   
+   
+   
+
+   
+   
+   

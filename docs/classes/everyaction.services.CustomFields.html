@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.CustomFields &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.Departments" href="everyaction.services.Departments.html" />
+    <link rel="prev" title="everyaction.services.Contributions" href="everyaction.services.Contributions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Departments.html" title="everyaction.services.Departments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Contributions.html" title="everyaction.services.Contributions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.CustomFields</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-customfields">
+<h1>everyaction.services.CustomFields<a class="headerlink" href="#everyaction-services-customfields" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.CustomFields">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">CustomFields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.CustomFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#custom-fields">Custom Fields</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CustomFields.get" title="everyaction.services.CustomFields.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(field_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#custom-fields-get-customfields--customfieldid">GET /customFields/customFieldId</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.CustomFields.list" title="everyaction.services.CustomFields.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#custom-fields-get-customfields">GET /customFields</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.CustomFields.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.CustomField" title="everyaction.objects.CustomField"><span class="pre">everyaction.objects.CustomField</span></a><a class="headerlink" href="#everyaction.services.CustomFields.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#custom-fields-get-customfields--customfieldid">GET /customFields/customFieldId</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>field_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">customFieldId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.CustomField" title="everyaction.objects.CustomField"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomField</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.CustomFields.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.CustomField" title="everyaction.objects.CustomField"><span class="pre">everyaction.objects.CustomField</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.CustomFields.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#custom-fields-get-customfields">GET /customFields</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.CustomField" title="everyaction.objects.CustomField"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomField</span></code></a> objects.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>customFieldsGroupType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_fields_group_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">group_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">type</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="everyaction.services.Contributions.html"
+                        title="previous chapter">everyaction.services.Contributions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.Departments.html"
+                        title="next chapter">everyaction.services.Departments</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.CustomFields.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Departments.html" title="everyaction.services.Departments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Contributions.html" title="everyaction.services.Contributions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.CustomFields</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

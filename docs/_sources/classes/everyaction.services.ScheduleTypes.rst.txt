@@ -1,0 +1,31 @@
+﻿everyaction.services.ScheduleTypes
+==================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: ScheduleTypes
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~ScheduleTypes.create
+   
+   
+      ~ScheduleTypes.get
+   
+   
+      ~ScheduleTypes.list
+   
+   
+   
+
+   
+   
+   

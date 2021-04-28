@@ -1,0 +1,25 @@
+﻿everyaction.services.ExtendedSourceCodes
+========================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: ExtendedSourceCodes
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~ExtendedSourceCodes.list
+   
+   
+   
+
+   
+   
+   

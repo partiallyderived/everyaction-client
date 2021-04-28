@@ -1,0 +1,25 @@
+﻿everyaction.services.Phones
+===========================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Phones
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Phones.is_cell_statuses
+   
+   
+   
+
+   
+   
+   

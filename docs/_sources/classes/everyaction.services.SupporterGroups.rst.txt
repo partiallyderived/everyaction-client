@@ -1,0 +1,40 @@
+﻿everyaction.services.SupporterGroups
+====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: SupporterGroups
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~SupporterGroups.add_person
+   
+   
+      ~SupporterGroups.create
+   
+   
+      ~SupporterGroups.delete
+   
+   
+      ~SupporterGroups.get
+   
+   
+      ~SupporterGroups.list
+   
+   
+      ~SupporterGroups.remove_person
+   
+   
+   
+
+   
+   
+   

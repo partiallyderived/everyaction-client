@@ -1,0 +1,28 @@
+﻿everyaction.services.Scores
+===========================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Scores
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Scores.get
+   
+   
+      ~Scores.list
+   
+   
+   
+
+   
+   
+   

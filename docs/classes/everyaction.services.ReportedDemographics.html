@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.ReportedDemographics &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.SavedLists" href="everyaction.services.SavedLists.html" />
+    <link rel="prev" title="everyaction.services.Relationships" href="everyaction.services.Relationships.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.SavedLists.html" title="everyaction.services.SavedLists"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Relationships.html" title="everyaction.services.Relationships"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.ReportedDemographics</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-reporteddemographics">
+<h1>everyaction.services.ReportedDemographics<a class="headerlink" href="#everyaction-services-reporteddemographics" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.ReportedDemographics">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">ReportedDemographics</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ReportedDemographics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#reporteddemographics">Reported Demographics</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.ethnicities" title="everyaction.services.ReportedDemographics.ethnicities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ethnicities</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedethnicities">GET /reportedEthnicities</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.genders" title="everyaction.services.ReportedDemographics.genders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">genders</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedgenders">GET /reportedGenders</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.language_preferences" title="everyaction.services.ReportedDemographics.language_preferences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">language_preferences</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedlanguagepreferences">GET /reportedLanguagePreferences</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.pronouns" title="everyaction.services.ReportedDemographics.pronouns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pronouns</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-pronouns">GET /pronouns</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.races" title="everyaction.services.ReportedDemographics.races"><code class="xref py py-obj docutils literal notranslate"><span class="pre">races</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedraces">GET /reportedRaces</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ReportedDemographics.sexual_orientations" title="everyaction.services.ReportedDemographics.sexual_orientations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sexual_orientations</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedsexualorientations">GET /reportedSexualOrientations</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.ethnicities">
+<code class="sig-name descname"><span class="pre">ethnicities</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ReportedEthnicity" title="everyaction.objects.ReportedEthnicity"><span class="pre">everyaction.objects.ReportedEthnicity</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.ethnicities" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedethnicities">GET /reportedEthnicities</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ReportedEthnicity" title="everyaction.objects.ReportedEthnicity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReportedEthnicity</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.genders">
+<code class="sig-name descname"><span class="pre">genders</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ReportedGender" title="everyaction.objects.ReportedGender"><span class="pre">everyaction.objects.ReportedGender</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.genders" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedgenders">GET /reportedGenders</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ReportedGender" title="everyaction.objects.ReportedGender"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReportedGender</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.language_preferences">
+<code class="sig-name descname"><span class="pre">language_preferences</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ReportedLanguagePreference" title="everyaction.objects.ReportedLanguagePreference"><span class="pre">everyaction.objects.ReportedLanguagePreference</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.language_preferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedlanguagepreferences">GET /reportedLanguagePreferences</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ReportedLanguagePreference" title="everyaction.objects.ReportedLanguagePreference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReportedLanguagePreference</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.pronouns">
+<code class="sig-name descname"><span class="pre">pronouns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><span class="pre">everyaction.objects.PreferredPronoun</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.pronouns" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-pronouns">GET /pronouns</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreferredPronoun</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.races">
+<code class="sig-name descname"><span class="pre">races</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ReportedRace" title="everyaction.objects.ReportedRace"><span class="pre">everyaction.objects.ReportedRace</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.races" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedraces">GET /reportedRaces</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ReportedRace" title="everyaction.objects.ReportedRace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReportedRace</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ReportedDemographics.sexual_orientations">
+<code class="sig-name descname"><span class="pre">sexual_orientations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ReportedSexualOrientation" title="everyaction.objects.ReportedSexualOrientation"><span class="pre">everyaction.objects.ReportedSexualOrientation</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ReportedDemographics.sexual_orientations" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#reported-demographics-get-reportedsexualorientations">GET /reportedSexualOrientations</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ReportedSexualOrientation" title="everyaction.objects.ReportedSexualOrientation"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReportedSexualOrientation</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="everyaction.services.Relationships.html"
+                        title="previous chapter">everyaction.services.Relationships</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.SavedLists.html"
+                        title="next chapter">everyaction.services.SavedLists</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.ReportedDemographics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.SavedLists.html" title="everyaction.services.SavedLists"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Relationships.html" title="everyaction.services.Relationships"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.ReportedDemographics</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

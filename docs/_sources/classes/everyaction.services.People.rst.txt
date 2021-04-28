@@ -1,0 +1,109 @@
+﻿everyaction.services.People
+===========================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: People
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~People.activist_codes
+   
+   
+      ~People.add_canvass_responses
+   
+   
+      ~People.add_canvass_responses_
+   
+   
+      ~People.add_code
+   
+   
+      ~People.add_code_
+   
+   
+      ~People.add_my_activist_flag
+   
+   
+      ~People.add_notes
+   
+   
+      ~People.add_notes_
+   
+   
+      ~People.add_relationship
+   
+   
+      ~People.apply_activist_code
+   
+   
+      ~People.apply_notes
+   
+   
+      ~People.apply_result_code
+   
+   
+      ~People.find
+   
+   
+      ~People.find_or_create
+   
+   
+      ~People.get
+   
+   
+      ~People.get_
+   
+   
+      ~People.lookup
+   
+   
+      ~People.membership
+   
+   
+      ~People.notes
+   
+   
+      ~People.remove_activist_code
+   
+   
+      ~People.remove_code
+   
+   
+      ~People.remove_code_
+   
+   
+      ~People.remove_my_activist_flag
+   
+   
+      ~People.set_disclosures_fields
+   
+   
+      ~People.set_disclosures_fields_
+   
+   
+      ~People.update
+   
+   
+      ~People.update_
+   
+   
+      ~People.update_if_exists
+   
+   
+      ~People.update_note
+   
+   
+   
+
+   
+   
+   

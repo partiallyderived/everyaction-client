@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.DistrictFields &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.EmailMessages" href="everyaction.services.EmailMessages.html" />
+    <link rel="prev" title="everyaction.services.Disbursements" href="everyaction.services.Disbursements.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.EmailMessages.html" title="everyaction.services.EmailMessages"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Disbursements.html" title="everyaction.services.Disbursements"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.DistrictFields</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-districtfields">
+<h1>everyaction.services.DistrictFields<a class="headerlink" href="#everyaction-services-districtfields" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.DistrictFields">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">DistrictFields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.DistrictFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#districtfields">District Fields</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.DistrictFields.get" title="everyaction.services.DistrictFields.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(field_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#district-fields-get-districtfields--districtfieldid">GET /districtFields/{districtFieldId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.DistrictFields.list" title="everyaction.services.DistrictFields.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>()</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#district-fields-get-districtfields">GET /districtFields</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.DistrictFields.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><span class="pre">everyaction.objects.DistrictField</span></a><a class="headerlink" href="#everyaction.services.DistrictFields.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#district-fields-get-districtfields--districtfieldid">GET /districtFields/{districtFieldId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>field_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">districtFieldId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.DistrictFields.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><span class="pre">everyaction.objects.DistrictField</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.DistrictFields.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#district-fields-get-districtfields">GET /districtFields</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a> objects.</p>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>custom</em></p></li>
+<li><p><em>organizeAt</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organize_at</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="everyaction.services.Disbursements.html"
+                        title="previous chapter">everyaction.services.Disbursements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.EmailMessages.html"
+                        title="next chapter">everyaction.services.EmailMessages</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.DistrictFields.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.EmailMessages.html" title="everyaction.services.EmailMessages"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Disbursements.html" title="everyaction.services.Disbursements"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.DistrictFields</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

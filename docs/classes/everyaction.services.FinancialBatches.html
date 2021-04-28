@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.FinancialBatches &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.Folders" href="everyaction.services.Folders.html" />
+    <link rel="prev" title="everyaction.services.FileLoadingJobs" href="everyaction.services.FileLoadingJobs.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Folders.html" title="everyaction.services.Folders"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.FileLoadingJobs.html" title="everyaction.services.FileLoadingJobs"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.FinancialBatches</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-financialbatches">
+<h1>everyaction.services.FinancialBatches<a class="headerlink" href="#everyaction-services-financialbatches" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.FinancialBatches">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">FinancialBatches</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.FinancialBatches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#financialbatches">Financial Batches</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.FinancialBatches.create" title="everyaction.services.FinancialBatches.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-post-financialbatches">POST /financialBatches</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.FinancialBatches.get" title="everyaction.services.FinancialBatches.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(batch_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-get-financialbatches--financialbatchid">GET /financialBatches/{financialBatchId}</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.FinancialBatches.list" title="everyaction.services.FinancialBatches.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-get-financialbatches">GET /financialBatches</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.FinancialBatches.create">
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><span class="pre">everyaction.objects.FinancialBatch</span></a><a class="headerlink" href="#everyaction.services.FinancialBatches.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-post-financialbatches">POST /financialBatches</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">FinancialBatch</span></code></a> is
+appropriate to unpack here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">FinancialBatch</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>bankAccountId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">bank_account_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">bank_account</span></code>, <code class="code docutils literal notranslate"><span class="pre">account</span></code></p></li>
+<li><p><em>checkDate</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">check_date</span></code></p></li>
+<li><p><em>checkNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">check_number</span></code></p></li>
+<li><p><em>dateClosed</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_closed</span></code>, <code class="code docutils literal notranslate"><span class="pre">closed</span></code></p></li>
+<li><p><em>dateDeposited</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_deposited</span></code>, <code class="code docutils literal notranslate"><span class="pre">deposited</span></code></p></li>
+<li><p><em>dateOpened</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_opened</span></code>, <code class="code docutils literal notranslate"><span class="pre">opened</span></code></p></li>
+<li><p><em>depositNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">deposit_number</span></code></p></li>
+<li><p><em>designationId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">designation_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">designation</span></code></p></li>
+<li><p><em>expectedContributionCount</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">expected_contribution_count</span></code>, <code class="code docutils literal notranslate"><span class="pre">expected_count</span></code></p></li>
+<li><p><em>expectedContributionTotalAmount</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">expected_contribution_total_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">expected_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">expected_total</span></code></p></li>
+<li><p><em>financialBatchName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">financial_batch_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><em>financialBatchNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">financial_batch_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">number</span></code></p></li>
+<li><p><em>isAutoGenerated</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">is_auto_generated</span></code>, <code class="code docutils literal notranslate"><span class="pre">auto_generated</span></code>, <code class="code docutils literal notranslate"><span class="pre">generated</span></code></p></li>
+<li><p><em>isOpen</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">is_open</span></code>, <code class="code docutils literal notranslate"><span class="pre">open</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.FinancialBatches.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><span class="pre">everyaction.objects.FinancialBatch</span></a><a class="headerlink" href="#everyaction.services.FinancialBatches.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-get-financialbatches--financialbatchid">GET /financialBatches/{financialBatchId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">financialBatchId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">FinancialBatch</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.FinancialBatches.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><span class="pre">everyaction.objects.FinancialBatch</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.FinancialBatches.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#financial-batches-get-financialbatches">GET /financialBatches</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.FinancialBatch" title="everyaction.objects.FinancialBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">FinancialBatch</span></code></a> objects.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>includeAllAutoGenerated</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">include_all_auto_generated</span></code>, <code class="code docutils literal notranslate"><span class="pre">include_auto_generated</span></code>, <code class="code docutils literal notranslate"><span class="pre">include_generated</span></code></p></li>
+<li><p><em>includeAllStatuses</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">include_all_statuses</span></code>, <code class="code docutils literal notranslate"><span class="pre">include_statuses</span></code>, <code class="code docutils literal notranslate"><span class="pre">include_closed</span></code></p></li>
+<li><p><em>includeUnassigned</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">include_unassigned</span></code></p></li>
+<li><p><em>searchKeyword</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">search_keyword</span></code>, <code class="code docutils literal notranslate"><span class="pre">keyword</span></code>, <code class="code docutils literal notranslate"><span class="pre">search</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="everyaction.services.FileLoadingJobs.html"
+                        title="previous chapter">everyaction.services.FileLoadingJobs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.Folders.html"
+                        title="next chapter">everyaction.services.Folders</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.FinancialBatches.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Folders.html" title="everyaction.services.Folders"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.FileLoadingJobs.html" title="everyaction.services.FileLoadingJobs"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.FinancialBatches</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

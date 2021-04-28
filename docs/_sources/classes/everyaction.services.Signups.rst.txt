@@ -1,0 +1,40 @@
+﻿everyaction.services.Signups
+============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Signups
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Signups.create_or_update
+   
+   
+      ~Signups.delete
+   
+   
+      ~Signups.get
+   
+   
+      ~Signups.list
+   
+   
+      ~Signups.statuses
+   
+   
+      ~Signups.update
+   
+   
+   
+
+   
+   
+   

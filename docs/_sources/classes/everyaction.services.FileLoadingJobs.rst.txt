@@ -1,0 +1,28 @@
+﻿everyaction.services.FileLoadingJobs
+====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: FileLoadingJobs
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~FileLoadingJobs.create
+   
+   
+      ~FileLoadingJobs.get
+   
+   
+   
+
+   
+   
+   

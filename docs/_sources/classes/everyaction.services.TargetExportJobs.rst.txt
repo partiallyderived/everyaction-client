@@ -1,0 +1,28 @@
+﻿everyaction.services.TargetExportJobs
+=====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: TargetExportJobs
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~TargetExportJobs.create
+   
+   
+      ~TargetExportJobs.get
+   
+   
+   
+
+   
+   
+   

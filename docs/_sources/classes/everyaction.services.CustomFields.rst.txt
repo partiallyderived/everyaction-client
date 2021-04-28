@@ -1,0 +1,28 @@
+﻿everyaction.services.CustomFields
+=================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: CustomFields
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~CustomFields.get
+   
+   
+      ~CustomFields.list
+   
+   
+   
+
+   
+   
+   

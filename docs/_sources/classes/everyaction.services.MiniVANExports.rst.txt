@@ -1,0 +1,28 @@
+﻿everyaction.services.MiniVANExports
+===================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: MiniVANExports
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~MiniVANExports.get
+   
+   
+      ~MiniVANExports.list
+   
+   
+   
+
+   
+   
+   

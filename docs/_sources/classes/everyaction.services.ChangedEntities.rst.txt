@@ -1,0 +1,37 @@
+﻿everyaction.services.ChangedEntities
+====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: ChangedEntities
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~ChangedEntities.change_types
+   
+   
+      ~ChangedEntities.create
+   
+   
+      ~ChangedEntities.fields
+   
+   
+      ~ChangedEntities.get
+   
+   
+      ~ChangedEntities.resources
+   
+   
+   
+
+   
+   
+   

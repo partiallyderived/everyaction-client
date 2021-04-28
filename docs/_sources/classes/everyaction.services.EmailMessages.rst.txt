@@ -1,0 +1,28 @@
+﻿everyaction.services.EmailMessages
+==================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: EmailMessages
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~EmailMessages.get
+   
+   
+      ~EmailMessages.list
+   
+   
+   
+
+   
+   
+   

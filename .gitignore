@@ -1,0 +1,8 @@
+\.idea
+\.pytest_cache
+\.venv-tracker
+sphinx-source/classes
+test_data.json
+venv
+wenv
+__pycache__

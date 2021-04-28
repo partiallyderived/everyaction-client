@@ -1,0 +1,52 @@
+﻿everyaction.services.Codes
+==========================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Codes
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Codes.create
+   
+   
+      ~Codes.create_each
+   
+   
+      ~Codes.delete
+   
+   
+      ~Codes.delete_each
+   
+   
+      ~Codes.get
+   
+   
+      ~Codes.list
+   
+   
+      ~Codes.supported_entities
+   
+   
+      ~Codes.types
+   
+   
+      ~Codes.update
+   
+   
+      ~Codes.update_each
+   
+   
+   
+
+   
+   
+   

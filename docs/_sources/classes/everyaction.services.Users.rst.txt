@@ -1,0 +1,31 @@
+﻿everyaction.services.Users
+==========================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Users
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Users.add_district_fields
+   
+   
+      ~Users.district_fields
+   
+   
+      ~Users.set_district_fields
+   
+   
+   
+
+   
+   
+   

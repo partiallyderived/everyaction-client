@@ -1,0 +1,31 @@
+﻿everyaction.services.FinancialBatches
+=====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: FinancialBatches
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~FinancialBatches.create
+   
+   
+      ~FinancialBatches.get
+   
+   
+      ~FinancialBatches.list
+   
+   
+   
+
+   
+   
+   

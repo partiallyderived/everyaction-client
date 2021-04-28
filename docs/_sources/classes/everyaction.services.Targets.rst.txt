@@ -1,0 +1,28 @@
+﻿everyaction.services.Targets
+============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Targets
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Targets.get
+   
+   
+      ~Targets.list
+   
+   
+   
+
+   
+   
+   

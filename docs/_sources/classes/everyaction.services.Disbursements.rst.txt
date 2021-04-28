@@ -1,0 +1,28 @@
+﻿everyaction.services.Disbursements
+==================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Disbursements
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Disbursements.create_or_update
+   
+   
+      ~Disbursements.get
+   
+   
+   
+
+   
+   
+   

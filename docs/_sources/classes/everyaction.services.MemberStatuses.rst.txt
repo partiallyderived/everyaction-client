@@ -1,0 +1,31 @@
+﻿everyaction.services.MemberStatuses
+===================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: MemberStatuses
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~MemberStatuses.create
+   
+   
+      ~MemberStatuses.get
+   
+   
+      ~MemberStatuses.list
+   
+   
+   
+
+   
+   
+   

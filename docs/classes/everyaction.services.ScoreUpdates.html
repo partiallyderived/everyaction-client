@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.ScoreUpdates &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.Scores" href="everyaction.services.Scores.html" />
+    <link rel="prev" title="everyaction.services.ScheduleTypes" href="everyaction.services.ScheduleTypes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Scores.html" title="everyaction.services.Scores"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.ScheduleTypes.html" title="everyaction.services.ScheduleTypes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.ScoreUpdates</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-scoreupdates">
+<h1>everyaction.services.ScoreUpdates<a class="headerlink" href="#everyaction-services-scoreupdates" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.ScoreUpdates">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">ScoreUpdates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ScoreUpdates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#scoreupdates">Score Updates</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.get" title="everyaction.services.ScoreUpdates.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(update_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.list" title="everyaction.services.ScoreUpdates.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates">GET /scoreUpdates</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.patch" title="everyaction.services.ScoreUpdates.patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patch</span></code></a>(update_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-patch-scoreupdates--scoreupdateid">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.ScoreUpdates.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><a class="headerlink" href="#everyaction.services.ScoreUpdates.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>update_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">scoreUpdateId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreUpdate</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ScoreUpdates.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ScoreUpdates.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates">GET /scoreUpdates</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreUpdate</span></code></a> objects.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>createdAfter</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">created_after</span></code>, <code class="code docutils literal notranslate"><span class="pre">after</span></code></p></li>
+<li><p><em>createdBefore</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">created_before</span></code>, <code class="code docutils literal notranslate"><span class="pre">before</span></code></p></li>
+<li><p><em>scoreId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">score_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">score</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ScoreUpdates.patch">
+<code class="sig-name descname"><span class="pre">patch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.ScoreUpdates.patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-patch-scoreupdates--scoreupdateid">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">scoreUpdateId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>loadStatus</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">load_status</span></code>, <code class="code docutils literal notranslate"><span class="pre">status</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="everyaction.services.ScheduleTypes.html"
+                        title="previous chapter">everyaction.services.ScheduleTypes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.Scores.html"
+                        title="next chapter">everyaction.services.Scores</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.ScoreUpdates.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.Scores.html" title="everyaction.services.Scores"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.ScheduleTypes.html" title="everyaction.services.ScheduleTypes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.ScoreUpdates</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+﻿everyaction.services.Folders
+============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Folders
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Folders.get
+   
+   
+      ~Folders.list
+   
+   
+   
+
+   
+   
+   

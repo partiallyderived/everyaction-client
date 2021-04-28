@@ -1,0 +1,34 @@
+﻿everyaction.services.CanvassResponses
+=====================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: CanvassResponses
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~CanvassResponses.contact_types
+   
+   
+      ~CanvassResponses.find_result_code
+   
+   
+      ~CanvassResponses.input_types
+   
+   
+      ~CanvassResponses.result_codes
+   
+   
+   
+
+   
+   
+   

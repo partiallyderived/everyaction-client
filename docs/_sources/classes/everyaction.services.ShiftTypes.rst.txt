@@ -1,0 +1,31 @@
+﻿everyaction.services.ShiftTypes
+===============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: ShiftTypes
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~ShiftTypes.create
+   
+   
+      ~ShiftTypes.get
+   
+   
+      ~ShiftTypes.list
+   
+   
+   
+
+   
+   
+   

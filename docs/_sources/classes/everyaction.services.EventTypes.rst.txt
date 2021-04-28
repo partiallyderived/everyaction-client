@@ -1,0 +1,28 @@
+﻿everyaction.services.EventTypes
+===============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: EventTypes
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~EventTypes.get
+   
+   
+      ~EventTypes.list
+   
+   
+   
+
+   
+   
+   

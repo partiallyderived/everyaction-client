@@ -1,0 +1,25 @@
+﻿everyaction.services.Commitments
+================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Commitments
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Commitments.update
+   
+   
+   
+
+   
+   
+   

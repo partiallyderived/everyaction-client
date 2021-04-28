@@ -1,0 +1,25 @@
+﻿everyaction.services.Designations
+=================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Designations
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Designations.list
+   
+   
+   
+
+   
+   
+   

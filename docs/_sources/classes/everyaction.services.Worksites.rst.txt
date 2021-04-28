@@ -1,0 +1,31 @@
+﻿everyaction.services.Worksites
+==============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: Worksites
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~Worksites.create_work_area
+   
+   
+      ~Worksites.get
+   
+   
+      ~Worksites.list
+   
+   
+   
+
+   
+   
+   

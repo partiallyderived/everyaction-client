@@ -1,0 +1,43 @@
+﻿everyaction.services.VoterRegistrationBatches
+=============================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: VoterRegistrationBatches
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~VoterRegistrationBatches.add_registrants
+   
+   
+      ~VoterRegistrationBatches.create
+   
+   
+      ~VoterRegistrationBatches.forms
+   
+   
+      ~VoterRegistrationBatches.list
+   
+   
+      ~VoterRegistrationBatches.programs
+   
+   
+      ~VoterRegistrationBatches.support_fields
+   
+   
+      ~VoterRegistrationBatches.update_status
+   
+   
+   
+
+   
+   
+   

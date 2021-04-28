@@ -1,0 +1,28 @@
+﻿everyaction.services.SavedLists
+===============================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: SavedLists
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~SavedLists.get
+   
+   
+      ~SavedLists.list
+   
+   
+   
+
+   
+   
+   

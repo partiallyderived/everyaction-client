@@ -1,0 +1,1182 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>everyaction.services.People &#8212; Python Client for EveryAction 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="everyaction.services.ActivistCodes" href="everyaction.services.ActivistCodes.html" />
+    <link rel="prev" title="Services" href="../services.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.ActivistCodes.html" title="everyaction.services.ActivistCodes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../services.html" title="Services"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.People</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="everyaction-services-people">
+<h1>everyaction.services.People<a class="headerlink" href="#everyaction-services-people" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="everyaction.services.People">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">People</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.People" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the
+<a class="reference external" href="https://developers.everyaction.com/van-api#people">People</a> service.</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.activist_codes" title="everyaction.services.People.activist_codes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activist_codes</span></code></a>(van_id, /, *[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes">GET /people/{vanId}/activistCodes</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_canvass_responses" title="everyaction.services.People.add_canvass_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_canvass_responses</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses">POST /people/{vanId}/canvassResponses</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_canvass_responses_" title="everyaction.services.People.add_canvass_responses_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_canvass_responses_</span></code></a>(person_id_type, …)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--canvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_code" title="everyaction.services.People.add_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_code</span></code></a>(van_id, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--codes">POST /people/{vanId}/codes</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_code_" title="everyaction.services.People.add_code_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_code_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--codes">POST /people/{personIdType}:{personId}/codes</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_my_activist_flag" title="everyaction.services.People.add_my_activist_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_my_activist_flag</span></code></a>(van_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--myactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_notes" title="everyaction.services.People.add_notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_notes</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--notes">POST /people/{vanId}/notes</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_notes_" title="everyaction.services.People.add_notes_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_notes_</span></code></a>(person_id_type, person_id, /, …)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--notes">POST /people/{personIdType}:{personId}/notes</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_relationship" title="everyaction.services.People.add_relationship"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_relationship</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--relationships">POST /people/{vanId}/relationships</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.apply_activist_code" title="everyaction.services.People.apply_activist_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_activist_code</span></code></a>(activist_code, **kwargs)</p></td>
+<td><p>Apply the given activist code to the person distinguished by the specified data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.apply_notes" title="everyaction.services.People.apply_notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_notes</span></code></a>(notes, **kwargs)</p></td>
+<td><p>Apply the given notes to the person distinguished by the specified data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.apply_result_code" title="everyaction.services.People.apply_result_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_result_code</span></code></a>(result_code, **kwargs)</p></td>
+<td><p>Apply the given result code to the person distinguished by the given data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.find" title="everyaction.services.People.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.find_or_create" title="everyaction.services.People.find_or_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_or_create</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-findorcreate">POST /people/findOrCreate</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.get_" title="everyaction.services.People.get_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--personidtype---personid">GET /people/{personIdType}:{personId}</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.lookup" title="everyaction.services.People.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(*[, expand])</p></td>
+<td><p>Attempt to find a person using the data in <cite>kwargs</cite> by invoking <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.membership" title="everyaction.services.People.membership"><code class="xref py py-obj docutils literal notranslate"><span class="pre">membership</span></code></a>(van_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--membership">GET /people/{vanId}/membership</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.notes" title="everyaction.services.People.notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notes</span></code></a>(van_id, /, *[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--notes">GET /people/{vanId}/notes</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_activist_code" title="everyaction.services.People.remove_activist_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_activist_code</span></code></a>(activist_code, **kwargs)</p></td>
+<td><p>Remove the given activist code from the person distinguished by the specified data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code" title="everyaction.services.People.remove_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code</span></code></a>(van_id, code_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--codes--codeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code_" title="everyaction.services.People.remove_code_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code_</span></code></a>(person_id_type, person_id, …)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--personidtype---personid--codes--codeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_my_activist_flag" title="everyaction.services.People.remove_my_activist_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_my_activist_flag</span></code></a>(van_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--myactivistflags">DELETE /people/{vanId}myActivistFlags</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields" title="everyaction.services.People.set_disclosures_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--disclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields_" title="everyaction.services.People.set_disclosures_fields_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields_</span></code></a>(person_id_type, …)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--disclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update" title="everyaction.services.People.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update_" title="everyaction.services.People.update_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid">POST /people/{personIdType}:{personId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update_if_exists" title="everyaction.services.People.update_if_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_if_exists</span></code></a>(lookup_args, update_args)</p></td>
+<td><p>Update a person with the given properties if they already exist as a record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update_note" title="everyaction.services.People.update_note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_note</span></code></a>(van_id, note_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--notes--noteid">PUT /people/{vanId}/notes/{noteId}</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="everyaction.services.People.activist_codes">
+<code class="sig-name descname"><span class="pre">activist_codes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCodeData" title="everyaction.objects.ActivistCodeData"><span class="pre">everyaction.objects.ActivistCodeData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.activist_codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes">GET /people/{vanId}/activistCodes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCodeData" title="everyaction.objects.ActivistCodeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivistCodeData</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_canvass_responses">
+<code class="sig-name descname"><span class="pre">add_canvass_responses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses">POST /people/{vanId}/canvassResponses</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.CanvassResponse" title="everyaction.objects.CanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanvassResponse</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>canvassContext</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CanvassContext" title="everyaction.objects.CanvassContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanvassContext</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">canvass_context</span></code>, <code class="code docutils literal notranslate"><span class="pre">context</span></code></p></li>
+<li><p><em>responses</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>resultCodeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">result_code_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">result_code</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_canvass_responses_">
+<code class="sig-name descname"><span class="pre">add_canvass_responses_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--canvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.CanvassResponse" title="everyaction.objects.CanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanvassResponse</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>canvassContext</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CanvassContext" title="everyaction.objects.CanvassContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanvassContext</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">canvass_context</span></code>, <code class="code docutils literal notranslate"><span class="pre">context</span></code></p></li>
+<li><p><em>responses</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>resultCodeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">result_code_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">result_code</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_code">
+<code class="sig-name descname"><span class="pre">add_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--codes">POST /people/{vanId}/codes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Code" title="everyaction.objects.Code"><code class="xref py py-class docutils literal notranslate"><span class="pre">Code</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>codeType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">code_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">type</span></code></p></li>
+<li><p><em>dateCreated</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_created</span></code>, <code class="code docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><em>dateModified</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_modified</span></code>, <code class="code docutils literal notranslate"><span class="pre">modified</span></code></p></li>
+<li><p><em>description</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">desc</span></code></p></li>
+<li><p><em>name</em></p></li>
+<li><p><em>parentCodeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">parent_code_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_code</span></code></p></li>
+<li><p><em>supportedEntities</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SupportedEntity" title="everyaction.objects.SupportedEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupportedEntity</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">supported_entities</span></code>, <code class="code docutils literal notranslate"><span class="pre">entities</span></code>, <code class="code docutils literal notranslate"><span class="pre">entity</span></code> (Singular)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_code_">
+<code class="sig-name descname"><span class="pre">add_code_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--codes">POST /people/{personIdType}:{personId}/codes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Code" title="everyaction.objects.Code"><code class="xref py py-class docutils literal notranslate"><span class="pre">Code</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>codeType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">code_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">type</span></code></p></li>
+<li><p><em>dateCreated</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_created</span></code>, <code class="code docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><em>dateModified</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_modified</span></code>, <code class="code docutils literal notranslate"><span class="pre">modified</span></code></p></li>
+<li><p><em>description</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">desc</span></code></p></li>
+<li><p><em>name</em></p></li>
+<li><p><em>parentCodeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">parent_code_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_code</span></code></p></li>
+<li><p><em>supportedEntities</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SupportedEntity" title="everyaction.objects.SupportedEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupportedEntity</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">supported_entities</span></code>, <code class="code docutils literal notranslate"><span class="pre">entities</span></code>, <code class="code docutils literal notranslate"><span class="pre">entity</span></code> (Singular)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_my_activist_flag">
+<code class="sig-name descname"><span class="pre">add_my_activist_flag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_my_activist_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--myactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_notes">
+<code class="sig-name descname"><span class="pre">add_notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--notes">POST /people/{vanId}/notes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><code class="xref py py-class docutils literal notranslate"><span class="pre">Note</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>category</em> (<a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoteCategory</span></code></a>)</p></li>
+<li><p><em>contactHistory</em> (<a class="reference internal" href="../objects.html#everyaction.objects.ContactHistory" title="everyaction.objects.ContactHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactHistory</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_history</span></code>, <code class="code docutils literal notranslate"><span class="pre">history</span></code></p></li>
+<li><p><em>createdDate</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">created_date</span></code>, <code class="code docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><em>isViewRestricted</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">is_view_restricted</span></code>, <code class="code docutils literal notranslate"><span class="pre">view_restricted</span></code></p></li>
+<li><p><em>text</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_notes_">
+<code class="sig-name descname"><span class="pre">add_notes_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--notes">POST /people/{personIdType}:{personId}/notes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><code class="xref py py-class docutils literal notranslate"><span class="pre">Note</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>category</em> (<a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoteCategory</span></code></a>)</p></li>
+<li><p><em>contactHistory</em> (<a class="reference internal" href="../objects.html#everyaction.objects.ContactHistory" title="everyaction.objects.ContactHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactHistory</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_history</span></code>, <code class="code docutils literal notranslate"><span class="pre">history</span></code></p></li>
+<li><p><em>createdDate</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">created_date</span></code>, <code class="code docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><em>isViewRestricted</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">is_view_restricted</span></code>, <code class="code docutils literal notranslate"><span class="pre">view_restricted</span></code></p></li>
+<li><p><em>text</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.add_relationship">
+<code class="sig-name descname"><span class="pre">add_relationship</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_relationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--relationships">POST /people/{vanId}/relationships</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>relationshipId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">relationship_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">relationship</span></code></p></li>
+<li><p><em>vanId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">van_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">van</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.apply_activist_code">
+<code class="sig-name descname"><span class="pre">apply_activist_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_activist_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the given activist code to the person distinguished by the specified data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>activist_code</strong> – The activist code name or ID.</p></li>
+<li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.apply_notes">
+<code class="sig-name descname"><span class="pre">apply_notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the given notes to the person distinguished by the specified data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notes</strong> – The notes to add.</p></li>
+<li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.apply_result_code">
+<code class="sig-name descname"><span class="pre">apply_result_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_result_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the given result code to the person distinguished by the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_code</strong> – The ID or name of the result code to apply.</p></li>
+<li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.find">
+<code class="sig-name descname"><span class="pre">find</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
+appropriate to unpack here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The found <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no person could be found.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>additionalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">additional_envelope</span></code></p></li>
+<li><p><em>additionalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_salutation</span></code></p></li>
+<li><p><em>addresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">address</span></code> (Singular)</p></li>
+<li><p><em>biographyImageUrl</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">biography_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">biography_image</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image</span></code></p></li>
+<li><p><em>caseworkCases</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">case</span></code> (Singular)</p></li>
+<li><p><em>caseworkIssues</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issue</span></code> (Singular)</p></li>
+<li><p><em>caseworkStories</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">story</span></code> (Singular)</p></li>
+<li><p><em>collectedLocationId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">collected_location_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">collected_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location</span></code></p></li>
+<li><p><em>contactMethodPreferenceCode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_method_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">preference_code</span></code></p></li>
+<li><p><em>contactMode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>contactModeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>customFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CustomFieldValue" title="everyaction.objects.CustomFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_value</span></code> (Singular)</p></li>
+<li><p><em>customProperties</em> (<a class="reference internal" href="../objects.html#everyaction.objects.KeyValuePair" title="everyaction.objects.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyValuePair</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">property</span></code> (Singular)</p></li>
+<li><p><em>cycle</em></p></li>
+<li><p><em>dateOfBirth</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_of_birth</span></code>, <code class="code docutils literal notranslate"><span class="pre">birthday</span></code></p></li>
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+<li><p><em>districts</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">district</span></code> (Singular)</p></li>
+<li><p><em>electionRecords</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_records</span></code>, <code class="code docutils literal notranslate"><span class="pre">election_record</span></code> (Singular)</p></li>
+<li><p><em>electionType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_type</span></code></p></li>
+<li><p><em>emails</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Email" title="everyaction.objects.Email"><code class="xref py py-class docutils literal notranslate"><span class="pre">Email</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">email</span></code> (Singular)</p></li>
+<li><p><em>employer</em></p></li>
+<li><p><em>envelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">envelope</span></code></p></li>
+<li><p><em>finderNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">finder_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">finder</span></code></p></li>
+<li><p><em>firstName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">first_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">first</span></code></p></li>
+<li><p><em>formalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">formal_envelope</span></code></p></li>
+<li><p><em>formalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_salutation</span></code></p></li>
+<li><p><em>identifiers</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Identifier" title="everyaction.objects.Identifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identifier</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">identifier</span></code> (Singular)</p></li>
+<li><p><em>lastName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">last_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">last</span></code></p></li>
+<li><p><em>middleName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">middle_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">middle</span></code></p></li>
+<li><p><em>nickname</em></p></li>
+<li><p><em>occupation</em></p></li>
+<li><p><em>organizationContactOfficialName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_contact_official_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">organization_contact_official</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_contact_official</span></code></p></li>
+<li><p><em>organizationRoles</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_role</span></code> (Singular)</p></li>
+<li><p><em>party</em></p></li>
+<li><p><em>phones</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Phone" title="everyaction.objects.Phone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phone</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">phone</span></code> (Singular)</p></li>
+<li><p><em>preferredPronoun</em> (<a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreferredPronoun</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">preferred_pronoun</span></code></p></li>
+<li><p><em>primaryContact</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">primary_contact</span></code></p></li>
+<li><p><em>recordedAddresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">recorded_addresses</span></code>, <code class="code docutils literal notranslate"><span class="pre">recorded_address</span></code> (Singular)</p></li>
+<li><p><em>salutation</em></p></li>
+<li><p><em>scores</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Score" title="everyaction.objects.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">Score</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">score</span></code> (Singular)</p></li>
+<li><p><em>selfReportedEthnicities</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicities</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicities</span></code></p></li>
+<li><p><em>selfReportedEthnicity</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicity</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicity</span></code></p></li>
+<li><p><em>selfReportedGenders</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">gender</span></code> (Singular)</p></li>
+<li><p><em>selfReportedLanguagePreference</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language</span></code></p></li>
+<li><p><em>selfReportedRace</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_race</span></code>, <code class="code docutils literal notranslate"><span class="pre">race</span></code></p></li>
+<li><p><em>selfReportedRaces</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_races</span></code>, <code class="code docutils literal notranslate"><span class="pre">races</span></code></p></li>
+<li><p><em>selfReportedSexualOrientations</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientation</span></code> (Singular)</p></li>
+<li><p><em>sex</em></p></li>
+<li><p><em>suffix</em></p></li>
+<li><p><em>suppressions</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Suppression</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular)</p></li>
+<li><p><em>surveyQuestionResponses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurveyCanvassResponse</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>title</em></p></li>
+<li><p><em>website</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.find_or_create">
+<code class="sig-name descname"><span class="pre">find_or_create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.find_or_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-findorcreate">POST /people/findOrCreate</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
+appropriate to unpack here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The found or else created <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>additionalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">additional_envelope</span></code></p></li>
+<li><p><em>additionalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_salutation</span></code></p></li>
+<li><p><em>addresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">address</span></code> (Singular)</p></li>
+<li><p><em>biographyImageUrl</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">biography_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">biography_image</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image</span></code></p></li>
+<li><p><em>caseworkCases</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">case</span></code> (Singular)</p></li>
+<li><p><em>caseworkIssues</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issue</span></code> (Singular)</p></li>
+<li><p><em>caseworkStories</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">story</span></code> (Singular)</p></li>
+<li><p><em>collectedLocationId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">collected_location_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">collected_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location</span></code></p></li>
+<li><p><em>contactMethodPreferenceCode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_method_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">preference_code</span></code></p></li>
+<li><p><em>contactMode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>contactModeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>customFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CustomFieldValue" title="everyaction.objects.CustomFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_value</span></code> (Singular)</p></li>
+<li><p><em>customProperties</em> (<a class="reference internal" href="../objects.html#everyaction.objects.KeyValuePair" title="everyaction.objects.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyValuePair</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">property</span></code> (Singular)</p></li>
+<li><p><em>cycle</em></p></li>
+<li><p><em>dateOfBirth</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_of_birth</span></code>, <code class="code docutils literal notranslate"><span class="pre">birthday</span></code></p></li>
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+<li><p><em>districts</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">district</span></code> (Singular)</p></li>
+<li><p><em>electionRecords</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_records</span></code>, <code class="code docutils literal notranslate"><span class="pre">election_record</span></code> (Singular)</p></li>
+<li><p><em>electionType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_type</span></code></p></li>
+<li><p><em>emails</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Email" title="everyaction.objects.Email"><code class="xref py py-class docutils literal notranslate"><span class="pre">Email</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">email</span></code> (Singular)</p></li>
+<li><p><em>employer</em></p></li>
+<li><p><em>envelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">envelope</span></code></p></li>
+<li><p><em>finderNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">finder_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">finder</span></code></p></li>
+<li><p><em>firstName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">first_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">first</span></code></p></li>
+<li><p><em>formalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">formal_envelope</span></code></p></li>
+<li><p><em>formalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_salutation</span></code></p></li>
+<li><p><em>identifiers</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Identifier" title="everyaction.objects.Identifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identifier</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">identifier</span></code> (Singular)</p></li>
+<li><p><em>lastName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">last_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">last</span></code></p></li>
+<li><p><em>middleName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">middle_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">middle</span></code></p></li>
+<li><p><em>nickname</em></p></li>
+<li><p><em>occupation</em></p></li>
+<li><p><em>organizationContactOfficialName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_contact_official_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">organization_contact_official</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_contact_official</span></code></p></li>
+<li><p><em>organizationRoles</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_role</span></code> (Singular)</p></li>
+<li><p><em>party</em></p></li>
+<li><p><em>phones</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Phone" title="everyaction.objects.Phone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phone</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">phone</span></code> (Singular)</p></li>
+<li><p><em>preferredPronoun</em> (<a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreferredPronoun</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">preferred_pronoun</span></code></p></li>
+<li><p><em>primaryContact</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">primary_contact</span></code></p></li>
+<li><p><em>recordedAddresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">recorded_addresses</span></code>, <code class="code docutils literal notranslate"><span class="pre">recorded_address</span></code> (Singular)</p></li>
+<li><p><em>salutation</em></p></li>
+<li><p><em>scores</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Score" title="everyaction.objects.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">Score</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">score</span></code> (Singular)</p></li>
+<li><p><em>selfReportedEthnicities</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicities</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicities</span></code></p></li>
+<li><p><em>selfReportedEthnicity</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicity</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicity</span></code></p></li>
+<li><p><em>selfReportedGenders</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">gender</span></code> (Singular)</p></li>
+<li><p><em>selfReportedLanguagePreference</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language</span></code></p></li>
+<li><p><em>selfReportedRace</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_race</span></code>, <code class="code docutils literal notranslate"><span class="pre">race</span></code></p></li>
+<li><p><em>selfReportedRaces</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_races</span></code>, <code class="code docutils literal notranslate"><span class="pre">races</span></code></p></li>
+<li><p><em>selfReportedSexualOrientations</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientation</span></code> (Singular)</p></li>
+<li><p><em>sex</em></p></li>
+<li><p><em>suffix</em></p></li>
+<li><p><em>suppressions</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Suppression</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular)</p></li>
+<li><p><em>surveyQuestionResponses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurveyCanvassResponse</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>title</em></p></li>
+<li><p><em>website</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>expand</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.get_">
+<code class="sig-name descname"><span class="pre">get_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--personidtype---personid">GET /people/{personIdType}:{personId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>expand</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.lookup">
+<code class="sig-name descname"><span class="pre">lookup</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt to find a person using the data in <cite>kwargs</cite> by invoking
+<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.
+Then, if a person was found, use their VAN ID to retrieve their stored <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> record by invoking
+<a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expand</strong> – List or comma-separated string of names of properties to get for the person.</p></li>
+<li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object if found, otherwise <cite>None</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.membership">
+<code class="sig-name descname"><span class="pre">membership</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Membership" title="everyaction.objects.Membership"><span class="pre">everyaction.objects.Membership</span></a><a class="headerlink" href="#everyaction.services.People.membership" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--membership">GET /people/{vanId}/membership</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Membership" title="everyaction.objects.Membership"><code class="xref py py-class docutils literal notranslate"><span class="pre">Membership</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.notes">
+<code class="sig-name descname"><span class="pre">notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--notes">GET /people/{vanId}/notes</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>limit</strong> – Maximum number of records to get for this request.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><code class="xref py py-class docutils literal notranslate"><span class="pre">Note</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.remove_activist_code">
+<code class="sig-name descname"><span class="pre">remove_activist_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_activist_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the given activist code from the person distinguished by the specified data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>activist_code</strong> – The activist code name or ID.</p></li>
+<li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.remove_code">
+<code class="sig-name descname"><span class="pre">remove_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--codes--codeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>code_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">code_id</span></code> path parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.remove_code_">
+<code class="sig-name descname"><span class="pre">remove_code_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--personidtype---personid--codes--codeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>code_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">codeId</span></code> path parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.remove_my_activist_flag">
+<code class="sig-name descname"><span class="pre">remove_my_activist_flag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_my_activist_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--myactivistflags">DELETE /people/{vanId}myActivistFlags</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.set_disclosures_fields">
+<code class="sig-name descname"><span class="pre">set_disclosures_fields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--disclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.set_disclosures_fields_">
+<code class="sig-name descname"><span class="pre">set_disclosures_fields_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--disclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(van id, status) of the updated person.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>additionalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">additional_envelope</span></code></p></li>
+<li><p><em>additionalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_salutation</span></code></p></li>
+<li><p><em>addresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">address</span></code> (Singular)</p></li>
+<li><p><em>biographyImageUrl</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">biography_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">biography_image</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image</span></code></p></li>
+<li><p><em>caseworkCases</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">case</span></code> (Singular)</p></li>
+<li><p><em>caseworkIssues</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issue</span></code> (Singular)</p></li>
+<li><p><em>caseworkStories</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">story</span></code> (Singular)</p></li>
+<li><p><em>collectedLocationId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">collected_location_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">collected_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location</span></code></p></li>
+<li><p><em>contactMethodPreferenceCode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_method_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">preference_code</span></code></p></li>
+<li><p><em>contactMode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>contactModeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>customFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CustomFieldValue" title="everyaction.objects.CustomFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_value</span></code> (Singular)</p></li>
+<li><p><em>customProperties</em> (<a class="reference internal" href="../objects.html#everyaction.objects.KeyValuePair" title="everyaction.objects.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyValuePair</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">property</span></code> (Singular)</p></li>
+<li><p><em>cycle</em></p></li>
+<li><p><em>dateOfBirth</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_of_birth</span></code>, <code class="code docutils literal notranslate"><span class="pre">birthday</span></code></p></li>
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+<li><p><em>districts</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">district</span></code> (Singular)</p></li>
+<li><p><em>electionRecords</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_records</span></code>, <code class="code docutils literal notranslate"><span class="pre">election_record</span></code> (Singular)</p></li>
+<li><p><em>electionType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_type</span></code></p></li>
+<li><p><em>emails</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Email" title="everyaction.objects.Email"><code class="xref py py-class docutils literal notranslate"><span class="pre">Email</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">email</span></code> (Singular)</p></li>
+<li><p><em>employer</em></p></li>
+<li><p><em>envelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">envelope</span></code></p></li>
+<li><p><em>finderNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">finder_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">finder</span></code></p></li>
+<li><p><em>firstName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">first_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">first</span></code></p></li>
+<li><p><em>formalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">formal_envelope</span></code></p></li>
+<li><p><em>formalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_salutation</span></code></p></li>
+<li><p><em>identifiers</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Identifier" title="everyaction.objects.Identifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identifier</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">identifier</span></code> (Singular)</p></li>
+<li><p><em>lastName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">last_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">last</span></code></p></li>
+<li><p><em>middleName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">middle_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">middle</span></code></p></li>
+<li><p><em>nickname</em></p></li>
+<li><p><em>occupation</em></p></li>
+<li><p><em>organizationContactOfficialName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_contact_official_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">organization_contact_official</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_contact_official</span></code></p></li>
+<li><p><em>organizationRoles</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_role</span></code> (Singular)</p></li>
+<li><p><em>party</em></p></li>
+<li><p><em>phones</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Phone" title="everyaction.objects.Phone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phone</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">phone</span></code> (Singular)</p></li>
+<li><p><em>preferredPronoun</em> (<a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreferredPronoun</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">preferred_pronoun</span></code></p></li>
+<li><p><em>primaryContact</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">primary_contact</span></code></p></li>
+<li><p><em>recordedAddresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">recorded_addresses</span></code>, <code class="code docutils literal notranslate"><span class="pre">recorded_address</span></code> (Singular)</p></li>
+<li><p><em>salutation</em></p></li>
+<li><p><em>scores</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Score" title="everyaction.objects.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">Score</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">score</span></code> (Singular)</p></li>
+<li><p><em>selfReportedEthnicities</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicities</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicities</span></code></p></li>
+<li><p><em>selfReportedEthnicity</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicity</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicity</span></code></p></li>
+<li><p><em>selfReportedGenders</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">gender</span></code> (Singular)</p></li>
+<li><p><em>selfReportedLanguagePreference</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language</span></code></p></li>
+<li><p><em>selfReportedRace</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_race</span></code>, <code class="code docutils literal notranslate"><span class="pre">race</span></code></p></li>
+<li><p><em>selfReportedRaces</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_races</span></code>, <code class="code docutils literal notranslate"><span class="pre">races</span></code></p></li>
+<li><p><em>selfReportedSexualOrientations</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientation</span></code> (Singular)</p></li>
+<li><p><em>sex</em></p></li>
+<li><p><em>suffix</em></p></li>
+<li><p><em>suppressions</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Suppression</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular)</p></li>
+<li><p><em>surveyQuestionResponses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurveyCanvassResponse</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>title</em></p></li>
+<li><p><em>website</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.update_">
+<code class="sig-name descname"><span class="pre">update_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid">POST /people/{personIdType}:{personId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>person_id_type</strong> – The <code class="code docutils literal notranslate"><span class="pre">personIdType</span></code> path parameter.</p></li>
+<li><p><strong>person_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">personId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(van id, status) of the resulting person.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><em>additionalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">additional_envelope</span></code></p></li>
+<li><p><em>additionalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">additional_salutation</span></code></p></li>
+<li><p><em>addresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">address</span></code> (Singular)</p></li>
+<li><p><em>biographyImageUrl</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">biography_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">biography_image</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image_url</span></code>, <code class="code docutils literal notranslate"><span class="pre">bio_image</span></code></p></li>
+<li><p><em>caseworkCases</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">cases</span></code>, <code class="code docutils literal notranslate"><span class="pre">case</span></code> (Singular)</p></li>
+<li><p><em>caseworkIssues</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issues</span></code>, <code class="code docutils literal notranslate"><span class="pre">issue</span></code> (Singular)</p></li>
+<li><p><em>caseworkStories</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">casework_stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">stories</span></code>, <code class="code docutils literal notranslate"><span class="pre">story</span></code> (Singular)</p></li>
+<li><p><em>collectedLocationId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">collected_location_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">collected_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location</span></code></p></li>
+<li><p><em>contactMethodPreferenceCode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_method_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">preference_code</span></code></p></li>
+<li><p><em>contactMode</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>contactModeId</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_mode_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">contact_mode</span></code></p></li>
+<li><p><em>customFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.CustomFieldValue" title="everyaction.objects.CustomFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_value</span></code> (Singular)</p></li>
+<li><p><em>customProperties</em> (<a class="reference internal" href="../objects.html#everyaction.objects.KeyValuePair" title="everyaction.objects.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyValuePair</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">custom_properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">properties</span></code>, <code class="code docutils literal notranslate"><span class="pre">property</span></code> (Singular)</p></li>
+<li><p><em>cycle</em></p></li>
+<li><p><em>dateOfBirth</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">date_of_birth</span></code>, <code class="code docutils literal notranslate"><span class="pre">birthday</span></code></p></li>
+<li><p><em>disclosureFieldValues</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValue</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular)</p></li>
+<li><p><em>districts</em> (<a class="reference internal" href="../objects.html#everyaction.objects.DistrictField" title="everyaction.objects.DistrictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistrictField</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">district</span></code> (Singular)</p></li>
+<li><p><em>electionRecords</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_records</span></code>, <code class="code docutils literal notranslate"><span class="pre">election_record</span></code> (Singular)</p></li>
+<li><p><em>electionType</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">election_type</span></code></p></li>
+<li><p><em>emails</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Email" title="everyaction.objects.Email"><code class="xref py py-class docutils literal notranslate"><span class="pre">Email</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">email</span></code> (Singular)</p></li>
+<li><p><em>employer</em></p></li>
+<li><p><em>envelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">envelope</span></code></p></li>
+<li><p><em>finderNumber</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">finder_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">finder</span></code></p></li>
+<li><p><em>firstName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">first_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">first</span></code></p></li>
+<li><p><em>formalEnvelopeName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_envelope_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">formal_envelope</span></code></p></li>
+<li><p><em>formalSalutation</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">formal_salutation</span></code></p></li>
+<li><p><em>identifiers</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Identifier" title="everyaction.objects.Identifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identifier</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">identifier</span></code> (Singular)</p></li>
+<li><p><em>lastName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">last_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">last</span></code></p></li>
+<li><p><em>middleName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">middle_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">middle</span></code></p></li>
+<li><p><em>nickname</em></p></li>
+<li><p><em>occupation</em></p></li>
+<li><p><em>organizationContactOfficialName</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_contact_official_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">organization_contact_official</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_contact_official</span></code></p></li>
+<li><p><em>organizationRoles</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">organization_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_roles</span></code>, <code class="code docutils literal notranslate"><span class="pre">org_role</span></code> (Singular)</p></li>
+<li><p><em>party</em></p></li>
+<li><p><em>phones</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Phone" title="everyaction.objects.Phone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phone</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">phone</span></code> (Singular)</p></li>
+<li><p><em>preferredPronoun</em> (<a class="reference internal" href="../objects.html#everyaction.objects.PreferredPronoun" title="everyaction.objects.PreferredPronoun"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreferredPronoun</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">preferred_pronoun</span></code></p></li>
+<li><p><em>primaryContact</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">primary_contact</span></code></p></li>
+<li><p><em>recordedAddresses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">recorded_addresses</span></code>, <code class="code docutils literal notranslate"><span class="pre">recorded_address</span></code> (Singular)</p></li>
+<li><p><em>salutation</em></p></li>
+<li><p><em>scores</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Score" title="everyaction.objects.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">Score</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">score</span></code> (Singular)</p></li>
+<li><p><em>selfReportedEthnicities</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicities</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicities</span></code></p></li>
+<li><p><em>selfReportedEthnicity</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_ethnicity</span></code>, <code class="code docutils literal notranslate"><span class="pre">ethnicity</span></code></p></li>
+<li><p><em>selfReportedGenders</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">genders</span></code>, <code class="code docutils literal notranslate"><span class="pre">gender</span></code> (Singular)</p></li>
+<li><p><em>selfReportedLanguagePreference</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language_preference</span></code>, <code class="code docutils literal notranslate"><span class="pre">language</span></code></p></li>
+<li><p><em>selfReportedRace</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_race</span></code>, <code class="code docutils literal notranslate"><span class="pre">race</span></code></p></li>
+<li><p><em>selfReportedRaces</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_races</span></code>, <code class="code docutils literal notranslate"><span class="pre">races</span></code></p></li>
+<li><p><em>selfReportedSexualOrientations</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">self_reported_sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientations</span></code>, <code class="code docutils literal notranslate"><span class="pre">sexual_orientation</span></code> (Singular)</p></li>
+<li><p><em>sex</em></p></li>
+<li><p><em>suffix</em></p></li>
+<li><p><em>suppressions</em> (<a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Suppression</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular)</p></li>
+<li><p><em>surveyQuestionResponses</em> (<a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurveyCanvassResponse</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular)</p></li>
+<li><p><em>title</em></p></li>
+<li><p><em>website</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.update_if_exists">
+<code class="sig-name descname"><span class="pre">update_if_exists</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookup_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_if_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a person with the given properties if they already exist as a record. Works by invoking
+<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a> followed by
+<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a> if the person
+exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lookup_args</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+<li><p><strong>update_args</strong> – The JSON data to update the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The VAN ID of the person, or <cite>None</cite> is no such record was found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.People.update_note">
+<code class="sig-name descname"><span class="pre">update_note</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.update_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--notes--noteid">PUT /people/{vanId}/notes/{noteId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>note_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">noteId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><code class="xref py py-class docutils literal notranslate"><span class="pre">Note</span></code></a> is
+appropriate to unpack here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Supported Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><em>category</em> (<a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoteCategory</span></code></a>)</p></li>
+<li><p><em>contactHistory</em> (<a class="reference internal" href="../objects.html#everyaction.objects.ContactHistory" title="everyaction.objects.ContactHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactHistory</span></code></a>) –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">contact_history</span></code>, <code class="code docutils literal notranslate"><span class="pre">history</span></code></p></li>
+<li><p><em>createdDate</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">created_date</span></code>, <code class="code docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><em>isViewRestricted</em> –
+<strong>Aliases</strong>: <code class="code docutils literal notranslate"><span class="pre">is_view_restricted</span></code>, <code class="code docutils literal notranslate"><span class="pre">view_restricted</span></code></p></li>
+<li><p><em>text</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../services.html"
+                        title="previous chapter">Services</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="everyaction.services.ActivistCodes.html"
+                        title="next chapter">everyaction.services.ActivistCodes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/classes/everyaction.services.People.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="everyaction.services.ActivistCodes.html" title="everyaction.services.ActivistCodes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../services.html" title="Services"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">everyaction.services.People</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bobbey Reese.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>
