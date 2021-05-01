@@ -3,7 +3,7 @@ This module contains the objects that have methods corresponding to collections 
 `EveryAction 8 VAN API docs <https://developers.everyaction.com/van-api>`__
 """
 
-from typing import Iterable, List, Optional, Union
+from typing import Dict, Iterable, List, Optional, Union
 
 from everyaction.core import ea_endpoint, EAMap, EAProperty, EAService, EAValue
 from everyaction.exception import EAFindFailedException
@@ -340,6 +340,7 @@ class People(EAService):
 
         :param activist_code: The activist code name or ID.
         :param kwargs: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
+        :raises EAFindFailedException: If either the given activist code or a person could not be found.
         """
         self._update_activist_code(activist_code, 'Apply', **kwargs)
 
@@ -348,6 +349,7 @@ class People(EAService):
 
         :param notes: The notes to add.
         :param kwargs: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
+        :raises EAFindFailedException: If a person could not be found.
         """
         self.add_notes(self._get_van_id_or_raise(**kwargs), **notes)
 
@@ -356,6 +358,7 @@ class People(EAService):
 
         :param result_code: The ID or name of the result code to apply.
         :param kwargs: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
+        :raises EAFindFailedException: If either the given result code or a person could not be found.
         """
         # When a string is given for a result code, get the int ID for it.
         if isinstance(result_code, str):
@@ -383,6 +386,7 @@ class People(EAService):
 
         :param activist_code: The activist code name or ID.
         :param kwargs: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
+        :raises EAFindFailedException: If either the given activist code or a person could not be found.
         """
         self._update_activist_code(activist_code, 'Remove', **kwargs)
 
@@ -434,10 +438,12 @@ class ActivistCodes(EAService):
         """
 
     def find(self, name: str) -> ActivistCode:
-        """Find an activist code with exactly the given name.
+        """Find an activist code with exactly the given name. If multiple activists codes have this name, the first will
+        be returned.
 
         :param name: Name of activist code to find.
         :return: The resulting :class:`.ActivistCode`.
+        :raises EAException: If the activist code could not be found or if multiple activist codes exist with that name.
         """
         code_in_list = [c for c in self.list(limit=0, name=name) if c.name == name]
         if len(code_in_list) > 1:
@@ -446,6 +452,27 @@ class ActivistCodes(EAService):
         if not code_in_list:
             raise EAFindFailedException(f'No activist codes named "{name}"')
         return code_in_list[0]
+
+    def find_each(self, names: Iterable[str]) -> Dict[str, ActivistCode]:
+        """Find each activist code for each of the given names.
+
+        :param names: Names of activist codes to find.
+        :return: {Name: :class:`.ActivistCode`} for each activist code found.
+        :raises EAException: If any activist code could not be found or if multiple activist codes exist with the name
+            of any requested activist code.
+        """
+        names = set(names)
+        all_codes = self.list(limit=0)
+        result = {}
+        for code in all_codes:
+            if code.name in names:
+                if code.name in result:
+                    raise EAFindFailedException(f'Multiple activist codes named "{code.name}"')
+                result[code.name] = code
+        missing = names - set(result)
+        if missing:
+            raise EAFindFailedException(f'The following activist codes could not be found: {", ".join(missing)}')
+        return result
 
 
 class Ballots(EAService):
@@ -660,6 +687,7 @@ class CanvassResponses(EAService):
 
         :param name: Name of result code to find.
         :returns: The resulting :class:`.ResultCode`.
+        :raises EAFindFailedException: If the result code could not be found.
         """
         lower = name.lower()
         codes = self.result_codes()

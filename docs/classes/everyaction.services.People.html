@@ -386,6 +386,9 @@ appropriate to unpack here.</p></li>
 <li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAFindFailedException" title="everyaction.exception.EAFindFailedException"><strong>EAFindFailedException</strong></a> – If either the given activist code or a person could not be found.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -400,6 +403,9 @@ appropriate to unpack here.</p></li>
 <li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAFindFailedException" title="everyaction.exception.EAFindFailedException"><strong>EAFindFailedException</strong></a> – If a person could not be found.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -413,6 +419,9 @@ appropriate to unpack here.</p></li>
 <li><p><strong>result_code</strong> – The ID or name of the result code to apply.</p></li>
 <li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAFindFailedException" title="everyaction.exception.EAFindFailedException"><strong>EAFindFailedException</strong></a> – If either the given result code or a person could not be found.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -523,7 +532,7 @@ appropriate to unpack here.</p>
 <li><p><strong>suffix</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">suppressions</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular))</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
+<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyResponse" title="everyaction.objects.SurveyResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular))</p></li>
 <li><p><strong>title</strong></p></li>
 <li><p><strong>vanId</strong>
@@ -640,7 +649,7 @@ appropriate to unpack here.</p>
 <li><p><strong>suffix</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">suppressions</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular))</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
+<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyResponse" title="everyaction.objects.SurveyResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular))</p></li>
 <li><p><strong>title</strong></p></li>
 <li><p><strong>vanId</strong>
@@ -758,6 +767,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 <li><p><strong>activist_code</strong> – The activist code name or ID.</p></li>
 <li><p><strong>kwargs</strong> – The JSON data to lookup the person with. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is appropriate to unpack here.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAFindFailedException" title="everyaction.exception.EAFindFailedException"><strong>EAFindFailedException</strong></a> – If either the given activist code or a person could not be found.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -952,7 +964,7 @@ appropriate to unpack here.</p></li>
 <li><p><strong>suffix</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">suppressions</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular))</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
+<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyResponse" title="everyaction.objects.SurveyResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular))</p></li>
 <li><p><strong>title</strong></p></li>
 <li><p><strong>vanId</strong>
@@ -1073,7 +1085,7 @@ appropriate to unpack here.</p></li>
 <li><p><strong>suffix</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><code class="xref py py-class docutils literal notranslate"><span class="pre">suppressions</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">suppression</span></code> (Singular))</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyCanvassResponse" title="everyaction.objects.SurveyCanvassResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
+<li><p><a class="reference internal" href="../objects.html#everyaction.objects.SurveyResponse" title="everyaction.objects.SurveyResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">surveyQuestionResponses</span></code></a>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">survey_question_responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">responses</span></code>, <code class="code docutils literal notranslate"><span class="pre">response</span></code> (Singular))</p></li>
 <li><p><strong>title</strong></p></li>
 <li><p><strong>vanId</strong>

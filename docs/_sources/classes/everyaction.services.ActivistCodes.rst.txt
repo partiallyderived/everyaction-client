@@ -18,6 +18,9 @@
       ~ActivistCodes.find
    
    
+      ~ActivistCodes.find_each
+   
+   
       ~ActivistCodes.get
    
    

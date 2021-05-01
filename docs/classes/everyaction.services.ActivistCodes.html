@@ -62,10 +62,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.find" title="everyaction.services.ActivistCodes.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(name)</p></td>
 <td><p>Find an activist code with exactly the given name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.get" title="everyaction.services.ActivistCodes.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(code_id, /)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.find_each" title="everyaction.services.ActivistCodes.find_each"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_each</span></code></a>(names)</p></td>
+<td><p>Find each activist code for each of the given names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.get" title="everyaction.services.ActivistCodes.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(code_id, /)</p></td>
 <td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes--activistcodeid">GET /activistCodes/{activistCodeId}</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.list" title="everyaction.services.ActivistCodes.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.list" title="everyaction.services.ActivistCodes.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
 <td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes">GET /activistCodes</a>.</p></td>
 </tr>
 </tbody>
@@ -73,13 +76,35 @@
 <dl class="py method">
 <dt id="everyaction.services.ActivistCodes.find">
 <code class="sig-name descname"><span class="pre">find</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><a class="headerlink" href="#everyaction.services.ActivistCodes.find" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find an activist code with exactly the given name.</p>
+<dd><p>Find an activist code with exactly the given name. If multiple activists codes have this name, the first will
+be returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – Name of activist code to find.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivistCode</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAException" title="everyaction.exception.EAException"><strong>EAException</strong></a> – If the activist code could not be found or if multiple activist codes exist with that name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="everyaction.services.ActivistCodes.find_each">
+<code class="sig-name descname"><span class="pre">find_each</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ActivistCodes.find_each" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find each activist code for each of the given names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>names</strong> – Names of activist codes to find.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{Name: <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivistCode</span></code></a>} for each activist code found.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAException" title="everyaction.exception.EAException"><strong>EAException</strong></a> – If any activist code could not be found or if multiple activist codes exist with the name
+of any requested activist code.</p>
 </dd>
 </dl>
 </dd></dl>

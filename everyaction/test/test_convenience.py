@@ -306,10 +306,24 @@ def test_activist_codes(client, server):
     server.add_activist_code({'name': 'Cool Activist'})
     assert client.activist_codes.find('Cool Activist') == ActivistCode(id=1, name='Cool Activist')
 
+    # Add more activist codes and try to find multiple with find_each.
+    server.add_activist_code({'name': 'Cooler Activist'})
+    server.add_activist_code({'name': 'Coolest Activist'})
+    server.add_activist_code({'name': 'Someone Else'})
+    assert client.activist_codes.find_each(['Cooler Activist', 'Someone Else']) == {
+        'Cooler Activist': ActivistCode(id=2, name='Cooler Activist'),
+        'Someone Else': ActivistCode(id=4, name='Someone Else')
+    }
+
+    with pytest.raises(EAFindFailedException, match='The following activist codes could not be found: Not An Activist'):
+        client.activist_codes.find_each(['Cooler Activist', 'Not An Activist'])
+
     # Test that trying to find an activist code out of multiple of the same name results in an exception.
     server.add_activist_code({'name': 'Cool Activist'})
-    with pytest.raises(EAFindFailedException, match='Multiple activist codes named'):
+    with pytest.raises(EAFindFailedException, match='Multiple activist codes named "Cool Activist"'):
         client.activist_codes.find('Cool Activist')
+    with pytest.raises(EAFindFailedException, match='Multiple activist codes named "Cool Activist"'):
+        client.activist_codes.find_each(['Cool Activist', 'Someone Else'])
 
 
 def test_result_codes(client, server):
