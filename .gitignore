@@ -6,3 +6,4 @@ test_data.json
 venv
 wenv
 __pycache__
+docs/\.buildinfo

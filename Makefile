@@ -11,6 +11,7 @@ VENV_ACTIVATE := source $(VENV_DIR)/bin/activate
 clean:
 	rm -rf .pytest_cache
 	rm -rf $(SPHINX_SOURCE_DIR)/classes
+	rm -rf docs/.buildinfo
 
 .PHONY: doc
 doc:
