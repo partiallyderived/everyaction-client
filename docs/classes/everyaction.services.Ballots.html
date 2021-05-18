@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>everyaction.services.Ballots &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="everyaction-services-ballots">
+  <section id="everyaction-services-ballots">
 <h1>everyaction.services.Ballots<a class="headerlink" href="#everyaction-services-ballots" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="everyaction.services.Ballots">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">Ballots</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Ballots" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.Ballots">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Ballots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Ballots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
-<a class="reference external" href="https://developers.everyaction.com/van-api#ballots">Ballots</a> service.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/ballots">Ballots</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -60,29 +61,29 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.request_type" title="everyaction.services.Ballots.request_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_type</span></code></a>(type_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes--ballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypesballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.request_types" title="everyaction.services.Ballots.request_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_types</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes">GET /ballotRequestTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypes">GET /ballotRequestTypes</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.return_status" title="everyaction.services.Ballots.return_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_status</span></code></a>(status_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses--ballotreturnstatusid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatusesballotrequesttypeid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.return_statuses" title="everyaction.services.Ballots.return_statuses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_statuses</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses">GET /ballotReturnStatuses</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatuses">GET /ballotReturnStatuses</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.type" title="everyaction.services.Ballots.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>(type_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballottypes--ballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-types#ballottypesballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.types" title="everyaction.services.Ballots.types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballottypes">GET /ballotTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-types#ballottypes">GET /ballotTypes</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="everyaction.services.Ballots.request_type">
-<code class="sig-name descname"><span class="pre">request_type</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><span class="pre">everyaction.objects.BallotRequestType</span></a><a class="headerlink" href="#everyaction.services.Ballots.request_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes--ballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.request_type">
+<span class="sig-name descname"><span class="pre">request_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><span class="pre">everyaction.objects.BallotRequestType</span></a><a class="headerlink" href="#everyaction.services.Ballots.request_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypesballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><code class="xref py py-class docutils literal notranslate"><span class="pre">BallotRequestType</span></code></a> object.</p>
@@ -91,9 +92,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Ballots.request_types">
-<code class="sig-name descname"><span class="pre">request_types</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><span class="pre">everyaction.objects.BallotRequestType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.request_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes">GET /ballotRequestTypes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.request_types">
+<span class="sig-name descname"><span class="pre">request_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><span class="pre">everyaction.objects.BallotRequestType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.request_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypes">GET /ballotRequestTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -108,9 +109,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Ballots.return_status">
-<code class="sig-name descname"><span class="pre">return_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotReturnStatus" title="everyaction.objects.BallotReturnStatus"><span class="pre">everyaction.objects.BallotReturnStatus</span></a><a class="headerlink" href="#everyaction.services.Ballots.return_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses--ballotreturnstatusid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.return_status">
+<span class="sig-name descname"><span class="pre">return_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotReturnStatus" title="everyaction.objects.BallotReturnStatus"><span class="pre">everyaction.objects.BallotReturnStatus</span></a><a class="headerlink" href="#everyaction.services.Ballots.return_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatusesballotrequesttypeid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>status_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">ballotReturnStatusId</span></code> path parameter.</p>
@@ -122,9 +123,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Ballots.return_statuses">
-<code class="sig-name descname"><span class="pre">return_statuses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotReturnStatus" title="everyaction.objects.BallotReturnStatus"><span class="pre">everyaction.objects.BallotReturnStatus</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.return_statuses" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses">GET /ballotReturnStatuses</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.return_statuses">
+<span class="sig-name descname"><span class="pre">return_statuses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotReturnStatus" title="everyaction.objects.BallotReturnStatus"><span class="pre">everyaction.objects.BallotReturnStatus</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.return_statuses" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatuses">GET /ballotReturnStatuses</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -139,9 +140,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Ballots.type">
-<code class="sig-name descname"><span class="pre">type</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotType" title="everyaction.objects.BallotType"><span class="pre">everyaction.objects.BallotType</span></a><a class="headerlink" href="#everyaction.services.Ballots.type" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballottypes--ballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.type">
+<span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.BallotType" title="everyaction.objects.BallotType"><span class="pre">everyaction.objects.BallotType</span></a><a class="headerlink" href="#everyaction.services.Ballots.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-types#ballottypesballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>type_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">ballotTypeId</span></code> path parameter.</p>
@@ -153,9 +154,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Ballots.types">
-<code class="sig-name descname"><span class="pre">types</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotType" title="everyaction.objects.BallotType"><span class="pre">everyaction.objects.BallotType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#ballots-get-ballottypes">GET /ballotTypes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Ballots.types">
+<span class="sig-name descname"><span class="pre">types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.BallotType" title="everyaction.objects.BallotType"><span class="pre">everyaction.objects.BallotType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Ballots.types" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballot-types#ballottypes">GET /ballotTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -171,7 +172,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -229,7 +230,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

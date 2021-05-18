@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exceptions &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -44,39 +45,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-everyaction.exception">
+  <section id="module-everyaction.exception">
 <span id="exceptions"></span><h1>Exceptions<a class="headerlink" href="#module-everyaction.exception" title="Permalink to this headline">¶</a></h1>
 <p>This module contains the exceptions used for the EveryAction client</p>
 <dl class="py exception">
-<dt id="everyaction.exception.EAException">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></code><code class="sig-name descname"><span class="pre">EAException</span></code><a class="headerlink" href="#everyaction.exception.EAException" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.exception.EAException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></span><span class="sig-name descname"><span class="pre">EAException</span></span><a class="headerlink" href="#everyaction.exception.EAException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class of exceptions raised for EveryAction-related errors which are raised prior to sending HTTP requests.
 HTTP errors are raised as instances of the subclass <a class="reference internal" href="#everyaction.exception.EAHTTPException" title="everyaction.exception.EAHTTPException"><code class="xref py py-class docutils literal notranslate"><span class="pre">EAHTTPException</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="everyaction.exception.EAFindFailedException">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></code><code class="sig-name descname"><span class="pre">EAFindFailedException</span></code><a class="headerlink" href="#everyaction.exception.EAFindFailedException" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.exception.EAFindFailedException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></span><span class="sig-name descname"><span class="pre">EAFindFailedException</span></span><a class="headerlink" href="#everyaction.exception.EAFindFailedException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class of exceptions raised when a function cannot proceed because it expected to find data but failed.</p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="everyaction.exception.EAHTTPException">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></code><code class="sig-name descname"><span class="pre">EAHTTPException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.exception.EAHTTPException" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.exception.EAHTTPException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.exception.</span></span><span class="sig-name descname"><span class="pre">EAHTTPException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.exception.EAHTTPException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class of exceptions raised if an error response was received for an EveryAction request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>response</strong> (<em>Response</em>) – The response with status code &gt;= 400.</p></li>
 <li><p><strong>errors</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="objects.html#everyaction.objects.Error" title="everyaction.objects.Error"><em>Error</em></a><em>]</em>) – List of EveryAction
-<a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8-errors">Error</a> objects given in the response.</p></li>
+<a class="reference external" href="https://docs.everyaction.com/reference/overview#errors">Error</a> objects given in the response.</p></li>
 <li><p><strong>http_error</strong> (<em>HTTPError</em>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">HTTPError</span></code> associated with the error response.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -133,7 +134,7 @@ HTTP errors are raised as instances of the subclass <a class="reference internal
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

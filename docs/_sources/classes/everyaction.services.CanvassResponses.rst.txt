@@ -18,6 +18,12 @@
       ~CanvassResponses.contact_types
    
    
+      ~CanvassResponses.find_contact_type
+   
+   
+      ~CanvassResponses.find_input_type
+   
+   
       ~CanvassResponses.find_result_code
    
    

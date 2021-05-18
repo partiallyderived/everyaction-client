@@ -1,6 +1,6 @@
 """
 This module contains :class:`EAClient`, the entrypoint for users to make requests following the
-`EveryAction 8 VAN API <https://developers.everyaction.com/van-api>`__.
+`EveryAction 8 VAN API <https://docs.everyaction.com/reference>`__.
 """
 
 import os
@@ -22,101 +22,101 @@ class EAClient(EAService):
     :ivar int default_limit: The default limit on the number of records a request may get for a paginated response. Set
         to 0 for no limit.
     :ivar People people:
-        `People <https://developers.everyaction.com/van-api#people>`__ service.
+        `People <https://docs.everyaction.com/reference/people>`__ service.
     :ivar ActivistCodes activist_codes:
-        `Activist Codes <https://developers.everyaction.com/van-api#activist-codes>`__ service.
+        `Activist Codes <https://docs.everyaction.com/reference/activist-codes>`__ service.
     :ivar Ballots ballots:
-        `Ballots <https://developers.everyaction.com/van-api#ballots>`__ service.
+        `Ballots <https://docs.everyaction.com/reference/ballots>`__ service.
     :ivar BargainingUnits bargaining_units:
-        `Bargaining Units <https://developers.everyaction.com/van-api#bargaining-units>`__ service.
+        `Bargaining Units <https://docs.everyaction.com/reference/bargaining-units>`__ service.
     :ivar BulkImport bulk_import:
-        `Bulk Import <https://developers.everyaction.com/van-api#bulk-import>`__ service.
+        `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
     :ivar CanvassResponses canvass_responses:
-        `Canvass Responses <https://developers.everyaction.com/van-api#canvass-responses>`__ service.
+        `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
     :ivar ChangedEntities changed_entities:
-        `Changed Entities <https://developers.everyaction.com/van-api#changed-entities>`__ service.
+        `Changed Entities <https://docs.everyaction.com/reference/changed-entities>`__ service.
     :ivar Codes codes:
-        `Codes <https://developers.everyaction.com/van-api#codes>`__ service.
+        `Codes <https://docs.everyaction.com/reference/codes>`__ service.
     :ivar Commitments commitments:
-        `Commitments <https://developers.everyaction.com/van-api#commitments>`__ service.
+        `Commitments <https://docs.everyaction.com/reference/commitments>`__ service.
     :ivar Contributions contributions:
-        `Contributions <https://developers.everyaction.com/van-api#contributions>`__ service.
+        `Contributions <https://docs.everyaction.com/reference/contributions>`__ service.
     :ivar CustomFields custom_fields:
-        `Custom Fields <https://developers.everyaction.com/van-api#custom-fields>`__ service.
+        `Custom Fields <https://docs.everyaction.com/reference/custom-fields>`__ service.
     :ivar Departments departments:
-        `Departments <https://developers.everyaction.com/van-api#departments>`__ service.
+        `Departments <https://docs.everyaction.com/reference/departments>`__ service.
     :ivar Designations designations:
-        `Designations <https://developers.everyaction.com/van-api#designations>`__ service.
+        `Designations <https://docs.everyaction.com/reference/designations>`__ service.
     :ivar Disbursements disbursements:
-        `Disbursements <https://developers.everyaction.com/van-api#disbursements>`__ service.
+        `Disbursements <https://docs.everyaction.com/reference/disbursements>`__ service.
     :ivar DistrictFields district_fields:
-        `District Fields <https://developers.everyaction.com/van-api#district-fields>`__ service.
+        `District Fields <https://docs.everyaction.com/reference/district-fields>`__ service.
     :ivar Email email:
-        `Email <https://developers.everyaction.com/van-api#email>`__ service.
+        `Email <https://docs.everyaction.com/reference/email>`__ service.
     :ivar Employers employers:
-        `Employers <https://developers.everyaction.com/van-api#employers>`__ service.
+        `Employers <https://docs.everyaction.com/reference/employers>`__ service.
     :ivar EventTypes event_types:
-        `Event Types <https://developers.everyaction.com/van-api#event-types>`__ service.
+        `Event Types <https://docs.everyaction.com/reference/event-types>`__ service.
     :ivar Events events:
-        `Events <https://developers.everyaction.com/van-api#events>`__ service.
+        `Events <https://docs.everyaction.com/reference/events>`__ service.
     :ivar ExportJobs export_jobs:
-        `Export Jobs <https://developers.everyaction.com/van-api#export-jobs>`__ service.
+        `Export Jobs <https://docs.everyaction.com/reference/export-jobs>`__ service.
     :ivar ExtendedSourceCodes extended_source_codes:
-        `Extended Source Codes <https://developers.everyaction.com/van-api#extended-source-codes>`__ service.
+        `Extended Source Codes <https://docs.everyaction.com/reference/extended-source-codes>`__ service.
     :ivar FileLoadingJobs file_loading_jobs:
-        `File-Loading Jobs <https://developers.everyaction.com/van-api#file-loading-jobs>`__ service.
+        `File-Loading Jobs <https://docs.everyaction.com/reference/file-loading-jobs>`__ service.
     :ivar FinancialBatches financial_batches:
-        `Financial Batches <https://developers.everyaction.com/van-api#financial-batches>`__ service.
+        `Financial Batches <https://docs.everyaction.com/reference/financial-batches>`__ service.
     :ivar Folders folders:
-        `Folders <https://developers.everyaction.com/van-api#folders>`__ service.
+        `Folders <https://docs.everyaction.com/reference/folders>`__ service.
     :ivar JobClasses job_classes:
-        `Job Classes <https://developers.everyaction.com/van-api#job-classes>`__ service.
+        `Job Classes <https://docs.everyaction.com/reference/job-classes>`__ service.
     :ivar Locations locations:
-        `Locations <https://developers.everyaction.com/van-api#locations>`__ service.
+        `Locations <https://docs.everyaction.com/reference/locations>`__ service.
     :ivar MemberStatuses member_statuses:
-        `Member Statuses <https://developers.everyaction.com/van-api#member-statuses>`__ service.
+        `Member Statuses <https://docs.everyaction.com/reference/member-statuses>`__ service.
     :ivar MiniVANExports minivan_exports:
-        `MiniVAN Exports <https://developers.everyaction.com/van-api#minivan-exports>`__ service.
+        `MiniVAN Exports <https://docs.everyaction.com/reference/minivan-exports>`__ service.
     :ivar Notes notes:
-        `Notes <https://developers.everyaction.com/van-api#notes>`__ service.
+        `Notes <https://docs.everyaction.com/reference/notes>`__ service.
     :ivar OnlineActionForms forms:
-        `Online Action Forms <https://developers.everyaction.com/van-api#online-actions-forms>`__ service.
+        `Online Action Forms <https://docs.everyaction.com/reference/online-actions-forms>`__ service.
     :ivar Phones phones:
-        `Phones <https://developers.everyaction.com/van-api#phones>`__ service.
+        `Phones <https://docs.everyaction.com/reference/phones>`__ service.
     :ivar PrintedLists printed_lists:
-        `Printed Lists <https://developers.everyaction.com/van-api#printed-lists>`__ service.
+        `Printed Lists <https://docs.everyaction.com/reference/printed-lists>`__ service.
     :ivar Relationships relationships:
-        `Relationships <https://developers.everyaction.com/van-api#relationships>`__ service.
+        `Relationships <https://docs.everyaction.com/reference/relationships>`__ service.
     :ivar ReportedDemographics demographics:
-        `Reported Demographics <https://developers.everyaction.com/van-api#reported-demographics>`__ service.
+        `Reported Demographics <https://docs.everyaction.com/reference/reported-demographics>`__ service.
     :ivar SavedLists saved_lists:
-        `Saved Lists <https://developers.everyaction.com/van-api#saved-lists>`__ service.
+        `Saved Lists <https://docs.everyaction.com/reference/saved-lists>`__ service.
     :ivar ScheduleTypes schedule_types:
-        `Schedule Types <https://developers.everyaction.com/van-api#schedule-types>`__ service.
+        `Schedule Types <https://docs.everyaction.com/reference/schedule-types>`__ service.
     :ivar ScoreUpdates score_updates:
-        `Score Updates <https://developers.everyaction.com/van-api#score-updates>`__ service.
+        `Score Updates <https://docs.everyaction.com/reference/score-updates>`__ service.
     :ivar Scores scores:
-        `Scores <https://developers.everyaction.com/van-api#scores>`__ service.
+        `Scores <https://docs.everyaction.com/reference/scores>`__ service.
     :ivar ShiftTypes shift_types:
-        `Shift Types <https://developers.everyaction.com/van-api#shift-types>`__ service.
+        `Shift Types <https://docs.everyaction.com/reference/shift-types>`__ service.
     :ivar Signups signups:
-        `Signups <https://developers.everyaction.com/van-api#signups>`__ service.
+        `Signups <https://docs.everyaction.com/reference/signups>`__ service.
     :ivar Stories stories:
-        `Stories <https://developers.everyaction.com/van-api#stories>`__ service.
+        `Stories <https://docs.everyaction.com/reference/stories>`__ service.
     :ivar SupporterGroups supporter_groups:
-        `Supporter Groups <https://developers.everyaction.com/van-api#supporter-groups>`__ service.
+        `Supporter Groups <https://docs.everyaction.com/reference/supporter-groups>`__ service.
     :ivar SurveyQuestions questions:
-        `Survey Questions <https://developers.everyaction.com/van-api#survey-questions>`__ service.
+        `Survey Questions <https://docs.everyaction.com/reference/survey-questions>`__ service.
     :ivar TargetExportJobs target_export_jobs:
-        `Target Export Jobs <https://developers.everyaction.com/van-api#target-export-jobs>`__ service.
+        `Target Export Jobs <https://docs.everyaction.com/reference/target-export-jobs>`__ service.
     :ivar Targets targets:
-        `Targets <https://developers.everyaction.com/van-api#targets>`__ service.
+        `Targets <https://docs.everyaction.com/reference/targets>`__ service.
     :ivar Users users:
-        `Users <https://developers.everyaction.com/van-api#users>`__ service.
+        `Users <https://docs.everyaction.com/reference/users>`__ service.
     :ivar VoterRegistrationBatches registration_batches:
-        `Voter Registration Batches <https://developers.everyaction.com/van-api#voter-registration-batches>`__ service.
+        `Voter Registration Batches <https://docs.everyaction.com/reference/voter-registration-batches>`__ service.
     :ivar Worksites worksites:
-        `Worksites <https://developers.everyaction.com/van-api#worksites>`__ service.
+        `Worksites <https://docs.everyaction.com/reference/worksites>`__ service.
 
     """
 
@@ -217,19 +217,19 @@ class EAClient(EAService):
         """Use the given arguments and environment variables to initialize the client.
 
         :param app_name: The API key's application name. See
-            `EveryAction Authentication <https://developers.everyaction.com/van-api#everyaction-8-authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
             for more information.
         :param api_key: The API key for the client to use. If the database `mode` is not specified, the last two
             characters of the key should be the "pipe" (|) character followed by a digit indicating the database mode.
             Conversely, this should not be the case when `mode` is specified. See
-            `EveryAction Authentication <https://developers.everyaction.com/van-api#everyaction-8-authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
             for more information.
         :param endpoint: The endpoint to use. Supports the aliases "US" for the endpoint for US-based clients and "INTL"
             for internationally-based clients.
         :param mode: The database mode to use. Supports the case-insensitive names "VoterFile" and "MyCampaign", as well
             as the digit to be appended to the API key. The mode should be explicitly specified if and only if it is not
             implicitly specified in the API key (see `api_key` above). See
-            `EveryAction Authentication <https://developers.everyaction.com/van-api#everyaction-8-authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
             for more information.
         :param from_env: When `True`, retrieve the application name from the EVERYACTION_APP_NAME environment variable
             and the api key from the EVERYACTION_API_KEY environment variable. `from_env` should be `False` or
@@ -314,7 +314,7 @@ class EAClient(EAService):
         self.member_statuses = services.MemberStatuses(self)
         self.minivan_exports = services.MiniVANExports(self)
         self.notes = services.Notes(self)
-        self.forms = services.OnlineActionForms(self)
+        self.forms = services.OnlineActionsForms(self)
         self.phones = services.Phones(self)
         self.printed_lists = services.PrintedLists(self)
         self.relationships = services.Relationships(self)
@@ -367,7 +367,7 @@ class EAClient(EAService):
         return self._MODES[self._mode_num()]
 
     def api_key_profile(self) -> APIKeyProfile:
-        """Retrieves the `profile <https://developers.everyaction.com/van-api#everyaction-8-introspection>`__
+        """Retrieves the `profile <https://docs.everyaction.com/reference/everyaction-8-introspection>`__
         associated with the API key this client is using.
 
         :return: The resulting :class:`APIKeyProfile` object.

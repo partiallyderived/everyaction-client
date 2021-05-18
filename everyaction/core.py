@@ -20,7 +20,7 @@ from everyaction.exception import EAException, EAHTTPException
 _CAMEL_TO_SNAKE_REGEX = re.compile(r'([A-Z]+)')
 
 # The standard maximum value for top supported by EveryAction
-# (see https://developers.everyaction.com/van-api#everyaction-8-pagination).
+# (see https://docs.everyaction.com/reference/overview#pagination).
 _DEFAULT_MAX_TOP = 200
 
 # For documentation purposes, keep track on properties added to methods decorated with @ea_endpoint.
@@ -907,7 +907,7 @@ class EAObjectWithID(EAObject):
         converted to API objects when appropriate.
 
         :param id: ID to initialize with. When given alone, a simple object results (see
-            `A Note About Simple Objects <https://developers.everyaction.com/van-api#events-overview>`__).
+            `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
         :param kwargs: Mapping of (alias or name) -> value.
         """
         super().__init__(id=id, **kwargs)
@@ -941,7 +941,7 @@ class EAObjectWithIDAndName(EAObject):
 
         :param id_or_name: ID (if an integer) or name (if a string) to initialize with. A simple object will result when
             an integer is given (see
-            `A Note About Simple Objects <https://developers.everyaction.com/van-api#events-overview>`__).
+            `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
             When a string is given instead, it is assumed to correspond to the object's name, accessible via
             instance.name.
         :param kwargs: Mapping of (alias or name) -> value.

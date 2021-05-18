@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>everyaction.services.People &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="everyaction-services-people">
+  <section id="everyaction-services-people">
 <h1>everyaction.services.People<a class="headerlink" href="#everyaction-services-people" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="everyaction.services.People">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">People</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.People" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">People</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.People" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
-<a class="reference external" href="https://developers.everyaction.com/van-api#people">People</a> service.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/people">People</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -60,31 +61,31 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.activist_codes" title="everyaction.services.People.activist_codes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activist_codes</span></code></a>(van_id, /, *[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes">GET /people/{vanId}/activistCodes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidactivistcodes">GET /people/{vanId}/activistCodes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_canvass_responses" title="everyaction.services.People.add_canvass_responses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_canvass_responses</span></code></a>(van_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses">POST /people/{vanId}/canvassResponses</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses">POST /people/{vanId}/canvassResponses</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_canvass_responses_" title="everyaction.services.People.add_canvass_responses_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_canvass_responses_</span></code></a>(person_id_type, …)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--canvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcanvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_code" title="everyaction.services.People.add_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_code</span></code></a>(van_id, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--codes">POST /people/{vanId}/codes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodes">POST /people/{vanId}/codes</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_code_" title="everyaction.services.People.add_code_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_code_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--codes">POST /people/{personIdType}:{personId}/codes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodes">POST /people/{personIdType}:{personId}/codes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_my_activist_flag" title="everyaction.services.People.add_my_activist_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_my_activist_flag</span></code></a>(van_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--myactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_notes" title="everyaction.services.People.add_notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_notes</span></code></a>(van_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--notes">POST /people/{vanId}/notes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotes-1">POST /people/{vanId}/notes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.add_notes_" title="everyaction.services.People.add_notes_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_notes_</span></code></a>(person_id_type, person_id, /, …)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--notes">POST /people/{personIdType}:{personId}/notes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidnotes">POST /people/{personIdType}:{personId}/notes</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_relationship" title="everyaction.services.People.add_relationship"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_relationship</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--relationships">POST /people/{vanId}/relationships</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.add_relationship" title="everyaction.services.People.add_relationship"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_relationship</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidrelationships">POST /people/{vanId}/relationships</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.apply_activist_code" title="everyaction.services.People.apply_activist_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_activist_code</span></code></a>(activist_code, **kwargs)</p></td>
 <td><p>Apply the given activist code to the person distinguished by the specified data.</p></td>
@@ -96,62 +97,65 @@
 <td><p>Apply the given result code to the person distinguished by the given data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.find" title="everyaction.services.People.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">POST /people/find</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.find_or_create" title="everyaction.services.People.find_or_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_or_create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-findorcreate">POST /people/findOrCreate</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.find_by_phone" title="everyaction.services.People.find_by_phone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_phone</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefindbyphone">POST /people/findByPhone</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(van_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.find_or_create" title="everyaction.services.People.find_or_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_or_create</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefindorcreate">POST /people/findOrCreate</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.get_" title="everyaction.services.People.get_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--personidtype---personid">GET /people/{personIdType}:{personId}</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid-1">GET /people/{vanId}</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.lookup" title="everyaction.services.People.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(*[, expand])</p></td>
-<td><p>Attempt to find a person using the data in <cite>kwargs</cite> by invoking <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.get_" title="everyaction.services.People.get_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid-1">GET /people/{personIdType}:{personId}</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.membership" title="everyaction.services.People.membership"><code class="xref py py-obj docutils literal notranslate"><span class="pre">membership</span></code></a>(van_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--membership">GET /people/{vanId}/membership</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.lookup" title="everyaction.services.People.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(*[, expand])</p></td>
+<td><p>Attempt to find a person using the data in <cite>kwargs</cite> by invoking <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">POST /people/find</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.notes" title="everyaction.services.People.notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notes</span></code></a>(van_id, /, *[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--notes">GET /people/{vanId}/notes</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.membership" title="everyaction.services.People.membership"><code class="xref py py-obj docutils literal notranslate"><span class="pre">membership</span></code></a>(van_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmembership">GET /people/{vanId}/membership</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_activist_code" title="everyaction.services.People.remove_activist_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_activist_code</span></code></a>(activist_code, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.notes" title="everyaction.services.People.notes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notes</span></code></a>(van_id, /, *[, limit])</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotes">GET /people/{vanId}/notes</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_activist_code" title="everyaction.services.People.remove_activist_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_activist_code</span></code></a>(activist_code, **kwargs)</p></td>
 <td><p>Remove the given activist code from the person distinguished by the specified data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code" title="everyaction.services.People.remove_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code</span></code></a>(van_id, code_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--codes--codeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code" title="everyaction.services.People.remove_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code</span></code></a>(van_id, code_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodescodeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code_" title="everyaction.services.People.remove_code_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code_</span></code></a>(person_id_type, person_id, …)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--personidtype---personid--codes--codeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_code_" title="everyaction.services.People.remove_code_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_code_</span></code></a>(person_id_type, person_id, …)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodescodeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.remove_my_activist_flag" title="everyaction.services.People.remove_my_activist_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_my_activist_flag</span></code></a>(van_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--myactivistflags">DELETE /people/{vanId}myActivistFlags</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.remove_my_activist_flag" title="everyaction.services.People.remove_my_activist_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_my_activist_flag</span></code></a>(van_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags-1">DELETE /people/{vanId}/myActivistFlags</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields" title="everyaction.services.People.set_disclosures_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields</span></code></a>(van_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--disclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields" title="everyaction.services.People.set_disclosures_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevaniddisclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields_" title="everyaction.services.People.set_disclosures_fields_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields_</span></code></a>(person_id_type, …)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--disclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.set_disclosures_fields_" title="everyaction.services.People.set_disclosures_fields_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disclosures_fields_</span></code></a>(person_id_type, …)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersoniddisclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update" title="everyaction.services.People.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(van_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update" title="everyaction.services.People.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(van_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid">POST /people/{vanId}</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update_" title="everyaction.services.People.update_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid">POST /people/{personIdType}:{personId}</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update_" title="everyaction.services.People.update_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_</span></code></a>(person_id_type, person_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid">POST /people/{personIdType}:{personId}</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update_if_exists" title="everyaction.services.People.update_if_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_if_exists</span></code></a>(lookup_args, update_args)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update_if_exists" title="everyaction.services.People.update_if_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_if_exists</span></code></a>(lookup_args, update_args)</p></td>
 <td><p>Update a person with the given properties if they already exist as a record.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.People.update_note" title="everyaction.services.People.update_note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_note</span></code></a>(van_id, note_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--notes--noteid">PUT /people/{vanId}/notes/{noteId}</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.People.update_note" title="everyaction.services.People.update_note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_note</span></code></a>(van_id, note_id, /, **kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotesnoteid">PUT /people/{vanId}/notes/{noteId}</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="everyaction.services.People.activist_codes">
-<code class="sig-name descname"><span class="pre">activist_codes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCodeData" title="everyaction.objects.ActivistCodeData"><span class="pre">everyaction.objects.ActivistCodeData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.activist_codes" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes">GET /people/{vanId}/activistCodes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.activist_codes">
+<span class="sig-name descname"><span class="pre">activist_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCodeData" title="everyaction.objects.ActivistCodeData"><span class="pre">everyaction.objects.ActivistCodeData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.activist_codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidactivistcodes">GET /people/{vanId}/activistCodes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -167,9 +171,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_canvass_responses">
-<code class="sig-name descname"><span class="pre">add_canvass_responses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses">POST /people/{vanId}/canvassResponses</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_canvass_responses">
+<span class="sig-name descname"><span class="pre">add_canvass_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses">POST /people/{vanId}/canvassResponses</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -192,9 +196,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_canvass_responses_">
-<code class="sig-name descname"><span class="pre">add_canvass_responses_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--canvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_canvass_responses_">
+<span class="sig-name descname"><span class="pre">add_canvass_responses_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_canvass_responses_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcanvassresponses">POST /people/{personIdType}:{personId}/canvassResponses</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -218,9 +222,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_code">
-<code class="sig-name descname"><span class="pre">add_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--codes">POST /people/{vanId}/codes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_code">
+<span class="sig-name descname"><span class="pre">add_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodes">POST /people/{vanId}/codes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -252,9 +256,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_code_">
-<code class="sig-name descname"><span class="pre">add_code_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--codes">POST /people/{personIdType}:{personId}/codes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_code_">
+<span class="sig-name descname"><span class="pre">add_code_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_code_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodes">POST /people/{personIdType}:{personId}/codes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -287,9 +291,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_my_activist_flag">
-<code class="sig-name descname"><span class="pre">add_my_activist_flag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_my_activist_flag" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--myactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_my_activist_flag">
+<span class="sig-name descname"><span class="pre">add_my_activist_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_my_activist_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags">PUT /people/{vanId}/myActivistFlags</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
@@ -298,9 +302,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_notes">
-<code class="sig-name descname"><span class="pre">add_notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--notes">POST /people/{vanId}/notes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_notes">
+<span class="sig-name descname"><span class="pre">add_notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotes-1">POST /people/{vanId}/notes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -327,9 +331,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_notes_">
-<code class="sig-name descname"><span class="pre">add_notes_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--notes">POST /people/{personIdType}:{personId}/notes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_notes_">
+<span class="sig-name descname"><span class="pre">add_notes_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_notes_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidnotes">POST /people/{personIdType}:{personId}/notes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -357,12 +361,15 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.add_relationship">
-<code class="sig-name descname"><span class="pre">add_relationship</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_relationship" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--relationships">POST /people/{vanId}/relationships</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.add_relationship">
+<span class="sig-name descname"><span class="pre">add_relationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.add_relationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidrelationships">POST /people/{vanId}/relationships</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Supported Keyword Arguments</dt>
 <dd class="field-even"><ul class="simple">
@@ -376,8 +383,8 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.apply_activist_code">
-<code class="sig-name descname"><span class="pre">apply_activist_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_activist_code" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.apply_activist_code">
+<span class="sig-name descname"><span class="pre">apply_activist_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_activist_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the given activist code to the person distinguished by the specified data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -393,8 +400,8 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.apply_notes">
-<code class="sig-name descname"><span class="pre">apply_notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_notes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.apply_notes">
+<span class="sig-name descname"><span class="pre">apply_notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_notes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the given notes to the person distinguished by the specified data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -410,8 +417,8 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.apply_result_code">
-<code class="sig-name descname"><span class="pre">apply_result_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_result_code" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.apply_result_code">
+<span class="sig-name descname"><span class="pre">apply_result_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.apply_result_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the given result code to the person distinguished by the given data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -427,9 +434,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.find">
-<code class="sig-name descname"><span class="pre">find</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.find" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">POST /people/find</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
@@ -544,9 +551,29 @@ appropriate to unpack here.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.find_or_create">
-<code class="sig-name descname"><span class="pre">find_or_create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.find_or_create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-findorcreate">POST /people/findOrCreate</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.find_by_phone">
+<span class="sig-name descname"><span class="pre">find_by_phone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.find_by_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefindbyphone">POST /people/findByPhone</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Supported Keyword Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phoneNumber</strong>
+(Aliases: <code class="code docutils literal notranslate"><span class="pre">phone_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">number</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.People.find_or_create">
+<span class="sig-name descname"><span class="pre">find_or_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.find_or_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefindorcreate">POST /people/findOrCreate</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> is
@@ -661,9 +688,9 @@ appropriate to unpack here.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid-1">GET /people/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -683,9 +710,9 @@ appropriate to unpack here.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.get_">
-<code class="sig-name descname"><span class="pre">get_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--personidtype---personid">GET /people/{personIdType}:{personId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.get_">
+<span class="sig-name descname"><span class="pre">get_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><a class="headerlink" href="#everyaction.services.People.get_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid-1">GET /people/{personIdType}:{personId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -706,12 +733,12 @@ appropriate to unpack here.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.lookup">
-<code class="sig-name descname"><span class="pre">lookup</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.lookup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.lookup">
+<span class="sig-name descname"><span class="pre">lookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempt to find a person using the data in <cite>kwargs</cite> by invoking
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a>.
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">POST /people/find</a>.
 Then, if a person was found, use their VAN ID to retrieve their stored <a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> record by invoking
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a>.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid-1">GET /people/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -726,9 +753,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.membership">
-<code class="sig-name descname"><span class="pre">membership</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Membership" title="everyaction.objects.Membership"><span class="pre">everyaction.objects.Membership</span></a><a class="headerlink" href="#everyaction.services.People.membership" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--membership">GET /people/{vanId}/membership</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.membership">
+<span class="sig-name descname"><span class="pre">membership</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Membership" title="everyaction.objects.Membership"><span class="pre">everyaction.objects.Membership</span></a><a class="headerlink" href="#everyaction.services.People.membership" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmembership">GET /people/{vanId}/membership</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
@@ -740,9 +767,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.notes">
-<code class="sig-name descname"><span class="pre">notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.notes" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid--notes">GET /people/{vanId}/notes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.notes">
+<span class="sig-name descname"><span class="pre">notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Note" title="everyaction.objects.Note"><span class="pre">everyaction.objects.Note</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotes">GET /people/{vanId}/notes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -758,8 +785,8 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.remove_activist_code">
-<code class="sig-name descname"><span class="pre">remove_activist_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_activist_code" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.remove_activist_code">
+<span class="sig-name descname"><span class="pre">remove_activist_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activist_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_activist_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove the given activist code from the person distinguished by the specified data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -775,9 +802,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.remove_code">
-<code class="sig-name descname"><span class="pre">remove_code</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--codes--codeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.remove_code">
+<span class="sig-name descname"><span class="pre">remove_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodescodeid">DELETE /people/{vanId}/codes/{codeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -789,9 +816,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.remove_code_">
-<code class="sig-name descname"><span class="pre">remove_code_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--personidtype---personid--codes--codeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.remove_code_">
+<span class="sig-name descname"><span class="pre">remove_code_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_code_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodescodeid">DELETE /people/{personIdType}:{personId}/codes/{codeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -804,9 +831,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.remove_my_activist_flag">
-<code class="sig-name descname"><span class="pre">remove_my_activist_flag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_my_activist_flag" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-delete-people--vanid--myactivistflags">DELETE /people/{vanId}myActivistFlags</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.remove_my_activist_flag">
+<span class="sig-name descname"><span class="pre">remove_my_activist_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.remove_my_activist_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags-1">DELETE /people/{vanId}/myActivistFlags</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>van_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">vanId</span></code> path parameter.</p>
@@ -815,9 +842,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.set_disclosures_fields">
-<code class="sig-name descname"><span class="pre">set_disclosures_fields</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--disclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.set_disclosures_fields">
+<span class="sig-name descname"><span class="pre">set_disclosures_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevaniddisclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -835,9 +862,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.set_disclosures_fields_">
-<code class="sig-name descname"><span class="pre">set_disclosures_fields_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--disclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.set_disclosures_fields_">
+<span class="sig-name descname"><span class="pre">set_disclosures_fields_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.set_disclosures_fields_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersoniddisclosurefieldvalues">POST /people/{personIdType}:{personId}/disclosureFieldValues</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -856,9 +883,9 @@ Then, if a person was found, use their VAN ID to retrieve their stored <a class=
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid">POST /people/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -976,9 +1003,9 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.update_">
-<code class="sig-name descname"><span class="pre">update_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--personidtype---personid">POST /people/{personIdType}:{personId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.update_">
+<span class="sig-name descname"><span class="pre">update_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><span class="pre">everyaction.objects.Person</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid">POST /people/{personIdType}:{personId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1097,11 +1124,11 @@ appropriate to unpack here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.update_if_exists">
-<code class="sig-name descname"><span class="pre">update_if_exists</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookup_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_if_exists" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.People.update_if_exists">
+<span class="sig-name descname"><span class="pre">update_if_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookup_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAMap</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.People.update_if_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update a person with the given properties if they already exist as a record. Works by invoking
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">POST /people/find</a> followed by
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid">POST /people/{vanId}</a> if the person
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">POST /people/find</a> followed by&gt;`__.
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid">POST /people/{vanId}</a> if the person&gt;`__.
 exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1117,9 +1144,9 @@ exists.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.People.update_note">
-<code class="sig-name descname"><span class="pre">update_note</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.update_note" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#people-put-people--vanid--notes--noteid">PUT /people/{vanId}/notes/{noteId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.People.update_note">
+<span class="sig-name descname"><span class="pre">update_note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.People.update_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotesnoteid">PUT /people/{vanId}/notes/{noteId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1148,7 +1175,7 @@ appropriate to unpack here.</p></li>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -1206,7 +1233,7 @@ appropriate to unpack here.</p></li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

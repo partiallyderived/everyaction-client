@@ -21,6 +21,9 @@
       ~SavedLists.list
    
    
+      ~SavedLists.sms_sync
+   
+   
    
 
    

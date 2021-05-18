@@ -36,7 +36,7 @@ Services
     MemberStatuses
     MiniVANExports
     Notes
-    OnlineActionForms
+    OnlineActionsForms
     Phones
     PrintedLists
     Relationships

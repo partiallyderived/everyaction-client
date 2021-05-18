@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Python Client for EveryAction &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -40,14 +41,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="python-client-for-everyaction">
+  <section id="python-client-for-everyaction">
 <h1>Python Client for EveryAction<a class="headerlink" href="#python-client-for-everyaction" title="Permalink to this headline">¶</a></h1>
 <p>The Python client for EveryAction is a client for the
-<a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8">EveryAction 8 Developer API</a> written in Python. The goal of
+<a class="reference external" href="https://docs.everyaction.com/reference">EveryAction 8 Developer API</a> written in Python. The goal of
 this library is to organize the various endpoints listed in the API into methods and make the construction of JSON data
 and query arguments for the requests more convenient.</p>
-</div>
-<div class="section" id="quick-reference">
+</section>
+<section id="quick-reference">
 <h1>Quick Reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
@@ -80,7 +81,7 @@ and query arguments for the requests more convenient.</p>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.MemberStatuses.html">everyaction.services.MemberStatuses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.MiniVANExports.html">everyaction.services.MiniVANExports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.Notes.html">everyaction.services.Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.OnlineActionForms.html">everyaction.services.OnlineActionForms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.OnlineActionsForms.html">everyaction.services.OnlineActionsForms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.Phones.html">everyaction.services.Phones</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.PrintedLists.html">everyaction.services.PrintedLists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes/everyaction.services.Relationships.html">everyaction.services.Relationships</a></li>
@@ -107,8 +108,8 @@ and query arguments for the requests more convenient.</p>
 <li class="toctree-l1"><a class="reference internal" href="naming.html">Naming Conventions</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="using-the-client">
+</section>
+<section id="using-the-client">
 <h1>Using the Client<a class="headerlink" href="#using-the-client" title="Permalink to this headline">¶</a></h1>
 <p>To make requests, you must first create an <a class="reference internal" href="client.html#everyaction.client.EAClient" title="everyaction.client.EAClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EAClient</span></code></a> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">everyaction</span> <span class="kn">import</span> <span class="n">EAClient</span>
@@ -121,9 +122,9 @@ and query arguments for the requests more convenient.</p>
 <a class="reference internal" href="client.html#everyaction.client.EAClient.__init__" title="everyaction.client.EAClient.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EAClient</span> <span class="pre">__init__</span> <span class="pre">method</span></code></a> for more information and initialization options.</p>
 <p>Once the client is created, requests may be made by calling methods of <a class="reference internal" href="services.html"><span class="doc">EAService</span></a> objects, which are
 objects that organize methods in the same way that the
-<a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8">EveryAction 8 developer documentation</a> organizes HTTP
+<a class="reference external" href="https://docs.everyaction.com/reference">EveryAction 8 developer documentation</a> organizes HTTP
 endpoints. For example, the following code uses the <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People" title="everyaction.services.People"><code class="xref py py-class docutils literal notranslate"><span class="pre">People</span></code></a> service to send a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> request to
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people-find">/people/find</a> to find a person with the phone
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplefind">/people/find</a> to find a person with the phone
 number 555-555-5555 and the email <a class="reference external" href="mailto:123&#37;&#52;&#48;fakeemail&#46;com">123<span>&#64;</span>fakeemail<span>&#46;</span>com</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">phone</span><span class="o">=</span><span class="s1">&#39;5555555555&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;123@fakeemail.com&#39;</span><span class="p">)</span>
 </pre></div>
@@ -133,12 +134,12 @@ service attributes and to which part of the documented HTTP endpoints each objec
 out the <a class="reference internal" href="services.html"><span class="doc">services documentation</span></a> to see a list of the services as well as what their methods are,
 and to which HTTP endpoint they correspond to. Some methods, such as <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.lookup" title="everyaction.services.People.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.lookup()</span></code></a>, are implemented for user
 convenience and do not directly correspond to an HTTP endpoint.</p>
-</div>
-<div class="section" id="service-methods">
+</section>
+<section id="service-methods">
 <h1>Service Methods<a class="headerlink" href="#service-methods" title="Permalink to this headline">¶</a></h1>
 <p>This section will document how a user may use an <a class="reference internal" href="client.html#everyaction.client.EAClient" title="everyaction.client.EAClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EAClient</span></code></a> to call a method corresponding to an HTTP endpoint
-in the <a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8">EveryAction 8 developer documentation</a>.</p>
-<div class="section" id="user-workflow">
+in the <a class="reference external" href="https://docs.everyaction.com/reference">EveryAction 8 developer documentation</a>.</p>
+<section id="user-workflow">
 <h2>User Workflow<a class="headerlink" href="#user-workflow" title="Permalink to this headline">¶</a></h2>
 <p>The design of this package comes with the expectation that the user is at least vaguely familiar with the EveryAction 8
 developer documentation and wants to leverage this package with the goal of invoking the available documented endpoints
@@ -158,19 +159,19 @@ decrease the amount of typing you have to do. Additionally, if you have many JSO
 consider organizing them in an <a class="reference external" href="EveryActionObjects">EveryAction object</a> and then unpacking them.</p></li>
 </ol>
 <p>More details about how methods may be called and what return values may be expected are given in the sections below.</p>
-</div>
-<div class="section" id="path-parameters-query-arguments-and-json-data">
+</section>
+<section id="path-parameters-query-arguments-and-json-data">
 <h2>Path Parameters, Query Arguments, and JSON Data<a class="headerlink" href="#path-parameters-query-arguments-and-json-data" title="Permalink to this headline">¶</a></h2>
 <p>When specifying arguments for methods corresponding to HTTP endpoints, path parameters (those that appear in the URL)
 must be specified positionally. For example, the following code will invoke
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-get-people--vanid">GET /people/{vanId}</a> using <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.get()</span></code></a>
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid-1">GET /people/{vanId}</a> using <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.get()</span></code></a>
 to get the person with the VAN ID <code class="code docutils literal notranslate"><span class="pre">1234</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In contrast, all query and JSON data arguments must be specified as keyword arguments. For example, the following code
 will add view restricted notes to the person with the VAN ID <code class="code docutils literal notranslate"><span class="pre">5555</span></code> with the text “Wears funny hats” by invoking
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-post-people--vanid--notes">POST /people/{vanId}/notes</a> using
+<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidnotes-1">POST /people/{vanId}/notes</a> using
 <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.add_notes" title="everyaction.services.People.add_notes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.add_notes()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">add_notes</span><span class="p">(</span><span class="mi">5555</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Wears funny hats&#39;</span><span class="p">,</span> <span class="n">view_restricted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -179,7 +180,7 @@ will add view restricted notes to the person with the VAN ID <code class="code d
 <code class="code docutils literal notranslate"><span class="pre">isViewRestricted</span></code> in the previous example.</p>
 <p>In some cases, query arguments in the EveryAction API begin with a dollar sign (<code class="code docutils literal notranslate"><span class="pre">$</span></code>). In this case, the dollar
 sign may be omitted when specifying keyword arguments. The following gets a person as before, but
-<a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8-expansion">expands</a> their phones and emails (note that
+<a class="reference external" href="https://docs.everyaction.com/reference/overview#expansion">expands</a> their phones and emails (note that
 the <code class="code docutils literal notranslate"><span class="pre">$expand</span></code> query argument begins with <code class="code docutils literal notranslate"><span class="pre">$</span></code>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="s1">&#39;emails,phones&#39;</span><span class="p">)</span>
 </pre></div>
@@ -189,8 +190,8 @@ prefer. The following code does the same thing as the previous block:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;emails&#39;</span><span class="p">,</span> <span class="s1">&#39;phones&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="aliases">
+</section>
+<section id="aliases">
 <span id="id1"></span><h2>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h2>
 <p>The following code creates an <a class="reference internal" href="objects.html#everyaction.objects.Event" title="everyaction.objects.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a> with an <code class="xref py py-class docutils literal notranslate"><span class="pre">EventType</span></code> with ID <code class="code docutils literal notranslate"><span class="pre">5555</span></code> and
 <a class="reference internal" href="objects.html#everyaction.objects.VoterRegistrationBatch" title="everyaction.objects.VoterRegistrationBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">voter</span> <span class="pre">registration</span> <span class="pre">batches</span></code></a> that have the IDs <code class="code docutils literal notranslate"><span class="pre">141</span></code>, <code class="code docutils literal notranslate"><span class="pre">173</span></code>, and
@@ -231,7 +232,7 @@ example, <code class="code docutils literal notranslate"><span class="pre">event
 attempt is made to implicitly construct an object of that type using that value as a constructor argument.</p></li>
 </ul>
 <p>What these two facts imply is that we do not need to specify mappings for the simple (see
-<a class="reference external" href="https://developers.everyaction.com/van-api#events-overview">A Note About Simple Objects</a>) <a class="reference internal" href="objects.html#everyaction.objects.EventType" title="everyaction.objects.EventType"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventType</span></code></a> and
+<a class="reference external" href="https://docs.everyaction.com/reference/events#overview-19">A Note About Simple Objects</a>) <a class="reference internal" href="objects.html#everyaction.objects.EventType" title="everyaction.objects.EventType"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventType</span></code></a> and
 <a class="reference internal" href="objects.html#everyaction.objects.VoterRegistrationBatch" title="everyaction.objects.VoterRegistrationBatch"><code class="xref py py-class docutils literal notranslate"><span class="pre">VoterRegistrationBatch</span></code></a> objects, allowing for the following succinct code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">event_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="mi">5555</span><span class="p">,</span>
@@ -285,12 +286,12 @@ properties <code class="code docutils literal notranslate"><span class="pre">fin
 always an alias for that property, such as <code class="code docutils literal notranslate"><span class="pre">designation</span></code> for <code class="code docutils literal notranslate"><span class="pre">designationId</span></code> in
 <a class="reference internal" href="objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">DisclosureFieldValues</span></code></a>.</p></li>
 </ul>
-</div>
-<div class="section" id="everyaction-objects">
+</section>
+<section id="everyaction-objects">
 <h2>EveryAction Objects<a class="headerlink" href="#everyaction-objects" title="Permalink to this headline">¶</a></h2>
 <p>EveryAction objects are objects referred to in the EveryAction documentation, usually under the “Common Models” section
 for a particular service. For example, under the
-<a class="reference external" href="https://developers.everyaction.com/van-api#people-common-models">Common Models section for People</a>, the various
+<a class="reference external" href="https://docs.everyaction.com/reference/people#common-models">Common Models section for People</a>, the various
 properties of the “Person” API object are listed. Each documented EveryAction object has a corresponding Python class
 in this library, such as the <a class="reference internal" href="objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> class, called “EAObjects”. When EveryAction objects are in the
 response data for that endpoint, the method corresponding to that endpoint will return the corresponding Python class,
@@ -339,8 +340,8 @@ ID or a name, the corresponding EAObject takes an optional positional parameter 
 ID (if it is an <code class="code docutils literal notranslate"><span class="pre">int</span></code>) or the name (if it is a <code class="code docutils literal notranslate"><span class="pre">str</span></code>) of the resulting object. This is the reason why,
 for the previous example, the <a class="reference internal" href="objects.html#everyaction.objects.SupportedEntity" title="everyaction.objects.SupportedEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupportedEntities</span></code></a> accepted positional arguments, as well
 as the created <a class="reference internal" href="objects.html#everyaction.objects.Code" title="everyaction.objects.Code"><code class="xref py py-class docutils literal notranslate"><span class="pre">Code</span></code></a> object: in both cases, this has the same effect as using <code class="code docutils literal notranslate"><span class="pre">name='...'</span></code>.</p>
-</div>
-<div class="section" id="paginated-methods">
+</section>
+<section id="paginated-methods">
 <h2>Paginated Methods<a class="headerlink" href="#paginated-methods" title="Permalink to this headline">¶</a></h2>
 <p>Paginated methods, such as <a class="reference internal" href="classes/everyaction.services.ActivistCodes.html#everyaction.services.ActivistCodes.list" title="everyaction.services.ActivistCodes.list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ActivistCodes.list()</span></code></a>, support the <code class="code docutils literal notranslate"><span class="pre">limit</span></code> and <code class="code docutils literal notranslate"><span class="pre">skip</span></code> keyword arguments:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">everyaction</span> <span class="kn">import</span> <span class="n">EAClient</span>
@@ -350,7 +351,7 @@ as the created <a class="reference internal" href="objects.html#everyaction.obje
 </div>
 <p>The previous example will return at most 23 activist codes, starting from the tenth. While <code class="code docutils literal notranslate"><span class="pre">skip</span></code> corresponds
 exactly to the EveryAction parameter <code class="code docutils literal notranslate"><span class="pre">$skip</span></code> described in the
-<a class="reference external" href="https://developers.everyaction.com/van-api#everyaction-8-pagination">EveryAction documentation</a>, <code class="code docutils literal notranslate"><span class="pre">limit</span></code> does
+<a class="reference external" href="https://docs.everyaction.com/reference/overview#pagination">EveryAction documentation</a>, <code class="code docutils literal notranslate"><span class="pre">limit</span></code> does
 not exactly correspond to <code class="code docutils literal notranslate"><span class="pre">$top</span></code> because it may be set arbitrarily high: when it exceeds the maximum value for
 <code class="code docutils literal notranslate"><span class="pre">$top</span></code> described for the particular paginated method, multiple requests and sent and consolidated in the returned
 <code class="code docutils literal notranslate"><span class="pre">list</span></code>. If <code class="code docutils literal notranslate"><span class="pre">limit</span></code> is not specified, the configured default value in the <a class="reference internal" href="client.html#everyaction.client.EAClient" title="everyaction.client.EAClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">EAClient</span></code></a> instance will
@@ -364,16 +365,16 @@ the <code class="code docutils literal notranslate"><span class="pre">default_li
 </div>
 <p>Additionally, setting limit to 0 makes the number of results unlimited. If <code class="code docutils literal notranslate"><span class="pre">default_limit</span></code> is set to 0, then an
 unlimited amount of results will be retrieved when <code class="code docutils literal notranslate"><span class="pre">limit</span></code> is unspecified.</p>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
+</section>
+</section>
+<section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -440,7 +441,7 @@ unlimited amount of results will be retrieved when <code class="code docutils li
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

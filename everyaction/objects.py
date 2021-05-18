@@ -99,7 +99,7 @@ __all__ = [
     'MiniVANExport',
     'Note',
     'NoteCategory',
-    'OnlineActionForm',
+    'OnlineActionsForm',
     'Organization',
     'OrganizationPhone',
     'Person',
@@ -489,6 +489,7 @@ EAProperty.share(
     personType=EAProperty(),
     phone=EAProperty(),
     phoneId=EAProperty('phone'),
+    phoneNumber=EAProperty('number'),
     points=EAProperty(),
     preview=EAProperty(),
     primaryContact=EAProperty(),
@@ -556,6 +557,8 @@ EAProperty.share(
     suffix=EAProperty(),
     surveyQuestionId=EAProperty('question'),
     surveyResponseId=EAProperty('response'),
+    syncPeriodEnd=EAProperty('sync_end', 'end'),
+    syncPeriodStart=EAProperty('sync_start', 'start'),
     targetId=EAProperty('target'),
     targetValue=EAProperty('target'),
     text=EAProperty(),
@@ -590,7 +593,7 @@ class ActivistCode(
     _keys={'description', 'isMultiAssign', 'mediumName', 'scriptQuestion', 'shortName', 'status', 'type'}
 ):
     """Represents an `Activist Code
-    <https://developers.everyaction.com/van-api#activist-codes-common-models>`__.
+    <https://docs.everyaction.com/reference/activist-codes#common-models-1>`__.
     """
 
 
@@ -601,19 +604,19 @@ class ActivistCodeData(
     _keys={'canvassedBy', 'dateCanvassed', 'dateCreated'}
 ):
     """Represents the data associated with responses to `getting Activist Codes
-    <https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidactivistcodes>`__.
     """
 
 
 class Adjustment(EAObject, _keys={'adjustmentType', 'amount', 'datePosted'}):
     """Represents the data associated with responses to `adjusting a Contribution
-    <https://developers.everyaction.com/van-api#contributions-post-contributions--contributionid--adjustments>`__.
+    <https://docs.everyaction.com/reference/contributions#contributionscontributionidadjustments>`__.
     """
 
 
 class AdjustmentResponse(EAObject, _keys={'contributionId', 'dateAdjusted', 'originalAmount', 'remainingAmount'}):
     """Represents the data associated with a response to a `Contribution adjustment
-    <https://developers.everyaction.com/van-api#contributions-post-contributions--contributionid--adjustments>`__.
+    <https://docs.everyaction.com/reference/contributions#contributionscontributionidadjustments>`__.
     """
 
 
@@ -632,80 +635,80 @@ class APIKeyProfile(
     }
 ):
     """Represents an `API key profile
-    <https://developers.everyaction.com/van-api#everyaction-8-introspection>`__.
+    <https://docs.everyaction.com/reference/overview#introspection>`__.
     """
 
 
 class Attribution(EAObject, _keys={'amountAttributed', 'attributionType', 'dateThanked', 'notes', 'vanId'}):
     """Represents an `Attribution object
-    <https://developers.everyaction.com/van-api#contributions-common-models>`__.
+    <https://docs.everyaction.com/reference/contributions#common-models-8>`__.
     """
 
 
 class AvailableValue(EAObjectWithIDAndName, _keys={'parentValueId'}):
     """Represents
-    `AvailableValues <https://developers.everyaction.com/van-api#custom-fields-common-models>`__.
+    `AvailableValues <https://docs.everyaction.com/reference/custom-fields#common-models-9>`__.
     for a Custom Field.
     """
 
 
 class BallotRequestType(EAObjectWithIDAndName, _prefix='ballotRequestType'):
     """Represents a `Ballot Request Type
-    <https://developers.everyaction.com/van-api#ballots-common-models>`__.
+    <https://docs.everyaction.com/reference/ballots#common-models-2>`__.
     """
 
 
 class BallotReturnStatus(EAObjectWithIDAndName, _prefix='ballotReturnStatus'):
     """Represents a `Ballot Return Status
-    <https://developers.everyaction.com/van-api#ballots-common-models>`__.
+    <https://docs.everyaction.com/reference/ballots#common-models-2>`__.
     """
 
 
 class BallotType(EAObjectWithIDAndName, _prefix='ballotType'):
     """Represents a `Ballot Type
-    <https://developers.everyaction.com/van-api#ballots-common-models>`__.
+    <https://docs.everyaction.com/reference/ballots#common-models-2>`__.
     """
 
 
 class BankAccount(EAObjectWithIDAndName, _prefix='bankAccount'):
     """Represents a `Bank Account object
-    <https://developers.everyaction.com/van-api#contributions-common-models>`__.
+    <https://docs.everyaction.com/reference/contributions#common-models-8>`__.
     """
 
 
 class BargainingUnit(EAObjectWithIDAndName, _prefix='bargainingUnit', _keys={'employerBargainingUnitId', 'shortName'}):
     """Represents a `Bargaining Unit
-    <https://developers.everyaction.com/van-api#bargaining-units>`__.
+    <https://docs.everyaction.com/reference/bargaining-units#common-models-3>`__.
     """
 
 
 class BatchForm(EAObjectWithIDAndName, _prefix='form'):
     """Represents a form for `Voter Registration Batches
-    <https://developers.everyaction.com/van-api#voter-registration-batches-common-models>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#common-models-39>`__.
     """
 
 
 class BatchProgram(EAObjectWithID, _prefix='programType'):
     """Represents a program for `Voter Registration Batches
-    <https://developers.everyaction.com/van-api#voter-registration-batches-common-models>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#common-models-39>`__.
     """
 
 
 class Canvasser(EAObjectWithID, _prefix='canvasser'):
     """Represents a `Canvasser
-    <https://developers.everyaction.com/van-api#minivan-exports-common-models>`__.
+    <https://docs.everyaction.com/reference/minivan-exports#common-models-25>`__.
     """
 
 
 class CanvassContext(EAObject, _keys={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'phoneId'}):
     """Represents a `Canvass Context
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
     """
 
 
 class ChangeType(EAObject, _prefix='changeType', _prefixed={'name'}, _keys={'description'}):
     """Represents a `changeType
-    <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-changetypes--resourcetype>`__.
+    <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype>`__.
     """
 
     @classmethod
@@ -715,14 +718,14 @@ class ChangeType(EAObject, _prefix='changeType', _prefixed={'name'}, _keys={'des
 
 class CodeResult(EAObjectWithID, _prefix='code', _keys={'message'}):
     """Represents the data associated with a response to a code batch request. See `POST /codes/batch
-    <https://developers.everyaction.com/van-api#codes-post-codes-batch>`__
+    <https://docs.everyaction.com/reference/codes#codesbatch>`__
     for an example.
     """
 
 
 class Column(EAObjectWithName):
     """Represents a `Column
-    <https://developers.everyaction.com/van-api#column-bi-anchor>`__.
+    <https://docs.everyaction.com/reference/bulk-import#column>`__.
     """
 
 
@@ -745,7 +748,7 @@ class Commitment(
     }
 ):
     """Represents a `Commitment
-    <https://developers.everyaction.com/van-api#commitments-common-models>`__.
+    <https://docs.everyaction.com/reference/commitments#common-models-6>`__.
     """
 
 
@@ -762,13 +765,13 @@ class ConfirmationEmailData(
     }
 ):
     """Represents `Confirmation Email Data
-    <https://developers.everyaction.com/van-api#online-actions-forms-confirmation-email-data>`__.
+    <https://docs.everyaction.com/reference/online-actions-forms#confirmation-email-data>`__.
     """
 
 
 class ContactType(EAObjectWithIDAndName, _prefix='contactType', _keys={'channelTypeName'}):
     """Represents a `Contact Type
-    <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-contacttypes>`__.
+    <https://docs.everyaction.com/reference/canvass-responses#canvassresponsescontacttypes>`__.
     """
 
 
@@ -778,20 +781,20 @@ class Constraints(EAObject, _keys={'invalidCharacters'}):
 
 class ContactHistory(EAObject, _keys={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'resultCodeId'}):
     """Represents a `Contact History object
-    <https://developers.everyaction.com/van-api#contact-notes-contact-history>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidnotes-1>`__.
     """
 
 
 class Currency(EAObject, _keys={'amount', 'currencyType'}):
     """Represents the type and the amount of a currency. Found, for instance, in the response of
     `GET /people/{vanId}/membership
-    <https://developers.everyaction.com/van-api#people-get-people--vanid--membership>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidmembership>`__.
     """
 
 
 class CustomFieldValue(EAObject, _keys={'assignedValue', 'customFieldGroupId', 'customFieldId'}):
     """Represents a `CustomFieldValue
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     def __init__(
@@ -820,19 +823,19 @@ class CustomFieldValue(EAObject, _keys={'assignedValue', 'customFieldGroupId', '
 
 class Department(EAObjectWithIDAndName, _prefix='department', _keys={'employer', 'parentDepartmentId'}):
     """Represents a `Department
-    <https://developers.everyaction.com/van-api#departments-common-models>`__.
+    <https://docs.everyaction.com/reference/departments#common-models-10>`__.
     """
 
 
 class Designation(EAObjectWithIDAndName, _prefix='designation'):
     """Represents a `Designation
-    <https://developers.everyaction.com/van-api#designations-get-designations>`__.
+    <https://docs.everyaction.com/reference/designations#common-models-11>`__.
     """
 
 
 class DisclosureFieldValue(EAObjectWithID, _prefix='disclosureField', _prefixed={'value'}, _keys={'designationId'}):
     """Represents a `Disclosure Field Value
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     def __init__(
@@ -861,13 +864,13 @@ class DisclosureFieldValue(EAObjectWithID, _prefix='disclosureField', _prefixed=
 
 class DistrictFieldValue(EAObjectWithIDAndName, _keys={'parentId'}):
     """Represents a `District Field Value
-    <https://developers.everyaction.com/van-api#district-fields-get-districtfields>`__.
+    <https://docs.everyaction.com/reference/district-fields#common-models-13>`__.
     """
 
 
 class Email(EAObject, _keys={'dateCreated', 'email', 'isPreferred', 'isSubscribed', 'subscriptionStatus', 'type'}):
     """Represents an `Email
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     def __init__(self, email: Optional[str] = None, **kwargs: EAValue) -> None:
@@ -896,32 +899,32 @@ class EmailMessageContentDistributions(
     }
 ):
     """Represents an `Email Message Content Distributions object
-    <https://developers.everyaction.com/van-api#email-common-models>`__.
+    <https://docs.everyaction.com/reference/email#common-models-14>`__.
     """
 
 
 class EventRole(EAObjectWithIDAndName, _prefix='role', _keys={'goal', 'isEventLead', 'max', 'min'}):
     """Represents a `Role
-    <https://developers.everyaction.com/van-api#events-common-models>`__
+    <https://docs.everyaction.com/reference/events#common-models-18>`__
     for an Event Type.
     """
 
 
 class EventShift(EAObjectWithIDAndName, _prefix='eventShift', _keys={'endTime', 'startTime'}):
     """Represents a `Shift
-    <https://developers.everyaction.com/van-api#events-common-models>`__.
+    <https://docs.everyaction.com/reference/events#common-models-18>`__.
     """
 
 
 class ExportJobType(EAObjectWithIDAndName, _prefix='exportJobType'):
     """Represents an `Export Job Type
-    <https://developers.everyaction.com/van-api#export-jobs-get-exportjobtypes>`__.
+    <https://docs.everyaction.com/reference/export-jobs#exportjobtypes>`__.
     """
 
 
 class File(EAObject, _keys={'dateExpired', 'downloadUrl', 'recordCount'}):
     """Represents a `File object
-    <https://developers.everyaction.com/van-api#bulk-import-common-models>`__
+    <https://docs.everyaction.com/reference/bulk-import#common-models-4>`__
     in EveryAction. Used in many contexts.
     """
 
@@ -946,37 +949,37 @@ class FinancialBatch(
     }
 ):
     """Represents a `Financial Batch
-    <https://developers.everyaction.com/van-api#financial-batches-common-models>`__.
+    <https://docs.everyaction.com/reference/financial-batches#common-models-21>`__.
     """
 
 
 class Folder(EAObjectWithIDAndName, _prefix='folder'):
     """Represents a `folder
-    <https://developers.everyaction.com/van-api#folders>`__.
+    <https://docs.everyaction.com/reference/folders>`__.
     """
 
 
 class GeoCoordinate(EAObject, _keys={'lat', 'lon'}):
     """Represents a `Geographic Coordinate
-    <https://developers.everyaction.com/van-api#locations>`__.
+    <https://docs.everyaction.com/reference/locations>`__.
     """
 
 
 class Identifier(EAObject, _keys={'externalId', 'type'}):
     """Represents an `Identifier
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
 
 class IsCellStatus(EAObjectWithIDAndName, _prefix='status', _prefixed={'name'}):
     """Represents an `Phone Is a Cell Status
-    <https://developers.everyaction.com/van-api#phones-get-phones-iscellstatuses>`__.
+    <https://docs.everyaction.com/reference/phones#phones-iscellstatuses>`__.
     """
 
 
 class JobActionType(EAObject, _keys={'actionType'}):
     """Represents a `Job Action Type
-    <https://developers.everyaction.com/van-api#job-action-anchor>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#action>`__.
     """
 
     @staticmethod
@@ -997,50 +1000,50 @@ class JobActionType(EAObject, _keys={'actionType'}):
 
 class JobClass(EAObjectWithIDAndName, _prefix='jobClass', _keys={'shortName'}):
     """Represents a `Job Class
-    <https://developers.everyaction.com/van-api#job-classes-common-models>`__.
+    <https://docs.everyaction.com/reference/job-classes#common-models-22>`__.
     """
 
 
 class JobNotification(EAObject, _keys={'description', 'message', 'status'}):
     """Represents a `Notification
-    <https://developers.everyaction.com/van-api#notification-anchor>`__
+    <https://docs.everyaction.com/reference/file-loading-jobs#notification>`__
     for File Loading Jobs.
     """
 
 
 class InputType(EAObjectWithIDAndName, _prefix='inputType'):
     """Represents an `Input Type
-    <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-inputtypes>`__.
+    <https://docs.everyaction.com/reference/canvass-responses#canvassresponsesinputtypes>`__.
     """
 
 
 class KeyValuePair(EAObject, _keys={'key', 'value'}):
     """Represents a key value pair for possible values of a `Support Field
-    <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-states--state--supportedfields>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesstatesstatesupportedfields>`__.
     """
 
 
 class Listener(EAObject, _keys={'type', 'value'}):
     """Represents a `Listener
-    <https://developers.everyaction.com/van-api#file-loading-jobs-overview>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#overview-22>`__.
     """
 
 
 class MembershipSourceCode(EAObjectWithIDAndName, _prefix='code', _prefixed={'name'}):
     """Represents a `Membership Source Code
-    <https://developers.everyaction.com/van-api#people-get-people--vanid--membership>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidmembership>`__.
     """
 
 
 class MemberStatus(EAObjectWithIDAndName, _prefix='memberStatus', _keys={'isMember'}):
     """Represents a `Member Status
-    <https://developers.everyaction.com/van-api#member-statuses-common-models>`__.
+    <https://docs.everyaction.com/reference/member-statuses#common-models-24>`__.
     """
 
 
 class NoteCategory(EAObjectWithIDAndName, _prefix='noteCategory', _keys={'assignableTypes'}):
     """Represents a `Note Category
-    <https://developers.everyaction.com/van-api#notes-common-models>`__.
+    <https://docs.everyaction.com/reference/notes#common-models-26>`__.
     """
 
 
@@ -1051,7 +1054,7 @@ class Organization(
     _keys={'parentOrganization', 'shortName', 'website'},
 ):
     """Represents an `Organization
-    <https://developers.everyaction.com/van-api#employers-common-models>`__.
+    <https://docs.everyaction.com/reference/employers#common-models-15>`__.
     """
 
 
@@ -1068,91 +1071,91 @@ class OrganizationPhone(
     phoneType=EAProperty('type')
 ):
     """Represents a `Phone for an organization
-    <https://developers.everyaction.com/van-api#employers-common-models>`__.
+    <https://docs.everyaction.com/reference/employers#common-models-15>`__.
     """
 
 
 class Pledge(EAObjectWithID, _prefix='pledge'):
     """Represents a `Pledge object
-    <https://developers.everyaction.com/van-api#contributions-common-models>`__.
+    <https://docs.everyaction.com/reference/contributions#common-models-8>`__.
     """
 
 
 class PreferredPronoun(EAObjectWithIDAndName, _prefix='preferredPronoun', _prefixed={'name'}):
     """Represents a `preferred pronoun
-    <https://developers.everyaction.com/van-api#reported-demographics-get-pronouns>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#pronouns>`__.
     """
 
 
 class PrintedList(EAObjectWithName, _keys={'number'}):
     """Represents a `Printed List
-    <https://developers.everyaction.com/van-api#printed-lists-common-models>`__.
+    <https://docs.everyaction.com/reference/printed-lists#common-models-28>`__.
     """
 
 
 class ProgramType(EAObjectWithIDAndName, _prefix='programType'):
     """Represents a `Program Type
-    <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-programtypes>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesprogramtypes>`__.
     """
 
 
 class RegistrationForm(EAObjectWithIDAndName, _prefix='form'):
     """Represents a `Registration Form
-    <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-registrationforms>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesregistrationforms>`__.
     """
 
 
 class RelationalMapping(EAObject, _keys={'fieldName', 'value'}):
     """Represents a `Relational Mapping
-    <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-fields--resourcetype>`__.
+    <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__.
     """
 
 
 class Relationship(EAObjectWithIDAndName):
     """Represents a `Relationship
-    <https://developers.everyaction.com/van-api#relationships-get-relationships>`__.
+    <https://docs.everyaction.com/reference/relationships#relationships>`__.
     """
 
 
 class ReportedEthnicity(EAObjectWithIDAndName, _prefix='reportedEthnicity', _prefixed={'name'}):
     """Represents a `Reported Ethnicity
-    <https://developers.everyaction.com/van-api#reported-demographics-get-reportedethnicities>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#reportedethnicities>`__.
     """
 
 
 class ReportedGender(EAObjectWithIDAndName, _prefix='reportedGender', _prefixed={'name'}):
     """Represents a `Reported Gender
-    <https://developers.everyaction.com/van-api#reported-demographics-get-reportedgenders>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#reportedgenders>`__.
     """
 
 
 class ReportedLanguagePreference(EAObjectWithIDAndName, _prefix='reportedLanguagePreference', _prefixed={'name'}):
     """Represents a `Reported Language Preference
-    <https://developers.everyaction.com/van-api#reported-demographics-get-reportedlanguagepreferences>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#reportedlanguagepreferences>`__.
     """
 
 
 class ReportedRace(EAObjectWithIDAndName, _prefix='reportedRace', _prefixed={'name'}):
     """Represents a `Reported Race
-    <https://developers.everyaction.com/van-api#reported-demographics-get-reportedraces>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#reportedraces>`__.
     """
 
 
 class ReportedSexualOrientation(EAObjectWithIDAndName, _prefix='reportedSexualOrientation', _prefixed={'name'}):
     """Represents a `Reported Sexual Orientation
-    <https://developers.everyaction.com/van-api#reported-demographics-get-reportedsexualorientations>`__.
+    <https://docs.everyaction.com/reference/reported-demographics#reportedsexualorientations>`__.
     """
 
 
 class ResultCode(EAObjectWithIDAndName, _prefix='resultCode', _keys={'mediumName', 'resultOutcomeGroup', 'shortName'}):
     """Represents a `Result Code
-    <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-resultcodes>`__.
+    <https://docs.everyaction.com/reference/canvass-responses#canvassresponsesresultcodes>`__.
     """
 
 
 class SavedList(EAObjectWithIDAndName, _prefix='savedList', _keys={'description', 'doorCount', 'listCount'}):
     """Represents a `Saved List
-    <https://developers.everyaction.com/van-api#saved-lists-common-models>`__.
+    <https://docs.everyaction.com/reference/saved-lists#common-models-29>`__.
     """
 
 
@@ -1162,32 +1165,32 @@ class SavedListData(
     _keys={'matchedRowsCount', 'originalRowCount', 'unmatchedRowsCount'}
 ):
     """Represents `Saved List Data
-    <https://developers.everyaction.com/van-api#saved-list-load-anchor>`__
+    <https://docs.everyaction.com/reference/file-loading-jobs#saved-list-load>`__
     for Saved List Load actions.
     """
 
 
 class ScheduleType(EAObjectWithIDAndName, _prefix='scheduleType'):
     """Represents a `Schedule Type
-    <https://developers.everyaction.com/van-api#schedule-types>`__.
+    <https://docs.everyaction.com/reference/schedule-types#common-models-30>`__.
     """
 
 
 class Score(EAObjectWithIDAndName, _prefix='score', _keys={'description', 'maxValue', 'minValue', 'shortName'}):
     """Represents a `Score
-    <https://developers.everyaction.com/van-api#scores-overview>`__.
+    <https://docs.everyaction.com/reference/scores#overview-37>`__.
     """
 
 
 class ScoreApprovalCriteria(EAObject, _keys={'average', 'tolerance'}):
     """Represents `Score Approval Criteria
-    <https://developers.everyaction.com/van-api#score-load-action-anchor>`__
+    <https://docs.everyaction.com/reference/file-loading-jobs#score-load-action>`__
     """
 
 
 class ScriptResponse(EAObject, _keys={'type'}):
     """Represents a `Script Response
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
     """
 
     _PROPERTIES = {
@@ -1212,20 +1215,20 @@ class ScriptResponse(EAObject, _keys={'type'}):
 
 class ShiftType(EAObjectWithIDAndName, _prefix='shiftType', _keys={'defaultEndTime', 'defaultStartTime'}):
     """Represents a `Shift Type
-    <https://developers.everyaction.com/van-api#employers-common-models>`__.
+    <https://docs.everyaction.com/reference/employers#common-models-15>`__.
     """
 
 
 class Status(EAObjectWithIDAndName, _prefix='status'):
     """Represents a `Status
-    <https://developers.everyaction.com/van-api#event-types>`__
+    <https://docs.everyaction.com/reference/event-types#common-models-17>`__
     in EveryAction. Used in multiple contexts.
     """
 
 
 class StoryStatus(EAObjectWithIDAndName, _prefix='storyStatus'):
     """Represents a `StoryStatus
-    <https://developers.everyaction.com/van-api#stories-common-models>`__.
+    <https://docs.everyaction.com/reference/stories#common-models-34>`__.
     """
 
     @classmethod
@@ -1235,27 +1238,27 @@ class StoryStatus(EAObjectWithIDAndName, _prefix='storyStatus'):
 
 class Subgroup(EAObjectWithIDAndName, _prefix='subgroup', _keys={'fullName', 'isAssociatedWithBadges'}):
     """Represents a `Subgroup
-    <https://developers.everyaction.com/van-api#targets-common-models>`__
+    <https://docs.everyaction.com/reference/targets#common-models-37>`__
     for a Target.
     """
 
 
 class SupportedEntity(EAObjectWithName, _keys={'isApplicable', 'isSearchable'}):
     """Represents a `Supported Entity
-    <https://developers.everyaction.com/van-api#codes-common-models>`__
+    <https://docs.everyaction.com/reference/codes#common-models-7>`__
     in the context of codes.
     """
 
 
 class SupporterGroup(EAObjectWithIDAndName, _keys={'description'}):
     """Represents a `Supporter Group
-    <https://developers.everyaction.com/van-api#supporter-groups-common-models>`__.
+    <https://docs.everyaction.com/reference/supporter-groups#common-models-35>`__.
     """
 
 
 class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'name'}):
     """Represents a `Suppression
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     def __init__(
@@ -1285,7 +1288,7 @@ class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'n
 class SurveyResponse(EAObjectWithIDAndName, _prefix='surveyResponse', _keys={'mediumName', 'shortName'}):
     """
     Represents a `Survey Response
-    <https://developers.everyaction.com/van-api#survey-questions-common-models>`__.
+    <https://docs.everyaction.com/reference/survey-questions#common-models-36>`__.
     """
 
 
@@ -1293,26 +1296,26 @@ class UpdateStatistics(
     EAObject
 ):
     """Represents an `Update Statistics
-    <https://developers.everyaction.com/van-api#score-updates>`__.
+    <https://docs.everyaction.com/reference/score-updates>`__.
     """
 
 
 class User(EAObjectWithID, _prefix='user', _keys={'firstName', 'lastName'}):
     """Represents a `VAN User
-    <https://developers.everyaction.com/van-api#extended-source-codes>`__.
+    <https://docs.everyaction.com/reference/extended-source-codes>`__.
     """
 
 
 class ValueMapping(EAObjectWithIDAndName, _keys={'parentId', 'sourceValue', 'targetValue'}):
     """Represents a `value
-    <https://developers.everyaction.com/van-api#bulk-import-post-bulkimportjobs>`__
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportjobs>`__
     in the context of bulk import jobs.
     """
 
 
 class WorkArea(EAObjectWithIDAndName, _prefix='workArea'):
     """Represents a `Work Area
-    <https://developers.everyaction.com/van-api#worksites-common-models>`__.
+    <https://docs.everyaction.com/reference/worksites#common-models-16>`__.
     """
 
 
@@ -1392,7 +1395,7 @@ EAProperty.share(
 
 class ActivistCodeResponse(ScriptResponse, EAObjectWithID, _prefix='activistCode', _keys={'action'}):
     """Represents an `Activist Code Response
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
     """
 
     def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
@@ -1401,7 +1404,7 @@ class ActivistCodeResponse(ScriptResponse, EAObjectWithID, _prefix='activistCode
         to API objects when appropriate.
 
         :param id: ID to initialize with. When given alone, a simple object results (see
-            `A Note About Simple Objects <https://developers.everyaction.com/van-api#events-overview>`__).
+            `A Note About Simple Objects <https://docs.everyaction.com/reference/events-overview>`__).
         :param kwargs: Mapping of (alias or name) -> value.
         """
         super().__init__(type='ActivistCode', activistCodeId=id, **kwargs)
@@ -1424,13 +1427,13 @@ class Address(
     }
 ):
     """Represents an `Address
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
 
 class AVEVDataFileAction(JobActionType):
     """Represents an `AVEV Data File Action
-    <https://developers.everyaction.com/van-api#AVEVDataFile-anchor>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#avev-data-file>`__.
     """
 
     def __init__(self, **kwargs: EAValue) -> None:
@@ -1449,13 +1452,13 @@ class BargainingUnitJobClass(
     _keys={'bargainingUnit', 'employerBargainingUnitId', 'jobClass'}
 ):
     """Represents an `Employer Bargaining Unit Job Class
-    <https://developers.everyaction.com/van-api#employers-common-models>`__.
+    <https://docs.everyaction.com/reference/employers#common-models-15>`__.
     """
 
 
 class ChangedEntityBulkImportField(EAObject, _keys={'fieldName', 'mappingTypeName', 'relationalMappings'}):
     """Represents a `bulk import field
-    <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-fields--resourcetype>`__
+    <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__
     in the context of changed entities.
     """
 
@@ -1481,7 +1484,7 @@ class ChangedEntityExportJob(
     }
 ):
     """Represents data for an existing `ChangedEntityExportJob
-    <https://developers.everyaction.com/van-api#changed-entities-common-models>`__.
+    <https://docs.everyaction.com/reference/changed-entities#common-models-5>`__.
     """
 
 
@@ -1492,7 +1495,7 @@ class Code(
     _keys={'dateCreated', 'dateModified', 'description', 'parentCodeId', 'supportedEntities'}
 ):
     """Represents a `Code object
-    <https://developers.everyaction.com/van-api#codes-common-models>`__.
+    <https://docs.everyaction.com/reference/codes#common-models-7>`__.
     """
 
 
@@ -1503,7 +1506,7 @@ class CustomField(
     _keys={'availableValues', 'isEditable', 'isExportable', 'maxTextboxCharacters'}
 ):
     """Represents a `Custom Field
-    <https://developers.everyaction.com/van-api#custom-fields-common-models>`__.
+    <https://docs.everyaction.com/reference/custom-fields#common-models-9>`__.
     """
 
 
@@ -1514,7 +1517,7 @@ class DistrictField(
     _keys={'isCustomDistrict', 'parentFieldId'}
 ):
     """Represents a `District Field
-    <https://developers.everyaction.com/van-api#district-fields-get-districtfields>`__.
+    <https://docs.everyaction.com/reference/district-fields#common-models-13>`__.
     """
 
 
@@ -1523,13 +1526,13 @@ class EmailMessageContent(
     _keys={'createdBy', 'dateCreated', 'emailMessageContentDistributions', 'senderDisplayName', 'senderEmailAddress'}
 ):
     """Represents an `email message content object
-    <https://developers.everyaction.com/van-api#email-common-models>`__.
+    <https://docs.everyaction.com/reference/email#common-models-14>`__.
     """
 
 
 class EmployerBargainingUnit(EAObjectWithID, _prefix='employerBargainingUnit', _keys={'bargainingUnit'}):
     """Represents an `Employer Bargaining Unit
-    <https://developers.everyaction.com/van-api#employers-post-employers--employerid--bargainingunits--bargainingunitid>`__.
+    <https://docs.everyaction.com/reference/employers#employersemployeridbargainingunitsbargainingunitid>`__.
     """
 
 
@@ -1538,7 +1541,7 @@ class Error(
     _keys={'code', 'detailedConstraints', 'detailedCode', 'hint', 'properties', 'referenceCode', 'resourceUrl', 'text'}
 ):
     """Represents an `Error object
-    <https://developers.everyaction.com/van-api#bulk-import-common-models>`__.
+    <https://docs.everyaction.com/reference/bulk-import#common-models-4>`__.
     """
 
 
@@ -1550,13 +1553,13 @@ class ExtendedSourceCode(
     createdBy=EAProperty('creator', factory=User)
 ):
     """Represents an `Extended Source Code
-    <https://developers.everyaction.com/van-api#extended-source-codes>`__.
+    <https://docs.everyaction.com/reference/extended-source-codes#common-models-20>`__.
     """
 
 
 class FieldValueMapping(EAObject, _keys={'columnName', 'fieldName', 'staticValue', 'values'}):
     """Represents a `fieldValueMapping
-    <https://developers.everyaction.com/van-api#bulk-import-post-bulkimportjobs>`__.
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportjobs>`__.
     """
 
 
@@ -1567,20 +1570,20 @@ class JobFile(
     _keys={'columns', 'columnDelimiter', 'hasHeader', 'hasQuotes', 'sourceUrl'}
 ):
     """Represents a `file object for a job
-    <https://developers.everyaction.com/van-api#file-bi-anchor>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#overview-22>`__.
     """
 
 
 class ListLoadCallbackData(JobNotification, _keys={'description', 'message', 'savedList', 'status'}):
     """Represents `Callback Data
-    <https://developers.everyaction.com/van-api#saved-list-load-anchor>`__
+    <https://docs.everyaction.com/reference/file-loading-jobs#saved-list-load>`__
     for a Saved List Load action.
     """
 
 
 class MappingParent(EAObject, _keys={'limitedToParentValues', 'parentFieldName'}):
     """Represents prerequisites for mapping a field as described `here
-    <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes>`__.
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportmappingtypes>`__.
     """
 
 
@@ -1606,7 +1609,7 @@ class Membership(
     }
 ):
     """Contains `membership information
-    <https://developers.everyaction.com/van-api#people-get-people--vanid--membership>`__
+    <https://docs.everyaction.com/reference/people#peoplevanidmembership>`__
     for a person.
     """
 
@@ -1622,7 +1625,7 @@ class MiniVANExport(
     createdBy=EAProperty('creator', factory=User)
 ):
     """Represents a `MiniVAN Export
-    <https://developers.everyaction.com/van-api#minivan-exports-common-models>`__.
+    <https://docs.everyaction.com/reference/minivan-exports#common-models-25>`__.
     """
 
 
@@ -1632,11 +1635,11 @@ class Note(
     _keys={'category', 'contactHistory', 'createdDate', 'isViewRestricted', 'text'}
 ):
     """Represents a `Note
-    <https://developers.everyaction.com/van-api#people-get-people--vanid--notes>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidnotes>`__.
     """
 
 
-class OnlineActionForm(
+class OnlineActionsForm(
     EAObjectWithIDAndName,
     _prefix='formTracking',
     _keys={
@@ -1656,7 +1659,7 @@ class OnlineActionForm(
     formTypeId=EAProperty()
 ):
     """Represents an `Online Action Form
-    <https://developers.everyaction.com/van-api#online-actions-forms-common-models>`__.
+    <https://docs.everyaction.com/reference/online-actions-forms#common-models-27>`__.
     """
 
     @classmethod
@@ -1671,7 +1674,7 @@ class Phone(
     _keys={'countryCode', 'dateCreated', 'dialingPrefix', 'ext', 'isCellStatus', 'isPreferred', 'smsOptInStatus'}
 ):
     """Represents a `Phone
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     def __init__(self, id_or_number: Optional[Union[int, str]] = None, **kwargs: EAValue) -> None:
@@ -1681,7 +1684,7 @@ class Phone(
 
         :param id_or_number: Either the phone ID (if an integer), or the phone number (if a string). A simple object
             will result when an integer is given for the `id_or_number` positional parameter
-            (see `A Note About Simple Objects <https://developers.everyaction.com/van-api#events-overview)>`__.
+            (see `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
             When a string is given instead, it is assumed to correspond to the phone number, accessible via
             instance.number.
         :param kwargs: Mapping of (alias or name) -> value.
@@ -1705,7 +1708,7 @@ class SavedListLoadAction(
     _keys={'folderId', 'listDescription', 'listName', 'overwriteExistingListId', 'personIdColumn', 'personIdType'}
 ):
     """Represents a `Saved List Load action
-    <https://developers.everyaction.com/van-api#saved-list-load-anchor>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#saved-list-load>`__.
     """
 
     def __init__(self, **kwargs: EAValue) -> None:
@@ -1723,7 +1726,7 @@ class ScoreLoadAction(
     _keys={'approvalCriteria', 'personIdColumn', 'personIdType', 'scoreColumn', 'scoreId'}
 ):
     """Represents a `Score Load Action
-    <https://developers.everyaction.com/van-api#score-load-action-anchor>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs#score-load-action>`__.
     """
 
     def __init__(self, **kwargs: EAValue) -> None:
@@ -1742,7 +1745,7 @@ class ScoreUpdate(
     _keys={'dateProcessed', 'loadStatus', 'score', 'updateStatistics'}
 ):
     """Represents a `Score Update
-    <https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid>`__.
+    <https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid>`__.
     """
 
 
@@ -1751,7 +1754,7 @@ class SupportField(
     _keys={'customPropertyKey', 'displayName', 'fieldType', 'maxFieldLength', 'possibleValues'}
 ):
     """Represents a `Support Field
-    <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-registrationforms>`__
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesregistrationforms>`__
     for a Voter Registration Batch.
     """
 
@@ -1761,7 +1764,7 @@ class SurveyCanvassResponse(
     _keys={'mediumName', 'name', 'shortName', 'surveyQuestionId', 'surveyResponseId'}
 ):
     """Represents a `Survey Response
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__
     in the context of a canvass response.
     """
 
@@ -1793,7 +1796,7 @@ class Target(
     _keys={'areSubgroupsSticky', 'description', 'points', 'status', 'subgroups', 'type'}
 ):
     """Represents a `Target
-    <https://developers.everyaction.com/van-api#targets-common-models>`__.
+    <https://docs.everyaction.com/reference/targets#common-models-37>`__.
     """
 
 
@@ -1803,13 +1806,13 @@ class TargetExportJob(
     _keys={'file', 'jobStatus', 'targetId', 'webhookUrl'},
 ):
     """Represents a `Target Export Job
-    <https://developers.everyaction.com/van-api#target-export-jobs-get-targetexportjobs--exportjobid>`__.
+    <https://docs.everyaction.com/reference/target-export-jobs#targetexportjobsexportjobid>`__.
     """
 
 
 class VolunteerActivityResponse(ScriptResponse, _prefix='volunteerActivity', _keys={'action'}):
     """Represents a `Volunteer Activity
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
     """
 
     def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
@@ -1818,7 +1821,7 @@ class VolunteerActivityResponse(ScriptResponse, _prefix='volunteerActivity', _ke
         to API objects when appropriate.
 
         :param id: ID to initialize with. When given alone, a simple object results (see
-            `A Note About Simple Objects <https://developers.everyaction.com/van-api#events-overview>`__).
+            `A Note About Simple Objects <https://docs.everyaction.com/reference/events-overview>`__).
         :param kwargs: Mapping of (alias or name) -> value.
         """
         super().__init__(type='VolunteerActivity', volunteerActivityId=id, **kwargs)
@@ -1830,7 +1833,7 @@ class VoterRegistrationBatch(
     _keys={'dateCreated', 'description', 'form', 'personType', 'programType', 'stateCode', 'status'}
 ):
     """Represents a `Voter Registration Batch
-    <https://developers.everyaction.com/van-api#voter-registration-batches-common-models>`__.
+    <https://docs.everyaction.com/reference/voter-registration-batches#common-models-39>`__.
     """
 
 
@@ -1873,7 +1876,7 @@ EAProperty.share(
 
 class AddRegistrantsResponse(EAObject, _keys={'alternateId', 'errors', 'result', 'vanId'}):
     """Represents the data associated with a response to `adding registrants
-    <https://developers.everyaction.com/van-api#voter-registration-batches-post-voterregistrationbatches--batchid--people>`__
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesbatchidpeople>`__
     to a Voter Registration Batch.
     """
 
@@ -1883,7 +1886,7 @@ class BulkImportField(
     _keys={'canBeMappedToColumn', 'description', 'hasPredefinedValues', 'isRequired', 'parents'}
 ):
     """Represents a `mapping type field
-    <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes>`__.
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportmappingtypes>`__.
     """
 
 
@@ -1893,13 +1896,13 @@ class BulkImportJobData(
     _keys={'errors', 'resourceType', 'resultFileSizeLimitKb', 'resultFiles', 'status'}
 ):
     """Represents data for an existing `Bulk Import Job
-    <https://developers.everyaction.com/van-api#bulk-import-common-models>`__.
+    <https://docs.everyaction.com/reference/bulk-import#common-models-4>`__.
     """
 
 
 class CanvassResponse(EAObject, _keys={'canvassContext', 'responses', 'resultCodeId'}):
     """Represents a `Canvass Response
-    <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+    <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
     """
 
 
@@ -1909,7 +1912,7 @@ class ChangedEntityField(
     fieldType=EAProperty('type')
 ):
     """Represents a `changed entity field
-    <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-fields--resourcetype>`__.
+    <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__.
     """
     @classmethod
     def _name_key(cls) -> Optional[str]:
@@ -1956,7 +1959,7 @@ class Contribution(
     }
 ):
     """Represents a `Contribution
-    <https://developers.everyaction.com/van-api#contributions-common-models>`__.
+    <https://docs.everyaction.com/reference/contributions#common-models-8>`__.
     """
 
 
@@ -1979,7 +1982,7 @@ class Disbursement(
     }
 ):
     """Represents a `Disbursement
-    <https://developers.everyaction.com/van-api#disbursements-common-models>`__.
+    <https://docs.everyaction.com/reference/disbursements#common-models-12>`__.
     """
 
 
@@ -1990,7 +1993,7 @@ class EmailMessage(
     campaignID=EAProperty('campaign')
 ):
     """Represents an `email message
-    <https://developers.everyaction.com/van-api#email-common-models>`__.
+    <https://docs.everyaction.com/reference/email#common-models-14>`__.
     """
 
     # TODO: Is emailMessageContent really an array? If so, can it actually contain multiple entities?
@@ -2004,19 +2007,19 @@ class FileLoadingJob(
     file=EAProperty(factory=JobFile)
 ):
     """Represents a `File Loading Job
-    <https://developers.everyaction.com/van-api#file-loading-jobs-overview>`__.
+    <https://docs.everyaction.com/reference/file-loading-jobs>`__.
     """
 
 
 class Location(EAObjectWithIDAndName, _prefix='location', _keys={'address', 'displayName'}):
     """Represents a `Location
-    <https://developers.everyaction.com/van-api#locations>`__.
+    <https://docs.everyaction.com/reference/locations>`__.
     """
 
 
 class MappingType(EAObjectWithName, _keys={'fieldValueMappings', 'resultFileColumnName'}):
     """Represents a `bulk import mapping type
-    <https://developers.everyaction.com/van-api#mapping-bi-anchor>`__.
+    <https://docs.everyaction.com/reference/bulk-import#mapping-types>`__.
     """
 
 
@@ -2080,7 +2083,7 @@ class Person(
     employer=EAProperty()
 ):
     """Represents a `Person
-    <https://developers.everyaction.com/van-api#people-common-models>`__.
+    <https://docs.everyaction.com/reference/people#common-models>`__.
     """
 
     @staticmethod
@@ -2100,7 +2103,7 @@ class Story(
     _keys={'campaignId', 'storyStatus', 'tags', 'title', 'vanId'}
 ):
     """Represents a `Story
-    <https://developers.everyaction.com/van-api#stories-common-models>`__.
+    <https://docs.everyaction.com/reference/stories#common-models-34>`__.
     """
 
 
@@ -2111,20 +2114,20 @@ class SurveyQuestion(
     responses=EAProperty(singular_alias='response', factory=SurveyCanvassResponse)
 ):
     """Represents a `Survey Question
-    <https://developers.everyaction.com/van-api#survey-questions-common-models>`__.
+    <https://docs.everyaction.com/reference/survey-questions#common-models-36>`__.
     """
 
 
 class ValueMappingData(EAObjectWithIDAndName, _keys={'parents'}):
     """Represents data for an existing `value mapping
-    <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes--mappingtypename---fieldname--values>`__
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportmappingtypesmappingtypenamefieldnamevalues>`__
     in the context of bulk import jobs.
     """
 
 
 class Worksite(EAObjectWithIDAndName, _prefix='worksite', _keys={'address', 'employer', 'isPreferred', 'workAreas'}):
     """Represents a `Worksite
-    <https://developers.everyaction.com/van-api#worksites-common-models>`__.
+    <https://docs.everyaction.com/reference/worksites#common-models-16>`__.
     """
 
 
@@ -2146,7 +2149,7 @@ class BulkImportAction(
     _keys={'actionType', 'columnsToIncludeInResultsFile', 'mappingTypes', 'resultFileSizeKbLimit', 'resourceType'}
 ):
     """Represents a `bulk import action
-    <https://developers.everyaction.com/van-api#action-bi-anchor>`__.
+    <https://docs.everyaction.com/reference/bulk-import#action>`__.
     """
 
 
@@ -2167,7 +2170,7 @@ class Employer(
     shifts=EAProperty(singular_alias='shift', factory=ShiftType)
 ):
     """Represents an `Employer
-    <https://developers.everyaction.com/van-api#employers-common-models>`__.
+    <https://docs.everyaction.com/reference/employers#common-models-15>`__.
     """
 
 
@@ -2192,7 +2195,7 @@ class EventType(
     statuses=EAProperty(is_array=True, factory=Status)
 ):
     """Represents an `Event Type
-    <https://developers.everyaction.com/van-api#event-types-common-models>`__.
+    <https://docs.everyaction.com/reference/event-types#common-models-17>`__.
     """
 
 
@@ -2217,19 +2220,19 @@ class ExportJob(
     }
 ):
     """Represents an `Export Job
-    <https://developers.everyaction.com/van-api#export-jobs-common-models>`__.
+    <https://docs.everyaction.com/reference/export-jobs#common-models-19>`__.
     """
 
 
 class MappingTypeData(EAObjectWithName, _keys={'allowMultipleMode', 'displayName', 'fields', 'resourceTypes'}):
     """Represents data for an existing `bulk import mapping type
-    <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes>`__.
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportmappingtypes>`__.
     """
 
 
 class Registrant(EAObject, _keys={'alternateId', 'customProperties', 'person'}):
     """Represents a `Registrant
-    <https://developers.everyaction.com/van-api#voter-registration-batches-post-voterregistrationbatches--batchid--people>`__
+    <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesbatchidpeople>`__
     for a Voter Registration Batch.
     """
 
@@ -2243,7 +2246,7 @@ EAProperty.share(
 
 class BulkImportJob(EAObject, _keys={'actions', 'description'}, file=EAProperty(factory=JobFile)):
     """Represents a `Bulk Import Job
-    <https://developers.everyaction.com/van-api#bulk-import-post-bulkimportjobs>`__.
+    <https://docs.everyaction.com/reference/bulk-import#bulkimportjobs>`__.
     """
 
 
@@ -2271,7 +2274,7 @@ class Event(
     notes=EAProperty(singular_alias='note', factory=Note)
 ):
     """Represents an `Event
-    <https://developers.everyaction.com/van-api#events-common-models>`__.
+    <https://docs.everyaction.com/reference/events#common-models-18>`__.
     """
 
 
@@ -2301,5 +2304,5 @@ class Signup(
     status=EAProperty(factory=Status)
 ):
     """Represents a `Signup
-    <https://developers.everyaction.com/van-api#signups-common-models>`__.
+    <https://docs.everyaction.com/reference/signups#common-models-33>`__.
     """

@@ -14,7 +14,8 @@ clean:
 	rm -rf docs/.buildinfo
 
 .PHONY: doc
-doc:
+doc:$(VENV_DIR)
+	rm -rf $(SPHINX_BUILD_DIR)/classes && \
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
 
 .PHONY: test

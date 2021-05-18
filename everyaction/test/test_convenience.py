@@ -9,7 +9,7 @@ from http_router import Router
 import pytest
 
 from everyaction import EAClient, EAFindFailedException
-from everyaction.objects import ActivistCode, ActivistCodeData, Note, Person, ResultCode
+from everyaction.objects import ActivistCode, ActivistCodeData, Note, Person, ContactType, InputType, ResultCode
 
 
 router = Router()
@@ -44,6 +44,8 @@ class MockServer:
     def __init__(self):
         self.activist_codes = EAData('activistCode')
         self.people = EAData('van')
+        self.contact_types = EAData('contactType')
+        self.input_types = EAData('inputType')
         self.result_codes = EAData('resultCode')
 
         self.my_activists = set()
@@ -91,6 +93,12 @@ class MockServer:
     def add_activist_code(self, data):
         self.activist_codes.add(data)
 
+    def add_contact_type(self, data):
+        self.contact_types.add(data)
+
+    def add_input_type(self, data):
+        self.input_types.add(data)
+
     def add_person(self, data):
         van_id = self.people.add(data)
         self.person_to_membership[van_id] = {}
@@ -105,6 +113,14 @@ class MockServer:
     @router.route('/activistCodes', methods=['GET'])
     def activist_codes_list(self, query, data):
         return self._paginated(self.activist_codes.values(), query)
+
+    @router.route('/canvassResponses/contactTypes', methods=['GET'])
+    def canvass_response_contact_types(self, query, data):
+        return list(self.contact_types.values())
+
+    @router.route('/canvassResponses/inputTypes', methods=['GET'])
+    def canvass_response_input_types(self, query, data):
+        return list(self.input_types.values())
 
     @router.route('/canvassResponses/resultCodes', methods=['GET'])
     def canvass_response_result_codes(self, query, data):
@@ -326,6 +342,40 @@ def test_activist_codes(client, server):
         client.activist_codes.find_each(['Cool Activist', 'Someone Else'])
 
 
+def test_contact_types(client, server):
+    # Test that failing to find a contact type results in an EAFindFailedException.
+    with pytest.raises(EAFindFailedException, match='No such contact type'):
+        client.canvass_responses.find_contact_type('1 on 1')
+
+    # Add a contact type and try to find it.
+    server.add_contact_type({'name': '1 on 1'})
+    assert client.canvass_responses.find_contact_type('1 on 1') == ContactType(id=1, name='1 on 1')
+
+    # Add another contact type. Try to find both.
+    server.add_contact_type({'name': 'Phone'})
+    assert client.canvass_responses.find_contact_type('1 on 1') == ContactType(id=1, name='1 on 1')
+    assert client.canvass_responses.find_contact_type('Phone') == ContactType(id=2, name='Phone')
+    with pytest.raises(EAFindFailedException, match='No such contact type'):
+        client.canvass_responses.find_contact_type('Walk')
+
+
+def test_input_types(client, server):
+    # Test that failing to find a result code results in an EAFindFailedException.
+    with pytest.raises(EAFindFailedException, match='No such input type'):
+        client.canvass_responses.find_input_type('API')
+
+    # Add an input type and try to find it.
+    server.add_input_type({'name': 'API'})
+    assert client.canvass_responses.find_input_type('API') == InputType(id=1, name='API')
+
+    # Add another input type. Try to find both.
+    server.add_input_type({'name': 'Form'})
+    assert client.canvass_responses.find_input_type('API') == InputType(id=1, name='API')
+    assert client.canvass_responses.find_input_type('Form') == InputType(id=2, name='Form')
+    with pytest.raises(EAFindFailedException, match='No such input type'):
+        client.canvass_responses.find_input_type('Web')
+
+
 def test_result_codes(client, server):
     # Test that failing to find a result code results in an EAFindFailedException.
     with pytest.raises(EAFindFailedException, match='No such result code'):
@@ -334,3 +384,10 @@ def test_result_codes(client, server):
     # Add a result code and try to find it.
     server.add_result_code({'name': 'No call'})
     assert client.canvass_responses.find_result_code('No call') == ResultCode(id=1, name='No call')
+
+    # Add another result code. Try to find both.
+    server.add_result_code({'name': 'No text'})
+    assert client.canvass_responses.find_result_code('No call') == ResultCode(id=1, name='No call')
+    assert client.canvass_responses.find_result_code('No text') == ResultCode(id=2, name='No text')
+    with pytest.raises(EAFindFailedException, match='No such result code'):
+        client.canvass_responses.find_result_code('No walk')

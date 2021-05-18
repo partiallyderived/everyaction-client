@@ -1,11 +1,11 @@
 """
 This module contains the objects that have methods corresponding to collections of API calls as they are grouped in the
-`EveryAction 8 VAN API docs <https://developers.everyaction.com/van-api>`__
+`EveryAction 8 VAN API docs <https://docs.everyaction.com/reference>`__.
 """
 
 from typing import Dict, Iterable, List, Optional, Union
 
-from everyaction.core import ea_endpoint, EAMap, EAProperty, EAService, EAValue
+from everyaction.core import ea_endpoint, E, EAMap, EAProperty, EAService, EAValue
 from everyaction.exception import EAFindFailedException
 from everyaction.objects import *
 
@@ -38,7 +38,7 @@ __all__ = [
     'MemberStatuses',
     'MiniVANExports',
     'Notes',
-    'OnlineActionForms',
+    'OnlineActionsForms',
     'Phones',
     'PrintedLists',
     'Relationships',
@@ -65,7 +65,7 @@ __all__ = [
 
 class People(EAService):
     """Represents the
-    `People <https://developers.everyaction.com/van-api#people>`__ service.
+    `People <https://docs.everyaction.com/reference/people>`__ service.
     """
 
     @ea_endpoint('people/{vanId}/activistCodes', 'get', paginated=True, result_factory=ActivistCodeData)
@@ -73,7 +73,7 @@ class People(EAService):
         self, van_id: int, /, *, limit: Optional[int] = None, **kwargs: EAValue
     ) -> List[ActivistCodeData]:
         """See `GET /people/{vanId}/activistCodes
-        <https://developers.everyaction.com/van-api#people-get-people--vanid--activistcodes>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidactivistcodes>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param limit: Maximum number of records to get for this request.
@@ -84,7 +84,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/canvassResponses', 'post', data_type=CanvassResponse, has_result=False)
     def add_canvass_responses(self, van_id: int, /, **kwargs: EAValue) -> None:
         """See `POST /people/{vanId}/canvassResponses
-        <https://developers.everyaction.com/van-api#people-post-people--vanid--canvassresponses>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.CanvassResponse` is
@@ -99,7 +99,7 @@ class People(EAService):
     )
     def add_canvass_responses_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> None:
         """See `POST /people/{personIdType}:{personId}/canvassResponses
-        <https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--canvassresponses>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcanvassresponses>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -110,7 +110,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/codes', 'post', data_type=Code, has_result=False)
     def add_code(self, van_id: int, **kwargs: EAValue) -> None:
         """See `POST /people/{vanId}/codes
-        <https://developers.everyaction.com/van-api#people-post-people--vanid--codes>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidcodes>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Code` is
@@ -120,7 +120,7 @@ class People(EAService):
     @ea_endpoint('people/{personIdType}:{personId}/codes', 'post', data_type=Code, has_result=False)
     def add_code_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> None:
         """See `POST /people/{personIdType}:{personId}/codes
-        <https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--codes>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodes>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -131,7 +131,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/myActivistFlags', 'put', has_result=False)
     def add_my_activist_flag(self, van_id: int, /) -> None:
         """See `PUT /people/{vanId}/myActivistFlags
-        <https://developers.everyaction.com/van-api#people-put-people--vanid--myactivistflags>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         """
@@ -139,7 +139,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/notes', 'post', data_type=Note, has_result=False)
     def add_notes(self, van_id: int, /, **kwargs: EAValue) -> None:
         """See `POST /people/{vanId}/notes
-        <https://developers.everyaction.com/van-api#people-post-people--vanid--notes>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidnotes-1>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Note` is
@@ -149,7 +149,7 @@ class People(EAService):
     @ea_endpoint('people/{personIdType}:{personId}/notes', 'post', data_type=Note, has_result=False)
     def add_notes_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> None:
         """See `POST /people/{personIdType}:{personId}/notes
-        <https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--notes>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidnotes>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -158,27 +158,37 @@ class People(EAService):
         """
 
     @ea_endpoint('people/{vanId}/relationships', 'post', prop_keys={'relationshipId', 'vanId'}, has_result=False)
-    def add_relationship(self, **kwargs: EAValue) -> None:
+    def add_relationship(self, van_id: int, /, **kwargs: EAValue) -> None:
         """See `POST /people/{vanId}/relationships
-        <https://developers.everyaction.com/van-api#people-post-people--vanid--relationships>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidrelationships>`__.
 
+        :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
         """
 
     @ea_endpoint('people/find', 'post', data_type=Person, result_factory=Person._find_factory)
     def find(self, **kwargs: EAValue) -> Optional[Person]:
         """See `POST /people/find
-        <https://developers.everyaction.com/van-api#people-post-people-find>`__.
+        <https://docs.everyaction.com/reference/people#peoplefind>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Person` is
             appropriate to unpack here.
         :returns: The found :class:`.Person` object, or :code:`None` if no person could be found.
         """
 
+    @ea_endpoint('people/findByPhone', 'post', prop_keys={'phoneNumber'}, result_factory=Person)
+    def find_by_phone(self, **kwargs: EAValue) -> Person:
+        """See `POST /people/findByPhone
+        <https://docs.everyaction.com/reference/people#peoplefindbyphone>`__.
+
+        :param kwargs: The applicable query arguments and JSON data for the request.
+        :returns: The resulting :class:`.Person` object.
+        """
+
     @ea_endpoint('people/findOrCreate', 'post', data_type=Person, result_factory=Person._find_factory)
     def find_or_create(self, **kwargs: EAValue) -> Person:
         """See `POST /people/findOrCreate
-        <https://developers.everyaction.com/van-api#people-post-people-findorcreate>`__.
+        <https://docs.everyaction.com/reference/people#peoplefindorcreate>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Person` is
             appropriate to unpack here.
@@ -188,7 +198,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}', 'get', query_arg_keys={'$expand'}, result_factory=Person)
     def get(self, van_id: int, /, **kwargs: EAValue) -> Person:
         """See `GET /people/{vanId}
-        <https://developers.everyaction.com/van-api#people-get-people--vanid>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanid-1>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -198,7 +208,7 @@ class People(EAService):
     @ea_endpoint('people/{personIdType}:{personId}', 'get', query_arg_keys={'$expand'}, result_factory=Person)
     def get_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> Person:
         """See `GET /people/{personIdType}:{personId}
-        <https://developers.everyaction.com/van-api#people-get-people--personidtype---personid>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid-1>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -209,7 +219,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/membership', 'get', result_factory=Membership)
     def membership(self, van_id: int, /) -> Membership:
         """See `GET /people/{vanId}/membership
-        <https://developers.everyaction.com/van-api#people-get-people--vanid--membership>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidmembership>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :returns: The resulting :class:`.Membership` object.
@@ -218,7 +228,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/notes', 'get', paginated=True, max_top=50, result_factory=Note)
     def notes(self, van_id: int, /, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Note]:
         """See `GET /people/{vanId}/notes
-        <https://developers.everyaction.com/van-api#people-get-people--vanid--notes>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidnotes>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param limit: Maximum number of records to get for this request.
@@ -229,7 +239,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/codes/{codeId}', 'delete', has_result=False)
     def remove_code(self, van_id: int, code_id: int, /) -> None:
         """See `DELETE /people/{vanId}/codes/{codeId}
-        <https://developers.everyaction.com/van-api#people-delete-people--vanid--codes--codeid>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidcodescodeid>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param code_id: The :code:`code_id` path parameter.
@@ -238,7 +248,7 @@ class People(EAService):
     @ea_endpoint('people/{personIdType}:{personId}/codes/{codeId}', 'delete', has_result=False)
     def remove_code_(self, person_id_type: str, person_id: str, code_id: int, /) -> None:
         """See `DELETE /people/{personIdType}:{personId}/codes/{codeId}
-        <https://developers.everyaction.com/van-api#people-delete-people--personidtype---personid--codes--codeid>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonidcodescodeid>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -247,8 +257,8 @@ class People(EAService):
 
     @ea_endpoint('people/{vanId}/myActivistFlags', 'delete', has_result=False)
     def remove_my_activist_flag(self, van_id: int, /) -> None:
-        """See `DELETE /people/{vanId}myActivistFlags
-        <https://developers.everyaction.com/van-api#people-delete-people--vanid--myactivistflags>`__.
+        """See `DELETE /people/{vanId}/myActivistFlags
+        <https://docs.everyaction.com/reference/people#peoplevanidmyactivistflags-1>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         """
@@ -256,7 +266,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/disclosureFieldValues', 'post', prop_keys={'disclosureFieldValues'}, has_result=False)
     def set_disclosures_fields(self, van_id: int, /, **kwargs: EAValue) -> None:
         """See `POST /people/{vanId}/disclosureFieldValues
-        <https://developers.everyaction.com/van-api#people-post-people--vanid--disclosurefieldvalues>`__.
+        <https://docs.everyaction.com/reference/people#peoplevaniddisclosurefieldvalues>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -270,7 +280,7 @@ class People(EAService):
     )
     def set_disclosures_fields_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> None:
         """See `POST /people/{personIdType}:{personId}/disclosureFieldValues
-        <https://developers.everyaction.com/van-api#people-post-people--personidtype---personid--disclosurefieldvalues>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersoniddisclosurefieldvalues>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -280,7 +290,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}', 'post', data_type=Person, result_factory=Person._find_factory)
     def update(self, van_id: int, /, **kwargs: EAValue) -> Optional[Person]:
         """See `POST /people/{vanId}
-        <https://developers.everyaction.com/van-api#people-post-people--vanid>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanid>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Person` is
@@ -291,7 +301,7 @@ class People(EAService):
     @ea_endpoint('people/{personIdType}:{personId}', 'post', data_type=Person, result_factory=Person._find_factory)
     def update_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> Optional[Person]:
         """See `POST /people/{personIdType}:{personId}
-        <https://developers.everyaction.com/van-api#people-post-people--personidtype---personid>`__.
+        <https://docs.everyaction.com/reference/people#peoplepersonidtypepersonid>`__.
 
         :param person_id_type: The :code:`personIdType` path parameter.
         :param person_id: The :code:`personId` path parameter.
@@ -303,7 +313,7 @@ class People(EAService):
     @ea_endpoint('people/{vanId}/notes/{noteId}', 'put', data_type=Note, has_result=False)
     def update_note(self, van_id: int, note_id: int, /, **kwargs: EAValue) -> None:
         """See `PUT /people/{vanId}/notes/{noteId}
-        <https://developers.everyaction.com/van-api#people-put-people--vanid--notes--noteid>`__.
+        <https://docs.everyaction.com/reference/people#peoplevanidnotesnoteid>`__.
 
         :param van_id: The :code:`vanId` path parameter.
         :param note_id: The :code:`noteId` path parameter.
@@ -368,9 +378,9 @@ class People(EAService):
 
     def lookup(self, *, expand: Union[str, Iterable[str]] = '', **kwargs: EAValue) -> Optional[Person]:
         """Attempt to find a person using the data in `kwargs` by invoking
-        `POST /people/find <https://developers.everyaction.com/van-api#people-post-people-find>`__.
+        `POST /people/find <https://docs.everyaction.com/reference/people#peoplefind>`__.
         Then, if a person was found, use their VAN ID to retrieve their stored :class:`.Person` record by invoking
-        `GET /people/{vanId} <https://developers.everyaction.com/van-api#people-get-people--vanid>`__.
+        `GET /people/{vanId} <https://docs.everyaction.com/reference/people#peoplevanid-1>`__.
 
         :param expand: List or comma-separated string of names of properties to get for the person.
         :param kwargs: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
@@ -392,8 +402,8 @@ class People(EAService):
 
     def update_if_exists(self, lookup_args: EAMap, update_args: EAMap) -> Optional[int]:
         """Update a person with the given properties if they already exist as a record. Works by invoking
-        `POST /people/find <https://developers.everyaction.com/van-api#people-post-people-find>`__ followed by
-        `POST /people/{vanId} <https://developers.everyaction.com/van-api#people-post-people--vanid>`__ if the person
+        `POST /people/find <https://docs.everyaction.com/reference/people#peoplefind>`__ followed by>`__.
+        `POST /people/{vanId} <https://docs.everyaction.com/reference/people#peoplevanid>`__ if the person>`__.
         exists.
 
         :param lookup_args: The JSON data to lookup the person with. A :class:`.Person` is appropriate to unpack here.
@@ -409,13 +419,13 @@ class People(EAService):
 
 class ActivistCodes(EAService):
     """Represents the
-    `Activist Codes <https://developers.everyaction.com/van-api#activist-codes>`__ service.
+    `Activist Codes <https://docs.everyaction.com/reference/activist-codes>`__ service.
     """
 
     @ea_endpoint('activistCodes/{activistCodeId}', 'get', result_factory=ActivistCode)
     def get(self, code_id: Union[int, str], /) -> ActivistCode:
         """See `GET /activistCodes/{activistCodeId}
-        <https://developers.everyaction.com/van-api#activist-codes-get-activistcodes--activistcodeid>`__.
+        <https://docs.everyaction.com/reference/activist-codes#activistcodesactivistcodeid>`__.
 
         :param code_id: The :code:`activistCodeId` path parameter.
         :returns: The resulting :class:`.ActivistCode` object.
@@ -430,7 +440,7 @@ class ActivistCodes(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ActivistCode]:
         """See `GET /activistCodes
-        <https://developers.everyaction.com/van-api#activist-codes-get-activistcodes>`__.
+        <https://docs.everyaction.com/reference/activist-codes#activistcodes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -477,13 +487,13 @@ class ActivistCodes(EAService):
 
 class Ballots(EAService):
     """Represents the
-    `Ballots <https://developers.everyaction.com/van-api#ballots>`__ service.
+    `Ballots <https://docs.everyaction.com/reference/ballots>`__ service.
     """
 
     @ea_endpoint('ballotRequestTypes/{ballotRequestTypeId}', 'get', result_factory=BallotRequestType)
     def request_type(self, type_id: str, /) -> BallotRequestType:
         """See `GET /ballotRequestTypes/{ballotRequestTypeId}
-        <https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes--ballotrequesttypeid>`__.
+        <https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypesballotrequesttypeid>`__.
 
         :returns: The resulting :class:`.BallotRequestType` object.
         """
@@ -491,7 +501,7 @@ class Ballots(EAService):
     @ea_endpoint('ballotRequestTypes', 'get', paginated=True, result_factory=BallotRequestType)
     def request_types(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[BallotRequestType]:
         """See `GET /ballotRequestTypes
-        <https://developers.everyaction.com/van-api#ballots-get-ballotrequesttypes>`__.
+        <https://docs.everyaction.com/reference/ballot-request-types#ballotrequesttypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -501,7 +511,7 @@ class Ballots(EAService):
     @ea_endpoint('ballotReturnStatuses/{ballotReturnStatusId}', 'get', result_factory=BallotReturnStatus)
     def return_status(self, status_id: int, /) -> BallotReturnStatus:
         """See `GET /ballotReturnStatuses/{ballotRequestTypeId}
-        <https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses--ballotreturnstatusid>`__.
+        <https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatusesballotrequesttypeid>`__.
 
         :param status_id: The :code:`ballotReturnStatusId` path parameter.
         :returns: The resulting :class:`.BallotReturnStatus` object.
@@ -510,7 +520,7 @@ class Ballots(EAService):
     @ea_endpoint('ballotReturnStatuses', 'get', paginated=True, result_factory=BallotReturnStatus)
     def return_statuses(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[BallotReturnStatus]:
         """See `GET /ballotReturnStatuses
-        <https://developers.everyaction.com/van-api#ballots-get-ballotreturnstatuses>`__.
+        <https://docs.everyaction.com/reference/ballot-return-statuses#ballotreturnstatuses>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -520,7 +530,7 @@ class Ballots(EAService):
     @ea_endpoint('ballotTypes/{ballotTypeId}', 'get', result_factory=BallotType)
     def type(self, type_id: int, /) -> BallotType:
         """See `GET /ballotTypes/{ballotTypeId}
-        <https://developers.everyaction.com/van-api#ballots-get-ballottypes--ballottypeid>`__.
+        <https://docs.everyaction.com/reference/ballot-types#ballottypesballottypeid>`__.
 
         :param type_id: The :code:`ballotTypeId` path parameter.
         :returns: The resulting :class:`.BallotType` object.
@@ -529,7 +539,7 @@ class Ballots(EAService):
     @ea_endpoint('ballotTypes', 'get', paginated=True, result_factory=BallotType)
     def types(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[BallotType]:
         """See `GET /ballotTypes
-        <https://developers.everyaction.com/van-api#ballots-get-ballottypes>`__.
+        <https://docs.everyaction.com/reference/ballot-types#ballottypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -539,13 +549,13 @@ class Ballots(EAService):
 
 class BargainingUnits(EAService):
     """Represents the
-    `BargainingUnits <https://developers.everyaction.com/van-api#bargaining-units>`__ service.
+    `BargainingUnits <https://docs.everyaction.com/reference/bargaining-units>`__ service.
     """
 
     @ea_endpoint('bargainingUnits/{bargainingUnitId}', 'get', result_factory=BargainingUnit)
     def get(self, bargaining_unit: int, /) -> BargainingUnit:
         """See `GET /bargainingUnits/{bargainingUnitId}
-        <https://developers.everyaction.com/van-api#bargaining-units-get-bargainingunits--bargainingunitid>`__.
+        <https://docs.everyaction.com/reference/bargaining-units#bargainingunitsbargainingunitid>`__.
 
         :param bargaining_unit: The :code:`bargainingUnitId` path parameter.
         :returns: The resulting :class:`.BargainingUnit` object.
@@ -554,7 +564,7 @@ class BargainingUnits(EAService):
     @ea_endpoint('bargainingUnits', 'get', paginated=True, result_factory=BargainingUnit)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[BargainingUnit]:
         """See `GET /bargainingUnits
-        <https://developers.everyaction.com/van-api#bargaining-units-get-bargainingunits>`__.
+        <https://docs.everyaction.com/reference/bargaining-units#bargainingunits>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -564,13 +574,13 @@ class BargainingUnits(EAService):
 
 class BulkImport(EAService):
     """Represents the
-    `Bulk Import <https://developers.everyaction.com/van-api#bulk-import>`__ service.
+    `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
     """
 
     @ea_endpoint('bulkImportJobs', 'post', data_type=BulkImportJob, result_factory=BulkImportJobData)
     def create(self, **kwargs: EAValue) -> BulkImportJobData:
         """See `POST /bulkImportJobs
-        <https://developers.everyaction.com/van-api#bulk-import-post-bulkimportjobs>`__.
+        <https://docs.everyaction.com/reference/bulk-import-jobs#bulkimportjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.BulkImportJob` is
             appropriate to unpack here.
@@ -580,7 +590,7 @@ class BulkImport(EAService):
     @ea_endpoint('bulkImportJobs/{jobId}', 'get', result_factory=BulkImportJobData)
     def get(self, job_id: int, /) -> BulkImportJobData:
         """See `GET /bulkImportJobs/{jobId}
-        <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportjobs--jobid>`__.
+        <https://docs.everyaction.com/reference/bulk-import-jobs#bulkimportjobsjobid>`__.
 
         :param job_id: The :code:`jobId` path parameter.
         :returns: The resulting :class:`.BulkImportJobData` object.
@@ -589,7 +599,7 @@ class BulkImport(EAService):
     @ea_endpoint('bulkImportMappingTypes/{mappingTypeName}', 'get', result_factory=MappingTypeData)
     def mapping_type(self, name: str, /) -> MappingTypeData:
         """See `GET /bulkImportMappingTypes/{mappingTypeName}
-        <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes--mappingtypename>`__.
+        <https://docs.everyaction.com/reference/bulk-import-mapping-types#bulkimportmappingtypesmappingtypename>`__.
 
         :param name: The :code:`mappingTypeName` path parameter.
         :returns: The resulting :class:`.MappingTypeData` object.
@@ -598,7 +608,7 @@ class BulkImport(EAService):
     @ea_endpoint('bulkImportMappingTypes', 'get', paginated=True, result_factory=MappingTypeData)
     def mapping_types(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[MappingTypeData]:
         """See `GET /bulkImportMappingTypes
-        <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes--mappingtypename---fieldname--values>`__.
+        <https://docs.everyaction.com/reference/bulk-import-mapping-types#bulkimportmappingtypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -608,7 +618,7 @@ class BulkImport(EAService):
     @ea_endpoint('bulkImportJobs/resources', 'get')
     def resources(self) -> List[str]:
         """See `GET /bulkImportJobs/resources
-        <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportjobs-resources>`__.
+        <https://docs.everyaction.com/reference/bulk-import-jobs#bulkimportjobsresources>`__.
 
         :returns: List of resource type names.
         """
@@ -629,7 +639,7 @@ class BulkImport(EAService):
         **kwargs: EAValue
     ) -> List[ValueMappingData]:
         """See `GET /bulkImportMappingTypes/{mappingTypeName}/{fieldName}/values
-        <https://developers.everyaction.com/van-api#bulk-import-get-bulkimportmappingtypes--mappingtypename---fieldname--values>`__.
+        <https://docs.everyaction.com/reference/bulk-import-mapping-types#bulkimportmappingtypesmappingtypenamefieldnamevalues>`__.
 
         :param mapping_name: The :code:`mappingTypeName` path parameter.
         :param field_name: The :code:`fieldName` path parameter.
@@ -641,7 +651,7 @@ class BulkImport(EAService):
 
 class CanvassResponses(EAService):
     """Represents the
-    `Canvass Responses <https://developers.everyaction.com/van-api#canvass-responses>`__ service.
+    `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
     """
 
     @ea_endpoint(
@@ -653,7 +663,7 @@ class CanvassResponses(EAService):
     )
     def contact_types(self, **kwargs: EAValue) -> List[ContactType]:
         """See `GET /canvassResponses/contactTypes
-        <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-contacttypes>`__.
+        <https://docs.everyaction.com/reference/canvass-responses#canvassresponsescontacttypes>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.ContactType` objects.
@@ -662,7 +672,7 @@ class CanvassResponses(EAService):
     @ea_endpoint('canvassResponses/inputTypes', 'get', result_array=True, result_factory=InputType)
     def input_types(self) -> List[InputType]:
         """See `GET /canvassResponses/inputTypes
-        <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-inputtypes>`__.
+        <https://docs.everyaction.com/reference/canvass-responses#canvassresponsesinputtypes>`__.
 
         :returns: List of the resulting :class:`.InputType` objects.
         """
@@ -676,30 +686,52 @@ class CanvassResponses(EAService):
     )
     def result_codes(self, **kwargs: EAValue) -> List[ResultCode]:
         """See `GET /canvassResponses/resultCodes
-        <https://developers.everyaction.com/van-api#canvass-responses-get-canvassresponses-resultcodes>`__.
+        <https://docs.everyaction.com/reference/canvass-responses#canvassresponsesresultcodes>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.ResultCode` objects.
         """
 
+    @staticmethod
+    def _find(name: str, all_objects: List[E], obj_name: str) -> E:
+        # Finds a contact type, input type, or result code.
+        lower = name.lower()
+        for obj in all_objects:
+            if obj.name.lower() == lower:
+                return obj
+        raise EAFindFailedException(f'No such {obj_name}: "{name}"')
+
+    def find_contact_type(self, name: str) -> ContactType:
+        """Finds the :class:`.ContactType` which exactly matches the given name.
+
+        :param name: Name of contact type to find.
+        :returns: The resulting :class:`.ContactType` object..
+        :raises EAFindFailedException: If the contact type could not be found.
+        """
+        return self._find(name, self.contact_types(), 'contact type')
+
+    def find_input_type(self, name: str) -> InputType:
+        """Finds the :class:`.InputType` which exactly matches the given name.
+
+        :param name: Name of input type to find.
+        :returns: The resulting :class:`.InputType` object.
+        :raises EAFindFailedException: If the input type could not be found.
+        """
+        return self._find(name, self.input_types(), 'input type')
+
     def find_result_code(self, name: str) -> ResultCode:
         """Finds the :class:`.ResultCode` which exactly matches the given name.
 
         :param name: Name of result code to find.
-        :returns: The resulting :class:`.ResultCode`.
+        :returns: The resulting :class:`.ResultCode` object..
         :raises EAFindFailedException: If the result code could not be found.
         """
-        lower = name.lower()
-        codes = self.result_codes()
-        for code in codes:
-            if code.name.lower() == lower:
-                return code
-        raise EAFindFailedException(f'No such result code: "{name}"')
+        return self._find(name, self.result_codes(), 'result code')
 
 
 class ChangedEntities(EAService):
     """Represents the
-    `Changed Entities <https://developers.everyaction.com/van-api#changed-entities>`__ service.
+    `Changed Entities <https://docs.everyaction.com/reference/changed-entities>`__ service.
     """
 
     @ea_endpoint(
@@ -710,7 +742,7 @@ class ChangedEntities(EAService):
     )
     def change_types(self, resource: str, /) -> List[ChangeType]:
         """See `GET /changedEntityExportJobs/changeTypes/{resourceType}
-        <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-changetypes--resourcetype>`__.
+        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype>`__.
 
         :param resource: The :code:`resourceType` path parameter.
         :returns: List of the resulting :class:`.ChangeType` objects.
@@ -724,7 +756,7 @@ class ChangedEntities(EAService):
     )
     def create(self, **kwargs: EAValue) -> ChangedEntityExportJob:
         """See `POST /changedEntityExportJobs
-        <https://developers.everyaction.com/van-api#changed-entities-post-changedentityexportjobs>`__.
+        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.ChangedEntityExportJob`
             is appropriate to unpack here.
@@ -739,7 +771,7 @@ class ChangedEntities(EAService):
     )
     def fields(self, resource: str, /) -> List[ChangedEntityField]:
         """See `GET /changedEntityExportJobs/fields/{resourceType}
-        <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-fields--resourcetype>`__.
+        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsfieldsresourcetype>`__.
 
         :param resource: The :code:`resourceType` path parameter.
         :returns: The resulting :class:`.ChangedEntityField` object.
@@ -748,7 +780,7 @@ class ChangedEntities(EAService):
     @ea_endpoint('changedEntityExportJobs/{exportJobId}', 'get', result_factory=ChangedEntityExportJob)
     def get(self, job_id: int, /) -> ChangedEntityExportJob:
         """See `GET /changedEntityExportJobs/{exportJobId}
-        <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs--exportjobid>`__.
+        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsexportjobid>`__.
 
         :param job_id: The :code:`exportJobId` path parameter.
         :returns: The resulting :class:`.ChangedEntityExportJobData` object.
@@ -757,7 +789,7 @@ class ChangedEntities(EAService):
     @ea_endpoint('changedEntityExportJobs/resources', 'get')
     def resources(self) -> List[str]:
         """See `GET /changedEntityExportJobs/resources
-        <https://developers.everyaction.com/van-api#changed-entities-get-changedentityexportjobs-resources>`__.
+        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsresources>`__.
 
         :returns: List of the resource type names.
         """
@@ -765,13 +797,13 @@ class ChangedEntities(EAService):
 
 class Codes(EAService):
     """Represents the
-    `Codes <https://developers.everyaction.com/van-api#codes>`__ service.
+    `Codes <https://docs.everyaction.com/reference/codes>`__ service.
     """
 
     @ea_endpoint('codes', 'post', data_type=Code, result_factory=Code)
     def create(self, **kwargs: EAValue) -> Code:
         """See `POST /codes
-        <https://developers.everyaction.com/van-api#codes-post-codes>`__.
+        <https://docs.everyaction.com/reference/codes#codes-2>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Code` is
             appropriate to unpack here.
@@ -781,7 +813,7 @@ class Codes(EAService):
     @ea_endpoint('codes/batch', 'post', prop_keys={'codes'}, result_array=True, result_factory=CodeResult)
     def create_each(self, **kwargs: EAValue) -> List[CodeResult]:
         """See `POST /codes/batch
-        <https://developers.everyaction.com/van-api#codes-post-codes-batch>`__.
+        <https://docs.everyaction.com/reference/codes#codesbatch>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.CodeResult` objects for each code to be created.
@@ -790,7 +822,7 @@ class Codes(EAService):
     @ea_endpoint('codes/{codeId}', 'delete', has_result=False)
     def delete(self, code_id: int, /) -> None:
         """See `DELETE /codes/{codeId}
-        <https://developers.everyaction.com/van-api#codes-delete-codes--codeid>`__.
+        <https://docs.everyaction.com/reference/codes#codescodeid-2>`__.
 
         :param code_id: The :code:`codeId` path parameter.
         """
@@ -798,7 +830,7 @@ class Codes(EAService):
     @ea_endpoint('codes', 'delete', result_array=True, result_factory=CodeResult)
     def delete_each(self, *, data: List[int]) -> List[CodeResult]:
         """See `DELETE /codes
-        <https://developers.everyaction.com/van-api#codes-delete-codes>`__.
+        <https://docs.everyaction.com/reference/codes#codes-4>`__.
 
         :param data: The ids of the codes to delete.
         :returns: List of the resulting :class:`.CodeResult` objects for each code to be deleted.
@@ -807,7 +839,7 @@ class Codes(EAService):
     @ea_endpoint('codes/{codeId}', 'get', result_factory=Code)
     def get(self, code_id: int, /) -> Code:
         """See `GET /codes/{codeId}
-        <https://developers.everyaction.com/van-api#codes-get-codes--codeid>`__.
+        <https://docs.everyaction.com/reference/codes#codescodeid>`__.
 
         :param code_id: The :code:`codeId` path parameter.
         :returns: The resulting :class:`.Code` object.
@@ -823,7 +855,7 @@ class Codes(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Code]:
         """See `GET /codes
-        <https://developers.everyaction.com/van-api#codes-get-codes>`__.
+        <https://docs.everyaction.com/reference/codes#codes-1>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -833,7 +865,7 @@ class Codes(EAService):
     @ea_endpoint('codes/supportedEntities', 'get', result_array=True)
     def supported_entities(self) -> List[str]:
         """See `GET /codes/supportedEntities
-        <https://developers.everyaction.com/van-api#codes-get-codes-supportedentities>`__.
+        <https://docs.everyaction.com/reference/codes#codessupportedentities>`__.
 
         :returns: List of the names of the supported entities.
         """
@@ -841,7 +873,7 @@ class Codes(EAService):
     @ea_endpoint('codeTypes', 'get', result_array=True)
     def types(self) -> List[str]:
         """See `GET /codeTypes
-        <https://developers.everyaction.com/van-api#codes-get-codetypes>`__.
+        <https://docs.everyaction.com/reference/code-types#codetypes>`__.
 
         :returns: List of the names of the code types.
         """
@@ -849,7 +881,7 @@ class Codes(EAService):
     @ea_endpoint('codes/{codeId}', 'put', data_type=Code, has_result=False)
     def update(self, code_id: int, /, **kwargs: EAValue) -> None:
         """See `PUT /codes/{codeId}
-        <https://developers.everyaction.com/van-api#codes-put-codes--codeid>`__.
+        <https://docs.everyaction.com/reference/codes#codescodeid-1>`__.
 
         :param code_id: The :code:`codeId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Code` is
@@ -859,7 +891,7 @@ class Codes(EAService):
     @ea_endpoint('codes', 'put', prop_keys={'codes'}, result_array=True, result_factory=CodeResult)
     def update_each(self, **kwargs: EAValue) -> List[CodeResult]:
         """See `PUT /codes
-        <https://developers.everyaction.com/van-api#codes-put-codes>`__.
+        <https://docs.everyaction.com/reference/codes#codes-3>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.CodeResult` objects for each code to be updated.
@@ -868,13 +900,13 @@ class Codes(EAService):
 
 class Commitments(EAService):
     """Represents the
-    `Commitments <https://developers.everyaction.com/van-api#commitments>`__ service.
+    `Commitments <https://docs.everyaction.com/reference/commitments>`__ service.
     """
 
     @ea_endpoint('commitments/{commitmentId}', 'patch', data_type=Commitment, result_factory=Commitment)
     def update(self, commitment_id: int, /, **kwargs: EAValue) -> Commitment:
         """See `PATCH /commitments/{commitmentId}
-        <https://developers.everyaction.com/van-api#commitments-patch-commitments--commitmentid>`__.
+        <https://docs.everyaction.com/reference/commitments#commitmentscommitmentid>`__.
 
         :param commitment_id: The :code:`commitmentId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Commitment` is
@@ -885,7 +917,7 @@ class Commitments(EAService):
 
 class Contributions(EAService):
     """Represents the
-    `Contributions <https://developers.everyaction.com/van-api#contributions>`__ service.
+    `Contributions <https://docs.everyaction.com/reference/contributions>`__ service.
     """
 
     @ea_endpoint(
@@ -896,7 +928,7 @@ class Contributions(EAService):
     )
     def adjust(self, contribution_id: int, /, **kwargs: EAValue) -> AdjustmentResponse:
         """See `POST /contributions/{contributionId}/adjustments
-        <https://developers.everyaction.com/van-api#contributions-post-contributions--contributionid--adjustments>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionscontributionidadjustments>`__.
 
         :param contribution_id: The :code:`contributionId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Adjustment` is
@@ -907,7 +939,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions/attributionTypes', 'get', result_array=True)
     def attribution_types(self) -> List[str]:
         """See `GET /contributions/attributionTypes
-        <https://developers.everyaction.com/van-api#contributions-get-contributions-attributiontypes>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionsattributiontypes>`__.
 
         :returns: List of the attribution types.
         """
@@ -915,7 +947,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions', 'post', data_type=Contribution, result_factory=Contribution)
     def create(self, **kwargs: EAValue) -> Contribution:
         """See `POST /contributions
-        <https://developers.everyaction.com/van-api#contributions-post-contributions>`__.
+        <https://docs.everyaction.com/reference/contributions#contributions-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Contribution` is
             appropriate to unpack here.
@@ -925,7 +957,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions/{contributionId}/attributions/{vanId}', 'put', data_type=Attribution, has_result=False)
     def create_or_update_attribution(self, contribution_id: int, van_id: int, /, **kwargs: EAValue) -> None:
         """See `PUT /contributions/{contributionId}/attributions/{vanId}
-        <https://developers.everyaction.com/van-api#contributions-put-contributions--contributionid--attributions--vanid>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionscontributionidattributionsvanid>`__.
 
         :param contribution_id: The :code:`contributionId` path parameter.
         :param van_id: The :code:`vanId` path parameter.
@@ -936,7 +968,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions/{contributionId}/attributions/{vanId}', 'delete', has_result=False)
     def delete_attribution(self, contribution_id: int, van_id: int, /) -> None:
         """See `DELETE /contributions/{contributionId}/attributions/{vanId}
-        <https://developers.everyaction.com/van-api#contributions-delete-contributions--contributionid--attributions--vanid>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionscontributionidattributionsvanid-1>`__.
 
         :param contribution_id: The :code:`contributionId` path parameter.
         :param van_id: The :code:`vanId` path parameter.
@@ -945,7 +977,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions/{contributionId}', 'get', result_factory=Contribution)
     def get(self, contribution_id: int, /) -> Contribution:
         """See `GET /contributions/{contributionId}
-        <https://developers.everyaction.com/van-api#contributions-get-contributions--contributionid>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionscontributionid>`__.
 
         :param contribution_id: The :code:`contributionId` path parameter.
         :returns: The resulting :class:`.Contribution` object.
@@ -954,7 +986,7 @@ class Contributions(EAService):
     @ea_endpoint('contributions/{alternateIdType}:{alternateId}', 'get', result_factory=Contribution)
     def get_(self, alternate_id_type: str, alternate_id: str, /) -> Contribution:
         """See `GET /contributions/{alternateIdType}:{alternateId}
-        <https://developers.everyaction.com/van-api#contributions-get-contributions--alternateidtype---alternateid>`__.
+        <https://docs.everyaction.com/reference/contributions#contributionsalternateidtypealternateid>`__.
 
         :param alternate_id_type: The :code:`alternateIdType` path parameter.
         :param alternate_id: The :code:`alternateId` path parameter.
@@ -964,13 +996,13 @@ class Contributions(EAService):
 
 class CustomFields(EAService):
     """Represents the
-    `Custom Fields <https://developers.everyaction.com/van-api#custom-fields>`__ service.
+    `Custom Fields <https://docs.everyaction.com/reference/custom-fields>`__ service.
     """
 
     @ea_endpoint('customFields/{customFieldId}', 'get')
     def get(self, field_id: int, /) -> CustomField:
         """See `GET /customFields/customFieldId
-        <https://developers.everyaction.com/van-api#custom-fields-get-customfields--customfieldid>`__.
+        <https://docs.everyaction.com/reference/custom-fields#customfieldscustomfieldid>`__.
 
         :param field_id: The :code:`customFieldId` path parameter.
         :returns: The resulting :class:`.CustomField` object.
@@ -985,7 +1017,7 @@ class CustomFields(EAService):
     )
     def list(self, **kwargs: EAValue) -> List[CustomField]:
         """See `GET /customFields
-        <https://developers.everyaction.com/van-api#custom-fields-get-customfields>`__.
+        <https://docs.everyaction.com/reference/custom-fields#customfields>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.CustomField` objects.
@@ -994,13 +1026,13 @@ class CustomFields(EAService):
 
 class Departments(EAService):
     """Represents the
-    `Departments <https://developers.everyaction.com/van-api#departments>`__ service.
+    `Departments <https://docs.everyaction.com/reference/departments>`__ service.
     """
 
     @ea_endpoint('departments/{department_id}', 'get', result_factory=Department)
     def get(self, department_id: int, /) -> Department:
         """See `GET /departments/{departmentId}
-        <https://developers.everyaction.com/van-api#departments-get-departments--departmentid>`__.
+        <https://docs.everyaction.com/reference/departments#departmentsdepartmentid>`__.
 
         :param department_id: The :code:`departmentId` path parameter.
         :returns: The resulting :class:`.Department` object.
@@ -1015,7 +1047,7 @@ class Departments(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Department]:
         """See `GET /departments
-        <https://developers.everyaction.com/van-api#departments-get-departments>`__.
+        <https://docs.everyaction.com/reference/departments#departments>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The resulting :class:`.Department` objects.
@@ -1024,13 +1056,13 @@ class Departments(EAService):
 
 class Designations(EAService):
     """Represents the
-    `Designations <https://developers.everyaction.com/van-api#designations>`__ service.
+    `Designations <https://docs.everyaction.com/reference/designations>`__ service.
     """
 
     @ea_endpoint('designations', 'get', result_array_key='items', result_factory=Designation)
     def list(self) -> List[Designation]:
         """See `GET /designations
-        <https://developers.everyaction.com/van-api#designations-get-designations>`__.
+        <https://docs.everyaction.com/reference/designations#designations>`__.
 
         :returns: List of the resulting :class:`.Designation` objects.
         """
@@ -1038,13 +1070,13 @@ class Designations(EAService):
 
 class Disbursements(EAService):
     """Represents the
-    `Disbursements <https://developers.everyaction.com/van-api#disbursements>`__ service.
+    `Disbursements <https://docs.everyaction.com/reference/disbursements>`__ service.
     """
 
     @ea_endpoint('disbursements', 'post', data_type=Disbursement, has_result=False)
     def create_or_update(self, **kwargs: EAValue) -> None:
         """See `POST /disbursements
-        <https://developers.everyaction.com/van-api#disbursements-post-disbursements>`__.
+        <https://docs.everyaction.com/reference/disbursements#disbursements>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Disbursement` is
             appropriate to unpack here.
@@ -1053,7 +1085,7 @@ class Disbursements(EAService):
     @ea_endpoint('disbursements/{disbursementId}', 'get', result_factory=Disbursement)
     def get(self, disbursement_id: int, /) -> Disbursement:
         """See `GET /disbursements/{disbursementId}
-        <https://developers.everyaction.com/van-api#disbursements-get-disbursements--disbursementid>`__.
+        <https://docs.everyaction.com/reference/disbursements#disbursementsdisbursementid>`__.
 
         :param disbursement_id: The :code:`disbursementId` path parameter.
         :returns: The resulting :class:`.Disbursement` object.
@@ -1062,13 +1094,13 @@ class Disbursements(EAService):
 
 class DistrictFields(EAService):
     """Represents the
-    `District Fields <https://developers.everyaction.com/van-api#districtfields>`__ service.
+    `District Fields <https://docs.everyaction.com/reference/district-fields>`__ service.
     """
 
     @ea_endpoint('districtFields/{districtFieldId}', 'get', result_factory=DistrictField)
     def get(self, field_id: int, /) -> DistrictField:
         """See `GET /districtFields/{districtFieldId}
-        <https://developers.everyaction.com/van-api#district-fields-get-districtfields--districtfieldid>`__.
+        <https://docs.everyaction.com/reference/district-fields#districtfieldsdistrictfieldid>`__.
 
         :param field_id: The :code:`districtFieldId` path parameter.
         :returns: The resulting :class:`.DistrictField` object.
@@ -1083,7 +1115,7 @@ class DistrictFields(EAService):
     )
     def list(self) -> List[DistrictField]:
         """See `GET /districtFields
-        <https://developers.everyaction.com/van-api#district-fields-get-districtfields>`__.
+        <https://docs.everyaction.com/reference/district-fields#districtfields>`__.
 
         :returns: List of the resulting :class:`.DistrictField` objects.
         """
@@ -1091,13 +1123,13 @@ class DistrictFields(EAService):
 
 class EmailMessages(EAService):
     """Represents the
-    `Email <https://developers.everyaction.com/van-api#email>`__ service.
+    `Email <https://docs.everyaction.com/reference/email>`__ service.
     """
 
     @ea_endpoint('email/messages/{emailId}', 'get', query_arg_keys={'$expand'}, result_factory=EmailMessage)
     def get(self, email_id: int, /, **kwargs: EAValue) -> EmailMessage:
         """See `GET /email/messages/{emailId}
-        <https://developers.everyaction.com/van-api#email-get-email-message--emailid>`__.
+        <https://docs.everyaction.com/reference/email#emailmessagesemailid>`__.
 
         :param email_id: The :code:`emailId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1107,7 +1139,7 @@ class EmailMessages(EAService):
     @ea_endpoint('email/messages', 'get', query_arg_keys={'$orderby'}, result_array=True, result_factory=EmailMessage)
     def list(self, **kwargs: EAValue) -> List[EmailMessage]:
         """See `GET /email/messages
-        <https://developers.everyaction.com/van-api#email-get-email-messages>`__.
+        <https://docs.everyaction.com/reference/email#emailmessages>`__.
 
         :returns: List of the resulting :class:`.EmailMessage` objects.
         """
@@ -1115,7 +1147,7 @@ class EmailMessages(EAService):
 
 class Employers(EAService):
     """Represents the
-    `Employers <https://developers.everyaction.com/van-api#employers>`__ service.
+    `Employers <https://docs.everyaction.com/reference/employers>`__ service.
     """
 
     @ea_endpoint(
@@ -1125,7 +1157,7 @@ class Employers(EAService):
     )
     def add_bargaining_unit(self, employer_id: int, bargaining_unit_id: int, /) -> EmployerBargainingUnit:
         """See `POST /employers/{employerId}/bargainingUnits/{bargainingUnitId}
-        <https://developers.everyaction.com/van-api#employers-post-employers--employerid--bargainingunits--bargainingunitid>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployeridbargainingunitsbargainingunitid>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param bargaining_unit_id: The :code:`bargainingUnitId` path parameter.
@@ -1139,7 +1171,7 @@ class Employers(EAService):
     )
     def add_job_class(self, employer_id: int, bargaining_unit_id: int, job_class_id: int, /) -> BargainingUnitJobClass:
         """See `POST /employers/{employerId}/bargainingUnits/{bargainingUnitId}/jobClasses/{jobClassId}
-        <https://developers.everyaction.com/van-api#employers-post-employers--employerid--bargainingunits--bargainingunitid--jobclasses--jobclassid>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployeridbargainingunitsbargainingunitidjobclassesjobclassid>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param bargaining_unit_id: The :code:`bargainingUnitId` path parameter.
@@ -1155,7 +1187,7 @@ class Employers(EAService):
     )
     def add_shift_type(self, employer_id: int, shift_type_id: int, /, **kwargs) -> ShiftType:
         """See `POST /employers/{employerId}/shiftTypes/{shiftTypeId}
-        <https://developers.everyaction.com/van-api#employers-post-employers--employerid--shifttypes--shifttypeid>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployeridshifttypesshifttypeid>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param shift_type_id: The :code:`shiftTypeId` path parameter.
@@ -1167,7 +1199,7 @@ class Employers(EAService):
     @ea_endpoint('employers', 'post', data_type=Employer, result_factory=Employer)
     def create(self, **kwargs: EAValue) -> Employer:
         """See `POST /employers
-        <https://developers.everyaction.com/van-api#employers-post-employers>`__.
+        <https://docs.everyaction.com/reference/employers#employers-2>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. An :class:`.Employer` is
             appropriate to unpack here.
@@ -1177,7 +1209,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}/departments', 'post', data_type=Department, result_factory=Department)
     def create_department(self, employer_id: int, /, **kwargs: EAValue) -> Department:
         """See `POST /employers/{employerId}/departments
-        <https://developers.everyaction.com/van-api#employers-post-employers--employerid--departments>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployeriddepartments>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Department` is
@@ -1188,7 +1220,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}/worksites', 'post', data_type=Worksite, result_factory=Worksite)
     def create_worksite(self, employer_id: int, /, **kwargs: EAValue) -> Worksite:
         """See `POST /employers/{employer_id}/worksites
-        <https://developers.everyaction.com/van-api#employers-post-employers--employerid--worksites>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployer_idworksites>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Worksite` is
@@ -1199,7 +1231,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}', 'get', query_arg_keys={'$expand'}, result_factory=Employer)
     def get(self, employer_id: int, /, **kwargs: EAValue) -> Employer:
         """See `GET /employers/{employerId}
-        <https://developers.everyaction.com/van-api#employers-get-employers--employerid>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployerid>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1216,7 +1248,7 @@ class Employers(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs) -> List[Employer]:
         """See `GET /employers
-        <https://developers.everyaction.com/van-api#employers-get-employers>`__.
+        <https://docs.everyaction.com/reference/employers#employers-1>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1226,7 +1258,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}', 'patch', prop_keys={'isMyOrganization'}, result_factory=Employer)
     def update(self, employer_id: int, /, **kwargs: EAValue) -> Employer:
         """See `PATCH /employers/{employerId}
-        <https://developers.everyaction.com/van-api#employers-patch-employers--employerid>`__.
+        <https://docs.everyaction.com/reference/employers#employersemployerid-1>`__.
 
         :param employer_id: The :code:`employerId` path parameter.
         :param kwargs: The applicable query and JSON arguments for the request.
@@ -1236,13 +1268,13 @@ class Employers(EAService):
 
 class EventTypes(EAService):
     """Represents the
-    `Event Types <https://developers.everyaction.com/van-api#eventtypes>`__ service.
+    `Event Types <https://docs.everyaction.com/reference/event-types>`__ service.
     """
 
     @ea_endpoint('events/types/{eventTypeId}', 'get', result_factory=EventType)
     def get(self, type_id: int, /) -> EventType:
         """See `GET /events/types/{eventTypeId}
-        <https://developers.everyaction.com/van-api#event-types-get-events-types--eventtypeid>`__.
+        <https://docs.everyaction.com/reference/events#eventstypeseventtypeid>`__.
 
         :param type_id: The :code:`eventTypeId` path parameter.
         :returns: The resulting :class:`.EventType` object.
@@ -1250,8 +1282,8 @@ class EventTypes(EAService):
 
     @ea_endpoint('events/types', 'get', result_array=True, result_factory=EventType)
     def list(self) -> List[EventType]:
-        """See
-        `GET /events/types <https://developers.everyaction.com/van-api#event-types-get-events-types>`__
+        """See `GET /events/types
+        <https://docs.everyaction.com/reference/events#eventstypes>`__.
 
         :returns: List of the resulting :class:`.EventType` objects.
         """
@@ -1259,13 +1291,13 @@ class EventTypes(EAService):
 
 class Events(EAService):
     """Represents the
-    `Events <https://developers.everyaction.com/van-api#events>`__ service.
+    `Events <https://docs.everyaction.com/reference/events>`__ service.
     """
 
     @ea_endpoint('events/{eventId}/shifts', 'post', data_type=EventShift, result_factory=EventShift)
     def add_shift(self, event_id: int, /, **kwargs: EAValue) -> EventShift:
         """See `POST /events/{eventId}/shifts
-        <https://developers.everyaction.com/van-api#events-post-events--eventid--shifts>`__.
+        <https://docs.everyaction.com/reference/events#eventseventidshifts>`__.
 
         :param event_id: The :code:`eventId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.EventShift` is
@@ -1276,7 +1308,7 @@ class Events(EAService):
     @ea_endpoint('events', 'post', data_type=Event, result_factory=Event)
     def create(self, **kwargs: EAValue) -> Event:
         """See `POST /events
-        <https://developers.everyaction.com/van-api#events-post-events>`__.
+        <https://docs.everyaction.com/reference/events#events-2>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Event` is appropriate to
             unpack here.
@@ -1286,7 +1318,7 @@ class Events(EAService):
     @ea_endpoint('events/{eventId}', 'delete')
     def delete(self, event_id: int, /) -> None:
         """See `DELETE /events/{eventId}
-        <https://developers.everyaction.com/van-api#events-delete-events--eventid>`__.
+        <https://docs.everyaction.com/reference/events#eventseventid-2>`__.
 
         :param event_id: The :code:`eventId` path parameter.
         """
@@ -1294,7 +1326,7 @@ class Events(EAService):
     @ea_endpoint('events/{eventId}', 'get', query_arg_keys={'$expand'}, result_factory=Event)
     def get(self, event_id: int, /, **kwargs: EAValue) -> Event:
         """See `GET /events/{eventId}
-        <https://developers.everyaction.com/van-api#events-get-events--eventid>`__.
+        <https://docs.everyaction.com/reference/events#eventseventid>`__.
 
         :param event_id: The :code:`eventId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1321,7 +1353,7 @@ class Events(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Event]:
         """See `GET /events
-        <https://developers.everyaction.com/van-api#events-get-events>`__.
+        <https://docs.everyaction.com/reference/events#events-1>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1338,7 +1370,7 @@ class Events(EAService):
     )
     def patch(self, event_id: int, /, **kwargs: EAValue) -> None:
         """See `PATCH /events/{eventId}
-        <https://developers.everyaction.com/van-api#events-patch-events--eventid>`__. For
+        <https://docs.everyaction.com/reference/events#eventseventid-1>`__.
         convenience, the `eventId` parameter need only be specified as a positional/path parameter.
 
         :param event_id: The :code:`eventId` path parameter.
@@ -1348,7 +1380,7 @@ class Events(EAService):
     @ea_endpoint('events/{eventId}', 'put', data_type=Event, has_result=False)
     def update(self, event_id: int, /, **kwargs: EAValue) -> None:
         """See `PUT /events/{eventId}
-        <https://developers.everyaction.com/van-api#events-put-events--eventid>`__.
+        <https://docs.everyaction.com/reference/events#eventseventid-3>`__.
 
         :param event_id: The :code:`eventId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Event` is
@@ -1358,13 +1390,13 @@ class Events(EAService):
 
 class ExportJobs(EAService):
     """Represents the
-    `Export Jobs <https://developers.everyaction.com/van-api#exportjobs>`__ service.
+    `Export Jobs <https://docs.everyaction.com/reference/export-jobs>`__ service.
     """
 
     @ea_endpoint('exportJobs', 'post', prop_keys={'savedListId', 'type', 'webhookUrl'}, result_factory=ExportJob)
     def create(self, **kwargs: EAValue) -> ExportJob:
         """See `POST /exportJobs
-        <https://developers.everyaction.com/van-api#export-jobs-post-exportjobs>`__.
+        <https://docs.everyaction.com/reference/export-jobs#exportjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: The resulting :class:`.ExportJob` object.
@@ -1373,7 +1405,7 @@ class ExportJobs(EAService):
     @ea_endpoint('exportJobs/{exportJobId}', 'get', result_factory=ExportJob)
     def get(self, job_id: int, /) -> ExportJob:
         """See `GET /exportJobs/{exportJobId}
-        <https://developers.everyaction.com/van-api#export-jobs-get-exportjobs--exportjobid>`__.
+        <https://docs.everyaction.com/reference/export-jobs#exportjobsexportjobid>`__.
 
         :param job_id: The :code:`exportJobId` path parameter.
         :returns: The resulting :class:`.ExportJob` object.
@@ -1382,7 +1414,7 @@ class ExportJobs(EAService):
     @ea_endpoint('exportJobTypes', 'get', paginated=True, result_factory=ExportJobType)
     def types(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ExportJobType]:
         """See `GET /exportJobTypes
-        <https://developers.everyaction.com/van-api#export-jobs-get-exportjobtypes>`__.
+        <https://docs.everyaction.com/reference/export-job-types#exportjobtypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1392,7 +1424,7 @@ class ExportJobs(EAService):
 
 class ExtendedSourceCodes(EAService):
     """Represents the
-    `Extended Source Codes <https://developers.everyaction.com/van-api#extendedsourcecodes>`__ service.
+    `Extended Source Codes <https://docs.everyaction.com/reference/extended-source-codes>`__ service.
     """
 
     @ea_endpoint(
@@ -1405,7 +1437,7 @@ class ExtendedSourceCodes(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ExtendedSourceCode]:
         """See `GET /codes/extendedSourceCodes
-        <https://developers.everyaction.com/van-api#extended-source-codes-get-codes-extendedsourcecodes>`__.
+        <https://docs.everyaction.com/reference/codes#codesextendedsourcecodes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1415,13 +1447,13 @@ class ExtendedSourceCodes(EAService):
 
 class FileLoadingJobs(EAService):
     """Represents the
-    `File Loading Jobs <https://developers.everyaction.com/van-api#fileloadingjobs>`__ service.
+    `File Loading Jobs <https://docs.everyaction.com/reference/file-loading-jobs>`__ service.
     """
 
     @ea_endpoint('fileLoadingJobs', 'post', data_type=FileLoadingJob, result_factory=FileLoadingJob)
     def create(self, **kwargs: EAValue) -> FileLoadingJob:
         """See `POST /fileLoadingJobs
-        <https://developers.everyaction.com/van-api#file-loading-jobs-post-fileloadingjobs>`__.
+        <https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.FileLoadingJob` is
             appropriate to unpack here.
@@ -1431,7 +1463,7 @@ class FileLoadingJobs(EAService):
     @ea_endpoint('fileLoadingJobs/{jobId}', 'get', result_factory=FileLoadingJob)
     def get(self, job_id: int, /) -> FileLoadingJob:
         """See `GET /fileLoadingJobs/{jobId}
-        <https://developers.everyaction.com/van-api#file-loading-jobs-get-fileloadingjobs--jobid>`__.
+        <https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobsjobid>`__.
 
         :param job_id: The :code:`jobId` path parameter.
         :returns: The resulting :class:`.FileLoadingJob` object.
@@ -1440,13 +1472,13 @@ class FileLoadingJobs(EAService):
 
 class FinancialBatches(EAService):
     """Represents the
-    `Financial Batches <https://developers.everyaction.com/van-api#financialbatches>`__ service.
+    `Financial Batches <https://docs.everyaction.com/reference/financial-batches>`__ service.
     """
 
     @ea_endpoint('financialBatches', 'post', data_type=FinancialBatch, result_factory=FinancialBatch)
     def create(self, **kwargs: EAValue) -> FinancialBatch:
         """See `POST /financialBatches
-        <https://developers.everyaction.com/van-api#financial-batches-post-financialbatches>`__.
+        <https://docs.everyaction.com/reference/financial-batches#financialbatches-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.FinancialBatch` is
             appropriate to unpack here.
@@ -1456,7 +1488,7 @@ class FinancialBatches(EAService):
     @ea_endpoint('financialBatches/{financialBatchId}', 'get', result_factory=FinancialBatch)
     def get(self, batch_id: int, /) -> FinancialBatch:
         """See `GET /financialBatches/{financialBatchId}
-        <https://developers.everyaction.com/van-api#financial-batches-get-financialbatches--financialbatchid>`__.
+        <https://docs.everyaction.com/reference/financial-batches#financialbatchesfinancialbatchid>`__.
 
         :param batch_id: The :code:`financialBatchId` path parameter.
         :returns: The resulting :class:`.FinancialBatch` object.
@@ -1471,7 +1503,7 @@ class FinancialBatches(EAService):
     )
     def list(self, **kwargs: EAValue) -> List[FinancialBatch]:
         """See `GET /financialBatches
-        <https://developers.everyaction.com/van-api#financial-batches-get-financialbatches>`__.
+        <https://docs.everyaction.com/reference/financial-batches#financialbatches>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.FinancialBatch` objects.
@@ -1480,15 +1512,13 @@ class FinancialBatches(EAService):
 
 class Folders(EAService):
     """Represents the
-    `Folders <https://developers.everyaction.com/van-api#folders>`__ service.
+    `Folders <https://docs.everyaction.com/reference/folders>`__ service.
     """
-
-    # TODO: Documentation missing at https://developers.everyaction.com/van-api#folders-overview.
 
     @ea_endpoint('folders/{folderId}', 'get', result_factory=Folder)
     def get(self, folder_id: int, /) -> Folder:
         """See `GET /folders/{folderId}
-        <https://developers.everyaction.com/van-api#folders-get-folders--folderid>`__.
+        <https://docs.everyaction.com/reference/folders#foldersfolderid>`__.
 
         :param folder_id: The :code:`folderId` path parameter.
         """
@@ -1496,8 +1526,8 @@ class Folders(EAService):
     @ea_endpoint('folders', 'get', paginated=True, result_factory=Folder)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Folder]:
         """See `GET /folders
-        <https://developers.everyaction.com/van-api#folders-get-folders>`__.
-        
+        <https://docs.everyaction.com/reference/folders#folders>`__.
+
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
         """
@@ -1505,13 +1535,13 @@ class Folders(EAService):
 
 class JobClasses(EAService):
     """Represents the
-    `JobClasses <https://developers.everyaction.com/van-api#job-classes>`__ service.
+    `JobClasses <https://docs.everyaction.com/reference/job-classes>`__ service.
     """
 
     @ea_endpoint('jobClasses', 'post', data_type=JobClass, result_factory=JobClass)
     def create(self, **kwargs: EAValue) -> JobClass:
         """See `POST /jobClasses
-        <https://developers.everyaction.com/van-api#job-classes-post-jobclasses>`__.
+        <https://docs.everyaction.com/reference/job-classes#jobclasses-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.JobClass` is appropriate
             to unpack here.
@@ -1521,7 +1551,7 @@ class JobClasses(EAService):
     @ea_endpoint('jobClasses/{job_class_id}', 'get', result_factory=JobClass)
     def get(self, job_class_id: int, /) -> JobClass:
         """See `GET /jobClasses/{jobClassId}
-        <https://developers.everyaction.com/van-api#job-classes-get-jobclasses--jobclassid>`__.
+        <https://docs.everyaction.com/reference/job-classes#jobclassesjobclassid>`__.
 
         :param job_class_id: The :code:`jobClassId` path parameter.
         :returns: The resulting :class:`.JobClass`.
@@ -1530,7 +1560,7 @@ class JobClasses(EAService):
     @ea_endpoint('/jobClasses', 'get', paginated=True, result_factory=JobClass)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[JobClass]:
         """See `GET /jobClasses
-        <https://developers.everyaction.com/van-api#job-classes-get-jobclasses>`__.
+        <https://docs.everyaction.com/reference/job-classes#jobclasses>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1540,13 +1570,13 @@ class JobClasses(EAService):
 
 class Locations(EAService):
     """Represents the
-    `Locations <https://developers.everyaction.com/van-api#locations>`__ service.
+    `Locations <https://docs.everyaction.com/reference/locations>`__ service.
     """
 
     @ea_endpoint('locations', 'post', data_type=Location, result_factory=Location)
     def create(self, **kwargs: EAValue) -> Location:
         """See `POST /locations
-        <https://developers.everyaction.com/van-api#locations-post-locations>`__.
+        <https://docs.everyaction.com/reference/locations#locations-2>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Location` is
             appropriate to unpack here.
@@ -1556,7 +1586,7 @@ class Locations(EAService):
     @ea_endpoint('locations/{locationId}', 'delete', has_result=False)
     def delete(self, location_id: int, /) -> None:
         """See `DELETE /locations/{locationId}
-        <https://developers.everyaction.com/van-api#locations-delete-locations--locationid>`__.
+        <https://docs.everyaction.com/reference/locations#locationslocationid-1>`__.
 
         :param location_id: The :code:`locationId` path parameter.
         """
@@ -1564,7 +1594,7 @@ class Locations(EAService):
     @ea_endpoint('locations/findOrCreate', 'post', data_type=Location, result_factory=Location, exclude_keys={'id'})
     def find_or_create(self, **kwargs: EAValue) -> Location:
         """See `POST /locations/findOrCreate
-        <https://developers.everyaction.com/van-api#locations-post-locations-findorcreate>`__.
+        <https://docs.everyaction.com/reference/locations#locationsfindorcreate>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Location` is
             appropriate to unpack here.
@@ -1574,7 +1604,7 @@ class Locations(EAService):
     @ea_endpoint('locations/{locationId}', 'get', result_factory=Location, exclude_keys={'id'})
     def get(self, location_id: int, /) -> Location:
         """See `GET /locations/{locationId}
-        <https://developers.everyaction.com/van-api#locations-get-locations--locationid>`__.
+        <https://docs.everyaction.com/reference/locations#locationslocationid>`__.
 
         :param location_id: The :code:`locationId` path parameter.
         :returns: The resulting :class:`.Location` object.
@@ -1590,7 +1620,7 @@ class Locations(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Location]:
         """See `GET /locations
-        <https://developers.everyaction.com/van-api#locations-get-locations>`__.
+        <https://docs.everyaction.com/reference/locations#locations-1>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1600,13 +1630,13 @@ class Locations(EAService):
 
 class MemberStatuses(EAService):
     """Represents the
-    `Member Statuses <https://developers.everyaction.com/van-api#member-statuses>`__ service.
+    `Member Statuses <https://docs.everyaction.com/reference/member-statuses>`__ service.
     """
 
     @ea_endpoint('memberStatuses', 'post', data_type=MemberStatus, result_factory=MemberStatus)
     def create(self, **kwargs: EAValue) -> MemberStatus:
         """See `POST /memberStatuses
-        <https://developers.everyaction.com/van-api#member-statuses-post-memberstatuses>`__.
+        <https://docs.everyaction.com/reference/member-statuses#memberstatuses-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.MemberStatus` is
             appropriate to unpack here.
@@ -1616,7 +1646,7 @@ class MemberStatuses(EAService):
     @ea_endpoint('memberStatuses/{member_status_id}', 'get', result_factory=MemberStatus)
     def get(self, member_status_id: int, /) -> MemberStatus:
         """See `GET /memberStatuses/{memberStatusId}
-        <https://developers.everyaction.com/van-api#member-statuses-get-memberstatuses--memberstatusid>`__.
+        <https://docs.everyaction.com/reference/member-statuses#memberstatusesmemberstatusid>`__.
 
         :param member_status_id: The :code:`member_status_id` path parameter.
         :returns: The resulting :class:`.MemberStatus` object.
@@ -1625,7 +1655,7 @@ class MemberStatuses(EAService):
     @ea_endpoint('memberStatuses', 'get', paginated=True, result_factory=MemberStatus)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[MemberStatus]:
         """See `GET /memberStatuses
-        <https://developers.everyaction.com/van-api#member-statuses-get-memberstatuses>`__.
+        <https://docs.everyaction.com/reference/member-statuses#memberstatuses>`__.
 
         :param limit: Maximum number of records to get for the request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1636,13 +1666,13 @@ class MemberStatuses(EAService):
 
 class MiniVANExports(EAService):
     """Represents the
-    `MiniVANExports <https://developers.everyaction.com/van-api#minivanexports>`__ service.
+    `MiniVANExports <https://docs.everyaction.com/reference/minivan-exports>`__ service.
     """
 
     @ea_endpoint('minivanExports/{minivanExportId}', 'get', result_factory=MiniVANExport)
     def get(self, export_id: int, /) -> MiniVANExport:
         """See `GET /minivanExports/{minivanExportId}
-        <https://developers.everyaction.com/van-api#minivan-exports-get-minivanexports--minivanexportid>`__.
+        <https://docs.everyaction.com/reference/minivan-exports#minivanexportsminivanexportid>`__.
 
         :param export_id: The :code:`minivanExportId` path parameter.
         :returns: The resulting :class:`.MiniVANExport` object.
@@ -1658,7 +1688,7 @@ class MiniVANExports(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[MiniVANExport]:
         """See `GET /minivanExports
-        <https://developers.everyaction.com/van-api#minivan-exports-get-minivanexports>`__.
+        <https://docs.everyaction.com/reference/minivan-exports#minivanexports>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1668,13 +1698,13 @@ class MiniVANExports(EAService):
 
 class Notes(EAService):
     """Represents the
-    `Notes <https://developers.everyaction.com/van-api#notes>`__ service.
+    `Notes <https://docs.everyaction.com/reference/notes>`__ service.
     """
 
     @ea_endpoint('notes/categories', 'get', result_array=True, result_factory=NoteCategory)
     def categories(self) -> List[NoteCategory]:
         """See `GET /notes/categories/{noteCategoryId}
-        <https://developers.everyaction.com/van-api#notes-get-notes-categories--notecategoryid>`__.
+        <https://docs.everyaction.com/reference/notes#notescategoriesnotecategoryid>`__.
 
         :returns: List of the resulting :class:`.NoteCategory` objects.
         """
@@ -1682,7 +1712,7 @@ class Notes(EAService):
     @ea_endpoint('notes/categories/{noteCategoryId}', 'get', result_factory=NoteCategory)
     def category(self, category_id: int, /) -> NoteCategory:
         """See `GET /notes/categories
-        <https://developers.everyaction.com/van-api#notes-get-notes-categories>`__.
+        <https://docs.everyaction.com/reference/notes#notescategories>`__.
 
         :param category_id: The :code:`noteCategoryId` path parameter.
         :returns: The resulting :class:`.NoteCategory` object.
@@ -1691,30 +1721,30 @@ class Notes(EAService):
     @ea_endpoint('notes/categoryTypes', 'get', result_array=True)
     def category_types(self) -> List[str]:
         """See `GET /notes/categoryTypes
-        <https://developers.everyaction.com/van-api#notes-get-notes-categorytypes>`__.
+        <https://docs.everyaction.com/reference/notes#notescategorytypes>`__.
 
         :returns: List of the names of the category types.
         """
 
 
-class OnlineActionForms(EAService):
+class OnlineActionsForms(EAService):
     """Represents the
-    `Online Action Forms <https://developers.everyaction.com/van-api#onlineactionforms>`__ service.
+    `Online Action Forms <https://docs.everyaction.com/reference/online-actions-forms>`__ service.
     """
 
-    @ea_endpoint('onlineActionsForms/{formTrackingId}', 'get', result_factory=OnlineActionForm)
+    @ea_endpoint('onlineActionsForms/{formTrackingId}', 'get', result_factory=OnlineActionsForm)
     def get(self, tracking_id: int, /):
         """See `GET /onlineActionsForms/{formTrackingId}
-        <https://developers.everyaction.com/van-api#online-actions-forms-get-onlineactionsforms--formtrackingid>`__.
+        <https://docs.everyaction.com/reference/online-actions-forms#onlineactionsformsformtrackingid>`__.
 
         :param tracking_id: The :code:`formTrackingId` path parameter.
         :returns: The resulting :class:`.OnlineActionForm` object.
         """
 
-    @ea_endpoint('onlineActionsForms', 'get', paginated=True, result_factory=OnlineActionForm)
-    def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[OnlineActionForm]:
+    @ea_endpoint('onlineActionsForms', 'get', paginated=True, result_factory=OnlineActionsForm)
+    def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[OnlineActionsForm]:
         """See `GET /onlineActionsForms
-        <https://developers.everyaction.com/van-api#online-actions-forms-get-onlineactionsforms>`__.
+        <https://docs.everyaction.com/reference/online-actions-forms#onlineactionsforms>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1724,13 +1754,13 @@ class OnlineActionForms(EAService):
 
 class Phones(EAService):
     """Represents the
-    `Phones <https://developers.everyaction.com/van-api#phones>`__ service.
+    `Phones <https://docs.everyaction.com/reference/phones>`__ service.
     """
 
     @ea_endpoint('phones/isCellStatuses', 'get', paginated=True, result_factory=IsCellStatus)
     def is_cell_statuses(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[IsCellStatus]:
         """See `GET /phones/isCellStatuses
-        <https://developers.everyaction.com/van-api#phones-get-phones-iscellstatuses>`__.
+        <https://docs.everyaction.com/reference/phones#phonesiscellstatuses>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1740,13 +1770,13 @@ class Phones(EAService):
 
 class PrintedLists(EAService):
     """Represents the
-    `Printed Lists <https://developers.everyaction.com/van-api#printedlists>`__ service.
+    `Printed Lists <https://docs.everyaction.com/reference/printed-lists>`__ service.
     """
 
     @ea_endpoint('printedLists/{printedListNumber}', 'get', result_factory=PrintedList)
     def get(self, list_number: str, /) -> PrintedList:
         """See `GET /printedLists/{printedListNumber}
-        <https://developers.everyaction.com/van-api#printed-lists-get-printedlists--printedlistnumber>`__.
+        <https://docs.everyaction.com/reference/printed-lists#printedlistsprintedlistnumber>`__.
 
         :param list_number: The :code:`printedListNumber` path parameter.
         :returns: The resulting :class:`.PrintedList` object.
@@ -1760,7 +1790,7 @@ class PrintedLists(EAService):
     )
     def list(self, **kwargs: EAValue) -> List[PrintedList]:
         """See `GET /printedLists
-        <https://developers.everyaction.com/van-api#printed-lists-get-printedlists>`__.
+        <https://docs.everyaction.com/reference/printed-lists#printedlists>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.PrintedList` objects.
@@ -1769,13 +1799,13 @@ class PrintedLists(EAService):
 
 class Relationships(EAService):
     """Represents the
-    `Relationships <https://developers.everyaction.com/van-api#relationships>`__ service.
+    `Relationships <https://docs.everyaction.com/reference/relationships>`__ service.
     """
 
     @ea_endpoint('relationships', 'get', paginated=True, result_factory=Relationship)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Relationship]:
         """See `GET /relationships
-        <https://developers.everyaction.com/van-api#relationships-get-relationships>`__.
+        <https://docs.everyaction.com/reference/relationships#relationships>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1785,13 +1815,13 @@ class Relationships(EAService):
 
 class ReportedDemographics(EAService):
     """Represents the
-    `Reported Demographics <https://developers.everyaction.com/van-api#reporteddemographics>`__ service.
+    `Reported Demographics <https://docs.everyaction.com/reference/reported-demographics>`__ service.
     """
 
     @ea_endpoint('reportedEthnicities', 'get', paginated=True, result_factory=ReportedEthnicity)
     def ethnicities(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ReportedEthnicity]:
         """See `GET /reportedEthnicities
-        <https://developers.everyaction.com/van-api#reported-demographics-get-reportedethnicities>`__.
+        <https://docs.everyaction.com/reference/reported-ethnicities#reportedethnicities>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1801,7 +1831,7 @@ class ReportedDemographics(EAService):
     @ea_endpoint('reportedGenders', 'get', paginated=True, result_factory=ReportedGender)
     def genders(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ReportedGender]:
         """See `GET /reportedGenders
-        <https://developers.everyaction.com/van-api#reported-demographics-get-reportedgenders>`__.
+        <https://docs.everyaction.com/reference/reported-genders#reportedgenders>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1816,7 +1846,7 @@ class ReportedDemographics(EAService):
         **kwargs: EAValue
     ) -> List[ReportedLanguagePreference]:
         """See `GET /reportedLanguagePreferences
-        <https://developers.everyaction.com/van-api#reported-demographics-get-reportedlanguagepreferences>`__.
+        <https://docs.everyaction.com/reference/reported-language-preferences#reportedlanguagepreferences>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1826,7 +1856,7 @@ class ReportedDemographics(EAService):
     @ea_endpoint('pronouns', 'get', paginated=True, result_factory=PreferredPronoun)
     def pronouns(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[PreferredPronoun]:
         """See `GET /pronouns
-        <https://developers.everyaction.com/van-api#reported-demographics-get-pronouns>`__.
+        <https://docs.everyaction.com/reference/pronouns#pronouns>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1836,7 +1866,7 @@ class ReportedDemographics(EAService):
     @ea_endpoint('reportedRaces', 'get', paginated=True, result_factory=ReportedRace)
     def races(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ReportedRace]:
         """See `GET /reportedRaces
-        <https://developers.everyaction.com/van-api#reported-demographics-get-reportedraces>`__.
+        <https://docs.everyaction.com/reference/reported-races#reportedraces>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1846,7 +1876,7 @@ class ReportedDemographics(EAService):
     @ea_endpoint('reportedSexualOrientations', 'get', paginated=True, result_factory=ReportedSexualOrientation)
     def sexual_orientations(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ReportedSexualOrientation]:
         """See `GET /reportedSexualOrientations
-        <https://developers.everyaction.com/van-api#reported-demographics-get-reportedsexualorientations>`__.
+        <https://docs.everyaction.com/reference/reported-sexual-orientations#reportedsexualorientations>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1856,13 +1886,13 @@ class ReportedDemographics(EAService):
 
 class SavedLists(EAService):
     """Represents the
-    `Saved Lists <https://developers.everyaction.com/van-api#savedlists>`__ service.
+    `Saved Lists <https://docs.everyaction.com/reference/saved-lists>`__ service.
     """
 
     @ea_endpoint('savedLists/{savedListId}', 'get', result_factory=SavedList)
     def get(self, list_id: int, /) -> SavedList:
         """See `GET /savedLists/{savedListId}
-        <https://developers.everyaction.com/van-api#saved-lists-get-savedlists--savedlistid>`__.
+        <https://docs.everyaction.com/reference/saved-lists#savedlistssavedlistid>`__.
 
         :param list_id: The :code:`savedListId` path parameter.
         :returns: The resulting :class:`.SavedList` object.
@@ -1877,23 +1907,30 @@ class SavedLists(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[SavedList]:
         """See `GET /savedLists
-        <https://developers.everyaction.com/van-api#saved-lists-get-savedlists>`__.
+        <https://docs.everyaction.com/reference/saved-lists#savedlists>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: List of the resulting :class:`.SavedList` objects.
         """
 
+    @ea_endpoint('savedLists/smsSync', 'post', prop_keys={'syncPeriodEnd', 'syncPeriodStart'}, result_factory=SavedList)
+    def sms_sync(self, **kwargs: EAValue) -> SavedList:
+        """See `POST /savedLists/smsSync
+        <https://docs.everyaction.com/reference/saved-lists#smssync>`__>`__.
+
+        """
+
 
 class ScheduleTypes(EAService):
     """Represents the
-    `Schedule Types <https://developers.everyaction.com/van-api#schedule-types>`__ service.
+    `Schedule Types <https://docs.everyaction.com/reference/schedule-types>`__ service.
     """
 
     @ea_endpoint('scheduleTypes', 'post', data_type=ScheduleType, result_factory=ScheduleType)
     def create(self, **kwargs: EAValue) -> ScheduleType:
         """See `POST /scheduleTypes
-        <https://developers.everyaction.com/van-api#schedule-types-post-scheduletypes>`__.
+        <https://docs.everyaction.com/reference/schedule-types#scheduletypes-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.ScheduleType` is
             appropriate to unpack here.
@@ -1903,7 +1940,7 @@ class ScheduleTypes(EAService):
     @ea_endpoint('scheduleTypes/{schedule_type_id}', 'get', result_factory=ScheduleType)
     def get(self, schedule_type_id: int, /) -> ScheduleType:
         """See `GET /scheduleTypes/{scheduleTypeId}
-        <https://developers.everyaction.com/van-api#schedule-types-get-scheduletypes>`__.
+        <https://docs.everyaction.com/reference/schedule-types#scheduletypesscheduletypeid>`__.
 
         :param schedule_type_id: The :code:`scheduleTypeId` path parameter.
         :returns: The resulting :class:`.ScheduleType` object.
@@ -1912,7 +1949,7 @@ class ScheduleTypes(EAService):
     @ea_endpoint('scheduleTypes', 'get', paginated=True, result_factory=ScheduleType)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ScheduleType]:
         """See `GET /scheduleTypes
-        <https://developers.everyaction.com/van-api#schedule-types-get-scheduletypes>`__.
+        <https://docs.everyaction.com/reference/schedule-types#scheduletypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1922,13 +1959,13 @@ class ScheduleTypes(EAService):
 
 class ScoreUpdates(EAService):
     """Represents the
-    `Score Updates <https://developers.everyaction.com/van-api#scoreupdates>`__ service.
+    `Score Updates <https://docs.everyaction.com/reference/score-updates>`__ service.
     """
 
     @ea_endpoint('scoreUpdates/{scoreUpdateId}', 'get', result_factory=ScoreUpdate)
     def get(self, update_id: int, /) -> ScoreUpdate:
         """See `GET /scoreUpdates/{scoreUpdateId}
-        <https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid>`__.
+        <https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid>`__.
 
         :param update_id: The :code:`scoreUpdateId` path parameter.
         :returns: The resulting :class:`.ScoreUpdate` object.
@@ -1943,7 +1980,7 @@ class ScoreUpdates(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ScoreUpdate]:
         """See `GET /scoreUpdates
-        <https://developers.everyaction.com/van-api#score-updates-get-scoreupdates>`__.
+        <https://docs.everyaction.com/reference/score-updates#scoreupdates>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1953,7 +1990,7 @@ class ScoreUpdates(EAService):
     @ea_endpoint('scoreUpdates/{scoreUpdateId}', 'patch', prop_keys={'loadStatus'}, has_result=False)
     def patch(self, update_id: int, /, **kwargs: EAValue) -> None:
         """See `PATCH /scoreUpdates/{scoreUpdateId}
-        <https://developers.everyaction.com/van-api#score-updates-patch-scoreupdates--scoreupdateid>`__.
+        <https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid-1>`__.
 
         :param update_id: The :code:`scoreUpdateId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1962,13 +1999,13 @@ class ScoreUpdates(EAService):
 
 class Scores(EAService):
     """Represents the
-    `Scores <https://developers.everyaction.com/van-api#scores>`__ service.
+    `Scores <https://docs.everyaction.com/reference/scores>`__ service.
     """
 
     @ea_endpoint('scores/{scoreId}', 'get', result_factory=Score)
     def get(self, score_id: int, /) -> Score:
         """See `GET /scores/{scoreId}
-        <https://developers.everyaction.com/van-api#scores-get-scores--scoreid>`__.
+        <https://docs.everyaction.com/reference/scores#scoresscoreid>`__.
 
         :param score_id: The :code:`scoreId` path parameter.
         :returns: The resulting :class:`.Score` object.
@@ -1977,7 +2014,7 @@ class Scores(EAService):
     @ea_endpoint('scores', 'get', paginated=True, result_factory=Score)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Score]:
         """See `GET /scores
-        <https://developers.everyaction.com/van-api#scores-get-scores>`__.
+        <https://docs.everyaction.com/reference/scores#scores>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1985,15 +2022,50 @@ class Scores(EAService):
         """
 
 
+class ShiftTypes(EAService):
+    """Represents the
+    `Shift Types <https://docs.everyaction.com/reference/shift-types>`__ service.
+    """
+
+    @ea_endpoint('shiftTypes', 'post', data_type=ShiftType, result_factory=ShiftType)
+    def create(self, **kwargs: EAValue) -> ShiftType:
+        """See `POST /shiftTypes
+        <https://docs.everyaction.com/reference/shift-types#shifttypes-1>`__.
+
+        :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.ShiftType` is
+            appropriate to unpack here.
+        :returns: The created :class:`.ShiftType` object.
+        """
+
+    @ea_endpoint('shiftTypes/{shift_type_id}', 'get', result_factory=ShiftType)
+    def get(self, shift_type_id: int, /) -> ShiftType:
+        """See `GET /shiftTypes/{shiftTypeId}
+        <https://docs.everyaction.com/reference/shift-types#shifttypesshifttypeid>`__.
+
+        :param shift_type_id: The :code:`shiftTypeId` path parameter.
+        :returns: The resulting :class:`.ShiftType` object.
+        """
+
+    @ea_endpoint('shiftTypes', 'get', paginated=True, result_factory=ShiftType)
+    def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ShiftType]:
+        """See `GET /shiftTypes
+        <https://docs.everyaction.com/reference/shift-types#shifttypes>`__.
+
+        :param limit: Maximum number of records to get for this request.
+        :param kwargs: The applicable query arguments and JSON data for the request.
+        :returns: List of the resulting :class:`.ShiftType` objects.
+        """
+
+
 class Signups(EAService):
     """Represents the
-    `Signups <https://developers.everyaction.com/van-api#signups>`__ service.
+    `Signups <https://docs.everyaction.com/reference/signups>`__ service.
     """
 
     @ea_endpoint('signups', 'post', data_type=Signup, result_factory=Signup)
     def create_or_update(self, **kwargs: EAValue) -> Signup:
         """See `POST /signups
-        <https://developers.everyaction.com/van-api#signups-post-signups>`__.
+        <https://docs.everyaction.com/reference/signups#signups-2>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Signup` is
             appropriate to unpack here.
@@ -2003,7 +2075,7 @@ class Signups(EAService):
     @ea_endpoint('signups/{eventSignupId}', 'delete', has_result=False)
     def delete(self, signup_id: int, /) -> None:
         """See `DELETE /signups/{eventSignupId}
-        <https://developers.everyaction.com/van-api#signups-delete-signups--eventsignupid>`__.
+        <https://docs.everyaction.com/reference/signups#signupseventsignupid-2>`__.
 
         :param signup_id: The :code:`eventSignupId` path parameter.
         """
@@ -2011,7 +2083,7 @@ class Signups(EAService):
     @ea_endpoint('signups/{eventSignupId}', 'get', result_factory=Signup)
     def get(self, signup_id: int, /) -> Signup:
         """See `GET /signups/{eventSignupId}
-        <https://developers.everyaction.com/van-api#signups-get-signups--eventsignupid>`__.
+        <https://docs.everyaction.com/reference/signups#signupseventsignupid-1>`__.
 
         :param signup_id: The :code:`eventSignupId` path parameter.
         :returns: The resulting :class:`.Signup` object.
@@ -2020,7 +2092,7 @@ class Signups(EAService):
     @ea_endpoint('signups', 'get', query_arg_keys={'eventId', 'vanId'}, paginated=True, result_factory=Signup)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Signup]:
         """See `GET /signups
-        <https://developers.everyaction.com/van-api#signups-get-signups>`__.
+        <https://docs.everyaction.com/reference/signups#signups-1>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2036,7 +2108,7 @@ class Signups(EAService):
     )
     def statuses(self, **kwargs: EAValue) -> List[Status]:
         """See `GET /signups/statuses
-        <https://developers.everyaction.com/van-api#signups-get-signups-statuses>`__.
+        <https://docs.everyaction.com/reference/signups#signupsstatuses>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request.
         :returns: The resulting :class:`.Status` objects.
@@ -2045,7 +2117,7 @@ class Signups(EAService):
     @ea_endpoint('signups/{eventSignupId}', 'put', data_type=Signup, has_result=False)
     def update(self, signup_id: int, /, **kwargs: EAValue) -> None:
         """See `PUT /signups/{eventSignupId}
-        <https://developers.everyaction.com/van-api#signups-put-signups--eventsignupid>`__.
+        <https://docs.everyaction.com/reference/signups#signupseventsignupid>`__.
 
         :param signup_id: The :code:`eventSignupId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Signup` is
@@ -2053,50 +2125,15 @@ class Signups(EAService):
         """
 
 
-class ShiftTypes(EAService):
-    """Represents the
-    `Shift Types <https://developers.everyaction.com/van-api#shift-types>`__ service.
-    """
-
-    @ea_endpoint('shiftTypes', 'post', data_type=ShiftType, result_factory=ShiftType)
-    def create(self, **kwargs: EAValue) -> ShiftType:
-        """See `POST /shiftTypes
-        <https://developers.everyaction.com/van-api#shift-types-post-shifttypes>`__.
-
-        :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.ShiftType` is
-            appropriate to unpack here.
-        :returns: The created :class:`.ShiftType` object.
-        """
-
-    @ea_endpoint('shiftTypes/{shift_type_id}', 'get', result_factory=ShiftType)
-    def get(self, shift_type_id: int, /) -> ShiftType:
-        """See `GET /shiftTypes/{shiftTypeId}
-        <https://developers.everyaction.com/van-api#shift-types-get-shifttypes--shifttypeid>`__.
-
-        :param shift_type_id: The :code:`shiftTypeId` path parameter.
-        :returns: The resulting :class:`.ShiftType` object.
-        """
-
-    @ea_endpoint('shiftTypes', 'get', paginated=True, result_factory=ShiftType)
-    def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[ShiftType]:
-        """See `GET /shiftTypes
-        <https://developers.everyaction.com/van-api#shift-types>`__.
-
-        :param limit: Maximum number of records to get for this request.
-        :param kwargs: The applicable query arguments and JSON data for the request.
-        :returns: List of the resulting :class:`.ShiftType` objects.
-        """
-
-
 class Stories(EAService):
     """Represents the
-    `Stories <https://developers.everyaction.com/van-api#stories>`__ service.
+    `Stories <https://docs.everyaction.com/reference/stories>`__ service.
     """
 
     @ea_endpoint('stories', 'post', data_type=Story, result_factory=Story)
     def create(self, **kwargs: EAValue) -> Story:
         """See `POST /stories
-        <https://developers.everyaction.com/van-api#stories-post-stories>`__.
+        <https://docs.everyaction.com/reference/stories#stories>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Story` is
             appropriate to unpack here.
@@ -2106,7 +2143,7 @@ class Stories(EAService):
     @ea_endpoint('stories/{storyId}', 'get', result_factory=Story)
     def get(self, story_id: int, /) -> Story:
         """See `GET /stories/{storyId}
-        <https://developers.everyaction.com/van-api#stories-get-stories--storyid>`__.
+        <https://docs.everyaction.com/reference/stories#storiesstoryid>`__.
 
         :param story_id: The :code:`storyId` path parameter.
         :returns: The resulting :class:`.Story` object.
@@ -2115,13 +2152,13 @@ class Stories(EAService):
 
 class SupporterGroups(EAService):
     """Represents the
-    `Supporter Groups <https://developers.everyaction.com/van-api#supportergroups>`__ service.
+    `Supporter Groups <https://docs.everyaction.com/reference/supporter-groups>`__ service.
     """
 
     @ea_endpoint('supporterGroups/{supporterGroupId}/people/{vanId}', 'put', has_result=False)
     def add_person(self, group_id: int, van_id: int, /) -> None:
         """See `PUT /supporterGroups/{supporterGroupId}/people/{vanId}
-        <https://developers.everyaction.com/van-api#supporter-groups-put-supportergroups--supportergroupid--people--vanid>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroupssupportergroupidpeoplevanid>`__.
 
         :param group_id: The :code:`groupId` path parameter.
         :param van_id: The :code:`vanId` path parameter.
@@ -2130,7 +2167,7 @@ class SupporterGroups(EAService):
     @ea_endpoint('supporterGroups', 'post', data_type=SupporterGroup, result_factory=SupporterGroup)
     def create(self, **kwargs: EAValue) -> SupporterGroup:
         """See `POST /supporterGroups
-        <https://developers.everyaction.com/van-api#supporter-groups-post-supportergroups>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroups-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.SupporterGroup` is
             appropriate to unpack here.
@@ -2140,7 +2177,7 @@ class SupporterGroups(EAService):
     @ea_endpoint('supporterGroups/{supporterGroupId}', 'delete', has_result=False)
     def delete(self, group_id: int, /) -> None:
         """See `DELETE /supporterGroups/{supporterGroupId}
-        <https://developers.everyaction.com/van-api#supporter-groups-delete-supportergroups--supportergroupid>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroupssupportergroupid-1>`__.
 
         :param group_id: The :code:`supporterGroupId` path parameter.
         """
@@ -2148,7 +2185,7 @@ class SupporterGroups(EAService):
     @ea_endpoint('supporterGroups/{supporterGroupId}', 'get', result_factory=SupporterGroup)
     def get(self, group_id: int, /) -> SupporterGroup:
         """See `GET /supporterGroups/{supporterGroupId}
-        <https://developers.everyaction.com/van-api#supporter-groups-get-supportergroups--supportergroupid>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroupssupportergroupid-1>`__.
 
         :param group_id: The :code:`supporterGroupId` path parameter.
         :returns: The resulting :class:`.SupporterGroup` object.
@@ -2157,7 +2194,7 @@ class SupporterGroups(EAService):
     @ea_endpoint('supporterGroups', 'get', paginated=True, result_factory=SupporterGroup)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[SupporterGroup]:
         """See `GET /supporterGroups
-        <https://developers.everyaction.com/van-api#supporter-groups-get-supportergroups>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroups>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2167,7 +2204,7 @@ class SupporterGroups(EAService):
     @ea_endpoint('supporterGroups/{supporterGroupId}/people/{vanId}', 'delete', has_result=False)
     def remove_person(self, group_id: int, van_id: int, /) -> None:
         """See `DELETE /supporterGroups/{supporterGroupId}/people/{vanId}
-        <https://developers.everyaction.com/van-api#supporter-groups-delete-supportergroups--supportergroupid--people--vanid>`__.
+        <https://docs.everyaction.com/reference/supporter-groups#supportergroupssupportergroupidpeoplevanid>`__.
 
         :param group_id: The :code:`groupId` path parameter.
         :param van_id: The :code:`vanId` path parameter.
@@ -2176,13 +2213,13 @@ class SupporterGroups(EAService):
 
 class SurveyQuestions(EAService):
     """Represents the
-    `Survey Questions <https://developers.everyaction.com/van-api#surveyquestions>`__ service.
+    `Survey Questions <https://docs.everyaction.com/reference/survey-questions>`__ service.
     """
 
     @ea_endpoint('surveyQuestions/{surveyQuestionId}', 'get', result_factory=SurveyQuestion)
     def get(self, question_id: Union[int, str], /) -> SurveyQuestion:
         """See `GET /surveyQuestions/{surveyQuestionId}
-        <https://developers.everyaction.com/van-api#survey-questions-get-surveyquestions--surveyquestionid>`__.
+        <https://docs.everyaction.com/reference/survey-questions#surveyquestionssurveyquestionid>`__.
 
         :param question_id: The :code:`surveyQuestionId` path parameter.
         :returns: The resulting :class:`.SurveyQuestion` object.
@@ -2197,7 +2234,7 @@ class SurveyQuestions(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[SurveyQuestion]:
         """See `GET /surveyQuestions
-        <https://developers.everyaction.com/van-api#survey-questions-get-surveyquestions>`__.
+        <https://docs.everyaction.com/reference/survey-questions#surveyquestions>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2207,13 +2244,13 @@ class SurveyQuestions(EAService):
 
 class TargetExportJobs(EAService):
     """Represents the
-    `Target Export Jobs <https://developers.everyaction.com/van-api#targetexportjobs>`__ service.
+    `Target Export Jobs <https://docs.everyaction.com/reference/target-export-jobs>`__ service.
     """
 
     @ea_endpoint('targetExportJobs', 'post', data_type=TargetExportJob, result_factory=TargetExportJob)
     def create(self, **kwargs: EAValue) -> TargetExportJob:
         """See `POST /targetExportJobs
-        <https://developers.everyaction.com/van-api#target-export-jobs-post-targetexportjobs>`__.
+        <https://docs.everyaction.com/reference/target-export-jobs#targetexportjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.TargetExportJob` is
             appropriate to unpack here.
@@ -2223,7 +2260,7 @@ class TargetExportJobs(EAService):
     @ea_endpoint('targetExportJobs/{exportJobId}', 'get', result_factory=TargetExportJob)
     def get(self, job_id: int, /) -> TargetExportJob:
         """See `GET /targetExportJobs/{exportJobId}
-        <https://developers.everyaction.com/van-api#target-export-jobs-get-targetexportjobs--exportjobid>`__.
+        <https://docs.everyaction.com/reference/target-export-jobs#targetexportjobsexportjobid>`__.
 
         :param job_id: The :code:`exportJobId` path parameter.
         :returns: The resulting :class:`.TargetExportJob` object.
@@ -2232,13 +2269,13 @@ class TargetExportJobs(EAService):
 
 class Targets(EAService):
     """Represents the
-    `Targets <https://developers.everyaction.com/van-api#targets>`__ service.
+    `Targets <https://docs.everyaction.com/reference/targets>`__ service.
     """
 
     @ea_endpoint('targets/{targetId}', 'get', result_factory=Target)
     def get(self, target_id: int, /) -> Target:
         """See `GET /targets/{targetId}
-        <https://developers.everyaction.com/van-api#targets-get-targets--targetid>`__.
+        <https://docs.everyaction.com/reference/targets#targetstargetid>`__.
 
         :param target_id: The :code:`targetId` path parameter.
         :returns: The resulting :class:`.Target` object.
@@ -2247,7 +2284,7 @@ class Targets(EAService):
     @ea_endpoint('targets', 'get', query_arg_keys={'status', 'type', '$expand'}, paginated=True, result_factory=Target)
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Target]:
         """See `GET /targets
-        <https://developers.everyaction.com/van-api#targets-get-targets>`__.
+        <https://docs.everyaction.com/reference/targets#targets>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2257,7 +2294,7 @@ class Targets(EAService):
 
 class Users(EAService):
     """Represents the
-    `Users <https://developers.everyaction.com/van-api#users>`__ service.
+    `Users <https://docs.everyaction.com/reference/users>`__ service.
     """
 
     @ea_endpoint(
@@ -2268,7 +2305,7 @@ class Users(EAService):
     )
     def add_district_fields(self, user_id: int, /, **kwargs: EAValue) -> List[str]:
         """See `POST /users/{userId}/districtFieldValues
-        <https://developers.everyaction.com/van-api#users-post-users--userid--districtfieldvalues>`__.
+        <https://docs.everyaction.com/reference/users#usersuseriddistrictfieldvalues-1>`__.
 
         :param user_id: The :code:`userId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2278,7 +2315,7 @@ class Users(EAService):
     @ea_endpoint('users/{userId}/districtFieldValues', 'get', result_key='districtFieldValues')
     def district_fields(self, user_id: int, /) -> List[str]:
         """See `GET /users/{userId}/districtFieldValues
-        <https://developers.everyaction.com/van-api#users-get-users--userid--districtfieldvalues>`__.
+        <https://docs.everyaction.com/reference/users#usersuseriddistrictfieldvalues>`__.
 
         :param user_id: The :code:`userId` path parameter.
         :returns: The names of the resulting district field values.
@@ -2292,7 +2329,7 @@ class Users(EAService):
     )
     def set_district_fields(self, user_id: int, /, **kwargs: EAValue) -> List[str]:
         """See `PUT /users/{userId}/districtFieldValues
-        <https://developers.everyaction.com/van-api#users-put-users--userid--districtfieldvalues>`__.
+        <https://docs.everyaction.com/reference/users#usersuseriddistrictfieldvalues-2>`__.
 
         :param user_id: The :code:`userId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2302,7 +2339,7 @@ class Users(EAService):
 
 class VoterRegistrationBatches(EAService):
     """Represents the
-    `Voter Registration Batches <https://developers.everyaction.com/van-api#voterregistrationbatches>`__ service.
+    `Voter Registration Batches <https://docs.everyaction.com/reference/voter-registration-batches>`__ service.
     """
 
     @ea_endpoint(
@@ -2313,7 +2350,7 @@ class VoterRegistrationBatches(EAService):
     )
     def add_registrants(self, batch_id: int, /, *, data: List[Registrant]) -> List[AddRegistrantsResponse]:
         """See `POST /voterRegistrationBatches/{batchId}/people
-        <https://developers.everyaction.com/van-api#voter-registration-batches-post-voterregistrationbatches--batchid--people>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesbatchidpeople>`__.
 
         :param batch_id: The :code:`batchId` path parameter.
         :param data: List of the :class:`.Registrant` objects to add.
@@ -2328,7 +2365,7 @@ class VoterRegistrationBatches(EAService):
     )
     def create(self, **kwargs: EAValue) -> VoterRegistrationBatch:
         """See `POST /voterRegistrationBatches
-        <https://developers.everyaction.com/van-api#voter-registration-batches-post-voterregistrationbatches>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatches-1>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.VoterRegistrationBatch`
             is appropriate to unpack here.
@@ -2338,7 +2375,7 @@ class VoterRegistrationBatches(EAService):
     @ea_endpoint('voterRegistrationBatches/registrationForms', 'get', paginated=True, result_factory=RegistrationForm)
     def forms(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[RegistrationForm]:
         """See `GET /voterRegistrationBatches/registrationForms
-        <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-registrationforms>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesregistrationforms>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2363,7 +2400,7 @@ class VoterRegistrationBatches(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[VoterRegistrationBatch]:
         """See `GET /voterRegistrationBatches
-        <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatches>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2373,7 +2410,7 @@ class VoterRegistrationBatches(EAService):
     @ea_endpoint('voterRegistrationBatches/programTypes', 'get', paginated=True, result_factory=ProgramType)
     def programs(self, limit: Optional[int] = None, **kwargs: EAValue) -> List[ProgramType]:
         """See `GET /voterRegistrationBatches/programTypes
-        <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-programtypes>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesprogramtypes>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2395,7 +2432,7 @@ class VoterRegistrationBatches(EAService):
         **kwargs: EAValue
     ) -> List[SupportField]:
         """See `GET /voterRegistrationBatches/states/{state}/supportedFields
-        <https://developers.everyaction.com/van-api#voter-registration-batches-get-voterregistrationbatches-states--state--supportedfields>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesstatesstatesupportedfields>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param state: The :code:`state` path parameter.
@@ -2406,7 +2443,7 @@ class VoterRegistrationBatches(EAService):
     @ea_endpoint('voterRegistrationBatches/{batchId}', 'patch', prop_keys={'status'}, has_result=False)
     def update_status(self, batch_id: int, /, **kwargs: EAValue) -> None:
         """See `PATCH /voterRegistrationBatches/{batchId}
-        <https://developers.everyaction.com/van-api#voter-registration-batches-patch-voterregistrationbatches--batchid>`__.
+        <https://docs.everyaction.com/reference/voter-registration-batches#voterregistrationbatchesbatchid>`__.
 
         :param batch_id: The :code:`batchId` path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -2415,13 +2452,13 @@ class VoterRegistrationBatches(EAService):
 
 class Worksites(EAService):
     """Represents the
-    `Worksites <https://developers.everyaction.com/van-api#worksites>`__ service.
+    `Worksites <https://docs.everyaction.com/reference/worksites>`__ service.
     """
 
     @ea_endpoint('worksites/{worksite_id}/workAreas', 'post', data_type=WorkArea, result_factory=WorkArea)
     def create_work_area(self, **kwargs: EAValue) -> WorkArea:
         """See `POST /worksites/{worksiteId}/workAreas
-        <https://developers.everyaction.com/van-api#worksites-post-worksites--worksiteid--workareas>`__.
+        <https://docs.everyaction.com/reference/worksites#worksitesworksiteidworkareas>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.WorkArea` is appropriate
             to unpack here.
@@ -2431,7 +2468,7 @@ class Worksites(EAService):
     @ea_endpoint('worksites/{worksite_id}', 'get', result_factory=Worksite)
     def get(self, worksite_id: int) -> Worksite:
         """See `GET /worksites/{worksiteId}
-        <https://developers.everyaction.com/van-api#worksites-get-worksites--worksiteid>`__.
+        <https://docs.everyaction.com/reference/worksites#worksitesworksiteid>`__.
 
         :param worksite_id: The :code:`worksiteId` path parameter.
         :returns: The resulting :class:`.Worksite` object.
@@ -2446,7 +2483,7 @@ class Worksites(EAService):
     )
     def list(self, *, limit: Optional[int] = None, **kwargs: EAValue) -> List[Worksite]:
         """See `GET /worksites
-        <https://developers.everyaction.com/van-api#worksites-get-worksites>`__.
+        <https://docs.everyaction.com/reference/worksites#worksites>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: Applicable query arguments and JSON data for the request.

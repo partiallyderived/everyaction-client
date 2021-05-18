@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>everyaction.services.ScoreUpdates &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="everyaction-services-scoreupdates">
+  <section id="everyaction-services-scoreupdates">
 <h1>everyaction.services.ScoreUpdates<a class="headerlink" href="#everyaction-services-scoreupdates" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="everyaction.services.ScoreUpdates">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">ScoreUpdates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ScoreUpdates" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.ScoreUpdates">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">ScoreUpdates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ScoreUpdates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
-<a class="reference external" href="https://developers.everyaction.com/van-api#scoreupdates">Score Updates</a> service.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/score-updates">Score Updates</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -60,20 +61,20 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.get" title="everyaction.services.ScoreUpdates.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(update_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.list" title="everyaction.services.ScoreUpdates.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates">GET /scoreUpdates</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdates">GET /scoreUpdates</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ScoreUpdates.patch" title="everyaction.services.ScoreUpdates.patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">patch</span></code></a>(update_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-patch-scoreupdates--scoreupdateid">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid-1">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="everyaction.services.ScoreUpdates.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><a class="headerlink" href="#everyaction.services.ScoreUpdates.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates--scoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ScoreUpdates.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><a class="headerlink" href="#everyaction.services.ScoreUpdates.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid">GET /scoreUpdates/{scoreUpdateId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>update_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">scoreUpdateId</span></code> path parameter.</p>
@@ -85,9 +86,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.ScoreUpdates.list">
-<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ScoreUpdates.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-get-scoreupdates">GET /scoreUpdates</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ScoreUpdates.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ScoreUpdate" title="everyaction.objects.ScoreUpdate"><span class="pre">everyaction.objects.ScoreUpdate</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ScoreUpdates.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdates">GET /scoreUpdates</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -112,9 +113,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.ScoreUpdates.patch">
-<code class="sig-name descname"><span class="pre">patch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.ScoreUpdates.patch" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#score-updates-patch-scoreupdates--scoreupdateid">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ScoreUpdates.patch">
+<span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.ScoreUpdates.patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/score-updates#scoreupdatesscoreupdateid-1">PATCH /scoreUpdates/{scoreUpdateId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -133,7 +134,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -191,7 +192,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

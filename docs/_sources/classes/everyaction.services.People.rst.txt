@@ -54,6 +54,9 @@
       ~People.find
    
    
+      ~People.find_by_phone
+   
+   
       ~People.find_or_create
    
    

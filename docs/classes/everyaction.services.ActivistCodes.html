@@ -4,12 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>everyaction.services.ActivistCodes &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="everyaction-services-activistcodes">
+  <section id="everyaction-services-activistcodes">
 <h1>everyaction.services.ActivistCodes<a class="headerlink" href="#everyaction-services-activistcodes" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="everyaction.services.ActivistCodes">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">ActivistCodes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ActivistCodes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.ActivistCodes">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">ActivistCodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ActivistCodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
-<a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes">Activist Codes</a> service.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/activist-codes">Activist Codes</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -66,16 +67,16 @@
 <td><p>Find each activist code for each of the given names.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.get" title="everyaction.services.ActivistCodes.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(code_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes--activistcodeid">GET /activistCodes/{activistCodeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/activist-codes#activistcodesactivistcodeid">GET /activistCodes/{activistCodeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ActivistCodes.list" title="everyaction.services.ActivistCodes.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes">GET /activistCodes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/activist-codes#activistcodes">GET /activistCodes</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="everyaction.services.ActivistCodes.find">
-<code class="sig-name descname"><span class="pre">find</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><a class="headerlink" href="#everyaction.services.ActivistCodes.find" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.ActivistCodes.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><a class="headerlink" href="#everyaction.services.ActivistCodes.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find an activist code with exactly the given name. If multiple activists codes have this name, the first will
 be returned.</p>
 <dl class="field-list simple">
@@ -92,8 +93,8 @@ be returned.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.ActivistCodes.find_each">
-<code class="sig-name descname"><span class="pre">find_each</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ActivistCodes.find_each" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.ActivistCodes.find_each">
+<span class="sig-name descname"><span class="pre">find_each</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ActivistCodes.find_each" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find each activist code for each of the given names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -110,9 +111,9 @@ of any requested activist code.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.ActivistCodes.get">
-<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><a class="headerlink" href="#everyaction.services.ActivistCodes.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes--activistcodeid">GET /activistCodes/{activistCodeId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ActivistCodes.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><a class="headerlink" href="#everyaction.services.ActivistCodes.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/activist-codes#activistcodesactivistcodeid">GET /activistCodes/{activistCodeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>code_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">activistCodeId</span></code> path parameter.</p>
@@ -124,9 +125,9 @@ of any requested activist code.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.ActivistCodes.list">
-<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ActivistCodes.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#activist-codes-get-activistcodes">GET /activistCodes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ActivistCodes.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ActivistCode" title="everyaction.objects.ActivistCode"><span class="pre">everyaction.objects.ActivistCode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ActivistCodes.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/activist-codes#activistcodes">GET /activistCodes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -149,7 +150,7 @@ of any requested activist code.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -207,7 +208,7 @@ of any requested activist code.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

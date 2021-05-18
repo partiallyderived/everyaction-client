@@ -22,7 +22,7 @@ class EAHTTPException(EAException):
 
     :ivar Response response: The response with status code >= 400.
     :ivar Sequence[Error] errors: List of EveryAction
-        `Error <https://developers.everyaction.com/van-api#everyaction-8-errors>`__ objects given in the response.
+        `Error <https://docs.everyaction.com/reference/overview#errors>`__ objects given in the response.
     :ivar HTTPError http_error: The :class:`.HTTPError` associated with the error response.
     """
 

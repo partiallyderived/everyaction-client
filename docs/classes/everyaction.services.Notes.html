@@ -4,19 +4,20 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>everyaction.services.Notes &#8212; Python Client for EveryAction 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="everyaction.services.OnlineActionForms" href="everyaction.services.OnlineActionForms.html" />
+    <link rel="next" title="everyaction.services.OnlineActionsForms" href="everyaction.services.OnlineActionsForms.html" />
     <link rel="prev" title="everyaction.services.MiniVANExports" href="everyaction.services.MiniVANExports.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,7 +30,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="everyaction.services.OnlineActionForms.html" title="everyaction.services.OnlineActionForms"
+          <a href="everyaction.services.OnlineActionsForms.html" title="everyaction.services.OnlineActionsForms"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="everyaction.services.MiniVANExports.html" title="everyaction.services.MiniVANExports"
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="everyaction-services-notes">
+  <section id="everyaction-services-notes">
 <h1>everyaction.services.Notes<a class="headerlink" href="#everyaction-services-notes" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="everyaction.services.Notes">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">everyaction.services.</span></code><code class="sig-name descname"><span class="pre">Notes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Notes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="everyaction.services.Notes">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Notes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
-<a class="reference external" href="https://developers.everyaction.com/van-api#notes">Notes</a> service.</p>
+<a class="reference external" href="https://docs.everyaction.com/reference/notes">Notes</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -60,20 +61,20 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Notes.categories" title="everyaction.services.Notes.categories"><code class="xref py py-obj docutils literal notranslate"><span class="pre">categories</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categories--notecategoryid">GET /notes/categories/{noteCategoryId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategoriesnotecategoryid">GET /notes/categories/{noteCategoryId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Notes.category" title="everyaction.services.Notes.category"><code class="xref py py-obj docutils literal notranslate"><span class="pre">category</span></code></a>(category_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categories">GET /notes/categories</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategories">GET /notes/categories</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Notes.category_types" title="everyaction.services.Notes.category_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">category_types</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categorytypes">GET /notes/categoryTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategorytypes">GET /notes/categoryTypes</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="everyaction.services.Notes.categories">
-<code class="sig-name descname"><span class="pre">categories</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.categories" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categories--notecategoryid">GET /notes/categories/{noteCategoryId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Notes.categories">
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.categories" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategoriesnotecategoryid">GET /notes/categories/{noteCategoryId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoteCategory</span></code></a> objects.</p>
@@ -82,9 +83,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Notes.category">
-<code class="sig-name descname"><span class="pre">category</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><a class="headerlink" href="#everyaction.services.Notes.category" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categories">GET /notes/categories</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Notes.category">
+<span class="sig-name descname"><span class="pre">category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><a class="headerlink" href="#everyaction.services.Notes.category" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategories">GET /notes/categories</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>category_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">noteCategoryId</span></code> path parameter.</p>
@@ -96,9 +97,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="everyaction.services.Notes.category_types">
-<code class="sig-name descname"><span class="pre">category_types</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.category_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://developers.everyaction.com/van-api#notes-get-notes-categorytypes">GET /notes/categoryTypes</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.Notes.category_types">
+<span class="sig-name descname"><span class="pre">category_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.category_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategorytypes">GET /notes/categoryTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the names of the category types.</p>
@@ -108,7 +109,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -121,8 +122,8 @@
   <p class="topless"><a href="everyaction.services.MiniVANExports.html"
                         title="previous chapter">everyaction.services.MiniVANExports</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="everyaction.services.OnlineActionForms.html"
-                        title="next chapter">everyaction.services.OnlineActionForms</a></p>
+  <p class="topless"><a href="everyaction.services.OnlineActionsForms.html"
+                        title="next chapter">everyaction.services.OnlineActionsForms</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -154,7 +155,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="everyaction.services.OnlineActionForms.html" title="everyaction.services.OnlineActionForms"
+          <a href="everyaction.services.OnlineActionsForms.html" title="everyaction.services.OnlineActionsForms"
              >next</a> |</li>
         <li class="right" >
           <a href="everyaction.services.MiniVANExports.html" title="everyaction.services.MiniVANExports"
@@ -166,7 +167,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>
