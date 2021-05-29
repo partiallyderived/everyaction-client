@@ -628,7 +628,7 @@ def test_error_response(client):
     errors = [Error(text='I AM ERROR')]
     client.code = 400
     client.resp_json = {'errors': errors}
-    with pytest.raises(EAHTTPException, match='EveryAction error=Error') as exc_info:
+    with pytest.raises(EAHTTPException, match='Reason: I AM ERROR') as exc_info:
         group.get()
 
     exc = exc_info.value
@@ -638,7 +638,7 @@ def test_error_response(client):
 
     # Now try with multiple errors.
     errors.append(Error(text='Another error'))
-    with pytest.raises(EAHTTPException, match=r'EveryAction errors=\[Error') as exc_info:
+    with pytest.raises(EAHTTPException, match='Reasons:\n\\* I AM ERROR\n\\* Another error') as exc_info:
         group.get()
 
     exc = exc_info.value

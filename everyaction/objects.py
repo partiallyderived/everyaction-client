@@ -4,6 +4,7 @@ structured EveryAction data directly corresponding to objects in the
 `EveryAction 8 VAN API docs <https://developers.everyaction.com/van-api>`__.
 """
 
+from datetime import datetime
 from typing import Any, Iterable, Optional, Union
 
 from everyaction.core import EAObject, EAObjectWithID, EAObjectWithIDAndName, EAObjectWithName, EAProperty, EAValue
@@ -36,9 +37,11 @@ __all__ = [
     'BulkImportJobData',
     'Canvasser',
     'CanvassContext',
+    'CanvassFileRequest',
     'CanvassResponse',
     'ChangedEntityBulkImportField',
     'ChangedEntityExportJob',
+    'ChangedEntityExportRequest',
     'ChangedEntityField',
     'ChangeType',
     'Code',
@@ -314,7 +317,7 @@ EAProperty.share(
     displayName=EAProperty('display'),
     doorCount=EAProperty('door'),
     dotNetTimeZoneId=EAProperty('dot_net_time_zone', 'time_zone'),
-    downloadUrl=EAProperty('url'),
+    downloadUrl=EAProperty('download'),
     duesAttributionTypeName=EAProperty('dues_attribution_type', 'dues_attribution'),
     duesEntityTypeName=EAProperty('dues_entity_type', 'dues_entity'),
     duplicateRows=EAProperty('duplicates'),
@@ -509,7 +512,7 @@ EAProperty.share(
     replyToEmail=EAProperty('reply_to'),
     requestedCustomFieldIds=EAProperty('custom_field_ids', 'custom_fields', singular_alias='custom_field'),
     requestedFields=EAProperty('fields', singular_alias='field'),
-    requestedIds=EAProperty('ids', singular_alias='id'),
+    requestedIds=EAProperty('ids', singular_alias='requested_id'),
     resourceType=EAProperty('resource'),
     resourceTypes=EAProperty('resources', singular_alias='resource'),
     resourceUrl=EAProperty('url'),
@@ -580,7 +583,7 @@ EAProperty.share(
     userLastName=EAProperty('last_name', 'last'),
     value=EAProperty(),
     vanId=EAProperty('van'),
-    webhookUrl=EAProperty('webhook', 'hook'),
+    webhookUrl=EAProperty('webhook'),
     website=EAProperty(),
     zipOrPostalCode=EAProperty('zip_code', 'zip', 'postal_code', 'postal'),
     ID=EAProperty()
@@ -706,7 +709,35 @@ class CanvassContext(EAObject, _keys={'contactTypeId', 'dateCanvassed', 'inputTy
     """
 
 
-class ChangeType(EAObject, _prefix='changeType', _prefixed={'name'}, _keys={'description'}):
+class CanvassFileRequest(
+    EAObjectWithID,
+    _keys={'dateExpired', 'downloadUrl', 'errorCode', 'guid', 'savedListId', 'status', 'type', 'webhookUrl'},
+):
+    """Represents a `Canvass File Request
+    <https://docs.everyaction.com/reference/canvass-file-requests>`__.
+    """
+
+
+class ChangedEntityExportRequest(
+    EAObjectWithID,
+    _prefix='exportJob',
+    _keys={
+        'dateChangedFrom',
+        'dateChangedTo',
+        'excludeChangesFromSelf',
+        'includeInactive',
+        'requestedCustomFieldIds',
+        'requestedFields',
+        'requestedIds',
+        'resourceType'
+    }
+):
+    """Represents data associated with a request to `create a Changed Entity Export Job
+    <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs>`__.
+    """
+
+
+class ChangeType(EAObjectWithIDAndName, _prefix='changeType', _prefixed={'name'}, _keys={'description'}):
     """Represents a `changeType
     <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype>`__.
     """
@@ -1467,20 +1498,12 @@ class ChangedEntityExportJob(
     EAObjectWithID,
     _prefix='exportJob',
     _keys={
-        'code',
         'dateChangedFrom',
         'dateChangedTo',
-        'excludeChangesFromSelf',
         'exportedRecordCount',
         'files',
-        'fileSizeKbLimit',
-        'includeInactive',
         'jobStatus',
-        'message',
-        'requestedCustomFieldIds',
-        'requestedFields',
-        'requestedIds',
-        'resourceType'
+        'message'
     }
 ):
     """Represents data for an existing `ChangedEntityExportJob
@@ -1909,14 +1932,59 @@ class CanvassResponse(EAObject, _keys={'canvassContext', 'responses', 'resultCod
 class ChangedEntityField(
     EAObjectWithName,
     _keys={'availableValues', 'bulkImportFields', 'isCoreField', 'maxTextboxCharacters'},
-    fieldType=EAProperty('type')
+    _prefix='field',
+    _prefixed={'name', 'type'},
 ):
     """Represents a `changed entity field
     <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__.
     """
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        return 'fieldName'
+
+    _TYPE_TO_FACTORY = {}
+
+    ValueType = Union[bool, int, str, datetime]
+
+    @staticmethod
+    def _parse_bool(s: str) -> bool:
+        if s.lower() == 'true':
+            return True
+        if s.lower() == 'false':
+            return False
+        raise ValueError(f'Could not parse "{s}" to a boolean.')
+
+    def parse(self, value: str) -> ValueType:
+        """Parse the raw string value of a field into a typed result.
+        The below table gives the behavior of this function for each `field type
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__.
+
+        +------------+--------------------------------------------------------------------------------------------+
+        | Field Type | Behavior                                                                                   |
+        +============+============================================================================================+
+        | B          | Parses "true" to :code:`True` and "false" to :code:`False`.                                |
+        +------------+--------------------------------------------------------------------------------------------+
+        | D          | Parses into a naive `datetime object <https://docs.python.org/3/library/datetime.html>`__. |
+        +------------+--------------------------------------------------------------------------------------------+
+        | M          | Keeps the original string value.                                                           |
+        +------------+--------------------------------------------------------------------------------------------+
+        | N          | Parses into an :code:`int`.                                                                |
+        +------------+--------------------------------------------------------------------------------------------+
+        | T          | Keeps the original string value.                                                           |
+        +------------+--------------------------------------------------------------------------------------------+
+
+
+        :param value: The value to parse.
+        :returns: The parsed value.
+        """
+        return self._TYPE_TO_FACTORY[self.type](value)
+
+
+# References inner staticmethod so needs to be defined here.
+ChangedEntityField._TYPE_TO_FACTORY = {
+    'B': ChangedEntityField._parse_bool,
+    'D': datetime.fromisoformat,
+    'M': lambda s: s,
+    'N': int,
+    'T': lambda s: s,
+}
 
 
 class Contribution(

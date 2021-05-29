@@ -61,26 +61,32 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.change_types" title="everyaction.services.ChangedEntities.change_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_types</span></code></a>(resource, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype">GET /changedEntityExportJobs/changeTypes/{resourceType}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">GET /changedEntityExportJobs/changeTypes/{resourceType}</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.create" title="everyaction.services.ChangedEntities.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs">POST /changedEntityExportJobs</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.changes" title="everyaction.services.ChangedEntities.changes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">changes</span></code></a>([field_cache])</p></td>
+<td><p><a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs">Creates a ChangedEntityExportJob</a>, waits for its completion, and then parses the results from the downloadable csv.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.fields" title="everyaction.services.ChangedEntities.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a>(resource, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsfieldsresourcetype">GET /changedEntityExportJobs/fields/{resourceType}</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.create_job" title="everyaction.services.ChangedEntities.create_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_job</span></code></a>(**kwargs)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs">POST /changedEntityExportJobs</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.get" title="everyaction.services.ChangedEntities.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(job_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsexportjobid">GET /changedEntityExportJobs/{exportJobId}</a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.fields" title="everyaction.services.ChangedEntities.fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fields</span></code></a>(resource, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype">GET /changedEntityExportJobs/fields/{resourceType}</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.find_change_type" title="everyaction.services.ChangedEntities.find_change_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_change_type</span></code></a>(resource, name)</p></td>
+<td><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">changeType</a> with the given case-insensitive name for the given resource</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.job" title="everyaction.services.ChangedEntities.job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">job</span></code></a>(job_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsexportjobid">GET /changedEntityExportJobs/{exportJobId}</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.resources" title="everyaction.services.ChangedEntities.resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resources</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsresources">GET /changedEntityExportJobs/resources</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsresources">GET /changedEntityExportJobs/resources</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ChangedEntities.change_types">
 <span class="sig-name descname"><span class="pre">change_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ChangeType" title="everyaction.objects.ChangeType"><span class="pre">everyaction.objects.ChangeType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.change_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype">GET /changedEntityExportJobs/changeTypes/{resourceType}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">GET /changedEntityExportJobs/changeTypes/{resourceType}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>resource</strong> – The <code class="code docutils literal notranslate"><span class="pre">resourceType</span></code> path parameter.</p>
@@ -92,9 +98,34 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityExportJob" title="everyaction.objects.ChangedEntityExportJob"><span class="pre">everyaction.objects.ChangedEntityExportJob</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs">POST /changedEntityExportJobs</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.changes">
+<span class="sig-name descname"><span class="pre">changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_cache</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityField" title="everyaction.objects.ChangedEntityField"><span class="pre">everyaction.objects.ChangedEntityField</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.changes" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs">Creates a ChangedEntityExportJob</a>,
+waits for its completion, and then parses the results from the downloadable csv.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field_cache</strong> – If provided, use these <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangedEntityFields</span> <span class="pre">.ChangedEntityField</span></code> to parse the data
+instead of getting them automatically in this function. Useful for saving bandwidth by reducing the volume
+of requests, especially if export jobs are made frequently. Note that all other fields will be excluded
+from the resulting dictionary when this is specified. If a field could not be found as a header in the
+resulting CSV file, no exception is raised: that field is simply missing from the resulting dictionary.</p></li>
+<li><p><strong>kwargs</strong> – The applicable query arguments and JSON data to pass to <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs">POST /changedEntityExportJobs</a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of changed entity field -&gt; Value of field.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>EAChangedEntityJobFailedException</strong> – If the changed entity export job failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.create_job">
+<span class="sig-name descname"><span class="pre">create_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityExportRequest" title="everyaction.objects.ChangedEntityExportRequest"><span class="pre">everyaction.objects.ChangedEntityExportRequest</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.create_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs">POST /changedEntityExportJobs</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityExportJob" title="everyaction.objects.ChangedEntityExportJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangedEntityExportJob</span></code></a>
@@ -105,7 +136,6 @@ is appropriate to unpack here.</p>
 </dd>
 <dt class="field-odd">Supported Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>code</strong></p></li>
 <li><p><strong>dateChangedFrom</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">date_changed_from</span></code>, <code class="code docutils literal notranslate"><span class="pre">changed_from</span></code>)</p></li>
 <li><p><strong>dateChangedTo</strong>
@@ -114,23 +144,16 @@ is appropriate to unpack here.</p>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">exclude_changes_from_self</span></code>, <code class="code docutils literal notranslate"><span class="pre">exclude_self</span></code>)</p></li>
 <li><p><strong>exportJobId</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">export_job_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
-<li><p><strong>exportedRecordCount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">exported_record_count</span></code>, <code class="code docutils literal notranslate"><span class="pre">exported_records</span></code>, <code class="code docutils literal notranslate"><span class="pre">record_count</span></code>, <code class="code docutils literal notranslate"><span class="pre">records</span></code>, <code class="code docutils literal notranslate"><span class="pre">count</span></code>)</p></li>
 <li><p><strong>fileSizeKbLimit</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">file_size_kb_limit</span></code>, <code class="code docutils literal notranslate"><span class="pre">size_kb_limit</span></code>, <code class="code docutils literal notranslate"><span class="pre">kb_limit</span></code>)</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.File" title="everyaction.objects.File"><code class="xref py py-class docutils literal notranslate"><span class="pre">files</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">file</span></code> (Singular))</p></li>
 <li><p><strong>includeInactive</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">include_inactive</span></code>)</p></li>
-<li><p><strong>jobStatus</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">job_status</span></code>, <code class="code docutils literal notranslate"><span class="pre">status</span></code>)</p></li>
-<li><p><strong>message</strong></p></li>
 <li><p><strong>requestedCustomFieldIds</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">requested_custom_field_ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_field_ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_fields</span></code>, <code class="code docutils literal notranslate"><span class="pre">custom_field</span></code> (Singular))</p></li>
 <li><p><strong>requestedFields</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">requested_fields</span></code>, <code class="code docutils literal notranslate"><span class="pre">fields</span></code>, <code class="code docutils literal notranslate"><span class="pre">field</span></code> (Singular))</p></li>
 <li><p><strong>requestedIds</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">requested_ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code> (Singular))</p></li>
+(Aliases: <code class="code docutils literal notranslate"><span class="pre">requested_ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">ids</span></code>, <code class="code docutils literal notranslate"><span class="pre">requested_id</span></code> (Singular))</p></li>
 <li><p><strong>resourceType</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">resource_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">resource</span></code>)</p></li>
 </ul>
@@ -141,7 +164,7 @@ is appropriate to unpack here.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ChangedEntities.fields">
 <span class="sig-name descname"><span class="pre">fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityField" title="everyaction.objects.ChangedEntityField"><span class="pre">everyaction.objects.ChangedEntityField</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.fields" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsfieldsresourcetype">GET /changedEntityExportJobs/fields/{resourceType}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype">GET /changedEntityExportJobs/fields/{resourceType}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>resource</strong> – The <code class="code docutils literal notranslate"><span class="pre">resourceType</span></code> path parameter.</p>
@@ -153,9 +176,27 @@ is appropriate to unpack here.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityExportJob" title="everyaction.objects.ChangedEntityExportJob"><span class="pre">everyaction.objects.ChangedEntityExportJob</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsexportjobid">GET /changedEntityExportJobs/{exportJobId}</a>.</p>
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.find_change_type">
+<span class="sig-name descname"><span class="pre">find_change_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangeType" title="everyaction.objects.ChangeType"><span class="pre">everyaction.objects.ChangeType</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.find_change_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">changeType</a>
+with the given case-insensitive name for the given resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – Resource to find change type for.</p></li>
+<li><p><strong>name</strong> – Name of change type to find.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeType</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.job">
+<span class="sig-name descname"><span class="pre">job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityExportJob" title="everyaction.objects.ChangedEntityExportJob"><span class="pre">everyaction.objects.ChangedEntityExportJob</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.job" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsexportjobid">GET /changedEntityExportJobs/{exportJobId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>job_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">exportJobId</span></code> path parameter.</p>
@@ -169,7 +210,7 @@ is appropriate to unpack here.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ChangedEntities.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.resources" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsresources">GET /changedEntityExportJobs/resources</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsresources">GET /changedEntityExportJobs/resources</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the resource type names.</p>

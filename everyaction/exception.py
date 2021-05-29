@@ -4,13 +4,21 @@ This module contains the exceptions used for the EveryAction client
 
 from requests import HTTPError, Response
 
-__all__ = ['EAException', 'EAFindFailedException', 'EAHTTPException']
+__all__ = ['EAException', 'EAFindFailedException', 'EAJobFailedException', 'EAHTTPException']
 
 
 class EAException(Exception):
     """Class of exceptions raised for EveryAction-related errors which are raised prior to sending HTTP requests.
     HTTP errors are raised as instances of the subclass :class:`.EAHTTPException`.
     """
+
+
+class EAChangedEntityJobFailedException(EAException):
+    """Class of exceptions raised when an EveryAction changed entity export job has failed."""
+
+    def __init__(self, job: 'ChangedEntityExportJob') -> None:
+        super().__init__()
+        self.job = job
 
 
 class EAFindFailedException(EAException):
@@ -39,9 +47,15 @@ class EAHTTPException(EAException):
         self.response = response
         self.errors = EAProperty.shared('errors').value('errors', response.json()['errors'])
 
-        if len(self.errors) == 1:
-            error_msg = f'EveryAction error={self.errors[0]}'
-        else:
-            error_msg = f'EveryAction errors={self.errors}'
+        # str(self.http_error) is usually a nice simple message like:
+        # HTTPError=400 Client Error: Bad Request for url: https://api.securevan.com/v4/changedEntityExportJobs
+        # These message components will be joined by new lines.
+        msg_components = [str(self.http_error)]
 
-        super().__init__(f'{error_msg}, HTTPError={self.http_error}')
+        if len(self.errors) == 1:
+            msg_components.append(f'Reason: {self.errors[0].text}')
+        else:
+            msg_components.append('Reasons:')
+            [msg_components.append(f'* {e.text}') for e in self.errors]
+
+        super().__init__('\n'.join(msg_components))

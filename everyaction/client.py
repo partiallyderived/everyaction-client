@@ -31,6 +31,8 @@ class EAClient(EAService):
         `Bargaining Units <https://docs.everyaction.com/reference/bargaining-units>`__ service.
     :ivar BulkImport bulk_import:
         `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
+    :ivar CanvassFileRequests canvass_file_requests:
+        `Canvass File Requests <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
     :ivar CanvassResponses canvass_responses:
         `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
     :ivar ChangedEntities changed_entities:
@@ -290,6 +292,7 @@ class EAClient(EAService):
         self.ballots = services.Ballots(self)
         self.bargaining_units = services.BargainingUnits(self)
         self.bulk_import = services.BulkImport(self)
+        self.canvass_file_requests = services.CanvassFileRequests(self)
         self.canvass_responses = services.CanvassResponses(self)
         self.changed_entities = services.ChangedEntities(self)
         self.codes = services.Codes(self)

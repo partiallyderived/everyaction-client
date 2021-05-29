@@ -18,13 +18,19 @@
       ~ChangedEntities.change_types
    
    
-      ~ChangedEntities.create
+      ~ChangedEntities.changes
+   
+   
+      ~ChangedEntities.create_job
    
    
       ~ChangedEntities.fields
    
    
-      ~ChangedEntities.get
+      ~ChangedEntities.find_change_type
+   
+   
+      ~ChangedEntities.job
    
    
       ~ChangedEntities.resources

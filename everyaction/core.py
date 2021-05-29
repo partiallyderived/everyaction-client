@@ -681,7 +681,10 @@ class EAMeta(ABCMeta):
         prop = copy.deepcopy(EAProperty.shared(shared_name))
         as_snake = to_snake(key)
         if as_snake != key:
-            prop.aliases.add(key)
+            prop.aliases.add(as_snake)
+        if shared_name != key:
+            # When shared name differs from key, add shared name as alias.
+            prop.aliases.add(shared_name)
         properties[key] = prop
 
     def __new__(
@@ -726,7 +729,8 @@ class EAMeta(ABCMeta):
         name_key = ea_type._name_key()
 
         if _prefix:
-            # Assume ID is prefixed  if present (or in other words, only use a prefix if the ID is prefixed).
+            # Assume ID is prefixed if present (or in other words, only use a prefix when there is an ID if the ID is
+            # prefixed).
             if id_key:
                 _prefixed |= {id_key}
             for prop_name in _prefixed:
@@ -737,18 +741,24 @@ class EAMeta(ABCMeta):
                 if prefixed in _keys:
                     raise AssertionError(f'Resulting prefixed name {prefixed} matches a value passed to _keys')
                 if prop_name == id_key:
-                    base_prop = EAProperty.shared('id')
+                    shared_name = 'id'
                 elif prop_name == name_key:
-                    base_prop = EAProperty.shared('name')
+                    shared_name = 'name'
                 else:
-                    base_prop = EAProperty.shared(prop_name)
+                    shared_name = prop_name
+
+                base_prop = EAProperty.shared(shared_name)
                 new_prop = copy.deepcopy(base_prop)
 
-                # Add the un-prefixed name and the snake-cased version of the full name as aliases so the property may
+                # Add the un-prefixed name and the snake-cased versions of the full name as aliases so the property may
                 # be accessed that way.
                 new_prop.aliases.add(prop_name)
                 new_prop.aliases.add(to_snake(prefixed))
                 properties[prefixed] = new_prop
+
+                # If shared_name is different from prop_name, add shared_name as an alias (possible for id and name).
+                if shared_name != prop_name:
+                    new_prop.aliases.add(shared_name)
         elif id_key:
             # If there is no prefix, add ID here instead of in the prefix logic.
             EAMeta._handle_special_prop(properties, 'id', id_key)

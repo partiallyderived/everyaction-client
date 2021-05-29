@@ -1,0 +1,28 @@
+﻿everyaction.services.OnlineActionsForms
+=======================================
+
+.. currentmodule:: everyaction.services
+
+.. autoclass:: OnlineActionsForms
+   :members:
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+   
+   
+      ~OnlineActionsForms.get
+   
+   
+      ~OnlineActionsForms.list
+   
+   
+   
+
+   
+   
+   

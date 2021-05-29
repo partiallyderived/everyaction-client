@@ -76,6 +76,11 @@ def bulk_import_job(data):
 
 
 @pytest.fixture
+def canvass_file_request(data):
+    return _skip_if_absent('canvass_file_request', data)
+
+
+@pytest.fixture
 def changed_entity_export_job(data):
     return _skip_if_absent('changed_entity_export_job', data)
 
@@ -193,6 +198,11 @@ def test_bulk_resources(client):
 
 
 @skip_if_403
+def test_canvass_file_requests(client, canvass_file_request):
+    client.canvass_file_requests.get(canvass_file_request)
+
+
+@skip_if_403
 def test_canvass_response_contact_types(client):
     _skip_if_empty_else_first('canvass response contact types', client.canvass_responses.contact_types())
 
@@ -209,7 +219,7 @@ def test_canvass_response_result_codes(client):
 
 @skip_if_403
 def test_changed_entities(client, changed_entity_export_job):
-    client.changed_entities.get(changed_entity_export_job)
+    client.changed_entities.job(changed_entity_export_job)
 
 
 @skip_if_403

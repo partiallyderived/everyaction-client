@@ -1,6 +1,13 @@
 import json
+import textwrap
+import time
+import traceback
+import unittest.mock as mock
 import urllib.parse
 from collections import OrderedDict
+from datetime import datetime
+from threading import Thread
+from unittest.mock import call
 
 from requests import Response
 
@@ -8,8 +15,11 @@ from http_router import Router
 
 import pytest
 
-from everyaction import EAClient, EAFindFailedException
-from everyaction.objects import ActivistCode, ActivistCodeData, Note, Person, ContactType, InputType, ResultCode
+from everyaction import EAClient, EAChangedEntityJobFailedException, EAFindFailedException
+from everyaction.objects import (
+    ActivistCode, ActivistCodeData, ChangedEntityField, ChangeType, Note, Person, ContactType, InputType, ResultCode
+)
+from everyaction.services import ChangedEntities
 
 
 router = Router()
@@ -39,13 +49,19 @@ class MockServer:
     # Simulates an EveryAction server so that derived convenience methods, such as EAClient.people.lookup, may be
     # tested without having to consider mocking for every method.
     # May be expanded as more convenience methods are added and need to be tested.
+
+    # Message associated with a pending changed entity export job.
+    CE_PENDING_MSG = 'Created export job'
+
+    # Returned when a resource could not be found.
     NOT_FOUND = {'errors': [{'text': 'Not found'}]}, 404
 
     def __init__(self):
         self.activist_codes = EAData('activistCode')
-        self.people = EAData('van')
+        self.changed_entity_export_jobs = EAData('exportJob')
         self.contact_types = EAData('contactType')
         self.input_types = EAData('inputType')
+        self.people = EAData('van')
         self.result_codes = EAData('resultCode')
 
         self.my_activists = set()
@@ -56,6 +72,9 @@ class MockServer:
         self.person_to_next_note_id = {}
         self.person_to_notes = {}
         self.person_to_result_codes = {}
+
+        self.changed_entity_default_changed_to = '2000-01-01T00:00:00.000000+00:00'
+        self.changed_entity_resources = {}
 
     @staticmethod
     def _match(person, candidate):
@@ -91,24 +110,34 @@ class MockServer:
         return None
 
     def add_activist_code(self, data):
-        self.activist_codes.add(data)
+        return self.activist_codes.add(data)
+
+    def add_changed_entity_export_job(self, data):
+        return self.changed_entity_export_jobs.add(data)
+
+    def add_changed_entity_resource(self, name, change_types, fields):
+        self.changed_entity_resources[name] = (change_types, fields)
 
     def add_contact_type(self, data):
-        self.contact_types.add(data)
+        return self.contact_types.add(data)
 
     def add_input_type(self, data):
-        self.input_types.add(data)
+        return self.input_types.add(data)
 
     def add_person(self, data):
         van_id = self.people.add(data)
         self.person_to_membership[van_id] = {}
+        return van_id
 
     def add_result_code(self, data):
-        self.result_codes.add(data)
+        return self.result_codes.add(data)
+
+    def update_changed_entity_export_job(self, job_id, with_data):
+        self.changed_entity_export_jobs.get(job_id).update(with_data)
 
     @router.route('/activistCodes/{code_id:int}', methods=['GET'])
     def activist_code_get(self, code_id, query, data):
-        return list(self.activist_codes.get(code_id, self.NOT_FOUND))
+        return self.activist_codes.get(code_id, self.NOT_FOUND)
 
     @router.route('/activistCodes', methods=['GET'])
     def activist_codes_list(self, query, data):
@@ -125,6 +154,45 @@ class MockServer:
     @router.route('/canvassResponses/resultCodes', methods=['GET'])
     def canvass_response_result_codes(self, query, data):
         return list(self.result_codes.values())
+
+    @router.route('/changedEntityExportJobs/changeTypes/{resource}', methods=['GET'])
+    def changed_entity_change_types(self, resource, query, data):
+        return self.changed_entity_resources[resource][0]
+
+    @router.route('/changedEntityExportJobs', methods=['POST'])
+    def changed_entity_create_job(self, query, data):
+        date_changed_to = data.get('dateChangedTo', self.changed_entity_default_changed_to)
+        job_id = self.add_changed_entity_export_job({
+            'dateChangedFrom': data['dateChangedFrom'],
+            'dateChangedTo': date_changed_to,
+            'exportedRecordCount': 0,
+            'files': [],
+            'jobStatus': 'Pending',
+            'message': self.CE_PENDING_MSG
+        })
+        return {
+            'exportJobId': job_id,
+            'dateChangedFrom': data['dateChangedFrom'],
+            'dateChangedTo': date_changed_to,
+            'excludeChangesFromSelf': data.get('excludeChangesFromSelf', False),
+            'includeInactive': data.get('includeInactive', False),
+            'requestedCustomFieldIds': data.get('requestedCustomFieldIds', []),
+            'requestedFields': data.get('requestedFields', []),
+            'requestedIds': data.get('requestedIds', []),
+            'resourceType': data['resourceType']
+        }
+
+    @router.route('/changedEntityExportJobs/{job_id:int}', methods=['GET'])
+    def changed_entities_job(self, job_id, query, data):
+        return self.changed_entity_export_jobs.get(job_id)
+
+    @router.route('/changedEntityExportJobs/fields/{resource}', methods=['GET'])
+    def changed_entity_fields(self, resource, query, data):
+        return self.changed_entity_resources[resource][1]
+
+    @router.route('/changedEntityExportJobs/resources', methods=['GET'])
+    def changed_entity_resources(self, query, data):
+        return list(self.changed_entity_resources)
 
     @router.route('/people/{van_id:int}/activistCodes', methods=['GET'])
     def person_activist_codes(self, van_id, query, data):
@@ -197,6 +265,7 @@ class MockServer:
 class MockSession:
     # Simulated session which calls the appropriate method in MockServer.
     def __init__(self, server):
+        self.auth = ('user', 'pass|1')
         self.server = server
 
     def handle(self, url, method, **kwargs):
@@ -342,52 +411,212 @@ def test_activist_codes(client, server):
         client.activist_codes.find_each(['Cool Activist', 'Someone Else'])
 
 
-def test_contact_types(client, server):
-    # Test that failing to find a contact type results in an EAFindFailedException.
-    with pytest.raises(EAFindFailedException, match='No such contact type'):
-        client.canvass_responses.find_contact_type('1 on 1')
+def test_changed_entities(client, server):
+    bool_field = ChangedEntityField('bool', type='B')
+    date_field = ChangedEntityField('date', type='D')
+    money_field = ChangedEntityField('money', type='M')
+    num_field = ChangedEntityField('num', type='N')
+    text_field = ChangedEntityField('text', type='T')
 
-    # Add a contact type and try to find it.
-    server.add_contact_type({'name': '1 on 1'})
-    assert client.canvass_responses.find_contact_type('1 on 1') == ContactType(id=1, name='1 on 1')
+    assert bool_field.parse('true')
+    assert not bool_field.parse('FALSE')
+    with pytest.raises(ValueError):
+        bool_field.parse('fals')
 
-    # Add another contact type. Try to find both.
-    server.add_contact_type({'name': 'Phone'})
-    assert client.canvass_responses.find_contact_type('1 on 1') == ContactType(id=1, name='1 on 1')
-    assert client.canvass_responses.find_contact_type('Phone') == ContactType(id=2, name='Phone')
-    with pytest.raises(EAFindFailedException, match='No such contact type'):
-        client.canvass_responses.find_contact_type('Walk')
+    assert date_field.parse('2000-01-01') == datetime(2000, 1, 1)
+    assert money_field.parse('$3.50') == '$3.50'
+    assert num_field.parse('314') == 314
+    assert text_field.parse('314') == '314'
+
+    # Patch this so the test isn't needlessly long.
+    ChangedEntities._WAIT_INTERVAL = 0.001
+    change_types = [{'id': 1, 'name': 'ct1'}, {'id': 2, 'name': 'ct2'}]
+
+    # Convert to dict since we are using default JSON serialization.
+    change_fields = [dict(f) for f in [bool_field, date_field, money_field, num_field, text_field]]
+    server.add_changed_entity_resource('TestResource', change_types, change_fields)
+    with mock.patch('requests.get') as mock_get:
+        changes_result = []
+
+        def target(cache=None, expect_failure=False):
+            try:
+                changes_result.append(
+                    client.changed_entities.changes(cache, changed_from='2000-01-01', resource='TestResource')
+                )
+            except Exception as e:
+                if expect_failure:
+                    changes_result.append(e)
+                else:
+                    changes_result.append(traceback.format_exc())
+
+        next_job = 1
+
+        def update_and_wait(data_to_update_with):
+            nonlocal next_job
+
+            # First, wait for client to request a new export job.
+            # This may be done by waiting for the server to have export jobs up to job_id.
+            deadline = time.time() + 5
+            while len(server.changed_entity_export_jobs) < next_job and time.time() < deadline:
+                time.sleep(0.001)
+
+            if len(server.changed_entity_export_jobs) < next_job:
+                raise AssertionError('Job not created in time.')
+
+            # Now, update status of job so that changes can proceed.
+            server.update_changed_entity_export_job(next_job, data_to_update_with)
+            changes_thread.join(5)
+            if changes_thread.is_alive():
+                raise AssertionError('Changes thread did not stop in time.')
+
+            next_job += 1
+
+        # Have changed_entities.changes run in the background while we complete the job.
+        changes_thread = Thread(target=target)
+        changes_thread.start()
+
+        result_data1 = textwrap.dedent('''\
+        bool,date,money,num,text
+        true,1818-05-05,$50.00,272,Hi everybody
+        false,1928-12-07,$10.00,141,Hello Dr. Nick''')
+
+        result_data2 = textwrap.dedent('''\
+        bool,date,money,num,text
+        false,1922-08-24,$23.57,173,milk steak
+        true,1953-06-02,$111.11,693,little green ghouls''')
+
+        files = [{
+            'downloadUrl': 'fake://example.com/1',
+            'dateExpired': '3000-12-31'
+        }, {
+            'downloadUrl': 'fake://example.com/2',
+            'dateExpired': '2500-06-15'
+        }]
+
+        update_data = {
+            'exportedRecordCount': 4,
+            'files': files,
+            'jobStatus': 'Complete',
+            'message': 'Finished processing export job'
+        }
+
+        class MockResp:
+            def __init__(self, text):
+                self.text = text
+
+        mock_get.side_effect = [MockResp(result_data1), MockResp(result_data2)]
+
+        update_and_wait(update_data)
+        if isinstance(changes_result[0], str):
+            raise AssertionError(f'Unexpected exception: {changes_result[0]}')
+        assert changes_result == [[
+            {'bool': True, 'date': datetime(1818, 5, 5), 'money': '$50.00', 'num': 272, 'text': 'Hi everybody'},
+            {'bool': False, 'date': datetime(1928, 12, 7), 'money': '$10.00', 'num': 141, 'text': 'Hello Dr. Nick'},
+            {'bool': False, 'date': datetime(1922, 8, 24), 'money': '$23.57', 'num': 173, 'text': 'milk steak'},
+            {'bool': True, 'date': datetime(1953, 6, 2), 'money': '$111.11', 'num': 693, 'text': 'little green ghouls'},
+        ]]
+        assert mock_get.call_args_list == [call('fake://example.com/1'), call('fake://example.com/2')]
+
+        # Now try with field cache specified.
+        # This field should not be found and thus should not be present in the results.
+        ignored_field = ChangedEntityField('ignored', type='N')
+        field_cache = [bool_field, num_field, ignored_field, text_field]
+
+        changes_result.clear()
+        changes_thread = Thread(target=target, args=(field_cache,))
+        changes_thread.start()
+
+        mock_get.reset_mock()
+        mock_get.side_effect = [MockResp(result_data1), MockResp(result_data2)]
+        update_and_wait(update_data)
+
+        if isinstance(changes_result[0], str):
+            raise AssertionError(f'Unexpected exception: {changes_result[0]}')
+
+        assert changes_result == [[
+            {'bool': True, 'num': 272, 'text': 'Hi everybody'},
+            {'bool': False, 'num': 141, 'text': 'Hello Dr. Nick'},
+            {'bool': False, 'num': 173, 'text': 'milk steak'},
+            {'bool': True, 'num': 693, 'text': 'little green ghouls'},
+        ]]
+
+        # Same test, but with only 1 file.
+        changes_result.clear()
+        changes_thread = Thread(target=target)
+        changes_thread.start()
+
+        mock_get.reset_mock()
+        mock_get.side_effect = None
+        mock_get.return_value = MockResp(result_data1)
+        del files[1]
+        update_data['exportedRecordCount'] = 2
+
+        update_and_wait(update_data)
+        if isinstance(changes_result[0], str):
+            raise AssertionError(f'Unexpected exception: {changes_result[0]}')
+
+        assert changes_result == [[
+            {'bool': True, 'date': datetime(1818, 5, 5), 'money': '$50.00', 'num': 272, 'text': 'Hi everybody'},
+            {'bool': False, 'date': datetime(1928, 12, 7), 'money': '$10.00', 'num': 141, 'text': 'Hello Dr. Nick'}
+        ]]
+        assert mock_get.call_args_list == [call('fake://example.com/1')]
+
+        # Now with error job status.
+        changes_result.clear()
+        mock_get.reset_mock()
+        mock_get.side_effect = AssertionError('Get should not have been called.')
+        changes_thread = Thread(target=target, kwargs={'expect_failure': True})
+        changes_thread.start()
+        update_and_wait({'jobStatus': 'Error'})
+
+        assert len(changes_result) == 1
+        assert isinstance(changes_result[0], EAChangedEntityJobFailedException)
+
+        # Now with unknown job status.
+        changes_result.clear()
+        changes_thread = Thread(target=target, kwargs={'expect_failure': True})
+        changes_thread.start()
+        update_and_wait({'jobStatus': 'FakeStatus'})
+
+        assert len(changes_result) == 1
+        assert isinstance(changes_result[0], AssertionError)
+        assert 'Unexpected job status: FakeStatus' in str(changes_result[0])
 
 
-def test_input_types(client, server):
-    # Test that failing to find a result code results in an EAFindFailedException.
-    with pytest.raises(EAFindFailedException, match='No such input type'):
-        client.canvass_responses.find_input_type('API')
+def test_finds(client, server):
+    def test_find(find_fn, add_fn, factory, obj_name):
+        # Test that failing to find a record results in an EAFindFailedException.
+        with pytest.raises(EAFindFailedException, match=f'No such {obj_name}'):
+            find_fn('obj 1')
 
-    # Add an input type and try to find it.
-    server.add_input_type({'name': 'API'})
-    assert client.canvass_responses.find_input_type('API') == InputType(id=1, name='API')
+        # Add a record and try to find it.
+        add_fn({'name': 'obj 1'})
+        assert find_fn('obj 1') == factory(id=1, name='obj 1')
 
-    # Add another input type. Try to find both.
-    server.add_input_type({'name': 'Form'})
-    assert client.canvass_responses.find_input_type('API') == InputType(id=1, name='API')
-    assert client.canvass_responses.find_input_type('Form') == InputType(id=2, name='Form')
-    with pytest.raises(EAFindFailedException, match='No such input type'):
-        client.canvass_responses.find_input_type('Web')
+        # Add another record. Try to find both.
+        add_fn({'name': 'obj 2'})
+        assert find_fn('obj 1') == factory(id=1, name='obj 1')
+        assert find_fn('obj 2') == factory(id=2, name='obj 2')
+        with pytest.raises(EAFindFailedException, match=f'No such {obj_name}'):
+            find_fn('obj 3')
 
+    change_types = []
+    server.add_changed_entity_resource('TestResource', change_types, [])
 
-def test_result_codes(client, server):
-    # Test that failing to find a result code results in an EAFindFailedException.
-    with pytest.raises(EAFindFailedException, match='No such result code'):
-        client.canvass_responses.find_result_code('No call')
+    next_ct_id = 1
 
-    # Add a result code and try to find it.
-    server.add_result_code({'name': 'No call'})
-    assert client.canvass_responses.find_result_code('No call') == ResultCode(id=1, name='No call')
+    def add_change_type(data):
+        nonlocal next_ct_id
+        data['changeTypeID'] = next_ct_id
+        next_ct_id += 1
+        change_types.append(data)
 
-    # Add another result code. Try to find both.
-    server.add_result_code({'name': 'No text'})
-    assert client.canvass_responses.find_result_code('No call') == ResultCode(id=1, name='No call')
-    assert client.canvass_responses.find_result_code('No text') == ResultCode(id=2, name='No text')
-    with pytest.raises(EAFindFailedException, match='No such result code'):
-        client.canvass_responses.find_result_code('No walk')
+    test_find(
+        lambda name: client.changed_entities.find_change_type('TestResource', name),
+        add_change_type,
+        ChangeType,
+        'change type'
+    )
+    test_find(client.canvass_responses.find_contact_type, server.add_contact_type, ContactType, 'contact type')
+    test_find(client.canvass_responses.find_input_type, server.add_input_type, InputType, 'input type')
+    test_find(client.canvass_responses.find_result_code, server.add_result_code, ResultCode, 'result code')

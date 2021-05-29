@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="everyaction.services.ChangedEntities" href="everyaction.services.ChangedEntities.html" />
-    <link rel="prev" title="everyaction.services.BulkImport" href="everyaction.services.BulkImport.html" /> 
+    <link rel="prev" title="everyaction.services.CanvassFileRequests" href="everyaction.services.CanvassFileRequests.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -33,7 +33,7 @@
           <a href="everyaction.services.ChangedEntities.html" title="everyaction.services.ChangedEntities"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="everyaction.services.BulkImport.html" title="everyaction.services.BulkImport"
+          <a href="everyaction.services.CanvassFileRequests.html" title="everyaction.services.CanvassFileRequests"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../services.html" accesskey="U">Services</a> &#187;</li>
@@ -64,13 +64,13 @@
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsescontacttypes">GET /canvassResponses/contactTypes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.find_contact_type" title="everyaction.services.CanvassResponses.find_contact_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_contact_type</span></code></a>(name)</p></td>
-<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> which exactly matches the given name.</p></td>
+<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> with the given name, case insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.find_input_type" title="everyaction.services.CanvassResponses.find_input_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_input_type</span></code></a>(name)</p></td>
-<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> which exactly matches the given name.</p></td>
+<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> with the given name, case insensitive.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.find_result_code" title="everyaction.services.CanvassResponses.find_result_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_result_code</span></code></a>(name)</p></td>
-<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> which exactly matches the given name.</p></td>
+<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> with the given name, case insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.input_types" title="everyaction.services.CanvassResponses.input_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_types</span></code></a>()</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsesinputtypes">GET /canvassResponses/inputTypes</a>.</p></td>
@@ -103,7 +103,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_contact_type">
 <span class="sig-name descname"><span class="pre">find_contact_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a><a class="headerlink" href="#everyaction.services.CanvassResponses.find_contact_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> which exactly matches the given name.</p>
+<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – Name of contact type to find.</p>
@@ -120,7 +120,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_input_type">
 <span class="sig-name descname"><span class="pre">find_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a><a class="headerlink" href="#everyaction.services.CanvassResponses.find_input_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> which exactly matches the given name.</p>
+<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – Name of input type to find.</p>
@@ -137,7 +137,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_result_code">
 <span class="sig-name descname"><span class="pre">find_result_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a><a class="headerlink" href="#everyaction.services.CanvassResponses.find_result_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> which exactly matches the given name.</p>
+<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – Name of result code to find.</p>
@@ -196,8 +196,8 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="everyaction.services.BulkImport.html"
-                        title="previous chapter">everyaction.services.BulkImport</a></p>
+  <p class="topless"><a href="everyaction.services.CanvassFileRequests.html"
+                        title="previous chapter">everyaction.services.CanvassFileRequests</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="everyaction.services.ChangedEntities.html"
                         title="next chapter">everyaction.services.ChangedEntities</a></p>
@@ -235,7 +235,7 @@
           <a href="everyaction.services.ChangedEntities.html" title="everyaction.services.ChangedEntities"
              >next</a> |</li>
         <li class="right" >
-          <a href="everyaction.services.BulkImport.html" title="everyaction.services.BulkImport"
+          <a href="everyaction.services.CanvassFileRequests.html" title="everyaction.services.CanvassFileRequests"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Python Client for EveryAction 0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../services.html" >Services</a> &#187;</li>

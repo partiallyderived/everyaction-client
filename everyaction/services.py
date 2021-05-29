@@ -3,10 +3,13 @@ This module contains the objects that have methods corresponding to collections 
 `EveryAction 8 VAN API docs <https://docs.everyaction.com/reference>`__.
 """
 
+import time
 from typing import Dict, Iterable, List, Optional, Union
 
+import requests
+
 from everyaction.core import ea_endpoint, E, EAMap, EAProperty, EAService, EAValue
-from everyaction.exception import EAFindFailedException
+from everyaction.exception import EAChangedEntityJobFailedException, EAFindFailedException
 from everyaction.objects import *
 
 __all__ = [
@@ -14,6 +17,7 @@ __all__ = [
     'Ballots',
     'BargainingUnits',
     'BulkImport',
+    'CanvassFileRequests',
     'CanvassResponse',
     'ChangedEntities',
     'Codes',
@@ -59,6 +63,14 @@ __all__ = [
     'Worksites'
 ]
 
+
+def _find(name: str, all_objects: List[E], obj_name: str) -> E:
+    # Finds a record with the given name, case insensitive.
+    lower = name.lower()
+    for obj in all_objects:
+        if obj.name.lower() == lower:
+            return obj
+    raise EAFindFailedException(f'No such {obj_name}: "{name}"')
 
 # The services are in the same order as they appear in the EveryAction documentation.
 
@@ -649,6 +661,36 @@ class BulkImport(EAService):
         """
 
 
+class CanvassFileRequests(EAService):
+    """Represents the
+    `Canvass File Requests <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
+    """
+
+    @ea_endpoint(
+        'canvassFileRequests',
+        'post',
+        result_factory=CanvassFileRequest,
+        prop_keys={'savedListId', 'type', 'webhookUrl'}
+    )
+    def create(self, **kwargs: EAValue) -> CanvassFileRequest:
+        """See `POST /canvassFileRequests
+        <https://docs.everyaction.com/reference/canvass-file-requests>`__.
+
+        :param kwargs: The applicable query arguments and JSON data for the request.
+        :returns: The resulting :class:`.CanvassFileRequest` object.
+        """
+
+    @ea_endpoint('canvassFileRequests/{canvassFileRequestId}', 'get', result_factory=CanvassFileRequest)
+    def get(self, request_id: int, **kwargs: EAValue) -> CanvassFileRequest:
+        """See `GET /canvassFileRequests/{canvassFileRequestId}
+        <https://docs.everyaction.com/reference/canvass-file-requests>`__.
+
+        :param request_id: The :code:`canvassFileRequestId` path parameter.
+        :param kwargs: The applicable query arguments and JSON data for the request.
+        :returns: The resulting :class:`.CanvassFileRequest` object.
+        """
+
+
 class CanvassResponses(EAService):
     """Represents the
     `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
@@ -692,47 +734,41 @@ class CanvassResponses(EAService):
         :returns: List of the resulting :class:`.ResultCode` objects.
         """
 
-    @staticmethod
-    def _find(name: str, all_objects: List[E], obj_name: str) -> E:
-        # Finds a contact type, input type, or result code.
-        lower = name.lower()
-        for obj in all_objects:
-            if obj.name.lower() == lower:
-                return obj
-        raise EAFindFailedException(f'No such {obj_name}: "{name}"')
-
     def find_contact_type(self, name: str) -> ContactType:
-        """Finds the :class:`.ContactType` which exactly matches the given name.
+        """Finds the :class:`.ContactType` with the given name, case insensitive.
 
         :param name: Name of contact type to find.
         :returns: The resulting :class:`.ContactType` object..
         :raises EAFindFailedException: If the contact type could not be found.
         """
-        return self._find(name, self.contact_types(), 'contact type')
+        return _find(name, self.contact_types(), 'contact type')
 
     def find_input_type(self, name: str) -> InputType:
-        """Finds the :class:`.InputType` which exactly matches the given name.
+        """Finds the :class:`.InputType` with the given name, case insensitive.
 
         :param name: Name of input type to find.
         :returns: The resulting :class:`.InputType` object.
         :raises EAFindFailedException: If the input type could not be found.
         """
-        return self._find(name, self.input_types(), 'input type')
+        return _find(name, self.input_types(), 'input type')
 
     def find_result_code(self, name: str) -> ResultCode:
-        """Finds the :class:`.ResultCode` which exactly matches the given name.
+        """Finds the :class:`.ResultCode` with the given name, case insensitive.
 
         :param name: Name of result code to find.
         :returns: The resulting :class:`.ResultCode` object..
         :raises EAFindFailedException: If the result code could not be found.
         """
-        return self._find(name, self.result_codes(), 'result code')
+        return _find(name, self.result_codes(), 'result code')
 
 
 class ChangedEntities(EAService):
     """Represents the
     `Changed Entities <https://docs.everyaction.com/reference/changed-entities>`__ service.
     """
+
+    # Amount of seconds to wait between attempts to determine if a changed entity export job has been completed.
+    _WAIT_INTERVAL = 5
 
     @ea_endpoint(
         'changedEntityExportJobs/changeTypes/{resourceType}',
@@ -742,7 +778,7 @@ class ChangedEntities(EAService):
     )
     def change_types(self, resource: str, /) -> List[ChangeType]:
         """See `GET /changedEntityExportJobs/changeTypes/{resourceType}
-        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobschangetypesresourcetype>`__.
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype>`__.
 
         :param resource: The :code:`resourceType` path parameter.
         :returns: List of the resulting :class:`.ChangeType` objects.
@@ -751,12 +787,13 @@ class ChangedEntities(EAService):
     @ea_endpoint(
         'changedEntityExportJobs',
         'post',
-        data_type=ChangedEntityExportJob,
-        result_factory=ChangedEntityExportJob
+        data_type=ChangedEntityExportRequest,
+        result_factory=ChangedEntityExportRequest,
+        prop_keys={'fileSizeKbLimit'}
     )
-    def create(self, **kwargs: EAValue) -> ChangedEntityExportJob:
+    def create_job(self, **kwargs: EAValue) -> ChangedEntityExportRequest:
         """See `POST /changedEntityExportJobs
-        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs>`__.
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.ChangedEntityExportJob`
             is appropriate to unpack here.
@@ -771,16 +808,16 @@ class ChangedEntities(EAService):
     )
     def fields(self, resource: str, /) -> List[ChangedEntityField]:
         """See `GET /changedEntityExportJobs/fields/{resourceType}
-        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsfieldsresourcetype>`__.
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__.
 
         :param resource: The :code:`resourceType` path parameter.
         :returns: The resulting :class:`.ChangedEntityField` object.
         """
 
     @ea_endpoint('changedEntityExportJobs/{exportJobId}', 'get', result_factory=ChangedEntityExportJob)
-    def get(self, job_id: int, /) -> ChangedEntityExportJob:
+    def job(self, job_id: int, /) -> ChangedEntityExportJob:
         """See `GET /changedEntityExportJobs/{exportJobId}
-        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsexportjobid>`__.
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsexportjobid>`__.
 
         :param job_id: The :code:`exportJobId` path parameter.
         :returns: The resulting :class:`.ChangedEntityExportJobData` object.
@@ -789,10 +826,84 @@ class ChangedEntities(EAService):
     @ea_endpoint('changedEntityExportJobs/resources', 'get')
     def resources(self) -> List[str]:
         """See `GET /changedEntityExportJobs/resources
-        <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobsresources>`__.
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsresources>`__.
 
         :returns: List of the resource type names.
         """
+
+    @staticmethod
+    def _parse_csv(
+        lines: List[str],
+        column_to_index: Dict[str, int],
+        name_to_field: Dict[str, ChangedEntityField],
+        header: str,
+        results: List[Dict[str, ChangedEntityField.ValueType]]
+    ) -> None:
+        # Parses the lines of a CSV file into
+        start = 1 if lines[0] == header else 0  # TODO: is header included in CSV files after the first?
+        for i in range(start, len(lines)):
+            data = {}
+            splits = lines[i].split(',')
+            for col, j, in column_to_index.items():
+                data[col] = name_to_field[col].parse(splits[j])
+            results.append(data)
+
+    def changes(
+        self,
+        field_cache: Optional[List[ChangedEntityField]] = None,
+        **kwargs: EAValue
+    ) -> List[Dict[str, ChangedEntityField.ValueType]]:
+        """`Creates a ChangedEntityExportJob
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobs>`__,
+        waits for its completion, and then parses the results from the downloadable csv.
+
+        :param field_cache: If provided, use these :class:`ChangedEntityFields .ChangedEntityField` to parse the data
+            instead of getting them automatically in this function. Useful for saving bandwidth by reducing the volume
+            of requests, especially if export jobs are made frequently. Note that all other fields will be excluded
+            from the resulting dictionary when this is specified. If a field could not be found as a header in the
+            resulting CSV file, no exception is raised: that field is simply missing from the resulting dictionary.
+        :param kwargs: The applicable query arguments and JSON data to pass to `POST /changedEntityExportJobs
+            <https://docs.everyaction.com/reference/changed-entity-export-jobs#changedentityexportjobs>`__.
+        :returns: Name of changed entity field -> Value of field.
+        :raises EAChangedEntityJobFailedException: If the changed entity export job failed.
+        """
+        created_job = self.create_job(**kwargs)
+        job_id = created_job.id
+        job = self.job(job_id)
+        while job.status in {'InProcess', 'Pending'}:
+            time.sleep(self._WAIT_INTERVAL)
+            job = self.job(job_id)
+        if job.status == 'Error':
+            raise EAChangedEntityJobFailedException(job)
+        elif job.status != 'Complete':
+            raise AssertionError(f'Unexpected job status: {job.status}')
+        if not field_cache:
+            all_fields = self.fields(created_job.resource)
+        else:
+            all_fields = field_cache
+        name_to_field = {f.name: f for f in all_fields}
+        first_url = job.files[0].download
+        first_lines = requests.get(first_url).text.splitlines()
+        header = first_lines[0]
+        columns = header.split(',')
+        column_to_index = {h: i for i, h in enumerate(columns) if h in name_to_field}
+        results = []
+        self._parse_csv(first_lines, column_to_index, name_to_field, header, results)
+        for f in job.files[1:]:
+            lines = requests.get(f.download).text.splitlines()
+            self._parse_csv(lines, column_to_index, name_to_field, header, results)
+        return results
+
+    def find_change_type(self, resource: str, name: str) -> ChangeType:
+        """Find the `changeType
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype>`__
+        with the given case-insensitive name for the given resource
+
+        :param resource: Resource to find change type for.
+        :param name: Name of change type to find.
+        :returns: The resulting :class:`ChangeType`
+        """
+        return _find(name, self.change_types(resource), 'change type')
 
 
 class Codes(EAService):
