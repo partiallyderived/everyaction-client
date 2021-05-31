@@ -30,7 +30,16 @@
       ~ChangedEntities.find_change_type
    
    
+      ~ChangedEntities.find_field
+   
+   
       ~ChangedEntities.job
+   
+   
+      ~ChangedEntities.name_to_change_type
+   
+   
+      ~ChangedEntities.name_to_field
    
    
       ~ChangedEntities.resources

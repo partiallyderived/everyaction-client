@@ -37,7 +37,7 @@ class EAData(OrderedDict):
         next_id = self.next_id()
         self[next_id] = data
         data[self.id_key] = next_id
-        return next_id
+        return data
 
     def next_id(self):
         next_id = self._next_id
@@ -125,7 +125,7 @@ class MockServer:
         return self.input_types.add(data)
 
     def add_person(self, data):
-        van_id = self.people.add(data)
+        van_id = self.people.add(data)['vanId']
         self.person_to_membership[van_id] = {}
         return van_id
 
@@ -169,7 +169,7 @@ class MockServer:
             'files': [],
             'jobStatus': 'Pending',
             'message': self.CE_PENDING_MSG
-        })
+        })['exportJobId']
         return {
             'exportJobId': job_id,
             'dateChangedFrom': data['dateChangedFrom'],
@@ -584,24 +584,30 @@ def test_changed_entities(client, server):
 
 
 def test_finds(client, server):
-    def test_find(find_fn, add_fn, factory, obj_name):
+    def test_find(find_fn, name_fn, add_fn, factory, obj_name):
         # Test that failing to find a record results in an EAFindFailedException.
         with pytest.raises(EAFindFailedException, match=f'No such {obj_name}'):
             find_fn('obj 1')
 
         # Add a record and try to find it.
-        add_fn({'name': 'obj 1'})
-        assert find_fn('obj 1') == factory(id=1, name='obj 1')
+        data1 = factory(**add_fn({'name': 'obj 1'}))
+        assert find_fn('obj 1') == data1
 
         # Add another record. Try to find both.
-        add_fn({'name': 'obj 2'})
-        assert find_fn('obj 1') == factory(id=1, name='obj 1')
-        assert find_fn('obj 2') == factory(id=2, name='obj 2')
+        data2 = factory(**add_fn({'name': 'obj 2'}))
+        assert find_fn('obj 1') == data1
+        assert find_fn('obj 2') == data2
         with pytest.raises(EAFindFailedException, match=f'No such {obj_name}'):
             find_fn('obj 3')
 
+        assert name_fn() == {
+            'obj 1': data1,
+            'obj 2': data2
+        }
+
     change_types = []
-    server.add_changed_entity_resource('TestResource', change_types, [])
+    fields = []
+    server.add_changed_entity_resource('TestResource', change_types, fields)
 
     next_ct_id = 1
 
@@ -610,13 +616,44 @@ def test_finds(client, server):
         data['changeTypeID'] = next_ct_id
         next_ct_id += 1
         change_types.append(data)
+        return data
+
+    def add_field(data):
+        fields.append(data)
+        return data
 
     test_find(
         lambda name: client.changed_entities.find_change_type('TestResource', name),
+        lambda: client.changed_entities.name_to_change_type('TestResource'),
         add_change_type,
         ChangeType,
         'change type'
     )
-    test_find(client.canvass_responses.find_contact_type, server.add_contact_type, ContactType, 'contact type')
-    test_find(client.canvass_responses.find_input_type, server.add_input_type, InputType, 'input type')
-    test_find(client.canvass_responses.find_result_code, server.add_result_code, ResultCode, 'result code')
+    test_find(
+        lambda name: client.changed_entities.find_field('TestResource', name),
+        lambda: client.changed_entities.name_to_field('TestResource'),
+        add_field,
+        ChangedEntityField,
+        'field'
+    )
+    test_find(
+        client.canvass_responses.find_contact_type,
+        client.canvass_responses.name_to_contact_type,
+        server.add_contact_type,
+        ContactType,
+        'contact type'
+    )
+    test_find(
+        client.canvass_responses.find_input_type,
+        client.canvass_responses.name_to_input_type,
+        server.add_input_type,
+        InputType,
+        'input type'
+    )
+    test_find(
+        client.canvass_responses.find_result_code,
+        client.canvass_responses.name_to_result_code,
+        server.add_result_code,
+        ResultCode,
+        'result code'
+    )

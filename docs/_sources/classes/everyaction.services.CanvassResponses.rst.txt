@@ -30,6 +30,15 @@
       ~CanvassResponses.input_types
    
    
+      ~CanvassResponses.name_to_contact_type
+   
+   
+      ~CanvassResponses.name_to_input_type
+   
+   
+      ~CanvassResponses.name_to_result_code
+   
+   
       ~CanvassResponses.result_codes
    
    

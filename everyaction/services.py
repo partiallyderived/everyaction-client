@@ -72,6 +72,11 @@ def _find(name: str, all_objects: List[E], obj_name: str) -> E:
             return obj
     raise EAFindFailedException(f'No such {obj_name}: "{name}"')
 
+
+def _named(all_objects: List[E]) -> Dict[str, E]:
+    # Gives a dictionary with names mapping to the given named records.
+    return {o.name: o for o in all_objects}
+
 # The services are in the same order as they appear in the EveryAction documentation.
 
 
@@ -738,7 +743,7 @@ class CanvassResponses(EAService):
         """Finds the :class:`.ContactType` with the given name, case insensitive.
 
         :param name: Name of contact type to find.
-        :returns: The resulting :class:`.ContactType` object..
+        :returns: The resulting :class:`.ContactType` object.
         :raises EAFindFailedException: If the contact type could not be found.
         """
         return _find(name, self.contact_types(), 'contact type')
@@ -756,10 +761,31 @@ class CanvassResponses(EAService):
         """Finds the :class:`.ResultCode` with the given name, case insensitive.
 
         :param name: Name of result code to find.
-        :returns: The resulting :class:`.ResultCode` object..
+        :returns: The resulting :class:`.ResultCode` object.
         :raises EAFindFailedException: If the result code could not be found.
         """
         return _find(name, self.result_codes(), 'result code')
+
+    def name_to_contact_type(self) -> Dict[str, ContactType]:
+        """Gives a mapping from names to the :class:`ContactTypes .ContactType` of the same name, case-insensitive.
+
+        :returns: Name of Contact Type to the resulting :class:`.ContactType` objects.
+        """
+        return _named(self.contact_types())
+
+    def name_to_input_type(self) -> Dict[str, InputType]:
+        """Gives a mapping from names to the :class:`InputTypes .InputType` of the same name, case-insensitive.
+
+        :returns: Name of Input Type to the resulting :class:`.InputType` objects.
+        """
+        return _named(self.input_types())
+
+    def name_to_result_code(self) -> Dict[str, ResultCode]:
+        """Gives a mapping from names to the :class:`ResultCodes .ResultCode` of the same name, case-insensitive.
+
+        :returns: Name of Result Code to the resulting :class:`.ResultCode` objects.
+        """
+        return _named(self.result_codes())
 
 
 class ChangedEntities(EAService):
@@ -878,10 +904,9 @@ class ChangedEntities(EAService):
         elif job.status != 'Complete':
             raise AssertionError(f'Unexpected job status: {job.status}')
         if not field_cache:
-            all_fields = self.fields(created_job.resource)
+            name_to_field = self.name_to_field(created_job.resource)
         else:
-            all_fields = field_cache
-        name_to_field = {f.name: f for f in all_fields}
+            name_to_field = {f.name: f for f in field_cache}
         first_url = job.files[0].download
         first_lines = requests.get(first_url).text.splitlines()
         header = first_lines[0]
@@ -897,13 +922,40 @@ class ChangedEntities(EAService):
     def find_change_type(self, resource: str, name: str) -> ChangeType:
         """Find the `changeType
         <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype>`__
-        with the given case-insensitive name for the given resource
+        with the given case-insensitive name for the given resource.
 
         :param resource: Resource to find change type for.
         :param name: Name of change type to find.
-        :returns: The resulting :class:`ChangeType`
+        :returns: The resulting :class:`ChangeType`.
         """
         return _find(name, self.change_types(resource), 'change type')
+
+    def find_field(self, resource: str, name: str) -> ChangedEntityField:
+        """Find the `fields
+        <https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype>`__
+        with the given case-insensitive name for the given resource.
+
+        :param resource: Resource to find field for.
+        :param name: Name of field to find.
+        :returns: The resulting :class:`ChangedEntityField`.
+        """
+        return _find(name, self.fields(resource), 'field')
+
+    def name_to_change_type(self, resource: str) -> Dict[str, ChangeType]:
+        """Gives a mapping from names to the :class:`ChangeTypes .ChangeType` of the same name, case-insensitive.
+
+        :param resource: Resource to get change types for.
+        :returns: Name of Change Type to the resulting :class:`.ChangeType` objects.
+        """
+        return _named(self.change_types(resource))
+
+    def name_to_field(self, resource: str) -> Dict[str, ChangedEntityField]:
+        """Gives a mapping from names to the :class:`Fields .ChangedEntityField` of the same name, case-insensitive.
+
+        :param resource: Resource to get fields for.
+        :returns: Name of field to the resulting :class:`.ChangedEntityField` objects.
+        """
+        return _named(self.fields(resource))
 
 
 class Codes(EAService):

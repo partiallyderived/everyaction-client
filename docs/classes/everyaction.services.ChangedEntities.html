@@ -73,12 +73,21 @@
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype">GET /changedEntityExportJobs/fields/{resourceType}</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.find_change_type" title="everyaction.services.ChangedEntities.find_change_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_change_type</span></code></a>(resource, name)</p></td>
-<td><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">changeType</a> with the given case-insensitive name for the given resource</p></td>
+<td><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">changeType</a> with the given case-insensitive name for the given resource.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.job" title="everyaction.services.ChangedEntities.job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">job</span></code></a>(job_id, /)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.find_field" title="everyaction.services.ChangedEntities.find_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_field</span></code></a>(resource, name)</p></td>
+<td><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype">fields</a> with the given case-insensitive name for the given resource.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.job" title="everyaction.services.ChangedEntities.job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">job</span></code></a>(job_id, /)</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsexportjobid">GET /changedEntityExportJobs/{exportJobId}</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.resources" title="everyaction.services.ChangedEntities.resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resources</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.name_to_change_type" title="everyaction.services.ChangedEntities.name_to_change_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_to_change_type</span></code></a>(resource)</p></td>
+<td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeTypes</span> <span class="pre">.ChangeType</span></code> of the same name, case-insensitive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.name_to_field" title="everyaction.services.ChangedEntities.name_to_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_to_field</span></code></a>(resource)</p></td>
+<td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Fields</span> <span class="pre">.ChangedEntityField</span></code> of the same name, case-insensitive.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ChangedEntities.resources" title="everyaction.services.ChangedEntities.resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resources</span></code></a>()</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsresources">GET /changedEntityExportJobs/resources</a>.</p></td>
 </tr>
 </tbody>
@@ -179,7 +188,7 @@ is appropriate to unpack here.</p>
 <dt class="sig sig-object py" id="everyaction.services.ChangedEntities.find_change_type">
 <span class="sig-name descname"><span class="pre">find_change_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangeType" title="everyaction.objects.ChangeType"><span class="pre">everyaction.objects.ChangeType</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.find_change_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobschangetypesresourcetype">changeType</a>
-with the given case-insensitive name for the given resource</p>
+with the given case-insensitive name for the given resource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -188,7 +197,25 @@ with the given case-insensitive name for the given resource</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeType</span></code></p>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeType</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.find_field">
+<span class="sig-name descname"><span class="pre">find_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityField" title="everyaction.objects.ChangedEntityField"><span class="pre">everyaction.objects.ChangedEntityField</span></a><a class="headerlink" href="#everyaction.services.ChangedEntities.find_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the <a class="reference external" href="https://docs.everyaction.com/reference/changed-entities#changedentityexportjobsfieldsresourcetype">fields</a>
+with the given case-insensitive name for the given resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – Resource to find field for.</p></li>
+<li><p><strong>name</strong> – Name of field to find.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangedEntityField</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -203,6 +230,34 @@ with the given case-insensitive name for the given resource</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangedEntityExportJobData</span></code> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.name_to_change_type">
+<span class="sig-name descname"><span class="pre">name_to_change_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ChangeType" title="everyaction.objects.ChangeType"><span class="pre">everyaction.objects.ChangeType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.name_to_change_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeTypes</span> <span class="pre">.ChangeType</span></code> of the same name, case-insensitive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource</strong> – Resource to get change types for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of Change Type to the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ChangeType" title="everyaction.objects.ChangeType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeType</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ChangedEntities.name_to_field">
+<span class="sig-name descname"><span class="pre">name_to_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityField" title="everyaction.objects.ChangedEntityField"><span class="pre">everyaction.objects.ChangedEntityField</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ChangedEntities.name_to_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Fields</span> <span class="pre">.ChangedEntityField</span></code> of the same name, case-insensitive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource</strong> – Resource to get fields for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of field to the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ChangedEntityField" title="everyaction.objects.ChangedEntityField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangedEntityField</span></code></a> objects.</p>
 </dd>
 </dl>
 </dd></dl>
