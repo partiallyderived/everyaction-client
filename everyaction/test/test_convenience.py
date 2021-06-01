@@ -482,7 +482,7 @@ def test_changed_entities(client, server):
 
         result_data2 = textwrap.dedent('''\
         bool,date,money,num,text
-        false,1922-08-24,$23.57,173,milk steak
+        false,1922-08-24,,173,milk steak
         true,1953-06-02,$111.11,693,little green ghouls''')
 
         files = [{
@@ -512,7 +512,7 @@ def test_changed_entities(client, server):
         assert changes_result == [[
             {'bool': True, 'date': datetime(1818, 5, 5), 'money': '$50.00', 'num': 272, 'text': 'Hi everybody'},
             {'bool': False, 'date': datetime(1928, 12, 7), 'money': '$10.00', 'num': 141, 'text': 'Hello Dr. Nick'},
-            {'bool': False, 'date': datetime(1922, 8, 24), 'money': '$23.57', 'num': 173, 'text': 'milk steak'},
+            {'bool': False, 'date': datetime(1922, 8, 24), 'money': None, 'num': 173, 'text': 'milk steak'},
             {'bool': True, 'date': datetime(1953, 6, 2), 'money': '$111.11', 'num': 693, 'text': 'little green ghouls'},
         ]]
         assert mock_get.call_args_list == [call('fake://example.com/1'), call('fake://example.com/2')]

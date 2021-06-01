@@ -1974,7 +1974,7 @@ class ChangedEntityField(
         :param value: The value to parse.
         :returns: The parsed value.
         """
-        return self._TYPE_TO_FACTORY[self.type](value)
+        return self._TYPE_TO_FACTORY[self.type](value) if value else None
 
 
 # References inner staticmethod so needs to be defined here.
