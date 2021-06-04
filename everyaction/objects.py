@@ -307,7 +307,7 @@ EAProperty.share(
     defaultStartTime=EAProperty('default_start'),
     depositDate=EAProperty(),
     depositNumber=EAProperty(),
-    detailedCode=EAProperty('code'),
+    detailedCode=EAProperty(),
     description=EAProperty('desc'),
     designationId=EAProperty('designation'),
     dialingPrefix=EAProperty('prefix'),
@@ -445,6 +445,7 @@ EAProperty.share(
     max=EAProperty(),
     maxDoorCount=EAProperty('max_door'),
     maxFieldLength=EAProperty('max_length', 'max_len'),
+    maxLength=EAProperty(),
     maxPeopleCount=EAProperty('max_people'),
     maxTextboxCharacters=EAProperty('max_box_chars'),
     maxValue=EAProperty('max'),
@@ -806,7 +807,7 @@ class ContactType(EAObjectWithIDAndName, _prefix='contactType', _keys={'channelT
     """
 
 
-class Constraints(EAObject, _keys={'invalidCharacters'}):
+class Constraints(EAObject, _keys={'invalidCharacters', 'maxLength'}):
     """Represents a description of the violated constraints for :class:`.Error` objects."""
 
 

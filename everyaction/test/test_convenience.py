@@ -16,9 +16,7 @@ from http_router import Router
 import pytest
 
 from everyaction import EAClient, EAChangedEntityJobFailedException, EAFindFailedException
-from everyaction.objects import (
-    ActivistCode, ActivistCodeData, ChangedEntityField, ChangeType, Note, Person, ContactType, InputType, ResultCode
-)
+from everyaction.objects import *
 from everyaction.services import ChangedEntities
 
 
@@ -60,6 +58,7 @@ class MockServer:
         self.activist_codes = EAData('activistCode')
         self.changed_entity_export_jobs = EAData('exportJob')
         self.contact_types = EAData('contactType')
+        self.export_job_types = EAData('exportJobType')
         self.input_types = EAData('inputType')
         self.people = EAData('van')
         self.result_codes = EAData('resultCode')
@@ -120,6 +119,9 @@ class MockServer:
 
     def add_contact_type(self, data):
         return self.contact_types.add(data)
+
+    def add_export_job_type(self, data):
+        return self.export_job_types.add(data)
 
     def add_input_type(self, data):
         return self.input_types.add(data)
@@ -193,6 +195,10 @@ class MockServer:
     @router.route('/changedEntityExportJobs/resources', methods=['GET'])
     def changed_entity_resources(self, query, data):
         return list(self.changed_entity_resources)
+
+    @router.route('/exportJobTypes', methods=['GET'])
+    def export_job_types(self, query, data):
+        return self._paginated(list(self.export_job_types.values()), query)
 
     @router.route('/people/{van_id:int}/activistCodes', methods=['GET'])
     def person_activist_codes(self, van_id, query, data):
@@ -656,4 +662,11 @@ def test_finds(client, server):
         server.add_result_code,
         ResultCode,
         'result code'
+    )
+    test_find(
+        client.export_jobs.find_type,
+        client.export_jobs.name_to_type,
+        server.add_export_job_type,
+        ExportJobType,
+        'export job type'
     )

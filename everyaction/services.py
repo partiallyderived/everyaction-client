@@ -1584,6 +1584,22 @@ class ExportJobs(EAService):
         :returns: List of the resulting :class:`.ExportJobType` objects.
         """
 
+    def find_type(self, name: str) -> ExportJobType:
+        """Finds the :class:`.ExportJobType` with the given name, case insensitive.
+
+        :param name: Name of export job type to find.
+        :returns: The resulting :class:`.ExportJobType` object.
+        :raises EAFindFailedException: If the export job type could not be found.
+        """
+        return _find(name, self.types(limit=0), 'export job type')
+
+    def name_to_type(self) -> Dict[str, ExportJobType]:
+        """Gives a mapping from names to the :class:`ExportJobTypes .ExportJobType` of the same name, case-insensitive.
+
+        :returns: Name of Export Job Type to the resulting :class:`.ExportJobType` objects.
+        """
+        return _named(self.types(limit=0))
+
 
 class ExtendedSourceCodes(EAService):
     """Represents the

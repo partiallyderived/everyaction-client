@@ -18,7 +18,13 @@
       ~ExportJobs.create
    
    
+      ~ExportJobs.find_type
+   
+   
       ~ExportJobs.get
+   
+   
+      ~ExportJobs.name_to_type
    
    
       ~ExportJobs.types

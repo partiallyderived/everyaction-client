@@ -63,8 +63,14 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.create" title="everyaction.services.ExportJobs.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobs">POST /exportJobs</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.get" title="everyaction.services.ExportJobs.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(job_id, /)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.find_type" title="everyaction.services.ExportJobs.find_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_type</span></code></a>(name)</p></td>
+<td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> with the given name, case insensitive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.get" title="everyaction.services.ExportJobs.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(job_id, /)</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.name_to_type" title="everyaction.services.ExportJobs.name_to_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_to_type</span></code></a>()</p></td>
+<td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobTypes</span> <span class="pre">.ExportJobType</span></code> of the same name, case-insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.types" title="everyaction.services.ExportJobs.types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types</span></code></a>(*[, limit])</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-job-types#exportjobtypes">GET /exportJobTypes</a>.</p></td>
@@ -95,6 +101,23 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ExportJobs.find_type">
+<span class="sig-name descname"><span class="pre">find_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><a class="headerlink" href="#everyaction.services.ExportJobs.find_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> with the given name, case insensitive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of export job type to find.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../exceptions.html#everyaction.exception.EAFindFailedException" title="everyaction.exception.EAFindFailedException"><strong>EAFindFailedException</strong></a> – If the export job type could not be found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><span class="pre">everyaction.objects.ExportJob</span></a><a class="headerlink" href="#everyaction.services.ExportJobs.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p>
@@ -104,6 +127,17 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJob</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.ExportJobs.name_to_type">
+<span class="sig-name descname"><span class="pre">name_to_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.ExportJobs.name_to_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobTypes</span> <span class="pre">.ExportJobType</span></code> of the same name, case-insensitive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Name of Export Job Type to the resulting <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> objects.</p>
 </dd>
 </dl>
 </dd></dl>
