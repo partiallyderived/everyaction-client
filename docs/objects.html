@@ -1464,7 +1464,7 @@ for an Event Type.</p>
 <li><p><strong>eventTypeId</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">event_type_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
 <li><p><strong>isAtLeastOneLocationRequired</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_at_least_one_location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">requires_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_location</span></code>)</p></li>
+(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_at_least_one_location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">requires_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_location</span></code>)</p></li>
 <li><p><strong>isOnlineActionsAvailable</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">is_online_actions_available</span></code>, <code class="code docutils literal notranslate"><span class="pre">online_actions_available</span></code>, <code class="code docutils literal notranslate"><span class="pre">actions_available</span></code>)</p></li>
 <li><p><strong>isSharedWithChildCommitteesByDefault</strong>
@@ -2266,6 +2266,30 @@ for a person.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.preferred_email">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">preferred_email</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[str]</span></em><a class="headerlink" href="#everyaction.objects.Person.preferred_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the address of this contact’s preferred email if it exists, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if this contact has no email
+addresses or if information on what address is preferred is unavailable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The preferred email address, or code:<cite>None</cite> if no preferred email address could be determined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.preferred_phone">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">preferred_phone</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[str]</span></em><a class="headerlink" href="#everyaction.objects.Person.preferred_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of this contact’s preferred phone if it exists, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if this contact has no phone
+numbers or if information on what number is preferred is unavailable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The preferred phone number, or code:<cite>None</cite> if no preferred phone number could be determined.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">

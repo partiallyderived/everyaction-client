@@ -1309,7 +1309,7 @@ class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'n
         """
         if code_or_name:
             # Infer from str length whether it is a name or a code.
-            if len(code_or_name) >= 2:
+            if len(code_or_name) > 2:
                 super().__init__(suppressionName=code_or_name, **kwargs)
             else:
                 super().__init__(suppressionCode=code_or_name, **kwargs)
@@ -2163,6 +2163,34 @@ class Person(
                 raise AssertionError(f'Only expected Unmatched status, found "{status}"')
             return None
         return Person(**kwargs)
+
+    @property
+    def preferred_email(self) -> Optional[str]:
+        """Get the address of this contact's preferred email if it exists, or :code:`None` if this contact has no email
+        addresses or if information on what address is preferred is unavailable.
+
+        :returns: The preferred email address, or code:`None` if no preferred email address could be determined.
+        """
+        if self.emails:
+            result_list = [e for e in self.emails if e.preferred]
+            if result_list:
+                assert len(result_list) == 1
+                return result_list[0].email
+        return None
+
+    @property
+    def preferred_phone(self) -> Optional[str]:
+        """Get the number of this contact's preferred phone if it exists, or :code:`None` if this contact has no phone
+        numbers or if information on what number is preferred is unavailable.
+
+        :returns: The preferred phone number, or code:`None` if no preferred phone number could be determined.
+        """
+        if self.phones:
+            result_list = [p for p in self.phones if p.preferred]
+            if result_list:
+                assert len(result_list) == 1
+                return result_list[0].number
+        return None
 
 
 class Story(

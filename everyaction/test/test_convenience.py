@@ -387,6 +387,42 @@ def test_people(client, server):
     client.people.apply_result_code('No text', email='alice@bob.com')
     assert server.person_to_result_codes == {1: {1, 2}}
 
+    # Test People.preferred_email.
+    assert Person().preferred_email is None
+    assert Person(email='nopreferreddata@example.com').preferred_email is None
+    assert (
+        Person(email=Email('preferreddataavailable@example.com', preferred=True)).preferred_email ==
+        'preferreddataavailable@example.com'
+    )
+
+    assert Person(emails=[Email('email1@example.com'), Email('email2@example.com')]).preferred_email is None
+    assert (
+        Person(emails=[Email('email1@example.com'), Email('email2@example.com', preferred=True)]).preferred_email ==
+        'email2@example.com'
+    )
+    assert (
+        Person(emails=[Email('email1@example.com', preferred=True), Email('email2@example.com')]).preferred_email ==
+        'email1@example.com'
+    )
+    # Two preferred emails should result in AssertionError.
+    with pytest.raises(AssertionError):
+        Person(
+            emails=[Email('email1@example.com', preferred=True), Email('email2@example.com', preferred=True)]
+        ).preferred_email
+
+    # Test People.preferred_phone.
+    assert Person().preferred_phone is None
+    assert Person(phone='0000000000').preferred_phone is None
+    assert Person(phone=Phone('1111111111', preferred=True)).preferred_phone == '1111111111'
+
+    assert Person(phones=[Phone('1111111111'), Phone('2222222222')]).preferred_phone is None
+    assert Person(phones=[Phone('1111111111'), Phone('2222222222', preferred=True)]).preferred_phone == '2222222222'
+    assert Person(phones=[Phone('1111111111', preferred=True), Phone('2222222222')]).preferred_phone == '1111111111'
+
+    # Two preferred phones should result in AssertionError.
+    with pytest.raises(AssertionError):
+        Person(phones=[Phone('1111111111', preferred=True), Phone('2222222222', is_preferred=True)]).preferred_phone
+
 
 def test_activist_codes(client, server):
     # Test that failing to find an activist code results in an EAFindFailedException.
