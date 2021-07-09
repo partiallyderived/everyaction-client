@@ -888,7 +888,14 @@ class EAObject(MutableMapping, metaclass=EAMeta):
         return f'{type(self).__name__}({", ".join(f"{k}={v}" for k, v in self.items())})'
 
     def __setattr__(self, attr: str, value: EAValue) -> None:
-        resolved = self._resolve_attr(attr)
+        try:
+            resolved = self._resolve_attr(attr)
+        except AttributeError:
+            if hasattr(self, attr):
+                object.__setattr__(self, attr, value)
+                return
+            else:
+                raise
         if value is None:
             if resolved in self.__dict__:
                 # Be consistent about not including attributes with value None in self.__dict__.

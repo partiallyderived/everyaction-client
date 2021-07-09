@@ -591,7 +591,7 @@ for a Custom Field.</p>
 <dt class="field-odd">Properties</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>changeTypeID</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">change_type_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">ID</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+(Aliases: <code class="code docutils literal notranslate"><span class="pre">change_type_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">ID</span></code>)</p></li>
 <li><p><strong>changeTypeName</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">change_type_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">name</span></code>)</p></li>
 <li><p><strong>description</strong>
@@ -1464,7 +1464,7 @@ for an Event Type.</p>
 <li><p><strong>eventTypeId</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">event_type_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
 <li><p><strong>isAtLeastOneLocationRequired</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_at_least_one_location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">requires_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_location</span></code>)</p></li>
+(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_at_least_one_location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">requires_location</span></code>, <code class="code docutils literal notranslate"><span class="pre">location_required</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_location</span></code>)</p></li>
 <li><p><strong>isOnlineActionsAvailable</strong>
 (Aliases: <code class="code docutils literal notranslate"><span class="pre">is_online_actions_available</span></code>, <code class="code docutils literal notranslate"><span class="pre">online_actions_available</span></code>, <code class="code docutils literal notranslate"><span class="pre">actions_available</span></code>)</p></li>
 <li><p><strong>isSharedWithChildCommitteesByDefault</strong>
@@ -2266,6 +2266,97 @@ for a person.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.objects.Person.add_suppression">
+<span class="sig-name descname"><span class="pre">add_suppression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suppression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><span class="pre">everyaction.objects.Suppression</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#everyaction.objects.Person.add_suppression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given suppression to this person if it is not already present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>suppression</strong> – The suppression to add.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if the suppression was added, <code class="code docutils literal notranslate"><span class="pre">False</span></code> if it was already present.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.do_not_call">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">do_not_call</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[bool]</span></em><a class="headerlink" href="#everyaction.objects.Person.do_not_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if this contact is marked as “Do Not Call”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> is this contact is marked as “Do Not Call”, <code class="code docutils literal notranslate"><span class="pre">False</span></code> is suppressions are present
+and do not contain “Do Not Call”, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no suppression information is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.do_not_email">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">do_not_email</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[bool]</span></em><a class="headerlink" href="#everyaction.objects.Person.do_not_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if this contact is marked as “Do Not Email”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> is this contact is marked as “Do Not Email”, <code class="code docutils literal notranslate"><span class="pre">False</span></code> is suppressions are present
+and do not contain “Do Not Email”, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no suppression information is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.do_not_mail">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">do_not_mail</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[bool]</span></em><a class="headerlink" href="#everyaction.objects.Person.do_not_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if this contact is marked as “Do Not Mail”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> is this contact is marked as “Do Not Mail”, <code class="code docutils literal notranslate"><span class="pre">False</span></code> is suppressions are present
+and do not contain “Do Not Mail”, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no suppression information is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.do_not_walk">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">do_not_walk</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[bool]</span></em><a class="headerlink" href="#everyaction.objects.Person.do_not_walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if this contact is marked as “Do Not Mail”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> is this contact is marked as “Do Not Walk”, <code class="code docutils literal notranslate"><span class="pre">False</span></code> is suppressions are present
+and do not contain “Do Not Walk”, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no suppression information is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.objects.Person.has_suppression">
+<span class="sig-name descname"><span class="pre">has_suppression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suppression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><span class="pre">everyaction.objects.Suppression</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.objects.Person.has_suppression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether this contact has the given suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>suppression</strong> – The suppression to check for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if this contact has the suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> if suppression information is
+available (when <code class="code docutils literal notranslate"><span class="pre">suppressions</span></code> attribute is not <code class="code docutils literal notranslate"><span class="pre">None</span></code>) and the suppression was not found, or
+<code class="code docutils literal notranslate"><span class="pre">None</span></code> if no suppression information is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Person.preferred_address">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">preferred_address</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[everyaction.objects.Address]</span></em><a class="headerlink" href="#everyaction.objects.Person.preferred_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get this contact’s preferred mailing address as an <a class="reference internal" href="#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object if it exists, or <code class="code docutils literal notranslate"><span class="pre">None</span></code>
+if this contact has no addresses or if information on what address is preferred is unavailable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The preferred mailing address object, or <code class="code docutils literal notranslate"><span class="pre">None</span></code> if no preferred mailing address could be
+determined.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="everyaction.objects.Person.preferred_email">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">preferred_email</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[str]</span></em><a class="headerlink" href="#everyaction.objects.Person.preferred_email" title="Permalink to this definition">¶</a></dt>
@@ -2286,6 +2377,37 @@ numbers or if information on what number is preferred is unavailable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The preferred phone number, or code:<cite>None</cite> if no preferred phone number could be determined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.objects.Person.remove_suppression">
+<span class="sig-name descname"><span class="pre">remove_suppression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suppression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><span class="pre">everyaction.objects.Suppression</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#everyaction.objects.Person.remove_suppression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the given suppression from this person if it is present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>suppression</strong> – The suppression to remove.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if the suppression was removed, <code class="code docutils literal notranslate"><span class="pre">False</span></code> if the suppression was not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="everyaction.objects.Person.set_suppression">
+<span class="sig-name descname"><span class="pre">set_suppression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suppression</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#everyaction.objects.Suppression" title="everyaction.objects.Suppression"><span class="pre">everyaction.objects.Suppression</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#everyaction.objects.Person.set_suppression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or remove the given suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>suppression</strong> – Suppression to add or remove.</p></li>
+<li><p><strong>value</strong> – <code class="code docutils literal notranslate"><span class="pre">True</span></code> to add the suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> to remove it.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if suppressions were changed, <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2926,6 +3048,50 @@ in the context of codes.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Suppression.no_call">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">no_call</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#everyaction.objects.Suppression.no_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether this is a “Do Not Call” suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if this is a “Do Not Call” suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Suppression.no_email">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">no_email</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#everyaction.objects.Suppression.no_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether this is a “Do Not Email” suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if this is a “Do Not Email” suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Suppression.no_mail">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">no_mail</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#everyaction.objects.Suppression.no_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether this is a “Do Not Mail” suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if this is a “Do Not Mail” suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="everyaction.objects.Suppression.no_walk">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">no_walk</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#everyaction.objects.Suppression.no_walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicate whether this is a “Do Not Walk” suppression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> if this is a “Do Not Walk” suppression, <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">

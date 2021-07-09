@@ -5,7 +5,7 @@ structured EveryAction data directly corresponding to objects in the
 """
 
 from datetime import datetime
-from typing import Any, Iterable, Optional, Union
+from typing import Any, ClassVar, Dict, Iterable, List, Optional, Union
 
 from everyaction.core import EAObject, EAObjectWithID, EAObjectWithIDAndName, EAObjectWithName, EAProperty, EAValue
 from everyaction.exception import EAException
@@ -1292,6 +1292,18 @@ class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'n
     """Represents a `Suppression
     <https://docs.everyaction.com/reference/people#common-models>`__.
     """
+    _CODE_TO_NAME: ClassVar[Dict[str, str]] = {
+        'NC': 'do not call',
+        'NE': 'do not email',
+        'NM': 'do not mail',
+        'NW': 'do not walk'
+    }
+    _NAME_TO_CODE: ClassVar[Dict[str, str]] = {n: c for c, n in _CODE_TO_NAME.items()}
+
+    DO_NOT_CALL: ClassVar['Suppression'] = None
+    DO_NOT_EMAIL: ClassVar['Suppression'] = None
+    DO_NOT_MAIL: ClassVar['Suppression'] = None
+    DO_NOT_WALK: ClassVar['Suppression'] = None
 
     def __init__(
         self,
@@ -1307,14 +1319,67 @@ class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'n
             length at most 2, and otherwise it is assumed to be a name.
         :param kwargs: Mapping of (alias or name) -> value.
         """
+        code = None
+        name = None
         if code_or_name:
             # Infer from str length whether it is a name or a code.
             if len(code_or_name) > 2:
                 super().__init__(suppressionName=code_or_name, **kwargs)
             else:
                 super().__init__(suppressionCode=code_or_name, **kwargs)
-        else:
-            super().__init__(**kwargs)
+        # Continue trying to infer the name or code if they are not yet determined.
+        code = code or self._NAME_TO_CODE.get((name or '').lower())
+        name = name or self._CODE_TO_NAME.get((code or '').upper())
+        super().__init__(suppressionCode=code, suppressionName=name, **kwargs)
+
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, Suppression):
+            return False
+        if self.code and other.code:
+            return self.code.upper() == other.code.upper()
+        if self.name and other.name:
+            return self.name.lower() == other.name.lower()
+        # "Null" suppressions where name and code are both None are equal to each other.
+        return not (self.name or other.name or self.code or other.code)
+
+
+    @property
+    def no_call(self) -> bool:
+        """Indicates whether this is a "Do Not Call" suppression.
+
+        :returns: :code:`True` if this is a "Do Not Call" suppression, :code:`False` otherwise.
+        """
+        return (self.code or '').upper() == 'NC' or (self.name or '').lower() == 'do not call'
+
+    @property
+    def no_email(self) -> bool:
+        """Indicates whether this is a "Do Not Email" suppression.
+
+        :returns: :code:`True` if this is a "Do Not Email" suppression, :code:`False` otherwise.
+        """
+        return (self.code or '').upper() == 'NE' or (self.name or '').lower() == 'do not email'
+
+    @property
+    def no_mail(self) -> bool:
+        """Indicates whether this is a "Do Not Mail" suppression.
+
+        :returns: :code:`True` if this is a "Do Not Mail" suppression, :code:`False` otherwise.
+        """
+        return (self.code or '').upper() == 'NM' or (self.name or '').lower() == 'do not mail'
+
+    @property
+    def no_walk(self) -> bool:
+        """Indicate whether this is a "Do Not Walk" suppression.
+
+        :returns: :code:`True` if this is a "Do Not Walk" suppression, :code:`False` otherwise.
+        """
+        return (self.code or '').upper() == 'NW' or (self.name or '').lower() == 'do not walk'
+
+
+Suppression.DO_NOT_CALL = Suppression('NC')
+Suppression.DO_NOT_EMAIL = Suppression('NE')
+Suppression.DO_NOT_MAIL = Suppression('NM')
+Suppression.DO_NOT_WALK = Suppression('NW')
 
 
 class SurveyResponse(EAObjectWithIDAndName, _prefix='surveyResponse', _keys={'mediumName', 'shortName'}):
@@ -2164,6 +2229,147 @@ class Person(
             return None
         return Person(**kwargs)
 
+    @staticmethod
+    def _get_preferred(of: List[Any], attr: Optional[str] = None) -> Optional[Any]:
+        # Get a preferred entity from a list of entities by checking the "preferred" attribute.
+        if of:
+            result_list = [o for o in of if o.preferred]
+            if result_list:
+                # Multiple preferred entities should be impossible without bad modifications.
+                assert len(result_list) == 1
+                if attr:
+                    return getattr(result_list[0], attr)
+                return result_list[0]
+        return None
+
+    def add_suppression(self, suppression: Suppression) -> bool:
+        """Adds the given suppression to this person if it is not already present.
+
+        :param suppression: The suppression to add.
+        :returns: :code:`True` if the suppression was added, :code:`False` if it was already present.
+        """
+        self.suppressions = self.suppressions or []
+        if suppression not in self.suppressions:
+            self.suppressions.append(suppression)
+            return True
+        return False
+
+    def has_suppression(self, suppression: Suppression) -> Optional[bool]:
+        """Determines whether this contact has the given suppression.
+
+        :param suppression: The suppression to check for.
+        :returns: :code:`True` if this contact has the suppression, :code:`False` if suppression information is
+            available (when :code:`suppressions` attribute is not :code:`None`) and the suppression was not found, or
+            :code:`None` if no suppression information is available.
+        """
+        if self.suppressions is not None:
+            return suppression in self.suppressions
+        return None
+
+    def remove_suppression(self, suppression: Suppression) -> bool:
+        """Removes the given suppression from this person if it is present.
+
+        :param suppression: The suppression to remove.
+        :returns: :code:`True` if the suppression was removed, :code:`False` if the suppression was not found.
+        """
+        if self.suppressions:
+            try:
+                self.suppressions.remove(suppression)
+                return True
+            except ValueError:
+                return False
+        return False
+
+    def set_suppression(self, suppression: Suppression, value: bool) -> bool:
+        """Add or remove the given suppression.
+
+        :param suppression: Suppression to add or remove.
+        :param value: :code:`True` to add the suppression, :code:`False` to remove it.
+        :returns: :code:`True` if suppressions were changed, :code:`False` otherwise.
+        """
+        if value:
+            return self.add_suppression(suppression)
+        else:
+            return self.remove_suppression(suppression)
+
+    @property
+    def do_not_call(self) -> Optional[bool]:
+        """Determine if this contact is marked as "Do Not Call".
+
+        :returns: :code:`True` is this contact is marked as "Do Not Call", :code:`False` is suppressions are present
+            and do not contain "Do Not Call", or :code:`None` if no suppression information is available.
+        """
+        return self.has_suppression(Suppression.DO_NOT_CALL)
+
+    @do_not_call.setter
+    def do_not_call(self, value: bool) -> None:
+        """Sets the "Do Not Call" status of this contact.
+
+        :param value: Value to set to.
+        """
+        self.set_suppression(Suppression.DO_NOT_CALL, value)
+
+    @property
+    def do_not_email(self) -> Optional[bool]:
+        """Determine if this contact is marked as "Do Not Email".
+
+        :returns: :code:`True` is this contact is marked as "Do Not Email", :code:`False` is suppressions are present
+            and do not contain "Do Not Email", or :code:`None` if no suppression information is available.
+        """
+        return self.has_suppression(Suppression.DO_NOT_EMAIL)
+
+    @do_not_email.setter
+    def do_not_email(self, value: bool) -> None:
+        """Sets the "Do Not Call" status of this contact.
+
+        :param value: Value to set to.
+        """
+        self.set_suppression(Suppression.DO_NOT_EMAIL, value)
+
+    @property
+    def do_not_mail(self) -> Optional[bool]:
+        """Determine if this contact is marked as "Do Not Mail".
+
+        :returns: :code:`True` is this contact is marked as "Do Not Mail", :code:`False` is suppressions are present
+            and do not contain "Do Not Mail", or :code:`None` if no suppression information is available.
+        """
+        return self.has_suppression(Suppression.DO_NOT_MAIL)
+
+    @do_not_mail.setter
+    def do_not_mail(self, value: bool) -> None:
+        """Sets the "Do Not Call" status of this contact.
+
+        :param value: Value to set to.
+        """
+        self.set_suppression(Suppression.DO_NOT_MAIL, value)
+
+    @property
+    def do_not_walk(self) -> Optional[bool]:
+        """Determine if this contact is marked as "Do Not Mail".
+
+        :returns: :code:`True` is this contact is marked as "Do Not Walk", :code:`False` is suppressions are present
+            and do not contain "Do Not Walk", or :code:`None` if no suppression information is available.
+        """
+        return self.has_suppression(Suppression.DO_NOT_WALK)
+
+    @do_not_walk.setter
+    def do_not_walk(self, value: bool) -> None:
+        """Sets the "Do Not Call" status of this contact.
+
+        :param value: Value to set to.
+        """
+        self.set_suppression(Suppression.DO_NOT_WALK, value)
+
+    @property
+    def preferred_address(self) -> Optional[Address]:
+        """Get this contact's preferred mailing address as an :class:`.Address` object if it exists, or :code:`None`
+        if this contact has no addresses or if information on what address is preferred is unavailable.
+
+        :returns: The preferred mailing address object, or :code:`None` if no preferred mailing address could be
+            determined.
+        """
+        return self._get_preferred(self.addresses)
+
     @property
     def preferred_email(self) -> Optional[str]:
         """Get the address of this contact's preferred email if it exists, or :code:`None` if this contact has no email
@@ -2171,12 +2377,7 @@ class Person(
 
         :returns: The preferred email address, or code:`None` if no preferred email address could be determined.
         """
-        if self.emails:
-            result_list = [e for e in self.emails if e.preferred]
-            if result_list:
-                assert len(result_list) == 1
-                return result_list[0].email
-        return None
+        return self._get_preferred(self.emails, "email")
 
     @property
     def preferred_phone(self) -> Optional[str]:
@@ -2185,12 +2386,7 @@ class Person(
 
         :returns: The preferred phone number, or code:`None` if no preferred phone number could be determined.
         """
-        if self.phones:
-            result_list = [p for p in self.phones if p.preferred]
-            if result_list:
-                assert len(result_list) == 1
-                return result_list[0].number
-        return None
+        return self._get_preferred(self.phones, "number")
 
 
 class Story(

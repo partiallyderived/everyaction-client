@@ -404,7 +404,7 @@ def test_people(client, server):
         Person(emails=[Email('email1@example.com', preferred=True), Email('email2@example.com')]).preferred_email ==
         'email1@example.com'
     )
-    # Two preferred emails should result in AssertionError.
+    # Two preferred emails should result in an AssertionError.
     with pytest.raises(AssertionError):
         Person(
             emails=[Email('email1@example.com', preferred=True), Email('email2@example.com', preferred=True)]
@@ -419,9 +419,70 @@ def test_people(client, server):
     assert Person(phones=[Phone('1111111111'), Phone('2222222222', preferred=True)]).preferred_phone == '2222222222'
     assert Person(phones=[Phone('1111111111', preferred=True), Phone('2222222222')]).preferred_phone == '1111111111'
 
-    # Two preferred phones should result in AssertionError.
+    # Two preferred phones should result in an AssertionError.
     with pytest.raises(AssertionError):
         Person(phones=[Phone('1111111111', preferred=True), Phone('2222222222', is_preferred=True)]).preferred_phone
+
+    # Test People.preferred_address.
+    assert Person().preferred_address is None
+    assert Person(address=Address(line1='123 Fake Street')).preferred_address is None
+    assert Person(
+        address=Address(line1='123 Fake Street', preferred=True)
+    ).preferred_address == Address(line1='123 Fake Street', preferred=True)
+
+    assert Person(
+        addresses=[Address(line1='123 Fake Street'), Address(line1='742 Evergreen Terrace')]
+    ).preferred_address is None
+    assert Person(
+        addresses=[Address(line1='123 Fake Street'), Address(line1='742 Evergreen Terrace', preferred=True)]
+    ).preferred_address == Address(line1='742 Evergreen Terrace', preferred=True)
+    assert Person(
+        addresses=[Address(line1='123 Fake Street', preferred=True), Address(line1='742 Evergreen Terrace')]
+    ).preferred_address == Address(line1='123 Fake Street', preferred=True)
+
+    # Two preferred addresses should result in an AssertionError.
+    with pytest.raises(AssertionError):
+        Person(addresses=[
+            Address(line1='123 Fake Street', preferred=True),
+            Address(line1='742 Evergreen Terrace', preferred=True)
+        ]).preferred_address
+
+    # Test detecting and modifying suppressions.
+    person = Person()
+    assert person.has_suppression(Suppression.DO_NOT_MAIL) is None
+    assert person.do_not_call is None
+    assert person.do_not_email is None
+    assert person.do_not_mail is None
+    assert person.do_not_walk is None
+
+    assert person.add_suppression(Suppression.DO_NOT_CALL)
+    assert not person.add_suppression(Suppression.DO_NOT_CALL)
+    assert person.do_not_call
+    assert person.remove_suppression(Suppression.DO_NOT_CALL)
+    assert not person.remove_suppression(Suppression.DO_NOT_CALL)
+    assert person.do_not_call is False
+    assert person.set_suppression(Suppression.DO_NOT_CALL, True)
+    assert not person.set_suppression(Suppression.DO_NOT_CALL, True)
+    assert person.do_not_call
+    assert person.set_suppression(Suppression.DO_NOT_CALL, False)
+    assert not person.set_suppression(Suppression.DO_NOT_CALL, False)
+    assert not person.do_not_call
+
+    person.do_not_email = True
+    assert person.do_not_email
+    assert not person.do_not_call
+    person.do_not_email = False
+    assert not person.do_not_email
+
+    person.do_not_mail = True
+    assert person.do_not_mail
+    person.do_not_mail = False
+    assert not person.do_not_mail
+
+    person.do_not_walk = True
+    assert person.do_not_walk
+    person.do_not_walk = False
+    assert not person.do_not_walk
 
 
 def test_activist_codes(client, server):
@@ -706,3 +767,33 @@ def test_finds(client, server):
         ExportJobType,
         'export job type'
     )
+
+
+def test_suppressions() -> None:
+    # Test that suppressions can be tested for whether or not they are "Do Not Call", "Do Not Email", or "Do Not Mail"
+    do_not_call1 = Suppression('NC')
+    do_not_call2 = Suppression('Do Not Call')
+    do_not_email1 = Suppression('NE')
+    do_not_email2 = Suppression('Do Not Email')
+    do_not_mail1 = Suppression('NM')
+    do_not_mail2 = Suppression('Do Not Mail')
+    do_not_walk1 = Suppression('NW')
+    do_not_walk2 = Suppression('Do Not Walk')
+
+    assert do_not_call1.no_call
+    assert do_not_call2.no_call
+    assert Suppression.DO_NOT_CALL.no_call
+    assert do_not_email1.no_email
+    assert do_not_email2.no_email
+    assert Suppression.DO_NOT_EMAIL.no_email
+    assert do_not_mail1.no_mail
+    assert do_not_mail2.no_mail
+    assert Suppression.DO_NOT_MAIL.no_mail
+    assert do_not_walk1.no_walk
+    assert do_not_walk2.no_walk
+    assert Suppression.DO_NOT_WALK.no_walk
+
+    assert not do_not_call1.no_email
+    assert not do_not_email2.no_mail
+    assert not do_not_mail1.no_walk
+    assert not do_not_walk2.no_call
