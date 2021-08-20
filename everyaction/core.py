@@ -830,8 +830,12 @@ class EAObject(MutableMapping, metaclass=EAMeta):
                 try:
                     resolved = self._resolve_attr(k)
                 except AttributeError:
-                    # Keep track of unrecognized attributes to give a more informative exception.
-                    unrecognized.append(k)
+                    # See if we can set the attribute, such as through a property.
+                    try:
+                        setattr(self, k, v)
+                    except AttributeError:
+                        # Keep track of unrecognized attributes to give a more informative exception.
+                        unrecognized.append(k)
                 else:
                     if resolved in attr_to_alias:
                         raise ValueError(f'Multiple aliases given for {resolved}: {attr_to_alias[resolved]}, {k}')

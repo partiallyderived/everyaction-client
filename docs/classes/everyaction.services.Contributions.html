@@ -85,7 +85,7 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.adjust">
-<span class="sig-name descname"><span class="pre">adjust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.AdjustmentResponse" title="everyaction.objects.AdjustmentResponse"><span class="pre">everyaction.objects.AdjustmentResponse</span></a><a class="headerlink" href="#everyaction.services.Contributions.adjust" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">adjust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.AdjustmentResponse" title="everyaction.objects.AdjustmentResponse"><span class="pre">everyaction.objects.AdjustmentResponse</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.adjust" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionscontributionidadjustments">POST /contributions/{contributionId}/adjustments</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -112,7 +112,7 @@ appropriate to unpack here.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.attribution_types">
-<span class="sig-name descname"><span class="pre">attribution_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Contributions.attribution_types" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">attribution_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.Contributions.attribution_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionsattributiontypes">GET /contributions/attributionTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -123,7 +123,7 @@ appropriate to unpack here.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a><a class="headerlink" href="#everyaction.services.Contributions.create" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributions-1">POST /contributions</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -204,7 +204,7 @@ appropriate to unpack here.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.create_or_update_attribution">
-<span class="sig-name descname"><span class="pre">create_or_update_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.Contributions.create_or_update_attribution" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_or_update_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#everyaction.services.Contributions.create_or_update_attribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionscontributionidattributionsvanid">PUT /contributions/{contributionId}/attributions/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -233,7 +233,7 @@ appropriate to unpack here.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.delete_attribution">
-<span class="sig-name descname"><span class="pre">delete_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#everyaction.services.Contributions.delete_attribution" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#everyaction.services.Contributions.delete_attribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionscontributionidattributionsvanid-1">DELETE /contributions/{contributionId}/attributions/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -247,7 +247,7 @@ appropriate to unpack here.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a><a class="headerlink" href="#everyaction.services.Contributions.get" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionscontributionid">GET /contributions/{contributionId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,7 +261,7 @@ appropriate to unpack here.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.get_">
-<span class="sig-name descname"><span class="pre">get_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alternate_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternate_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a><a class="headerlink" href="#everyaction.services.Contributions.get_" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alternate_id_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternate_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.get_" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions#contributionsalternateidtypealternateid">GET /contributions/{alternateIdType}:{alternateId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -304,7 +304,7 @@ appropriate to unpack here.</p></li>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -336,7 +336,7 @@ appropriate to unpack here.</p></li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

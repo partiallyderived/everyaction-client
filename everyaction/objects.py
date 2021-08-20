@@ -1738,6 +1738,7 @@ class OnlineActionsForm(
         'confirmationEmailData',
         'createdByEmail',
         'dateCreated',
+        'dateModified',
         'designation',
         'eventId',
         'isActive',

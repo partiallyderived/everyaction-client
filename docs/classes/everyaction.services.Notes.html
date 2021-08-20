@@ -73,7 +73,7 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Notes.categories">
-<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.categories" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.Notes.categories" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategoriesnotecategoryid">GET /notes/categories/{noteCategoryId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -84,7 +84,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Notes.category">
-<span class="sig-name descname"><span class="pre">category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a><a class="headerlink" href="#everyaction.services.Notes.category" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.NoteCategory" title="everyaction.objects.NoteCategory"><span class="pre">everyaction.objects.NoteCategory</span></a></span></span><a class="headerlink" href="#everyaction.services.Notes.category" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategories">GET /notes/categories</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -98,7 +98,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Notes.category_types">
-<span class="sig-name descname"><span class="pre">category_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#everyaction.services.Notes.category_types" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">category_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.Notes.category_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/notes#notescategorytypes">GET /notes/categoryTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -135,7 +135,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -167,7 +167,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

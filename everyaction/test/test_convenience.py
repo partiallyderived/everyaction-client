@@ -484,6 +484,12 @@ def test_people(client, server):
     person.do_not_walk = False
     assert not person.do_not_walk
 
+    # Test that we can construct a Person with do_not_call, do_not_email, and do_not_walk.
+    person = Person(id=3, do_not_call=True, do_not_email=True, do_not_walk=False)
+    assert person.do_not_call
+    assert person.do_not_email
+    assert person.do_not_walk is False
+
 
 def test_activist_codes(client, server):
     # Test that failing to find an activist code results in an EAFindFailedException.

@@ -6,7 +6,7 @@ SPHINX_BUILD_DIR := docs
 SPHINX_SOURCE_DIR := docs-src
 VENV_DIR := venv
 VENV_ACTIVATE := source $(VENV_DIR)/bin/activate
-VERSION :=
+VERSION := $(shell sed -nE 's/version = (.*)/\1/p' setup.cfg)
 
 .PHONY: clean
 clean:
@@ -16,8 +16,9 @@ clean:
 
 .PHONY: doc
 doc: $(VENV_DIR)
-	rm -rf $(SPHINX_BUILD_DIR)/classes && \
+	rm -rf $(SPHINX_BUILD_DIR)/classes
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
+	git add $(SPHINX_BUILD_DIR)
 
 .PHONY: inc
 inc:
@@ -25,7 +26,7 @@ inc:
 
 .PHONY: tag
 tag:
-	git tag -a
+	git tag -a v$(VERSION) -m "Version $(VERSION)"
 
 .PHONY: test
 test: $(VENV_DIR)
