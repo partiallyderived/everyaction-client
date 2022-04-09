@@ -50,7 +50,7 @@
 <h1>everyaction.services.MemberStatuses<a class="headerlink" href="#everyaction-services-memberstatuses" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.MemberStatuses">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">MemberStatuses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.MemberStatuses" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">MemberStatuses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.MemberStatuses" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
 <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses">Member Statuses</a> service.</p>
 <p class="rubric">Methods</p>
@@ -61,20 +61,20 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.MemberStatuses.create" title="everyaction.services.MemberStatuses.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatuses-1">POST /memberStatuses</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatuses-1">POST /memberStatuses</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.MemberStatuses.get" title="everyaction.services.MemberStatuses.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(member_status_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatusesmemberstatusid">GET /memberStatuses/{memberStatusId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatusesmemberstatusid">GET /memberStatuses/{memberStatusId}</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.MemberStatuses.list" title="everyaction.services.MemberStatuses.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatuses">GET /memberStatuses</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatuses">GET /memberStatuses</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.MemberStatuses.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatuses-1">POST /memberStatuses</a>.</p>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatuses-1">POST /memberStatuses</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberStatus</span></code></a> is
@@ -97,8 +97,8 @@ appropriate to unpack here.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.MemberStatuses.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">member_status_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatusesmemberstatusid">GET /memberStatuses/{memberStatusId}</a>.</p>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">member_status_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatusesmemberstatusid">GET /memberStatuses/{memberStatusId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>member_status_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">member_status_id</span></code> path parameter.</p>
@@ -111,8 +111,8 @@ appropriate to unpack here.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.MemberStatuses.list">
-<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/member-statuses#memberstatuses">GET /memberStatuses</a>.</p>
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.MemberStatus" title="everyaction.objects.MemberStatus"><span class="pre">everyaction.objects.MemberStatus</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.MemberStatuses.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/memberstatuses">GET /memberStatuses</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -186,7 +186,7 @@ appropriate to unpack here.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

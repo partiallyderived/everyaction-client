@@ -50,7 +50,7 @@
 <h1>everyaction.services.ExportJobs<a class="headerlink" href="#everyaction-services-exportjobs" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">ExportJobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ExportJobs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">ExportJobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.ExportJobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
 <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs">Export Jobs</a> service.</p>
 <p class="rubric">Methods</p>
@@ -61,26 +61,26 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.create" title="everyaction.services.ExportJobs.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobs">POST /exportJobs</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobs">POST /exportJobs</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.find_type" title="everyaction.services.ExportJobs.find_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_type</span></code></a>(name)</p></td>
 <td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> with the given name, case insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.get" title="everyaction.services.ExportJobs.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(job_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.name_to_type" title="everyaction.services.ExportJobs.name_to_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_to_type</span></code></a>()</p></td>
 <td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobTypes</span> <span class="pre">.ExportJobType</span></code> of the same name, case-insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.ExportJobs.types" title="everyaction.services.ExportJobs.types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-job-types#exportjobtypes">GET /exportJobTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobtypes">GET /exportJobTypes</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><span class="pre">everyaction.objects.ExportJob</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobs">POST /exportJobs</a>.</p>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><span class="pre">everyaction.objects.ExportJob</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobs">POST /exportJobs</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
@@ -102,7 +102,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.find_type">
-<span class="sig-name descname"><span class="pre">find_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.find_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.find_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobType</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -119,8 +119,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><span class="pre">everyaction.objects.ExportJob</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-jobs#exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ExportJob" title="everyaction.objects.ExportJob"><span class="pre">everyaction.objects.ExportJob</span></a></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobsexportjobid">GET /exportJobs/{exportJobId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>job_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">exportJobId</span></code> path parameter.</p>
@@ -133,7 +133,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.name_to_type">
-<span class="sig-name descname"><span class="pre">name_to_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.name_to_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name_to_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.name_to_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportJobTypes</span> <span class="pre">.ExportJobType</span></code> of the same name, case-insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -144,8 +144,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.ExportJobs.types">
-<span class="sig-name descname"><span class="pre">types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/export-job-types#exportjobtypes">GET /exportJobTypes</a>.</p>
+<span class="sig-name descname"><span class="pre">types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ExportJobType" title="everyaction.objects.ExportJobType"><span class="pre">everyaction.objects.ExportJobType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.ExportJobs.types" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/exportjobtypes">GET /exportJobTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -219,7 +219,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

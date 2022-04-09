@@ -50,7 +50,7 @@
 <h1>everyaction.services.FileLoadingJobs<a class="headerlink" href="#everyaction-services-fileloadingjobs" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.FileLoadingJobs">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">FileLoadingJobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.FileLoadingJobs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">FileLoadingJobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.FileLoadingJobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
 <a class="reference external" href="https://docs.everyaction.com/reference/file-loading-jobs">File Loading Jobs</a> service.</p>
 <p class="rubric">Methods</p>
@@ -61,17 +61,17 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.FileLoadingJobs.create" title="everyaction.services.FileLoadingJobs.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobs">POST /fileLoadingJobs</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/fileloadingjobs">POST /fileLoadingJobs</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.FileLoadingJobs.get" title="everyaction.services.FileLoadingJobs.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(job_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobsjobid">GET /fileLoadingJobs/{jobId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/fileloadingjobsjobid">GET /fileLoadingJobs/{jobId}</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.FileLoadingJobs.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.FileLoadingJob" title="everyaction.objects.FileLoadingJob"><span class="pre">everyaction.objects.FileLoadingJob</span></a></span></span><a class="headerlink" href="#everyaction.services.FileLoadingJobs.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobs">POST /fileLoadingJobs</a>.</p>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.FileLoadingJob" title="everyaction.objects.FileLoadingJob"><span class="pre">everyaction.objects.FileLoadingJob</span></a></span></span><a class="headerlink" href="#everyaction.services.FileLoadingJobs.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/fileloadingjobs">POST /fileLoadingJobs</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.FileLoadingJob" title="everyaction.objects.FileLoadingJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileLoadingJob</span></code></a> is
@@ -102,8 +102,8 @@ appropriate to unpack here.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.FileLoadingJobs.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.FileLoadingJob" title="everyaction.objects.FileLoadingJob"><span class="pre">everyaction.objects.FileLoadingJob</span></a></span></span><a class="headerlink" href="#everyaction.services.FileLoadingJobs.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/file-loading-jobs#fileloadingjobsjobid">GET /fileLoadingJobs/{jobId}</a>.</p>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.FileLoadingJob" title="everyaction.objects.FileLoadingJob"><span class="pre">everyaction.objects.FileLoadingJob</span></a></span></span><a class="headerlink" href="#everyaction.services.FileLoadingJobs.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/fileloadingjobsjobid">GET /fileLoadingJobs/{jobId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>job_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">jobId</span></code> path parameter.</p>
@@ -174,7 +174,7 @@ appropriate to unpack here.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

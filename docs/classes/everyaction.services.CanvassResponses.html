@@ -50,7 +50,7 @@
 <h1>everyaction.services.CanvassResponses<a class="headerlink" href="#everyaction-services-canvassresponses" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">CanvassResponses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.CanvassResponses" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">CanvassResponses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.CanvassResponses" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
 <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses">Canvass Responses</a> service.</p>
 <p class="rubric">Methods</p>
@@ -61,7 +61,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.contact_types" title="everyaction.services.CanvassResponses.contact_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_types</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsescontacttypes">GET /canvassResponses/contactTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsescontacttypes">GET /canvassResponses/contactTypes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.find_contact_type" title="everyaction.services.CanvassResponses.find_contact_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_contact_type</span></code></a>(name)</p></td>
 <td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> with the given name, case insensitive.</p></td>
@@ -73,7 +73,7 @@
 <td><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> with the given name, case insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.input_types" title="everyaction.services.CanvassResponses.input_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_types</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsesinputtypes">GET /canvassResponses/inputTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsesinputtypes">GET /canvassResponses/inputTypes</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.name_to_contact_type" title="everyaction.services.CanvassResponses.name_to_contact_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name_to_contact_type</span></code></a>()</p></td>
 <td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ContactTypes</span> <span class="pre">.ContactType</span></code> of the same name, case-insensitive.</p></td>
@@ -85,14 +85,14 @@
 <td><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCodes</span> <span class="pre">.ResultCode</span></code> of the same name, case-insensitive.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.CanvassResponses.result_codes" title="everyaction.services.CanvassResponses.result_codes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">result_codes</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsesresultcodes">GET /canvassResponses/resultCodes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsesresultcodes">GET /canvassResponses/resultCodes</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.contact_types">
-<span class="sig-name descname"><span class="pre">contact_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.contact_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsescontacttypes">GET /canvassResponses/contactTypes</a>.</p>
+<span class="sig-name descname"><span class="pre">contact_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.contact_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsescontacttypes">GET /canvassResponses/contactTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
@@ -111,7 +111,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_contact_type">
-<span class="sig-name descname"><span class="pre">find_contact_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_contact_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_contact_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_contact_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContactType</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -128,7 +128,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_input_type">
-<span class="sig-name descname"><span class="pre">find_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_input_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_input_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -145,7 +145,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.find_result_code">
-<span class="sig-name descname"><span class="pre">find_result_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_result_code" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_result_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.find_result_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCode</span></code></a> with the given name, case insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -163,7 +163,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.input_types">
 <span class="sig-name descname"><span class="pre">input_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.input_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsesinputtypes">GET /canvassResponses/inputTypes</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsesinputtypes">GET /canvassResponses/inputTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputType</span></code></a> objects.</p>
@@ -173,7 +173,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.name_to_contact_type">
-<span class="sig-name descname"><span class="pre">name_to_contact_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_contact_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name_to_contact_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../objects.html#everyaction.objects.ContactType" title="everyaction.objects.ContactType"><span class="pre">everyaction.objects.ContactType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_contact_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ContactTypes</span> <span class="pre">.ContactType</span></code> of the same name, case-insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -184,7 +184,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.name_to_input_type">
-<span class="sig-name descname"><span class="pre">name_to_input_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_input_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name_to_input_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../objects.html#everyaction.objects.InputType" title="everyaction.objects.InputType"><span class="pre">everyaction.objects.InputType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_input_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">InputTypes</span> <span class="pre">.InputType</span></code> of the same name, case-insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -195,7 +195,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.name_to_result_code">
-<span class="sig-name descname"><span class="pre">name_to_result_code</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_result_code" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name_to_result_code</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.name_to_result_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives a mapping from names to the <code class="xref py py-class docutils literal notranslate"><span class="pre">ResultCodes</span> <span class="pre">.ResultCode</span></code> of the same name, case-insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -206,8 +206,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.CanvassResponses.result_codes">
-<span class="sig-name descname"><span class="pre">result_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.result_codes" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvass-responses#canvassresponsesresultcodes">GET /canvassResponses/resultCodes</a>.</p>
+<span class="sig-name descname"><span class="pre">result_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.ResultCode" title="everyaction.objects.ResultCode"><span class="pre">everyaction.objects.ResultCode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.CanvassResponses.result_codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/canvassresponsesresultcodes">GET /canvassResponses/resultCodes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request.</p>
@@ -286,7 +286,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

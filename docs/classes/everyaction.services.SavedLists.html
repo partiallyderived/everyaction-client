@@ -50,7 +50,7 @@
 <h1>everyaction.services.SavedLists<a class="headerlink" href="#everyaction-services-savedlists" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.SavedLists">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">SavedLists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.SavedLists" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">SavedLists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.SavedLists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the
 <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists">Saved Lists</a> service.</p>
 <p class="rubric">Methods</p>
@@ -61,20 +61,20 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.SavedLists.get" title="everyaction.services.SavedLists.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(list_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#savedlistssavedlistid">GET /savedLists/{savedListId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/savedlistssavedlistid">GET /savedLists/{savedListId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.SavedLists.list" title="everyaction.services.SavedLists.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>(*[, limit])</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#savedlists">GET /savedLists</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/savedlists">GET /savedLists</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.SavedLists.sms_sync" title="everyaction.services.SavedLists.sms_sync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sms_sync</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#smssync">POST /savedLists/smsSync</a>&gt;`__.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/smssync">POST /savedLists/smsSync</a>&gt;`__.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.SavedLists.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a></span></span><a class="headerlink" href="#everyaction.services.SavedLists.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#savedlistssavedlistid">GET /savedLists/{savedListId}</a>.</p>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a></span></span><a class="headerlink" href="#everyaction.services.SavedLists.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/savedlistssavedlistid">GET /savedLists/{savedListId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>list_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">savedListId</span></code> path parameter.</p>
@@ -87,8 +87,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.SavedLists.list">
-<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.SavedLists.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#savedlists">GET /savedLists</a>.</p>
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.SavedLists.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/savedlists">GET /savedLists</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -114,8 +114,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.SavedLists.sms_sync">
-<span class="sig-name descname"><span class="pre">sms_sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a></span></span><a class="headerlink" href="#everyaction.services.SavedLists.sms_sync" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/saved-lists#smssync">POST /savedLists/smsSync</a>&gt;`__.</p>
+<span class="sig-name descname"><span class="pre">sms_sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.SavedList" title="everyaction.objects.SavedList"><span class="pre">everyaction.objects.SavedList</span></a></span></span><a class="headerlink" href="#everyaction.services.SavedLists.sms_sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/smssync">POST /savedLists/smsSync</a>&gt;`__.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Supported Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -188,7 +188,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Bobbey Reese.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

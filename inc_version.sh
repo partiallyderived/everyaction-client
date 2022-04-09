@@ -12,5 +12,6 @@ fi
 NEW_VERSION=$MAJOR.$MINOR.$PATCH
 
 sed -i.bak -E "s/^version = .*/version = $NEW_VERSION/" setup.cfg
+rm setup.cfg.bak
 
 echo "Version updated to $NEW_VERSION"

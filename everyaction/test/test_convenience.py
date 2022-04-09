@@ -43,6 +43,7 @@ class EAData(OrderedDict):
         return next_id
 
 
+# noinspection PyUnusedLocal
 class MockServer:
     # Simulates an EveryAction server so that derived convenience methods, such as EAClient.people.lookup, may be
     # tested without having to consider mocking for every method.

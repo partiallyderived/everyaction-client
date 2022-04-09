@@ -2,9 +2,15 @@
 This module contains the exceptions used for the EveryAction client
 """
 
+from __future__ import annotations
+
 from requests import HTTPError, Response
 
-__all__ = ['EAException', 'EAFindFailedException', 'EAJobFailedException', 'EAHTTPException']
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from everyaction.objects import ChangedEntityExportJob
+
+__all__ = ['EAException', 'EAFindFailedException', 'EAHTTPException']
 
 
 class EAException(Exception):
@@ -16,7 +22,7 @@ class EAException(Exception):
 class EAChangedEntityJobFailedException(EAException):
     """Class of exceptions raised when an EveryAction changed entity export job has failed."""
 
-    def __init__(self, job: 'ChangedEntityExportJob') -> None:
+    def __init__(self, job: ChangedEntityExportJob) -> None:
         super().__init__()
         self.job = job
 

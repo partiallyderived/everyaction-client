@@ -48,10 +48,12 @@ def test_basic():
 
     with pytest.raises(AttributeError, match='Singular aliases may only be used to set values'):
         # Should not be able to getattr using a singular alias.
+        # noinspection PyStatementEffect
         obj.single
 
     with pytest.raises(AttributeError, match='asdf'):
         # Just make sure getting arbitrary attributes raises an AttributeError.
+        # noinspection PyStatementEffect
         obj.asdf
 
     # Make sure getting deleted attribute gives None rather than AttributeError.
@@ -83,7 +85,7 @@ def test_basic():
     assert BasicObject(sim=1) != BasicObject(sim=2)
     assert BasicObject(sim=1) != BasicObject(sim=1, fact=3)
 
-    with pytest.raises(ValueError, match='Multiple aliases given for simple'):
+    with pytest.raises(ValueError, match='Multiple aliases with different values given for simple'):
         # Make sure specifying multiple names for the same property is not allowed.
         BasicObject(sim=1, simple=2)
 
@@ -267,11 +269,13 @@ def test_meta_assertions():
     with pytest.raises(AssertionError, match='Resulting prefixed name preZ matches a value passed to _keys'):
         # Naming conflict where "preZ" explicitly specified as a key but is also implicitly a key since
         # "z" is prefixed by "pre" to yield the camelCased "preZ".
+        # noinspection PyUnusedLocal
         class PrefixedMatchesKey(EAObject, _prefix='pre', _prefixed={'z'}, _keys={'preZ'}):
             pass
 
     with pytest.raises(AssertionError, match='Property z supplied both inside and outside kwargs.'):
         # Make sure we can't specify a both common property "z" and a specific property "z".
+        # noinspection PyUnusedLocal
         class DuplicateKey(EAObject, _keys={'z'}, z=EAProperty()):
             pass
 

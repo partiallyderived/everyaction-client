@@ -1,6 +1,8 @@
 # This module contains core code and implementation details for the Python EveryAction client. Users are not expected to
 # interact with entities in this module directly.
 
+from __future__ import annotations
+
 import copy
 import json
 import re
@@ -13,6 +15,10 @@ from typing import Any, Callable, Dict, Iterator, List, NewType, Optional, Set, 
 from makefun import wraps
 
 from everyaction.exception import EAException, EAHTTPException
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from everyaction.client import EAClient
 
 
 # Regex used to insert underscores before all sequences of capital letters in an attribute name to convert from
@@ -204,7 +210,6 @@ def ea_endpoint(
         )
 
     path_params = _parse_path_params(path_template)
-    num_path_params = len(path_params)
 
     if any(k not in path_params for k in path_params_to_data):
         raise AssertionError(
@@ -432,7 +437,7 @@ def to_snake(attr: str) -> str:
 
 class EAService(ABC):
     # Abstract base class of groups of API endpoints, like People or Contributions.
-    def __init__(self, ea: 'EAClient') -> None:
+    def __init__(self, ea: EAClient) -> None:
         """Initialize this service with the given client.
 
         :param ea: The client to initialize this with.
@@ -676,7 +681,7 @@ class EAMeta(ABCMeta):
     # and implements the logic needed to create each class's alias map and EAProperties object.
 
     @staticmethod
-    def _handle_special_prop(properties: Dict, shared_name: str, key: str) -> None:
+    def _handle_special_prop(properties: Dict, shared_name: str, key: str, additional_aliases: Set[str]) -> None:
         # If the snake_cased version of key is different from key, add it as an alias for prop.
         prop = copy.deepcopy(EAProperty.shared(shared_name))
         as_snake = to_snake(key)
@@ -685,6 +690,7 @@ class EAMeta(ABCMeta):
         if shared_name != key:
             # When shared name differs from key, add shared name as alias.
             prop.aliases.add(shared_name)
+        prop.aliases |= additional_aliases
         properties[key] = prop
 
     def __new__(
@@ -693,8 +699,10 @@ class EAMeta(ABCMeta):
         bases: Tuple[type, ...],
         dct: Dict[str, Any],
         _prefix: str = '',
-        _prefixed: Optional[Set[str]] = frozenset(),
-        _keys: Optional[Set[str]] = frozenset(),
+        _prefixed: Set[str] = frozenset(),
+        _keys: Set[str] = frozenset(),
+        _id_aliases: Set[str] = frozenset(),
+        _name_aliases: Set[str] = frozenset(),
         **kwargs: EAProperty
     ) -> type:
         # name, bases, and dct are standard metaclass __new__ arguments.
@@ -726,7 +734,12 @@ class EAMeta(ABCMeta):
                 properties.update(base._properties())
 
         id_key = ea_type._id_key()
+        if _id_aliases and not id_key:
+            raise AssertionError('id_aliases non-empty but id_key not present.')
+
         name_key = ea_type._name_key()
+        if _name_aliases and not name_key:
+            raise AssertionError('name_aliases non-empty but name_key not present.')
 
         if _prefix:
             # Assume ID is prefixed if present (or in other words, only use a prefix when there is an ID if the ID is
@@ -742,10 +755,13 @@ class EAMeta(ABCMeta):
                     raise AssertionError(f'Resulting prefixed name {prefixed} matches a value passed to _keys')
                 if prop_name == id_key:
                     shared_name = 'id'
+                    additional_aliases = _id_aliases
                 elif prop_name == name_key:
                     shared_name = 'name'
+                    additional_aliases = _name_aliases
                 else:
                     shared_name = prop_name
+                    additional_aliases = set()
 
                 base_prop = EAProperty.shared(shared_name)
                 new_prop = copy.deepcopy(base_prop)
@@ -754,6 +770,7 @@ class EAMeta(ABCMeta):
                 # be accessed that way.
                 new_prop.aliases.add(prop_name)
                 new_prop.aliases.add(to_snake(prefixed))
+                new_prop.aliases |= additional_aliases
                 properties[prefixed] = new_prop
 
                 # If shared_name is different from prop_name, add shared_name as an alias (possible for id and name).
@@ -761,11 +778,11 @@ class EAMeta(ABCMeta):
                     new_prop.aliases.add(shared_name)
         elif id_key:
             # If there is no prefix, add ID here instead of in the prefix logic.
-            EAMeta._handle_special_prop(properties, 'id', id_key)
+            EAMeta._handle_special_prop(properties, 'id', id_key, _id_aliases)
 
         if name_key and name_key not in _prefixed:
             # Add name here if it was not prefixed.
-            EAMeta._handle_special_prop(properties, 'name', name_key)
+            EAMeta._handle_special_prop(properties, 'name', name_key, _name_aliases)
 
         for prop_name in _keys:
             properties[prop_name] = EAProperty.shared(prop_name)
@@ -821,6 +838,7 @@ class EAObject(MutableMapping, metaclass=EAMeta):
         converted to API objects when appropriate.
 
         :param kwargs: Mapping of (alias or name) -> value.
+        :raise ValueError: If multiple aliases are given for the same property but with different values.
         """
         # Keep track of aliases given to detect when multiple aliases are erroneously specified.
         attr_to_alias = {}
@@ -837,10 +855,16 @@ class EAObject(MutableMapping, metaclass=EAMeta):
                         # Keep track of unrecognized attributes to give a more informative exception.
                         unrecognized.append(k)
                 else:
+                    old_value = None
                     if resolved in attr_to_alias:
-                        raise ValueError(f'Multiple aliases given for {resolved}: {attr_to_alias[resolved]}, {k}')
+                        old_value = self[resolved]
                     attr_to_alias[resolved] = k
                     self._setattr(k, resolved, v)
+                    if old_value is not None and self[resolved] != old_value:
+                        raise ValueError(
+                            f'Multiple aliases with different values given for {resolved}: '
+                            f'{attr_to_alias[resolved]}: {old_value}, {k}: {self[resolved]}'
+                        )
         if unrecognized:
             if len(unrecognized) == 1:
                 str_component = 'property is'

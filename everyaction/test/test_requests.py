@@ -88,18 +88,23 @@ class MockEAClient:
 
         return response
 
+    # noinspection PyUnusedLocal
     def delete(self, route, params=None, data=None, json=None, headers=None):
         return self._received('delete', route, params, data, json)
 
+    # noinspection PyUnusedLocal
     def get(self, route, params=None, data=None, json=None, headers=None):
         return self._received('get', route, params, data, json)
 
+    # noinspection PyUnusedLocal
     def patch(self, route, params=None, data=None, json=None, headers=None):
         return self._received('patch', route, params, data, json)
 
+    # noinspection PyUnusedLocal
     def post(self, route, params=None, data=None, json=None, headers=None):
         return self._received('post', route, params, data, json)
 
+    # noinspection PyUnusedLocal
     def put(self, route, params=None, data=None, json=None, headers=None):
         return self._received('put', route, params, data, json)
 
@@ -171,6 +176,7 @@ def test_request_type(client):
         group.get(arg=0)
 
     with pytest.raises(AssertionError, match='Got "fake" as a request type, expected one of'):
+        # noinspection PyUnusedLocal
         class FakeGroup(EAService):
             @ea_endpoint('fake/route', 'fake')
             def fake(self):
@@ -283,6 +289,7 @@ def test_query_args(client):
 
     # Make sure common_json cannot appear in both prop_keys and query_arg_keys.
     with pytest.raises(AssertionError, match='At least one key specified in more than one of'):
+        # noinspection PyUnusedLocal
         class PropAndQueryKeysGroup(EAService):
             @ea_endpoint('asdf/fdsa', 'get', query_arg_keys={'common_json'}, prop_keys={'common_json'})
             def get(self, **kwargs):
@@ -290,6 +297,7 @@ def test_query_args(client):
 
     # Test that query arg key must be a shared property when not in props.
     with pytest.raises(AssertionError, match='test_arg is not a shared property'):
+        # noinspection PyUnusedLocal
         class TestArgGroup(EAService):
             @ea_endpoint('asdf/fdsa', 'get', query_arg_keys={'test_arg'})
             def get(self, **kwargs):
@@ -369,6 +377,7 @@ def test_json(client):
 
     # Test that prop_keys and props may not have the duplicate keys.
     with pytest.raises(AssertionError, match='At least one key specified in both'):
+        # noinspection PyUnusedLocal
         class PropKeysPropsDupGroup(EAService):
             @ea_endpoint('prop/keys', 'get', prop_keys={'common_json'}, props={'common_json': EAProperty()})
             def get(self, **kwargs):
@@ -432,6 +441,7 @@ def test_path_params_to_data(client):
 
     # Test that keys in path_params_to_data must actually correspond to path parameters.
     with pytest.raises(AssertionError, match='contains keys not in path_params'):
+        # noinspection PyUnusedLocal
         class MissingParamToData(EAService):
             @ea_endpoint('missing/param', 'get', path_params_to_data={'param'})
             def missing(self, **kwargs):
@@ -439,6 +449,7 @@ def test_path_params_to_data(client):
 
     # Test that keys in path_params_to_data must be a recognized property.
     with pytest.raises(AssertionError, match='fake_param is not a shared property'):
+        # noinspection PyUnusedLocal
         class NonPropParamToData(EAService):
             @ea_endpoint('{fake_param}/route', 'get', path_params_to_data={'fake_param'})
             def fake(self, **kwargs):
@@ -517,6 +528,7 @@ def test_response_data(client):
         with pytest.raises(AssertionError, match='has_result should be True when any of'):
             keyword_args = {param: value}
 
+            # noinspection PyUnusedLocal
             class HasResultFalseGroup(EAService):
                 @ea_endpoint('result/false', 'get', has_result=False, **keyword_args)
                 def get(self, **kwargs):
@@ -524,6 +536,7 @@ def test_response_data(client):
 
     # Test that result_array and result_array_key may not both be specified.
     with pytest.raises(AssertionError, match='At most one of'):
+        # noinspection PyUnusedLocal
         class ResultArrayAndResultArrayKey(EAService):
             @ea_endpoint('fake/route', 'get', result_array=True, result_array_key='key')
             def get(self, **kwargs):
@@ -531,6 +544,7 @@ def test_response_data(client):
 
     # Test that a key found in data_type may not be specified in props.
     with pytest.raises(AssertionError, match='has at least one property in'):
+        # noinspection PyUnusedLocal
         class DataAndPropsGroup(EAService):
             @ea_endpoint('data/props', 'get', data_type=Structure1, props={'a': EAProperty()})
             def get(self, **kwargs):
@@ -596,6 +610,7 @@ def test_pagination(client):
 
     # Test that paginated and result_array cannot simultaneously be specified.
     with pytest.raises(AssertionError, match='At most one of'):
+        # noinspection PyUnusedLocal
         class PaginatedAndArray(EAService):
             @ea_endpoint('page/array', 'get', paginated=True, result_array=True)
             def get(self, **kwargs):
