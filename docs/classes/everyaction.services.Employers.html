@@ -51,8 +51,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.Employers">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Employers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Employers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the
-<a class="reference external" href="https://docs.everyaction.com/reference/employers">Employers</a> service.</p>
+<dd><p>Represents the <a class="reference external" href="https://docs.everyaction.com/reference/employers">Employers</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -73,10 +72,10 @@
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employers-2">POST /employers</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Employers.create_department" title="everyaction.services.Employers.create_department"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_department</span></code></a>(employer_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeriddepartments">POST /employers/{employerId}/departments</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeriddeparments">POST /employers/{employerId}/departments</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Employers.create_worksite" title="everyaction.services.Employers.create_worksite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_worksite</span></code></a>(employer_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployer_idworksites">POST /employers/{employer_id}/worksites</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeridworksites">POST /employers/{employer_id}/worksites</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Employers.get" title="everyaction.services.Employers.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(employer_id, /, **kwargs)</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployerid">GET /employers/{employerId}</a>.</p></td>
@@ -140,15 +139,15 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The added <a class="reference internal" href="../objects.html#everyaction.objects.ShiftType" title="everyaction.objects.ShiftType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShiftType</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>defaultEndTime</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">default_end_time</span></code>, <code class="code docutils literal notranslate"><span class="pre">default_end</span></code>)</p></li>
+<a class="reference external" href="Aliases">(default_end_time, default_end)</a></p></li>
 <li><p><strong>defaultStartTime</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">default_start_time</span></code>, <code class="code docutils literal notranslate"><span class="pre">default_start</span></code>)</p></li>
+<a class="reference external" href="Aliases">(default_start_time, default_start)</a></p></li>
 <li><p><strong>name</strong></p></li>
 <li><p><strong>shiftTypeId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">shift_type_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+<a class="reference external" href="Aliases">(shift_type_id, id)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -166,30 +165,30 @@ appropriate to unpack here.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The created <a class="reference internal" href="../objects.html#everyaction.objects.Employer" title="everyaction.objects.Employer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Employer</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.BargainingUnit" title="everyaction.objects.BargainingUnit"><code class="xref py py-class docutils literal notranslate"><span class="pre">bargainingUnits</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">bargaining_units</span></code>, <code class="code docutils literal notranslate"><span class="pre">bargaining_unit</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(bargaining_units, bargaining_unit (singular))</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Department" title="everyaction.objects.Department"><code class="xref py py-class docutils literal notranslate"><span class="pre">departments</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">department</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(department (singular))</a></p></li>
 <li><p><strong>employerId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">employer_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+<a class="reference external" href="Aliases">(employer_id, id)</a></p></li>
 <li><p><strong>isMyOrganization</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_org</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_my_organization, my_organization, my_org)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.BargainingUnitJobClass" title="everyaction.objects.BargainingUnitJobClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">jobClasses</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">job_classes</span></code>, <code class="code docutils literal notranslate"><span class="pre">job_class</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(job_classes, job_class (singular))</a></p></li>
 <li><p><strong>name</strong></p></li>
 <li><p><strong>parentOrganization</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">parent_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent</span></code>)</p></li>
-<li><p><a class="reference internal" href="../objects.html#everyaction.objects.OrganizationPhone" title="everyaction.objects.OrganizationPhone"><code class="xref py py-class docutils literal notranslate"><span class="pre">phones</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">phone</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(parent_organization, parent)</a></p></li>
+<li><p><a class="reference internal" href="../objects.html#everyaction.objects.EmployerPhone" title="everyaction.objects.EmployerPhone"><code class="xref py py-class docutils literal notranslate"><span class="pre">phones</span></code></a>
+<a class="reference external" href="Aliases">(phone (singular))</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.ShiftType" title="everyaction.objects.ShiftType"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifts</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">shift</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(shift (singular))</a></p></li>
 <li><p><strong>shortName</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">short_name</span></code>, <code class="code docutils literal notranslate"><span class="pre">short</span></code>)</p></li>
+<a class="reference external" href="Aliases">(short_name, short)</a></p></li>
 <li><p><strong>website</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Worksite" title="everyaction.objects.Worksite"><code class="xref py py-class docutils literal notranslate"><span class="pre">worksites</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">worksite</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(worksite (singular))</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -198,7 +197,7 @@ appropriate to unpack here.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Employers.create_department">
 <span class="sig-name descname"><span class="pre">create_department</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employer_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Department" title="everyaction.objects.Department"><span class="pre">everyaction.objects.Department</span></a></span></span><a class="headerlink" href="#everyaction.services.Employers.create_department" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeriddepartments">POST /employers/{employerId}/departments</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeriddeparments">POST /employers/{employerId}/departments</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -210,14 +209,14 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The created <a class="reference internal" href="../objects.html#everyaction.objects.Department" title="everyaction.objects.Department"><code class="xref py py-class docutils literal notranslate"><span class="pre">Department</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>departmentId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">department_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+<a class="reference external" href="Aliases">(department_id, id)</a></p></li>
 <li><p><strong>employer</strong></p></li>
 <li><p><strong>name</strong></p></li>
 <li><p><strong>parentDepartmentId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">parent_department_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_department</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent</span></code>)</p></li>
+<a class="reference external" href="Aliases">(parent_department_id, parent_department, parent)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -226,7 +225,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Employers.create_worksite">
 <span class="sig-name descname"><span class="pre">create_worksite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employer_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Worksite" title="everyaction.objects.Worksite"><span class="pre">everyaction.objects.Worksite</span></a></span></span><a class="headerlink" href="#everyaction.services.Employers.create_worksite" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployer_idworksites">POST /employers/{employer_id}/worksites</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/employersemployeridworksites">POST /employers/{employer_id}/worksites</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -238,17 +237,17 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The created <a class="reference internal" href="../objects.html#everyaction.objects.Worksite" title="everyaction.objects.Worksite"><code class="xref py py-class docutils literal notranslate"><span class="pre">Worksite</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Address" title="everyaction.objects.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">address</span></code></a></p></li>
 <li><p><strong>employer</strong></p></li>
 <li><p><strong>isPreferred</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_preferred</span></code>, <code class="code docutils literal notranslate"><span class="pre">preferred</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_preferred, preferred)</a></p></li>
 <li><p><strong>name</strong></p></li>
 <li><p><strong>workAreas</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">work_areas</span></code>, <code class="code docutils literal notranslate"><span class="pre">work_area</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(work_areas, work_area (singular))</a></p></li>
 <li><p><strong>worksiteId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">worksite_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+<a class="reference external" href="Aliases">(worksite_id, id)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -268,7 +267,7 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Employer" title="everyaction.objects.Employer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Employer</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>expand</strong></p></li>
 </ul>
@@ -290,11 +289,11 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.Employer" title="everyaction.objects.Employer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Employer</span></code></a> objects.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>expand</strong></p></li>
 <li><p><strong>isMyOrganization</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_org</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_my_organization, my_organization, my_org)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -314,10 +313,10 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The updated <a class="reference internal" href="../objects.html#everyaction.objects.Employer" title="everyaction.objects.Employer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Employer</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>isMyOrganization</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_organization</span></code>, <code class="code docutils literal notranslate"><span class="pre">my_org</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_my_organization, my_organization, my_org)</a></p></li>
 </ul>
 </dd>
 </dl>

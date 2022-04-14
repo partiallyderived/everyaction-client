@@ -24,6 +24,10 @@ doc: $(VENV_DIR)
 inc:
 	bash inc_version.sh
 
+.PHONY: linkcheck
+linkcheck: $(VENV_DIR)
+	$(VENV_ACTIVATE) && sphinx-build -b linkcheck $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
+
 .PHONY: tag
 tag:
 	git tag -a v$(VERSION) -m "Version $(VERSION)"

@@ -7,4 +7,6 @@ test_data.json
 venv
 wenv
 __pycache__
-docs/\.buildinfo
+docs/.buildinfo
+docs/output.json
+docs/output.txt

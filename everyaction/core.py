@@ -21,6 +21,9 @@ if TYPE_CHECKING:
     from everyaction.client import EAClient
 
 
+# Name of the anchor of the section of documentation about aliases. Used for linking lists of aliases to this page.
+_ALIAS_ANCHOR = 'Aliases'
+
 # Regex used to insert underscores before all sequences of capital letters in an attribute name to convert from
 # camelCase of UpperCase to snake_case.
 _CAMEL_TO_SNAKE_REGEX = re.compile(r'([A-Z]+)')
@@ -81,7 +84,8 @@ def ea_endpoint(
     result_array_key: str = '',
     result_key: Optional[str] = None,
     result_factory: Optional[Callable] = None,
-    exclude_keys: Set[str] = frozenset()
+    exclude_keys: Set[str] = frozenset(),
+    none_if_404: bool = False
 ) -> Callable:
     # This decorator uses consistencies and parameters (e.g., max value for top in a paginated request) in the
     # EveryAction API to "configure" how the request data and arguments are processed, how the request is sent, and
@@ -146,6 +150,8 @@ def ea_endpoint(
     # exclude_keys: When specified, exclude these keys from the resulting data. Useful when multiple keys are returned
     # for the same property (i.e., both locationId and id in response data for a Location) and one must be suppressed
     # to prevent an error being raised in the constructor.
+
+    # none_if_404: When specified, return None rather than erroring upon receiving a response with status code 404.
 
     # How EAProperty objects are resolved:
     # Firstly, if data_type is specified, data_type._properties() populates the collection of properties.
@@ -286,7 +292,7 @@ def ea_endpoint(
 
         if properties and func.__doc__:
             # Add valid parameters for documentation purposes.
-            properties.add_to_doc(func, 'Supported Keyword Arguments')
+            properties.add_to_doc(func, 'Keyword Arguments')
 
         @wraps(func)
         def wrapper(
@@ -385,9 +391,9 @@ def ea_endpoint(
             if _RAW_RESPONSE:
                 return response
 
-            if not response and response.json().get('errors'):
-                # Some requests such as /people/find are expected to have error status codes and should not be treated
-                # as exceptional. Thus, only raise an exception if we can find a property called "errors".
+            if not response:
+                if response.status_code == 404 and none_if_404:
+                    return None
                 raise EAHTTPException(response)
 
             if not has_result:
@@ -577,8 +583,8 @@ class EAProperty:
             if name_or_alias == self.singular_alias:
                 return [self._create(arg)]
             # Otherwise, call self.factory for each element.
-            if not isinstance(arg, List):
-                raise TypeError(f'Expected sequence for "{name_or_alias}", got {type(arg).__name__}: {arg}')
+            if not isinstance(arg, list):
+                raise TypeError(f'Expected list for "{name_or_alias}", got {type(arg).__name__}: {arg}')
             return [self._create(x) for x in arg]
         # Not an array property, just call self.factory on arg.
         return self._create(arg)
@@ -643,16 +649,17 @@ class EAProperties(Mapping):
             if prop.aliases or prop.singular_alias:
                 components.append(f'{prop_str}')
                 # List each alias separated by commas in descending order of length.
-                aliases = [f':code:`{alias}`' for alias in sorted(list(prop.aliases), key=lambda x: -len(x))]
+                aliases = [f'{alias}' for alias in sorted(list(prop.aliases), key=lambda x: -len(x))]
                 if prop.singular_alias:
-                    aliases.append(f':code:`{prop.singular_alias}` (Singular)')
-                components.append(f'{prop_indent}  (Aliases: {", ".join(aliases)})')
+                    aliases.append(f'{prop.singular_alias} (singular)')
+                components.append(f'{prop_indent}  `({", ".join(aliases)}) <{_ALIAS_ANCHOR}>`_')
             else:
                 components.append(prop_str)
         properties_doc = '\n'.join(components)
 
         # Take out last indent, add properties documentation, put back last indent.
-        entity.__doc__ = doc_str[:-indentation] + '\n' + properties_doc + f'\n\n{" " * indentation}'
+        components = [doc_str[:-indentation], '\n', properties_doc, f'\n\n{" " * indentation}']
+        entity.__doc__ = ''.join(components)
 
     def process(self, args: EAMap) -> EAMap:
         # Process a mapping by retrieving each key's EAProperty and applying EAProperty.value to its value for each
@@ -681,165 +688,7 @@ class EAMeta(ABCMeta):
     # and implements the logic needed to create each class's alias map and EAProperties object.
 
     @staticmethod
-    def _handle_special_prop(properties: Dict, shared_name: str, key: str, additional_aliases: Set[str]) -> None:
-        # If the snake_cased version of key is different from key, add it as an alias for prop.
-        prop = copy.deepcopy(EAProperty.shared(shared_name))
-        as_snake = to_snake(key)
-        if as_snake != key:
-            prop.aliases.add(as_snake)
-        if shared_name != key:
-            # When shared name differs from key, add shared name as alias.
-            prop.aliases.add(shared_name)
-        prop.aliases |= additional_aliases
-        properties[key] = prop
-
-    def __new__(
-        mcs,
-        name: str,
-        bases: Tuple[type, ...],
-        dct: Dict[str, Any],
-        _prefix: str = '',
-        _prefixed: Set[str] = frozenset(),
-        _keys: Set[str] = frozenset(),
-        _id_aliases: Set[str] = frozenset(),
-        _name_aliases: Set[str] = frozenset(),
-        **kwargs: EAProperty
-    ) -> type:
-        # name, bases, and dct are standard metaclass __new__ arguments.
-        #
-        # _prefix: A string prefix which may be specified which allows properties whose names start with _prefix to
-        # "defer" to shared properties with the un-prefixed name. For example, with a _prefix of "event",
-        # "eventDescription" can defer to the shared property "description" (note that the first character of the
-        # un-prefixed name is converted to lower-case so that the camelCased property can be found).
-        # When the created class is a subclass of EAObjectWithID, it is assumed that the ID is prefixed (as in
-        # "eventId") as this is almost always the case. Other prefixed properties must be specified with their
-        # un-prefixed names in _prefixed.
-        #
-        # _prefixed: See _prefix above.
-        #
-        # _keys: The keys of shared properties accessible via EAProperty.get to add to the created class's properties.
-        # This is the most common way to add properties to a class.
-        #
-        # **kwargs: Used to specify new EAProperty objects as properties for the created class.
-        # For example, newProp=EAProperty('prop') will add a property named "newProp" with the alias "prop".
-        # Using EAProperty.add to register shared properties instead of adding them here is the preferred way to create
-        # new properties. See comments under EAProperty for more info.
-
-        ea_type = super().__new__(mcs, name, bases, dct)
-
-        properties = {}
-        for base in bases:
-            if isinstance(base, EAMeta):
-                # Inherit properties from base classes.
-                properties.update(base._properties())
-
-        id_key = ea_type._id_key()
-        if _id_aliases and not id_key:
-            raise AssertionError('id_aliases non-empty but id_key not present.')
-
-        name_key = ea_type._name_key()
-        if _name_aliases and not name_key:
-            raise AssertionError('name_aliases non-empty but name_key not present.')
-
-        if _prefix:
-            # Assume ID is prefixed if present (or in other words, only use a prefix when there is an ID if the ID is
-            # prefixed).
-            if id_key:
-                _prefixed |= {id_key}
-            for prop_name in _prefixed:
-                # Assume property is camel-cased in EveryAction, so capitalize the first letter of the prefixed name
-                # when prepending the prefix.
-                # prefixed should exactly be the name of a property in EveryAction.
-                prefixed = _prefix + prop_name[0].upper() + prop_name[1:]
-                if prefixed in _keys:
-                    raise AssertionError(f'Resulting prefixed name {prefixed} matches a value passed to _keys')
-                if prop_name == id_key:
-                    shared_name = 'id'
-                    additional_aliases = _id_aliases
-                elif prop_name == name_key:
-                    shared_name = 'name'
-                    additional_aliases = _name_aliases
-                else:
-                    shared_name = prop_name
-                    additional_aliases = set()
-
-                base_prop = EAProperty.shared(shared_name)
-                new_prop = copy.deepcopy(base_prop)
-
-                # Add the un-prefixed name and the snake-cased versions of the full name as aliases so the property may
-                # be accessed that way.
-                new_prop.aliases.add(prop_name)
-                new_prop.aliases.add(to_snake(prefixed))
-                new_prop.aliases |= additional_aliases
-                properties[prefixed] = new_prop
-
-                # If shared_name is different from prop_name, add shared_name as an alias (possible for id and name).
-                if shared_name != prop_name:
-                    new_prop.aliases.add(shared_name)
-        elif id_key:
-            # If there is no prefix, add ID here instead of in the prefix logic.
-            EAMeta._handle_special_prop(properties, 'id', id_key, _id_aliases)
-
-        if name_key and name_key not in _prefixed:
-            # Add name here if it was not prefixed.
-            EAMeta._handle_special_prop(properties, 'name', name_key, _name_aliases)
-
-        for prop_name in _keys:
-            properties[prop_name] = EAProperty.shared(prop_name)
-
-        for k, v in kwargs.items():
-            if k in properties:
-                raise AssertionError(f'Property {k} supplied both inside and outside kwargs.')
-            properties[k] = v
-
-        # Finally, set the _PROPERTIES class attribute to the resulting EAProperties object, which is expected to never
-        # be modified.
-        ea_type._PROPERTIES = EAProperties(properties)
-        if properties and ea_type.__doc__:
-            ea_type._PROPERTIES.add_to_doc(ea_type, 'Properties')
-        return ea_type
-
-
-class EAObject(MutableMapping, metaclass=EAMeta):
-    # Subclass from which all EveryAction objects inherit.
-    # This class implements the MutableMapping interface by deferring to its attribute dict __dict__, as well as
-    # leveraging aliases to get and set items using their alias rather than their camelCased name in the EveryAction
-    # API.
-
-    @classmethod
-    def _id_key(cls) -> Optional[str]:
-        return None
-
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        return None
-
-    @classmethod
-    def _properties(cls) -> EAProperties:
-        return cls._PROPERTIES
-
-    @classmethod
-    def _resolve_attr(cls, alias: str) -> str:
-        try:
-            return cls._properties().resolve(alias)
-        except KeyError:
-            raise AttributeError(alias)
-
-    def _setattr(self, attr: str, resolved: str, value: EAValue) -> None:
-        # Helper method to set an attribute when the attribute name has already been resolved.
-        prop = self._properties()[resolved]
-
-        # Note that it is necessary to pass attr here, not resolved, in case attr corresponds to a singular alias.
-        result = prop.value(attr, value)
-        object.__setattr__(self, resolved, result)
-
-    def __init__(self, **kwargs: EAValue) -> None:
-        """Initialize by setting the specified property names and aliases. Note that values will automatically be
-        converted to API objects when appropriate.
-
-        :param kwargs: Mapping of (alias or name) -> value.
-        :raise ValueError: If multiple aliases are given for the same property but with different values.
-        """
+    def _init_fn(self, **kwargs: EAValue) -> None:
         # Keep track of aliases given to detect when multiple aliases are erroneously specified.
         attr_to_alias = {}
         unrecognized = []
@@ -871,8 +720,243 @@ class EAObject(MutableMapping, metaclass=EAMeta):
             else:
                 str_component = 'properties are'
             raise AttributeError(
-                f'The following {str_component} unrecognized for {self.__class__.__name__}: {", ".join(unrecognized)}'
+                f'The following {str_component} unrecognized for {self.__class__.__name__}: '
+                f'{", ".join(unrecognized)}'
             )
+
+    @staticmethod
+    def _default_init() -> Callable[['EAObject', ...], None]:
+        def __init__(self, **kwargs: EAValue) -> None:
+            """Initialize by setting the specified property names and aliases. Note that values will automatically be
+            converted to API objects when appropriate.
+
+            :param kwargs: Mapping of (alias or name) -> value.
+            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise ValueError: If multiple aliases are given for the same property but with different values.
+            """
+            EAMeta._init_fn(self, **kwargs)
+        return __init__
+
+    @staticmethod
+    def _id_init() -> Callable[['EAObject', Optional[int], ...], None]:
+        def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
+            """Initialize by setting the specified property names and aliases. Note that values will automatically be
+            converted to API objects when appropriate.
+
+            :param id: ID to initialize with. When given alone, a simple object results (see
+                `A Note About Simple Objects <https://docs.everyaction.com/reference/events-overview#overview-19>`__).
+            :param kwargs: Mapping of (alias or name) -> value.
+            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise ValueError: If multiple aliases are given for the same property but with different values.
+            """
+            EAMeta._init_fn(self, id=id, **kwargs)
+        return __init__
+
+    @staticmethod
+    def _name_init() -> Callable[['EAObject', Optional[str], ...], None]:
+        def __init__(self, name: Optional[str] = None, **kwargs: EAValue) -> None:
+            """Initialize by setting the specified property names and aliases. Note that values will automatically be
+            converted to API objects when appropriate.
+
+            :param name: Name to initialize the object with.
+            :param kwargs: Mapping of (alias or name) -> value.
+            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise ValueError: If multiple aliases are given for the same property but with different values.
+            :raise TypeError: If :code:`id_or_name` is neither an :code:`int` nor a :code:`str`.
+            """
+            EAMeta._init_fn(self, name=name, **kwargs)
+        return __init__
+
+    @staticmethod
+    def _id_and_name_init() -> Callable[['EAObject', Optional[Union[int, str]], ...], None]:
+        def __init__(self, id_or_name: Optional[Union[int, str]] = None, **kwargs: EAValue) -> None:
+            """Initialize by setting the specified property names and aliases. Note that values will automatically be
+            converted to API objects when appropriate.
+
+            :param id_or_name: ID (if an integer) or name (if a string) to initialize with. A simple object will result
+                when an integer is given (see
+                `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
+                When a string is given instead, it is assumed to correspond to the object's name, accessible via
+                instance.name.
+            :param kwargs: Mapping of (alias or name) -> value.
+            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise ValueError: If multiple aliases are given for the same property but with different values.
+            :raise TypeError: If :code:`id_or_name` is neither an :code:`int` nor a :code:`str`.
+            """
+            if id_or_name is not None:
+                if isinstance(id_or_name, int):
+                    # Assume id for int.
+                    EAMeta._init_fn(self, id=id_or_name, **kwargs)
+                elif isinstance(id_or_name, str):
+                    # Assume name for str.
+                    EAMeta._init_fn(self, name=id_or_name, **kwargs)
+                else:
+                    raise TypeError(
+                        f'Expected int or str for id_or_name, got {type(id_or_name).__name__}: {id_or_name}'
+                    )
+            else:
+                EAMeta._init_fn(self, **kwargs)
+        return __init__
+
+    def __new__(
+        mcs,
+        name: str,
+        bases: Tuple[type, ...],
+        dct: Dict[str, Any],
+        /,
+        *,
+        _id: str = '',
+        _name: str = '',
+        _prefix: str = '',
+        _prefixed: Set[str] = None,
+        _shared: Set[str] = None,
+        **kwargs: EAProperty
+    ) -> type:
+        # name, bases, and dct are standard metaclass __new__ arguments.
+        #
+        # _id: If specified, this EAObject has an ID. In this case, instances of this EAObject may be constructed with
+        # just one positional argument, the ID, in addition to any keyword arguments. The ID may still be set via
+        # keyword if desired.
+        #
+        # _name: If specified, this EAObject has a name. In this case, instances of this EAObject may be constructed
+        # with just one positional argument, the name, in addition to any keyword arguments. The name may still be set
+        # via keyword if desired.
+        #
+        # If both _id and _name are specified, the EAObject may still be constructed from just one positional argument.
+        # If this is the case, this argument is assumed to be the ID if it is an int and the name if it is a str.
+        #
+        # _prefix: A string prefix which may be specified which allows properties whose names start with _prefix to
+        # "defer" to shared properties with the un-prefixed name. For example, with a _prefix of "event",
+        # "eventDescription" can defer to the shared property "description" (note that the first character of the
+        # un-prefixed name is converted to lower-case so that the camelCased property can be found).
+        # When _id is also specified, it is assumed that the ID is prefixed (as in "eventId") as this is almost always
+        # the case. Other prefixed properties must be specified with their un-prefixed names in _prefixed.
+        #
+        # _prefixed: See _prefix above.
+        #
+        # _shared: The names of shared properties accessible via EAProperty.get to add to the created class's
+        # properties. This is the most common way to add properties to a class.
+        #
+        # **kwargs: Used to specify new EAProperty objects as properties for the created class.
+        # For example, newProp=EAProperty('prop') will add a property named "newProp" with the alias "prop".
+        # Using EAProperty.add to register shared properties instead of adding them here is the preferred way to create
+        # new properties. See comments under EAProperty for more info.
+
+        # Create an __init__ method if it is not already present.
+        _prefixed = _prefixed or set()
+        _shared = _shared or set()
+        init = None
+        if name == 'EAObject':
+            # Ideally, this __init__ method would just be placed directly in EAObject. However, a no-op __init__ with a
+            # different signature appears in EAObject instead. The reason for this is to prevent PyCharm from
+            # complaining about unexpected arguments when generated __init__ methods take a positional argument
+            # Otherwise, users of the package who use PyCharm would observe highlighted errors for typical and correct
+            # use-cases.
+            init = mcs._default_init()
+        elif '__init__' not in dct:
+            if _id:
+                if _name:
+                    init = mcs._id_and_name_init()
+                else:
+                    init = mcs._id_init()
+            elif _name:
+                init = mcs._name_init()
+            # Otherwise, keep EAObject's __init__.
+        if init:
+            init.__qualname__ = f'{name}.__init__'
+            dct['__init__'] = init
+
+        ea_type = super().__new__(mcs, name, bases, dct)
+
+        properties = {}
+        for base in bases:
+            if isinstance(base, EAMeta):
+                # Inherit properties from base classes.
+                properties.update(base._properties())
+
+        if _id:
+            # Assume ID is prefixed if present (or in other words, if there is an ID only use a prefix if the ID is
+            # prefixed).
+            if _prefix:
+                _prefixed.add(_id)
+            elif _id not in kwargs:
+                _shared.add(_id)
+
+        if _name and _name not in kwargs and _name not in _prefixed:
+            _shared.add(_name)
+
+        if _prefix:
+            for prop_name in _prefixed:
+                # Assume property is camel-cased in EveryAction, so capitalize the first letter of the prefixed name
+                # when prepending the prefix.
+                # prefixed should exactly be the name of a property in EveryAction.
+                prefixed = _prefix + prop_name[0].upper() + prop_name[1:]
+                if prefixed in _shared:
+                    raise AssertionError(f'Resulting prefixed name {prefixed} matches a value passed to _shared')
+                # Check kwargs first for the property, then EAProperty.shared if it is not found in kwargs.
+                # The property from kwargs should be deleted so it won't be redundantly processed later.
+                base_prop = kwargs.pop(prop_name, None) or EAProperty.shared(prop_name)
+
+                # Add the un-prefixed name and the snake-cased versions of the full and un-prefixed names as aliases so
+                # that property may be accessed that way.
+                new_aliases = base_prop.aliases | {prop_name, to_snake(prop_name), to_snake(prefixed)}
+                properties[prefixed] = EAProperty(
+                    *new_aliases,
+                    is_array=base_prop.is_array,
+                    singular_alias=base_prop.singular_alias,
+                    factory=base_prop.factory
+                )
+
+        # Set all the properties from _shared.
+        for prop_name in _shared:
+            properties[prop_name] = EAProperty.shared(prop_name)
+
+        # Set all the properties from kwargs.
+        for k, v in kwargs.items():
+            if k in properties:
+                raise AssertionError(f'Property {k} supplied in both _shared and kwargs.')
+            properties[k] = v
+
+        # Finally, set the _PROPERTIES class attribute to the resulting EAProperties object, which is expected to never
+        # be modified.
+        ea_type._PROPERTIES = EAProperties(properties)
+        if properties and ea_type.__doc__:
+            ea_type._PROPERTIES.add_to_doc(ea_type, 'Properties')
+        return ea_type
+
+
+class EAObject(MutableMapping, metaclass=EAMeta):
+    # Subclass from which all EveryAction objects inherit.
+    # This class implements the MutableMapping interface by deferring to its attribute dict __dict__, as well as
+    # leveraging aliases to get and set items using their alias rather than their camelCased name in the EveryAction
+    # API.
+
+    @classmethod
+    def _properties(cls) -> EAProperties:
+        return cls._PROPERTIES
+
+    @classmethod
+    def _resolve_attr(cls, alias: str) -> str:
+        try:
+            return cls._properties().resolve(alias)
+        except KeyError:
+            raise AttributeError(alias)
+
+    def _setattr(self, attr: str, resolved: str, value: EAValue) -> None:
+        # Helper method to set an attribute when the attribute name has already been resolved.
+        prop = self._properties()[resolved]
+
+        # Note that it is necessary to pass attr here, not resolved, in case attr corresponds to a singular alias.
+        result = prop.value(attr, value)
+        object.__setattr__(self, resolved, result)
+
+    # noinspection PyUnusedLocal
+    def __init__(self, arg: Any = None, **kwargs: EAValue) -> None:
+        # Dummy __init__ method used to keep PyCharm from complaining about signatures in subclasses which define either
+        # or both an ID and a name, which have their __init__ methods auto-generated and which accept a single
+        # positional argument, while the default __init__ does not. The real __init__ method for EAObject is
+        # EAMeta._default_init.
+        pass
 
     def __delitem__(self, k: str) -> None:
         del self.__dict__[self._resolve_attr(k)]
@@ -935,102 +1019,8 @@ class EAObject(MutableMapping, metaclass=EAMeta):
         setattr(self, k, v)
 
 
-class EAObjectWithID(EAObject):
-    # EAObject which may be initialized with a positional ID argument.
-
-    @classmethod
-    def _id_key(cls) -> Optional[str]:
-        try:
-            EAObjectWithID
-        except NameError:
-            # Have _id_key return None, preventing that property from being created for this parent class.
-            return None
-        return 'id'
-
-    def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
-        """Initialize by setting the specified property names and aliases. Note that values will automatically be
-        converted to API objects when appropriate.
-
-        :param id: ID to initialize with. When given alone, a simple object results (see
-            `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
-        :param kwargs: Mapping of (alias or name) -> value.
-        """
-        super().__init__(id=id, **kwargs)
-
-
-class EAObjectWithIDAndName(EAObject):
-    # EAObject which may be initialized with a positional argument which is inferred to either be an ID (int) or a
-    # name (str).
-
-    @classmethod
-    def _id_key(cls) -> Optional[str]:
-        try:
-            EAObjectWithIDAndName
-        except NameError:
-            # Have _id_key return None, preventing that property from being created for this parent class.
-            return None
-        return 'id'
-
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        try:
-            EAObjectWithIDAndName
-        except NameError:
-            # Have _name_key return None, preventing that property from being created for this parent class.
-            return None
-        return 'name'
-
-    def __init__(self, id_or_name: Optional[Union[int, str]] = None, **kwargs: EAValue) -> None:
-        """Initialize by setting the specified property names and aliases. Note that values will automatically be
-        converted to API objects when appropriate.
-
-        :param id_or_name: ID (if an integer) or name (if a string) to initialize with. A simple object will result when
-            an integer is given (see
-            `A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__).
-            When a string is given instead, it is assumed to correspond to the object's name, accessible via
-            instance.name.
-        :param kwargs: Mapping of (alias or name) -> value.
-        """
-        if id_or_name is not None:
-            if isinstance(id_or_name, int):
-                # Assume id for int.
-                super().__init__(id=id_or_name, **kwargs)
-            elif isinstance(id_or_name, str):
-                # Assume name for str.
-                super().__init__(name=id_or_name, **kwargs)
-            else:
-                raise ValueError(f'Expected int or str for id_or_name, got {type(id_or_name).__name__}: {id_or_name}')
-        else:
-            super().__init__(**kwargs)
-
-
-class EAObjectWithName(EAObject):
-    # EAObject which may be initialized with a str name.
-
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        try:
-            EAObjectWithName
-        except NameError:
-            # Have _name_key return None, presenting that property from being created for this parent class.
-            return None
-        return 'name'
-
-    def __init__(self, name: Optional[str] = None, **kwargs: EAValue) -> None:
-        """Initialize by setting the specified property names and aliases. Note that values will automatically be
-        converted to API objects when appropriate.
-
-        :param name: Name to initialize the object with.
-        :param kwargs: Mapping of (alias or name) -> value.
-        """
-        if name is not None:
-            super().__init__(name=name, **kwargs)
-        else:
-            super().__init__(**kwargs)
-
-
 class EAObjectEncoder(JSONEncoder):
     def default(self, o: Any) -> Any:
         if isinstance(o, EAObject):
             return o.__dict__
-        super().default(o)
+        return super().default(o)

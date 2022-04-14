@@ -407,6 +407,7 @@ def test_people(client, server):
     )
     # Two preferred emails should result in an AssertionError.
     with pytest.raises(AssertionError):
+        # noinspection PyStatementEffect
         Person(
             emails=[Email('email1@example.com', preferred=True), Email('email2@example.com', preferred=True)]
         ).preferred_email
@@ -422,6 +423,7 @@ def test_people(client, server):
 
     # Two preferred phones should result in an AssertionError.
     with pytest.raises(AssertionError):
+        # noinspection PyStatementEffect
         Person(phones=[Phone('1111111111', preferred=True), Phone('2222222222', is_preferred=True)]).preferred_phone
 
     # Test People.preferred_address.
@@ -443,6 +445,7 @@ def test_people(client, server):
 
     # Two preferred addresses should result in an AssertionError.
     with pytest.raises(AssertionError):
+        # noinspection PyStatementEffect
         Person(addresses=[
             Address(line1='123 Fake Street', preferred=True),
             Address(line1='742 Evergreen Terrace', preferred=True)
@@ -531,7 +534,7 @@ def test_changed_entities(client, server):
     assert bool_field.parse('true')
     assert not bool_field.parse('FALSE')
     with pytest.raises(ValueError):
-        bool_field.parse('fals')
+        bool_field.parse('NotTrue')
 
     assert date_field.parse('2000-01-01') == datetime(2000, 1, 1)
     assert money_field.parse('$3.50') == '$3.50'

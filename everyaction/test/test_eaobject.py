@@ -1,6 +1,6 @@
 import pytest
 
-from everyaction.core import EAObject, EAObjectWithID, EAObjectWithIDAndName, EAObjectWithName, EAProperty
+from everyaction.core import EAObject, EAProperty
 
 
 class BasicObject(
@@ -111,10 +111,10 @@ def test_nested():
 
 
 def test_common_keys():
-    # "add" these properties so we may test that common properties specified via _keys are correctly applied.
+    # "add" these properties so we may test that common properties specified via _shared are correctly applied.
     EAProperty.share(a=EAProperty(), b=EAProperty(factory=int), c=EAProperty(singular_alias='single', factory=int))
 
-    class ObjectWithCommonProps(EAObject, _keys={'a', 'b', 'c'}, d=EAProperty()):
+    class ObjectWithCommonProps(EAObject, _shared={'a', 'b', 'c'}, d=EAProperty()):
         pass
 
     obj = ObjectWithCommonProps(a=1, b='2', single='3', d=4)
@@ -156,33 +156,45 @@ def test_prefixed():
 
 
 def test_with_id():
-    class WithID(EAObjectWithID, simple=EAProperty()):
+    id_prop = EAProperty('id')
+
+    class WithID(EAObject, _id='idTest', simple=EAProperty(), idTest=id_prop):
         pass
 
     # Check that positional argument is allowed and is the same as specifying ID.
-    assert WithID(3) == WithID(id=3)
+    assert WithID(3) == WithID(id=3) == WithID(idTest=3) == WithID(id_test=3)
 
-    # Check that properties whose factory is an EAObjectWithID can form an object with just the int ID.
+    # Check that properties whose factory is an EAObject can form an object with just the int ID.
     id_factory_prop = EAProperty(factory=WithID)
-    assert id_factory_prop.value('asdf', 3) == WithID(3)
+    assert id_factory_prop.value('id', 3) == WithID(3)
 
     # Same but with an array property.
     array_id_factory_prop = EAProperty(is_array=True, factory=WithID)
     assert array_id_factory_prop.value('asdf', [1, 2, 3, 4]) == [WithID(1), WithID(2), WithID(3), WithID(4)]
 
-    class WithIDAndPrefix(EAObjectWithID, _prefix='pre'):
+    class WithIDAndPrefix(EAObject, _id='idTest', _prefix='pre', idTest=id_prop):
         pass
 
-    # Check that both id and preId recognized.
-    assert WithIDAndPrefix(3) == WithIDAndPrefix(id=3) == WithIDAndPrefix(preId=3)
+    # Check that all of id, idTest, id_test, preIdTest, and pre_id_test are recognized.
+    assert (
+            WithIDAndPrefix(3) ==
+            WithIDAndPrefix(id=3) ==
+            WithIDAndPrefix(idTest=3) ==
+            WithIDAndPrefix(id_test=3) ==
+            WithIDAndPrefix(preIdTest=3) ==
+            WithIDAndPrefix(pre_id_test=3)
+    )
 
-    # Test that the property's true name is preId.
-    assert 'preId' in WithIDAndPrefix(3).__dict__
-    assert 'id' not in WithIDAndPrefix(3).__dict__
+    # Test that the property's true name is preIdTest.
+    assert 'preIdTest' in WithIDAndPrefix(3).__dict__
+    assert 'idTest' not in WithIDAndPrefix(3).__dict__
 
 
 def test_with_id_and_name():
-    class WithIDAndName(EAObjectWithIDAndName):
+    id_prop = EAProperty('id')
+    name_prop = EAProperty('name')
+
+    class WithIDAndName(EAObject, _id='idTest', _name='nameTest', idTest=id_prop, nameTest=name_prop):
         pass
 
     # Test that if the first positional argument is an int, the ID is specified, and that otherwise the name is
@@ -191,13 +203,13 @@ def test_with_id_and_name():
     assert WithIDAndName('3') == WithIDAndName(name='3')
     assert WithIDAndName(3, name='3') == WithIDAndName(id=3, name='3')
     assert WithIDAndName('3', id=3) == WithIDAndName(id=3, name='3')
-    assert 'id' in WithIDAndName(3).__dict__
-    assert 'name' in WithIDAndName('3').__dict__
+    assert 'idTest' in WithIDAndName(3).__dict__
+    assert 'nameTest' in WithIDAndName('3').__dict__
 
     # Test that factories may initialize with either the int ID or the str name.
     id_and_name_factory_prop = EAProperty(factory=WithIDAndName)
-    assert id_and_name_factory_prop.value('asdf', 1) == WithIDAndName(id=1)
-    assert id_and_name_factory_prop.value('asdf', '1') == WithIDAndName(name='1')
+    assert id_and_name_factory_prop.value('id', 1) == WithIDAndName(id=1)
+    assert id_and_name_factory_prop.value('name', '1') == WithIDAndName(name='1')
 
     # Same but with an array property.
     array_id_name_factory_prop = EAProperty(is_array=True, factory=WithIDAndName)
@@ -208,20 +220,30 @@ def test_with_id_and_name():
         WithIDAndName(name='4')
     ]
 
-    class WithIDNameAndPrefix(EAObjectWithIDAndName, _prefix='pre'):
+    class WithIDNameAndPrefix(
+        EAObject, _id='idTest', _name='nameTest', _prefix='pre', idTest=id_prop, nameTest=name_prop
+    ):
         pass
 
     # Test that ID is automatically prefixed when _prefix is specified.
-    assert WithIDNameAndPrefix(3) == WithIDNameAndPrefix(id=3) == WithIDNameAndPrefix(preId=3)
+    assert WithIDNameAndPrefix(3) == WithIDNameAndPrefix(id=3) == WithIDNameAndPrefix(preIdTest=3)
     assert WithIDNameAndPrefix('3') == WithIDNameAndPrefix(name='3')
     assert 'id' not in WithIDNameAndPrefix(3).__dict__
-    assert 'preId' in WithIDNameAndPrefix(3).__dict__
-    assert 'name' in WithIDNameAndPrefix('3').__dict__
+    assert 'preIdTest' in WithIDNameAndPrefix(3).__dict__
+    assert 'nameTest' in WithIDNameAndPrefix('3').__dict__
 
     with pytest.raises(AttributeError):
-        WithIDNameAndPrefix(preName='3')
+        WithIDNameAndPrefix(preNameTest='3')
 
-    class WithIDNameBothPrefixed(EAObjectWithIDAndName, _prefix='pre', _prefixed={'name'}):
+    class WithIDNameBothPrefixed(
+        EAObject,
+        _id='idTest',
+        _name='nameTest',
+        _prefix='pre',
+        _prefixed={'name'},
+        idTest=EAProperty(),
+        nameTest=EAProperty()
+    ):
         pass
 
     # Test that str positional arguments is the same as specifying name or preName.
@@ -229,23 +251,11 @@ def test_with_id_and_name():
     assert 'name' not in WithIDNameBothPrefixed('3').__dict__
     assert 'preName' in WithIDNameBothPrefixed('3').__dict__
 
-    # Edge case: make sure is 'name' is an alias for a given property, that it is not added as its own key.
-    class WithPropHavingNameAlias(EAObjectWithIDAndName, formName=EAProperty('name')):
+    # Test with just _name specified.
+    class WithName(EAObject, _name='nameTest', nameTest=name_prop):
         pass
 
-    assert (
-        WithPropHavingNameAlias('3')
-        == WithPropHavingNameAlias(name='3')
-        == WithPropHavingNameAlias(formName='3')
-    )
-
-    assert 'name' not in WithPropHavingNameAlias('3').__dict__
-    assert 'formName' in WithPropHavingNameAlias('3').__dict__
-
-    class WithName(EAObjectWithName):
-        pass
-
-    assert WithName('name').name == 'name'
+    assert WithName('name') == WithName(name='name') == WithName(nameTest='name') == WithName(name_test='name')
 
 
 def test_inherit_properties():
@@ -266,17 +276,17 @@ def test_inherit_properties():
 
 def test_meta_assertions():
     EAProperty.share(preZ=EAProperty(), z=EAProperty())
-    with pytest.raises(AssertionError, match='Resulting prefixed name preZ matches a value passed to _keys'):
+    with pytest.raises(AssertionError, match='Resulting prefixed name preZ matches a value passed to _shared'):
         # Naming conflict where "preZ" explicitly specified as a key but is also implicitly a key since
         # "z" is prefixed by "pre" to yield the camelCased "preZ".
         # noinspection PyUnusedLocal
-        class PrefixedMatchesKey(EAObject, _prefix='pre', _prefixed={'z'}, _keys={'preZ'}):
+        class PrefixedMatchesKey(EAObject, _prefix='pre', _prefixed={'z'}, _shared={'preZ'}):
             pass
 
-    with pytest.raises(AssertionError, match='Property z supplied both inside and outside kwargs.'):
+    with pytest.raises(AssertionError, match='Property z supplied in both _shared and kwargs.'):
         # Make sure we can't specify a both common property "z" and a specific property "z".
         # noinspection PyUnusedLocal
-        class DuplicateKey(EAObject, _keys={'z'}, z=EAProperty()):
+        class DuplicateKey(EAObject, _shared={'z'}, z=EAProperty()):
             pass
 
 
@@ -285,7 +295,7 @@ def test_ctor_attr_error():
     with pytest.raises(AttributeError, match='The following property is unrecognized for BasicObject: fake_attr'):
         BasicObject(sim='asdf', fake_attr=3)
     with pytest.raises(
-            AttributeError,
-            match='The following properties are unrecognized for BasicObject: fake_attr1, fake_attr2'
+        AttributeError,
+        match='The following properties are unrecognized for BasicObject: fake_attr1, fake_attr2'
     ):
         BasicObject(fake_attr1=1, sim='asdf', fake_attr2=2)

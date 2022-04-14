@@ -51,8 +51,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.Disbursements">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Disbursements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Disbursements" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the
-<a class="reference external" href="https://docs.everyaction.com/reference/disbursements">Disbursements</a> service.</p>
+<dd><p>Represents the <a class="reference external" href="https://docs.everyaction.com/reference/disbursements">Disbursements</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -61,45 +60,45 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Disbursements.create_or_update" title="everyaction.services.Disbursements.create_or_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_or_update</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursements">POST /disbursements</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/post-disbursements">POST /disbursements</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Disbursements.get" title="everyaction.services.Disbursements.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(disbursement_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursementsdisbursementid">GET /disbursements/{disbursementId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursements-disbursementid">GET /disbursements/{disbursementId}</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Disbursements.create_or_update">
 <span class="sig-name descname"><span class="pre">create_or_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#everyaction.services.Disbursements.create_or_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursements">POST /disbursements</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/post-disbursements">POST /disbursements</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Disbursement" title="everyaction.objects.Disbursement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Disbursement</span></code></a> is
 appropriate to unpack here.</p>
 </dd>
-<dt class="field-even">Supported Keyword Arguments</dt>
+<dt class="field-even">Keyword Arguments</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>amount</strong></p></li>
 <li><p><strong>batchCode</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">batch_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">batch</span></code>)</p></li>
+<a class="reference external" href="Aliases">(batch_code, batch)</a></p></li>
 <li><p><strong>checkDate</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">check_date</span></code>)</p></li>
+<a class="reference external" href="Aliases">(check_date)</a></p></li>
 <li><p><strong>checkNumber</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">check_number</span></code>)</p></li>
+<a class="reference external" href="Aliases">(check_number)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Code" title="everyaction.objects.Code"><code class="xref py py-class docutils literal notranslate"><span class="pre">codes</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">code</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(code (singular))</a></p></li>
 <li><p><strong>contact</strong></p></li>
 <li><p><strong>dateIssued</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">date_issued</span></code>, <code class="code docutils literal notranslate"><span class="pre">issued</span></code>)</p></li>
+<a class="reference external" href="Aliases">(date_issued, issued)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><code class="xref py py-class docutils literal notranslate"><span class="pre">designation</span></code></a></p></li>
 <li><p><strong>disbursementId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">disbursement_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">id</span></code>)</p></li>
+<a class="reference external" href="Aliases">(disbursement_id, id)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">disclosureFieldValues</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(disclosure_field_values, field_values, disclosures, values, disclosure (singular))</a></p></li>
 <li><p><strong>linkedCreditCardPaymentDisbursementId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">linked_credit_card_payment_disbursement_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">credit_card_payment</span></code>)</p></li>
+<a class="reference external" href="Aliases">(linked_credit_card_payment_disbursement_id, credit_card_payment)</a></p></li>
 <li><p><strong>linkedReimbursementDisbursementId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">linked_reimbursement_disbursement_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">reimbursement</span></code>)</p></li>
+<a class="reference external" href="Aliases">(linked_reimbursement_disbursement_id, reimbursement)</a></p></li>
 <li><p><strong>notes</strong></p></li>
 </ul>
 </dd>
@@ -109,7 +108,7 @@ appropriate to unpack here.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Disbursements.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disbursement_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Disbursement" title="everyaction.objects.Disbursement"><span class="pre">everyaction.objects.Disbursement</span></a></span></span><a class="headerlink" href="#everyaction.services.Disbursements.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursementsdisbursementid">GET /disbursements/{disbursementId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/disbursements-disbursementid">GET /disbursements/{disbursementId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>disbursement_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">disbursementId</span></code> path parameter.</p>

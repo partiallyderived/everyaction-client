@@ -314,7 +314,7 @@ def test_departments(client):
 
 @skip_if_403
 def test_designations(client):
-    _skip_if_empty_else_first('designations', client.designations.list())
+    _check_get_list('designations', client.designations)
 
 
 @skip_if_403
@@ -410,6 +410,11 @@ def test_note_category_types(client):
 @skip_if_403
 def test_online_action_forms(client):
     _check_get_list('online action forms', client.forms)
+
+
+@skip_if_403
+def test_people(client, person):
+    _check_get_list('people', client.people, list_args={'email': person.emails[0].email})
 
 
 @skip_if_403

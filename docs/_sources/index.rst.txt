@@ -37,7 +37,7 @@ Once the client is created, requests may be made by calling methods of :doc:`EAS
 objects that organize methods in the same way that the
 `EveryAction 8 developer documentation <https://docs.everyaction.com/reference>`__ organizes HTTP
 endpoints. For example, the following code uses the :class:`.People` service to send a :code:`POST` request to
-`/people/find <https://docs.everyaction.com/reference/people#peoplefind>`__ to find a person with the phone
+`/people/find <https://docs.everyaction.com/reference/people-find>`__ to find a person with the phone
 number 555-555-5555 and the email 123@fakeemail.com:
 
 .. code-block:: python
@@ -83,7 +83,7 @@ Path Parameters, Query Arguments, and JSON Data
 
 When specifying arguments for methods corresponding to HTTP endpoints, path parameters (those that appear in the URL)
 must be specified positionally. For example, the following code will invoke
-`GET /people/{vanId} <https://docs.everyaction.com/reference/people#peoplevanid-1>`__ using :meth:`.People.get`
+`GET /people/{vanId} <https://docs.everyaction.com/reference/get-people-vanid>`__ using :meth:`.People.get`
 to get the person with the VAN ID :code:`1234`:
 
 .. code-block:: python
@@ -92,7 +92,7 @@ to get the person with the VAN ID :code:`1234`:
 
 In contrast, all query and JSON data arguments must be specified as keyword arguments. For example, the following code
 will add view restricted notes to the person with the VAN ID :code:`5555` with the text "Wears funny hats" by invoking
-`POST /people/{vanId}/notes <https://docs.everyaction.com/reference/people#peoplevanidnotes-1>`__ using
+`POST /people/{vanId}/notes <https://docs.everyaction.com/reference/post-people-vanid-notes>`__ using
 :meth:`.People.add_notes`:
 
 .. code-block:: python
@@ -104,7 +104,7 @@ Note that the `alias <Aliases>`_ :code:`view_restricted` is used instead of the 
 
 In some cases, query arguments in the EveryAction API begin with a dollar sign (:code:`$`). In this case, the dollar
 sign may be omitted when specifying keyword arguments. The following gets a person as before, but
-`expands <https://docs.everyaction.com/reference/overview#expansion>`__ their phones and emails (note that
+`expands <https://docs.everyaction.com/reference/expansion>`__ their phones and emails (note that
 the :code:`$expand` query argument begins with :code:`$`):
 
 .. code-block:: python
@@ -166,7 +166,7 @@ this package:
   attempt is made to implicitly construct an object of that type using that value as a constructor argument.
 
 What these two facts imply is that we do not need to specify mappings for the simple (see
-`A Note About Simple Objects <https://docs.everyaction.com/reference/events#overview-19>`__) :class:`.EventType` and
+`A Note About Simple Objects <https://docs.everyaction.com/reference/events-overview>`__) :class:`.EventType` and
 :class:`.VoterRegistrationBatch` objects, allowing for the following succinct code:
 
 .. code-block:: python
@@ -211,7 +211,7 @@ to this more compact call:
 
 Now that the usage of aliases has been demonstrated, here are some general facts about aliases:
 
-* All aliases are snake_cased (whereas the aliased property is almost always camelCased).
+* Aliases are usually snake_cased (whereas the aliased property is almost always camelCased).
 * Properties may have multiple aliases, or no aliases at all (like for the property :code:`name`).
 * The snake_cased version of a property name is *always* an alias for that property (i.e., :code:`is_view_restricted`
   is an alias for :code:`isViewRestricted`).
@@ -233,7 +233,7 @@ EveryAction Objects
 
 EveryAction objects are objects referred to in the EveryAction documentation, usually under the "Common Models" section
 for a particular service. For example, under the
-`Common Models section for People <https://docs.everyaction.com/reference/people#common-models>`__, the various
+`Common Models section for People <https://docs.everyaction.com/reference/common-models>`__, the various
 properties of the "Person" API object are listed. Each documented EveryAction object has a corresponding Python class
 in this library, such as the :class:`.Person` class, called "EAObjects". When EveryAction objects are in the
 response data for that endpoint, the method corresponding to that endpoint will return the corresponding Python class,
@@ -304,7 +304,7 @@ Paginated methods, such as :meth:`.ActivistCodes.list`, support the :code:`limit
 
 The previous example will return at most 23 activist codes, starting from the tenth. While :code:`skip` corresponds
 exactly to the EveryAction parameter :code:`$skip` described in the
-`EveryAction documentation <https://docs.everyaction.com/reference/overview#pagination>`__, :code:`limit` does
+`EveryAction documentation <https://docs.everyaction.com/reference/pagination>`__, :code:`limit` does
 not exactly correspond to :code:`$top` because it may be set arbitrarily high: when it exceeds the maximum value for
 :code:`$top` described for the particular paginated method, multiple requests and sent and consolidated in the returned
 :code:`list`. If :code:`limit` is not specified, the configured default value in the :class:`.EAClient` instance will

@@ -51,8 +51,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.Ballots">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Ballots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Ballots" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the
-<a class="reference external" href="https://docs.everyaction.com/reference/ballots">Ballots</a> service.</p>
+<dd><p>Represents the <a class="reference external" href="https://docs.everyaction.com/reference/ballots">Ballots</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -61,19 +60,19 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.request_type" title="everyaction.services.Ballots.request_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_type</span></code></a>(type_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotrequesttypesballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotrequesttypes-ballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.request_types" title="everyaction.services.Ballots.request_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_types</span></code></a>(*[, limit])</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotrequesttypes">GET /ballotRequestTypes</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.return_status" title="everyaction.services.Ballots.return_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_status</span></code></a>(status_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotreturnstatusesballotrequesttypeid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotreturnstatuses-ballotreturnstatusid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.return_statuses" title="everyaction.services.Ballots.return_statuses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_statuses</span></code></a>(*[, limit])</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotreturnstatuses">GET /ballotReturnStatuses</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Ballots.type" title="everyaction.services.Ballots.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>(type_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballottypesballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballottypes-ballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Ballots.types" title="everyaction.services.Ballots.types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types</span></code></a>(*[, limit])</p></td>
 <td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballottypes">GET /ballotTypes</a>.</p></td>
@@ -83,7 +82,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Ballots.request_type">
 <span class="sig-name descname"><span class="pre">request_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><span class="pre">everyaction.objects.BallotRequestType</span></a></span></span><a class="headerlink" href="#everyaction.services.Ballots.request_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotrequesttypesballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotrequesttypes-ballotrequesttypeid">GET /ballotRequestTypes/{ballotRequestTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.BallotRequestType" title="everyaction.objects.BallotRequestType"><code class="xref py py-class docutils literal notranslate"><span class="pre">BallotRequestType</span></code></a> object.</p>
@@ -111,7 +110,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Ballots.return_status">
 <span class="sig-name descname"><span class="pre">return_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.BallotReturnStatus" title="everyaction.objects.BallotReturnStatus"><span class="pre">everyaction.objects.BallotReturnStatus</span></a></span></span><a class="headerlink" href="#everyaction.services.Ballots.return_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotreturnstatusesballotrequesttypeid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballotreturnstatuses-ballotreturnstatusid">GET /ballotReturnStatuses/{ballotRequestTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>status_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">ballotReturnStatusId</span></code> path parameter.</p>
@@ -142,7 +141,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Ballots.type">
 <span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.BallotType" title="everyaction.objects.BallotType"><span class="pre">everyaction.objects.BallotType</span></a></span></span><a class="headerlink" href="#everyaction.services.Ballots.type" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballottypesballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/ballottypes-ballottypeid">GET /ballotTypes/{ballotTypeId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>type_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">ballotTypeId</span></code> path parameter.</p>

@@ -51,8 +51,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.Contributions">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Contributions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Contributions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the
-<a class="reference external" href="https://docs.everyaction.com/reference/contributions">Contributions</a> service.</p>
+<dd><p>Represents the <a class="reference external" href="https://docs.everyaction.com/reference/contributions">Contributions</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -61,32 +60,32 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Contributions.adjust" title="everyaction.services.Contributions.adjust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjust</span></code></a>(contribution_id, /, **kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidadjustments">POST /contributions/{contributionId}/adjustments</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid-adjustments">POST /contributions/{contributionId}/adjustments</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Contributions.attribution_types" title="everyaction.services.Contributions.attribution_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attribution_types</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionsattributiontypes">GET /contributions/attributionTypes</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-attribution-types">GET /contributions/attributionTypes</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Contributions.create" title="everyaction.services.Contributions.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(**kwargs)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-1">POST /contributions</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/post-contributions">POST /contributions</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Contributions.create_or_update_attribution" title="everyaction.services.Contributions.create_or_update_attribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_or_update_attribution</span></code></a>(...)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidattributionsvanid">PUT /contributions/{contributionId}/attributions/{vanId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid-attributions-vanid">PUT /contributions/{contributionId}/attributions/{vanId}</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Contributions.delete_attribution" title="everyaction.services.Contributions.delete_attribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_attribution</span></code></a>(contribution_id, van_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidattributionsvanid-1">DELETE /contributions/{contributionId}/attributions/{vanId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/delete-contributions-contributionid-attributions-vanid">DELETE /contributions/{contributionId}/attributions/{vanId}</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Contributions.get" title="everyaction.services.Contributions.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(contribution_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionid">GET /contributions/{contributionId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid">GET /contributions/{contributionId}</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Contributions.get_" title="everyaction.services.Contributions.get_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_</span></code></a>(alternate_id_type, alternate_id, /)</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionsalternateidtypealternateid">GET /contributions/{alternateIdType}:{alternateId}</a>.</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-alternateidtype-alternateid">GET /contributions/{alternateIdType}:{alternateId}</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.adjust">
 <span class="sig-name descname"><span class="pre">adjust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.AdjustmentResponse" title="everyaction.objects.AdjustmentResponse"><span class="pre">everyaction.objects.AdjustmentResponse</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.adjust" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidadjustments">POST /contributions/{contributionId}/adjustments</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid-adjustments">POST /contributions/{contributionId}/adjustments</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -98,13 +97,13 @@ appropriate to unpack here.</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.AdjustmentResponse" title="everyaction.objects.AdjustmentResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">AdjustmentResponse</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>adjustmentType</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">adjustment_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">type</span></code>)</p></li>
+<a class="reference external" href="Aliases">(adjustment_type, type)</a></p></li>
 <li><p><strong>amount</strong></p></li>
 <li><p><strong>datePosted</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">date_posted</span></code>, <code class="code docutils literal notranslate"><span class="pre">posted</span></code>)</p></li>
+<a class="reference external" href="Aliases">(date_posted, posted)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -113,7 +112,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.attribution_types">
 <span class="sig-name descname"><span class="pre">attribution_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.Contributions.attribution_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionsattributiontypes">GET /contributions/attributionTypes</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-attribution-types">GET /contributions/attributionTypes</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the attribution types.</p>
@@ -124,7 +123,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.create">
 <span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-1">POST /contributions</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/post-contributions">POST /contributions</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The applicable query arguments and JSON data for the request. A <a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Contribution</span></code></a> is
@@ -133,70 +132,70 @@ appropriate to unpack here.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The created <a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Contribution</span></code></a> object.</p>
 </dd>
-<dt class="field-odd">Supported Keyword Arguments</dt>
+<dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>acceptedOneTimeAmount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">accepted_one_time_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">accepted_one_time</span></code>)</p></li>
+<a class="reference external" href="Aliases">(accepted_one_time_amount, accepted_one_time)</a></p></li>
 <li><p><strong>acceptedRecurringAmount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">accepted_recurring_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">accepted_recurring</span></code>, <code class="code docutils literal notranslate"><span class="pre">recurring</span></code>)</p></li>
+<a class="reference external" href="Aliases">(accepted_recurring_amount, accepted_recurring, recurring)</a></p></li>
 <li><p><strong>amount</strong></p></li>
 <li><p><strong>bankAccount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">bank_account</span></code>, <code class="code docutils literal notranslate"><span class="pre">account</span></code>)</p></li>
+<a class="reference external" href="Aliases">(bank_account, account)</a></p></li>
 <li><p><strong>checkDate</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">check_date</span></code>)</p></li>
+<a class="reference external" href="Aliases">(check_date)</a></p></li>
 <li><p><strong>checkNumber</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">check_number</span></code>)</p></li>
+<a class="reference external" href="Aliases">(check_number)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Code" title="everyaction.objects.Code"><code class="xref py py-class docutils literal notranslate"><span class="pre">codes</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">code</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(code (singular))</a></p></li>
 <li><p><strong>contact</strong></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Attribution" title="everyaction.objects.Attribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">contactAttributions</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">contact_attributions</span></code>, <code class="code docutils literal notranslate"><span class="pre">attributions</span></code>)</p></li>
+<a class="reference external" href="Aliases">(contact_attributions, attributions)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.BankAccount" title="everyaction.objects.BankAccount"><code class="xref py py-class docutils literal notranslate"><span class="pre">contributionBankAccount</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">contribution_bank_account</span></code>, <code class="code docutils literal notranslate"><span class="pre">contribution_account</span></code>, <code class="code docutils literal notranslate"><span class="pre">account_obj</span></code>)</p></li>
+<a class="reference external" href="Aliases">(contribution_bank_account, contribution_account, account_obj)</a></p></li>
 <li><p><strong>contributionId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">contribution_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">contribution</span></code>)</p></li>
+<a class="reference external" href="Aliases">(contribution_id, contribution)</a></p></li>
 <li><p><strong>coverCostsAmount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">cover_costs_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">cover_costs</span></code>)</p></li>
+<a class="reference external" href="Aliases">(cover_costs_amount, cover_costs)</a></p></li>
 <li><p><strong>dateReceived</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">date_received</span></code>, <code class="code docutils literal notranslate"><span class="pre">received</span></code>)</p></li>
+<a class="reference external" href="Aliases">(date_received, received)</a></p></li>
 <li><p><strong>dateThanked</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">date_thanked</span></code>, <code class="code docutils literal notranslate"><span class="pre">thanked</span></code>)</p></li>
+<a class="reference external" href="Aliases">(date_thanked, thanked)</a></p></li>
 <li><p><strong>depositDate</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">deposit_date</span></code>)</p></li>
+<a class="reference external" href="Aliases">(deposit_date)</a></p></li>
 <li><p><strong>depositNumber</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">deposit_number</span></code>)</p></li>
+<a class="reference external" href="Aliases">(deposit_number)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><code class="xref py py-class docutils literal notranslate"><span class="pre">designation</span></code></a></p></li>
 <li><p><strong>directMarketingCode</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">direct_marketing_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">marketing_code</span></code>)</p></li>
+<a class="reference external" href="Aliases">(direct_marketing_code, marketing_code)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.DisclosureFieldValue" title="everyaction.objects.DisclosureFieldValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">disclosureFieldValues</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">disclosure_field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">field_values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosures</span></code>, <code class="code docutils literal notranslate"><span class="pre">values</span></code>, <code class="code docutils literal notranslate"><span class="pre">disclosure</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(disclosure_field_values, field_values, disclosures, values, disclosure (singular))</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.ExtendedSourceCode" title="everyaction.objects.ExtendedSourceCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">extendedSourceCode</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">extended_source_code</span></code>, <code class="code docutils literal notranslate"><span class="pre">extended_source</span></code>)</p></li>
+<a class="reference external" href="Aliases">(extended_source_code, extended_source)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Identifier" title="everyaction.objects.Identifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">identifiers</span></code></a>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">identifier</span></code> (Singular))</p></li>
+<a class="reference external" href="Aliases">(identifier (singular))</a></p></li>
 <li><p><strong>isUpsellAccepted</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_upsell_accepted</span></code>, <code class="code docutils literal notranslate"><span class="pre">upsell_accepted</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_upsell_accepted, upsell_accepted)</a></p></li>
 <li><p><strong>isUpsellShown</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">is_upsell_shown</span></code>, <code class="code docutils literal notranslate"><span class="pre">upsell_shown</span></code>)</p></li>
+<a class="reference external" href="Aliases">(is_upsell_shown, upsell_shown)</a></p></li>
 <li><p><strong>linkedJointFundraisingContributionId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">linked_joint_fundraising_contribution_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">joint_fundraising_contribution</span></code>, <code class="code docutils literal notranslate"><span class="pre">fundraising_contribution</span></code>, <code class="code docutils literal notranslate"><span class="pre">fundraising</span></code>)</p></li>
+<a class="reference external" href="Aliases">(linked_joint_fundraising_contribution_id, joint_fundraising_contribution, fundraising_contribution, fundraising)</a></p></li>
 <li><p><strong>linkedPartnershipContributionId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">linked_partnership_contribution_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">partnership_contribution</span></code>, <code class="code docutils literal notranslate"><span class="pre">partnership</span></code>)</p></li>
+<a class="reference external" href="Aliases">(linked_partnership_contribution_id, partnership_contribution, partnership)</a></p></li>
 <li><p><strong>notes</strong></p></li>
 <li><p><strong>onlineReferenceNumber</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">online_reference_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">reference_number</span></code>, <code class="code docutils literal notranslate"><span class="pre">ref_number</span></code>)</p></li>
+<a class="reference external" href="Aliases">(online_reference_number, reference_number, ref_number)</a></p></li>
 <li><p><strong>paymentType</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">payment_type</span></code>)</p></li>
+<a class="reference external" href="Aliases">(payment_type)</a></p></li>
 <li><p><a class="reference internal" href="../objects.html#everyaction.objects.Pledge" title="everyaction.objects.Pledge"><code class="xref py py-class docutils literal notranslate"><span class="pre">pledge</span></code></a></p></li>
 <li><p><strong>processedAmount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">processed_amount</span></code>)</p></li>
+<a class="reference external" href="Aliases">(processed_amount)</a></p></li>
 <li><p><strong>processedCurrency</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">processed_currency</span></code>)</p></li>
+<a class="reference external" href="Aliases">(processed_currency)</a></p></li>
 <li><p><strong>selectedOneTimeAmount</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">selected_one_time_amount</span></code>, <code class="code docutils literal notranslate"><span class="pre">selected_one_time</span></code>)</p></li>
+<a class="reference external" href="Aliases">(selected_one_time_amount, selected_one_time)</a></p></li>
 <li><p><strong>status</strong></p></li>
 <li><p><strong>upsellType</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">upsell_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">upsell</span></code>)</p></li>
+<a class="reference external" href="Aliases">(upsell_type, upsell)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -205,7 +204,7 @@ appropriate to unpack here.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.create_or_update_attribution">
 <span class="sig-name descname"><span class="pre">create_or_update_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">everyaction.core.EAValue</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#everyaction.services.Contributions.create_or_update_attribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidattributionsvanid">PUT /contributions/{contributionId}/attributions/{vanId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid-attributions-vanid">PUT /contributions/{contributionId}/attributions/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -215,17 +214,17 @@ appropriate to unpack here.</p>
 appropriate to unpack here.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Supported Keyword Arguments</dt>
+<dt class="field-even">Keyword Arguments</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>amountAttributed</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">amount_attributed</span></code>, <code class="code docutils literal notranslate"><span class="pre">amount</span></code>)</p></li>
+<a class="reference external" href="Aliases">(amount_attributed, amount)</a></p></li>
 <li><p><strong>attributionType</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">attribution_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">type</span></code>)</p></li>
+<a class="reference external" href="Aliases">(attribution_type, type)</a></p></li>
 <li><p><strong>dateThanked</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">date_thanked</span></code>, <code class="code docutils literal notranslate"><span class="pre">thanked</span></code>)</p></li>
+<a class="reference external" href="Aliases">(date_thanked, thanked)</a></p></li>
 <li><p><strong>notes</strong></p></li>
 <li><p><strong>vanId</strong>
-(Aliases: <code class="code docutils literal notranslate"><span class="pre">van_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">van</span></code>)</p></li>
+<a class="reference external" href="Aliases">(van_id, van)</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -234,7 +233,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.delete_attribution">
 <span class="sig-name descname"><span class="pre">delete_attribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">van_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#everyaction.services.Contributions.delete_attribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionidattributionsvanid-1">DELETE /contributions/{contributionId}/attributions/{vanId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/delete-contributions-contributionid-attributions-vanid">DELETE /contributions/{contributionId}/attributions/{vanId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -248,7 +247,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contribution_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionscontributionid">GET /contributions/{contributionId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-contributionid">GET /contributions/{contributionId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>contribution_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">contributionId</span></code> path parameter.</p>
@@ -262,7 +261,7 @@ appropriate to unpack here.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Contributions.get_">
 <span class="sig-name descname"><span class="pre">get_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alternate_id_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternate_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Contribution" title="everyaction.objects.Contribution"><span class="pre">everyaction.objects.Contribution</span></a></span></span><a class="headerlink" href="#everyaction.services.Contributions.get_" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributionsalternateidtypealternateid">GET /contributions/{alternateIdType}:{alternateId}</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/contributions-alternateidtype-alternateid">GET /contributions/{alternateIdType}:{alternateId}</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

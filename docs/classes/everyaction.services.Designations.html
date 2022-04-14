@@ -51,8 +51,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="everyaction.services.Designations">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">everyaction.services.</span></span><span class="sig-name descname"><span class="pre">Designations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ea</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EAClient</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#everyaction.services.Designations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the
-<a class="reference external" href="https://docs.everyaction.com/reference/designations">Designations</a> service.</p>
+<dd><p>Represents the <a class="reference external" href="https://docs.everyaction.com/reference/designations">Designations</a> service.</p>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -60,15 +59,32 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Designations.list" title="everyaction.services.Designations.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>()</p></td>
-<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/designations">GET /designations</a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#everyaction.services.Designations.get" title="everyaction.services.Designations.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(designation_id, /)</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/designations-designationid">GET /designations/{designationId}</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#everyaction.services.Designations.list" title="everyaction.services.Designations.list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>()</p></td>
+<td><p>See <a class="reference external" href="https://docs.everyaction.com/reference/get-designations">GET /designations</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
+<dt class="sig sig-object py" id="everyaction.services.Designations.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">designation_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><span class="pre">everyaction.objects.Designation</span></a></span></span><a class="headerlink" href="#everyaction.services.Designations.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/designations-designationid">GET /designations/{designationId}</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>designation_id</strong> – The <code class="code docutils literal notranslate"><span class="pre">designationId</span></code> path parameter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Designation</span></code></a> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="everyaction.services.Designations.list">
 <span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><span class="pre">everyaction.objects.Designation</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#everyaction.services.Designations.list" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/designations">GET /designations</a>.</p>
+<dd><p>See <a class="reference external" href="https://docs.everyaction.com/reference/get-designations">GET /designations</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of the resulting <a class="reference internal" href="../objects.html#everyaction.objects.Designation" title="everyaction.objects.Designation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Designation</span></code></a> objects.</p>

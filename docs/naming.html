@@ -70,50 +70,50 @@ documentation is always acceptable. However, users may find it more convenient t
 as described below.</p></li>
 <li><p>Methods which retrieve a specific piece of data that corresponds to the type of data for which the enclosing service
 the method is named, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid">GET /people/{vanId}</a> (since it gets a
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid">GET /people/{vanId}</a> (since it gets a
 <a class="reference internal" href="objects.html#everyaction.objects.Person" title="everyaction.objects.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a> under the service <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People" title="everyaction.services.People"><code class="xref py py-class docutils literal notranslate"><span class="pre">People</span></code></a>), are called <code class="code docutils literal notranslate"><span class="pre">get</span></code> as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.get" title="everyaction.services.People.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.get()</span></code></a>.</p></li>
 <li><p>Methods which retrieve a specific piece of data which <em>does not</em> correspond to the type of data for which the
 enclosing service is named, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidmembership">GET /people/{vanId}/membership</a>
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-membership">GET /people/{vanId}/membership</a>
 are named according to the type of data being retrieved, in this case “membership” as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.membership" title="everyaction.services.People.membership"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.membership()</span></code></a>.</p></li>
 <li><p>Methods which retrieve multiple pieces of data that correspond to the type of data for which the enclosing service
 is named, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/activist-codes#activistcodes">GET /activistCodes</a>, are called
+<a class="reference external" href="https://docs.everyaction.com/reference/activistcodes">GET /activistCodes</a>, are called
 <code class="code docutils literal notranslate"><span class="pre">list</span></code> as in <a class="reference internal" href="classes/everyaction.services.ActivistCodes.html#everyaction.services.ActivistCodes.list" title="everyaction.services.ActivistCodes.list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ActivistCodes.list()</span></code></a>.</p></li>
 <li><p>Methods which retrieve multiple pieces of data that <em>do not</em> correspond to the type of data for which the enclosing
 service is named, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidactivistcodes">GET /people/{vanId}/activistCodes</a>,
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-activistcodes">GET /people/{vanId}/activistCodes</a>,
 are named according to the pluralized version of the data being retrieved, such as <code class="code docutils literal notranslate"><span class="pre">activist_codes</span></code> as in
 <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.activist_codes" title="everyaction.services.People.activist_codes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.activist_codes()</span></code></a>.</p></li>
 <li><p>Methods which create new data, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/codes#codes">POST /codes</a>, are called <code class="code docutils literal notranslate"><span class="pre">create</span></code> as in
+<a class="reference external" href="https://docs.everyaction.com/reference/post-codes">POST /codes</a>, are called <code class="code docutils literal notranslate"><span class="pre">create</span></code> as in
 <a class="reference internal" href="classes/everyaction.services.Codes.html#everyaction.services.Codes.create" title="everyaction.services.Codes.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Codes.create()</span></code></a>.</p></li>
 <li><p>Methods which update a specific piece of data, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanid">POST /people/{vanId}</a>, are called
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid">POST /people/{vanId}</a>, are called
 <code class="code docutils literal notranslate"><span class="pre">update</span></code> when the data being updated corresponds to the type of data for which the enclosing service is named
 (as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.update" title="everyaction.services.People.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.update()</span></code></a>), and <code class="code docutils literal notranslate"><span class="pre">update_X</span></code> where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the type of data being updated when it does
 not correspond to the enclosing service (as in <a class="reference internal" href="classes/everyaction.services.VoterRegistrationBatches.html#everyaction.services.VoterRegistrationBatches.update_status" title="everyaction.services.VoterRegistrationBatches.update_status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">VoterRegistrationBatches.update_status()</span></code></a>).</p></li>
 <li><p>Methods which delete a piece of data, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/codes#codescodeid-2">DELETE /codes/{codeId}</a>, are called
+<a class="reference external" href="https://docs.everyaction.com/reference/delete-codes-codeid">DELETE /codes/{codeId}</a>, are called
 <code class="code docutils literal notranslate"><span class="pre">delete</span></code> when the data being deleted corresponds to the type of data for which the enclosing service is named
 (as in <a class="reference internal" href="classes/everyaction.services.Codes.html#everyaction.services.Codes.delete" title="everyaction.services.Codes.delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Codes.delete()</span></code></a>), and <code class="code docutils literal notranslate"><span class="pre">delete_X</span></code> where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the type of data being deleted when it does not
 correspond to the enclosing service (as in <a class="reference internal" href="classes/everyaction.services.Contributions.html#everyaction.services.Contributions.delete_attribution" title="everyaction.services.Contributions.delete_attribution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Contributions.delete_attribution()</span></code></a>).</p></li>
 <li><p>Methods which modify an existing piece of data by adding a property to it, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodes">POST /people/{vanId}/codes</a>, are named
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-codes">POST /people/{vanId}/codes</a>, are named
 <code class="code docutils literal notranslate"><span class="pre">add_X</span></code> (as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.add_code" title="everyaction.services.People.add_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.add_code()</span></code></a>), where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the type of data being added. When such a method
 may add multiple pieces of data, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses">POST /people/{vanId}/canvassResponses</a>,
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-canvassresponses">POST /people/{vanId}/canvassResponses</a>,
 the name is pluralized as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.add_canvass_responses" title="everyaction.services.People.add_canvass_responses"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.add_canvass_responses()</span></code></a>.</p></li>
 <li><p>Methods which modify an existing piece of data by removing a property from it, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevanidcodescodeid">DELETE /people/{vanId}/codes/{codeId}</a>,
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-codes-codeid">DELETE /people/{vanId}/codes/{codeId}</a>,
 are named <code class="code docutils literal notranslate"><span class="pre">remove_X</span></code> (as in <a class="reference internal" href="classes/everyaction.services.People.html#everyaction.services.People.remove_code" title="everyaction.services.People.remove_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">People.remove_code()</span></code></a>), where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the type of data being removed. No
 methods of this kind currently remove multiple pieces of data, though in principle the name would then be pluralized.</p></li>
 <li><p>Methods which modify an existing piece of data by setting a property to a value, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/people#peoplevaniddisclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>,
+<a class="reference external" href="https://docs.everyaction.com/reference/people-vanid-disclosurefieldvalues">POST /people/{vanId}/disclosureFieldValues</a>,
 are called <code class="code docutils literal notranslate"><span class="pre">set_X</span></code> (as in <code class="xref py py-meth docutils literal notranslate"><span class="pre">People.set_disclosure_fields()</span></code>), where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the type of data being set.
 All methods of this type currently operate on multiple pieces of data and are thus pluralized.</p></li>
 <li><p>Except for cases previously described, methods which perform an action for multiple pieces of data, such as for
-<a class="reference external" href="https://docs.everyaction.com/reference/codes#codesbatch">POST /codes/batch</a> to create multiple codes, are
+<a class="reference external" href="https://docs.everyaction.com/reference/codes-batch">POST /codes/batch</a> to create multiple codes, are
 name <code class="code docutils literal notranslate"><span class="pre">X_each</span></code> (as in <a class="reference internal" href="classes/everyaction.services.Codes.html#everyaction.services.Codes.create_each" title="everyaction.services.Codes.create_each"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Codes.create_each()</span></code></a>), where <code class="code docutils literal notranslate"><span class="pre">X</span></code> is the action being performed.</p></li>
 <li><p>Many methods are shortened for brevity when their intent is obvious in the context. For example, to get a particular
 ballot return status, the method is named <a class="reference internal" href="classes/everyaction.services.Ballots.html#everyaction.services.Ballots.return_status" title="everyaction.services.Ballots.return_status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">return_status</span></code></a> instead of

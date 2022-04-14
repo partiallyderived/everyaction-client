@@ -28,50 +28,50 @@ naming schemes.
   as described below.
 * Methods which retrieve a specific piece of data that corresponds to the type of data for which the enclosing service
   the method is named, such as for
-  `GET /people/{vanId} <https://docs.everyaction.com/reference/people#peoplevanid>`__ (since it gets a
+  `GET /people/{vanId} <https://docs.everyaction.com/reference/people-vanid>`__ (since it gets a
   :class:`.Person` under the service :class:`.People`), are called :code:`get` as in :meth:`.People.get`.
 * Methods which retrieve a specific piece of data which *does not* correspond to the type of data for which the
   enclosing service is named, such as for
-  `GET /people/{vanId}/membership <https://docs.everyaction.com/reference/people#peoplevanidmembership>`__
+  `GET /people/{vanId}/membership <https://docs.everyaction.com/reference/people-vanid-membership>`__
   are named according to the type of data being retrieved, in this case "membership" as in :meth:`.People.membership`.
 * Methods which retrieve multiple pieces of data that correspond to the type of data for which the enclosing service
   is named, such as for
-  `GET /activistCodes <https://docs.everyaction.com/reference/activist-codes#activistcodes>`__, are called
+  `GET /activistCodes <https://docs.everyaction.com/reference/activistcodes>`__, are called
   :code:`list` as in :meth:`.ActivistCodes.list`.
 * Methods which retrieve multiple pieces of data that *do not* correspond to the type of data for which the enclosing
   service is named, such as for
-  `GET /people/{vanId}/activistCodes <https://docs.everyaction.com/reference/people#peoplevanidactivistcodes>`__,
+  `GET /people/{vanId}/activistCodes <https://docs.everyaction.com/reference/people-vanid-activistcodes>`__,
   are named according to the pluralized version of the data being retrieved, such as :code:`activist_codes` as in
   :meth:`.People.activist_codes`.
 * Methods which create new data, such as for
-  `POST /codes <https://docs.everyaction.com/reference/codes#codes>`__, are called :code:`create` as in
+  `POST /codes <https://docs.everyaction.com/reference/post-codes>`__, are called :code:`create` as in
   :meth:`.Codes.create`.
 * Methods which update a specific piece of data, such as for
-  `POST /people/{vanId} <https://docs.everyaction.com/reference/people#peoplevanid>`__, are called
+  `POST /people/{vanId} <https://docs.everyaction.com/reference/people-vanid>`__, are called
   :code:`update` when the data being updated corresponds to the type of data for which the enclosing service is named
   (as in :meth:`.People.update`), and :code:`update_X` where :code:`X` is the type of data being updated when it does
   not correspond to the enclosing service (as in :meth:`.VoterRegistrationBatches.update_status`).
 * Methods which delete a piece of data, such as for
-  `DELETE /codes/{codeId} <https://docs.everyaction.com/reference/codes#codescodeid-2>`__, are called
+  `DELETE /codes/{codeId} <https://docs.everyaction.com/reference/delete-codes-codeid>`__, are called
   :code:`delete` when the data being deleted corresponds to the type of data for which the enclosing service is named
   (as in :meth:`.Codes.delete`), and :code:`delete_X` where :code:`X` is the type of data being deleted when it does not
   correspond to the enclosing service (as in :meth:`.Contributions.delete_attribution`).
 * Methods which modify an existing piece of data by adding a property to it, such as for
-  `POST /people/{vanId}/codes <https://docs.everyaction.com/reference/people#peoplevanidcodes>`__, are named
+  `POST /people/{vanId}/codes <https://docs.everyaction.com/reference/people-vanid-codes>`__, are named
   :code:`add_X` (as in :meth:`.People.add_code`), where :code:`X` is the type of data being added. When such a method
   may add multiple pieces of data, such as for
-  `POST /people/{vanId}/canvassResponses <https://docs.everyaction.com/reference/people#peoplevanidcanvassresponses>`__,
+  `POST /people/{vanId}/canvassResponses <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__,
   the name is pluralized as in :meth:`.People.add_canvass_responses`.
 * Methods which modify an existing piece of data by removing a property from it, such as for
-  `DELETE /people/{vanId}/codes/{codeId} <https://docs.everyaction.com/reference/people#peoplevanidcodescodeid>`__,
+  `DELETE /people/{vanId}/codes/{codeId} <https://docs.everyaction.com/reference/people-vanid-codes-codeid>`__,
   are named :code:`remove_X` (as in :meth:`.People.remove_code`), where :code:`X` is the type of data being removed. No
   methods of this kind currently remove multiple pieces of data, though in principle the name would then be pluralized.
 * Methods which modify an existing piece of data by setting a property to a value, such as for
-  `POST /people/{vanId}/disclosureFieldValues <https://docs.everyaction.com/reference/people#peoplevaniddisclosurefieldvalues>`__,
+  `POST /people/{vanId}/disclosureFieldValues <https://docs.everyaction.com/reference/people-vanid-disclosurefieldvalues>`__,
   are called :code:`set_X` (as in :meth:`.People.set_disclosure_fields`), where :code:`X` is the type of data being set.
   All methods of this type currently operate on multiple pieces of data and are thus pluralized.
 * Except for cases previously described, methods which perform an action for multiple pieces of data, such as for
-  `POST /codes/batch <https://docs.everyaction.com/reference/codes#codesbatch>`__ to create multiple codes, are
+  `POST /codes/batch <https://docs.everyaction.com/reference/codes-batch>`__ to create multiple codes, are
   name :code:`X_each` (as in :meth:`.Codes.create_each`), where :code:`X` is the action being performed.
 * Many methods are shortened for brevity when their intent is obvious in the context. For example, to get a particular
   ballot return status, the method is named :meth:`return_status <.Ballots.return_status>` instead of

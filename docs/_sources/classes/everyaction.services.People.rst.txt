@@ -66,10 +66,16 @@
       ~People.get_
    
    
+      ~People.list
+   
+   
       ~People.lookup
    
    
       ~People.membership
+   
+   
+      ~People.merge_into
    
    
       ~People.notes
@@ -100,6 +106,9 @@
    
    
       ~People.update_if_exists
+   
+   
+      ~People.update_names
    
    
       ~People.update_note

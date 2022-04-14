@@ -71,7 +71,7 @@ class TestProperties:
 
         # Should call int on 3.1 and wrap in list for singular alias.
         assert self.array_prop.value('single', 3.1) == [3]
-        with pytest.raises(TypeError, match='Expected sequence for "example", got float: 3.1'):
+        with pytest.raises(TypeError, match='Expected list for "example", got float: 3.1'):
             # Should raise TypeError when sequence not given for non-singular alias.
             self.array_prop.value('example', 3.1)
 

@@ -4,148 +4,200 @@ This module contains :class:`EAClient`, the entrypoint for users to make request
 """
 
 import os
-from typing import Any, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 from requests import Response, Session
 
 from everyaction.core import ea_endpoint, EAService
 from everyaction.exception import EAException
 from everyaction.objects import APIKeyProfile
+from everyaction.services import *
 
 
 class EAClient(EAService):
-    """Client used to make requests to the EveryAction API.
-
-    :ivar str app_name: The application name for this client.
-    :ivar str endpoint: The endpoint to send EveryAction requests to.
-    :ivar str mode: The database mode used by the client (VoterFile or MyCampaign).
-    :ivar int default_limit: The default limit on the number of records a request may get for a paginated response. Set
-        to 0 for no limit.
-    :ivar People people:
-        `People <https://docs.everyaction.com/reference/people>`__ service.
-    :ivar ActivistCodes activist_codes:
-        `Activist Codes <https://docs.everyaction.com/reference/activist-codes>`__ service.
-    :ivar Ballots ballots:
-        `Ballots <https://docs.everyaction.com/reference/ballots>`__ service.
-    :ivar BargainingUnits bargaining_units:
-        `Bargaining Units <https://docs.everyaction.com/reference/bargaining-units>`__ service.
-    :ivar BulkImport bulk_import:
-        `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
-    :ivar CanvassFileRequests canvass_file_requests:
-        `Canvass File Requests <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
-    :ivar CanvassResponses canvass_responses:
-        `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
-    :ivar ChangedEntities changed_entities:
-        `Changed Entities <https://docs.everyaction.com/reference/changed-entities>`__ service.
-    :ivar Codes codes:
-        `Codes <https://docs.everyaction.com/reference/codes>`__ service.
-    :ivar Commitments commitments:
-        `Commitments <https://docs.everyaction.com/reference/commitments>`__ service.
-    :ivar Contributions contributions:
-        `Contributions <https://docs.everyaction.com/reference/contributions>`__ service.
-    :ivar CustomFields custom_fields:
-        `Custom Fields <https://docs.everyaction.com/reference/custom-fields>`__ service.
-    :ivar Departments departments:
-        `Departments <https://docs.everyaction.com/reference/departments>`__ service.
-    :ivar Designations designations:
-        `Designations <https://docs.everyaction.com/reference/designations>`__ service.
-    :ivar Disbursements disbursements:
-        `Disbursements <https://docs.everyaction.com/reference/disbursements>`__ service.
-    :ivar DistrictFields district_fields:
-        `District Fields <https://docs.everyaction.com/reference/district-fields>`__ service.
-    :ivar Email email:
-        `Email <https://docs.everyaction.com/reference/email>`__ service.
-    :ivar Employers employers:
-        `Employers <https://docs.everyaction.com/reference/employers>`__ service.
-    :ivar EventTypes event_types:
-        `Event Types <https://docs.everyaction.com/reference/event-types>`__ service.
-    :ivar Events events:
-        `Events <https://docs.everyaction.com/reference/events>`__ service.
-    :ivar ExportJobs export_jobs:
-        `Export Jobs <https://docs.everyaction.com/reference/export-jobs>`__ service.
-    :ivar ExtendedSourceCodes extended_source_codes:
-        `Extended Source Codes <https://docs.everyaction.com/reference/extended-source-codes>`__ service.
-    :ivar FileLoadingJobs file_loading_jobs:
-        `File-Loading Jobs <https://docs.everyaction.com/reference/file-loading-jobs>`__ service.
-    :ivar FinancialBatches financial_batches:
-        `Financial Batches <https://docs.everyaction.com/reference/financial-batches>`__ service.
-    :ivar Folders folders:
-        `Folders <https://docs.everyaction.com/reference/folders>`__ service.
-    :ivar JobClasses job_classes:
-        `Job Classes <https://docs.everyaction.com/reference/job-classes>`__ service.
-    :ivar Locations locations:
-        `Locations <https://docs.everyaction.com/reference/locations>`__ service.
-    :ivar MemberStatuses member_statuses:
-        `Member Statuses <https://docs.everyaction.com/reference/member-statuses>`__ service.
-    :ivar MiniVANExports minivan_exports:
-        `MiniVAN Exports <https://docs.everyaction.com/reference/minivan-exports>`__ service.
-    :ivar Notes notes:
-        `Notes <https://docs.everyaction.com/reference/notes>`__ service.
-    :ivar OnlineActionForms forms:
-        `Online Action Forms <https://docs.everyaction.com/reference/online-actions-forms>`__ service.
-    :ivar Phones phones:
-        `Phones <https://docs.everyaction.com/reference/phones>`__ service.
-    :ivar PrintedLists printed_lists:
-        `Printed Lists <https://docs.everyaction.com/reference/printed-lists>`__ service.
-    :ivar Relationships relationships:
-        `Relationships <https://docs.everyaction.com/reference/relationships>`__ service.
-    :ivar ReportedDemographics demographics:
-        `Reported Demographics <https://docs.everyaction.com/reference/reported-demographics>`__ service.
-    :ivar SavedLists saved_lists:
-        `Saved Lists <https://docs.everyaction.com/reference/saved-lists>`__ service.
-    :ivar ScheduleTypes schedule_types:
-        `Schedule Types <https://docs.everyaction.com/reference/schedule-types>`__ service.
-    :ivar ScoreUpdates score_updates:
-        `Score Updates <https://docs.everyaction.com/reference/score-updates>`__ service.
-    :ivar Scores scores:
-        `Scores <https://docs.everyaction.com/reference/scores>`__ service.
-    :ivar ShiftTypes shift_types:
-        `Shift Types <https://docs.everyaction.com/reference/shift-types>`__ service.
-    :ivar Signups signups:
-        `Signups <https://docs.everyaction.com/reference/signups>`__ service.
-    :ivar Stories stories:
-        `Stories <https://docs.everyaction.com/reference/stories>`__ service.
-    :ivar SupporterGroups supporter_groups:
-        `Supporter Groups <https://docs.everyaction.com/reference/supporter-groups>`__ service.
-    :ivar SurveyQuestions questions:
-        `Survey Questions <https://docs.everyaction.com/reference/survey-questions>`__ service.
-    :ivar TargetExportJobs target_export_jobs:
-        `Target Export Jobs <https://docs.everyaction.com/reference/target-export-jobs>`__ service.
-    :ivar Targets targets:
-        `Targets <https://docs.everyaction.com/reference/targets>`__ service.
-    :ivar Users users:
-        `Users <https://docs.everyaction.com/reference/users>`__ service.
-    :ivar VoterRegistrationBatches registration_batches:
-        `Voter Registration Batches <https://docs.everyaction.com/reference/voter-registration-batches>`__ service.
-    :ivar Worksites worksites:
-        `Worksites <https://docs.everyaction.com/reference/worksites>`__ service.
-
-    """
-
     # Environment variable for EveryAction API key when from_env is True.
-    _API_KEY_ENV = 'EVERYACTION_API_KEY'
+    _API_KEY_ENV: str = 'EVERYACTION_API_KEY'
 
     # Environment variable for EveryAction app name when from_env is True.
-    _APP_NAME_ENV = 'EVERYACTION_APP_NAME'
+    _APP_NAME_ENV: str = 'EVERYACTION_APP_NAME'
 
     # The default value to use as the default value for the limit.
-    _DEFAULT_DEFAULT_LIMIT = 50
+    _DEFAULT_DEFAULT_LIMIT: str = 50
 
     # Endpoint for most non-US clients.
-    _INTL_ENDPOINT = 'https://intlapi.securevan.com/v4'
+    _INTL_ENDPOINT: str = 'https://intlapi.securevan.com/v4'
 
     # Everyaction database modes. The index of the mode is the number to be appended to the API key.
-    _MODES = [
+    _MODES: List[str] = [
         'VoterFile',
         'MyCampaign'
     ]
 
     # Mapping from short endpoint names to their corresponding endpoints.
     # Initialized by EAClient._resolve_endpoint(short_name).
-    _SHORT_NAME_TO_ENDPOINT = {}
+    _SHORT_NAME_TO_ENDPOINT: Dict[str, str] = {}
 
     # Endpoint for most US-based clients.
-    _US_ENDPOINT = 'https://api.securevan.com/v4'
+    _US_ENDPOINT: str = 'https://api.securevan.com/v4'
+
+    #: Application name for this client.
+    app_name: str
+
+    #: Default limit on the number of records a request may get for a paginated response. Set to 0 for no limit.
+    default_limit: int
+
+    #: Endpoint to send EveryAction requests to.
+    endpoint: str
+
+    #: Database mode used by the client (VoterFile or MyCampaign).
+    mode: str
+
+    #: `People <https://docs.everyaction.com/reference/people>`__ service.
+    people: People
+
+    #: `Activist Codes <https://docs.everyaction.com/reference/activist-codes>`__ service.
+    activist_codes: ActivistCodes
+
+    #: `Ballots <https://docs.everyaction.com/reference/ballots>`__ service.
+    ballots: Ballots
+
+    #: `Bargaining Units <https://docs.everyaction.com/reference/bargaining-units>`__ service.
+    bargaining_units: BargainingUnits
+
+    #: `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
+    bulk_import: BulkImport
+
+    #: `Canvass File Requests <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
+    canvass_file_requests: CanvassFileRequests
+
+    #: `Canvass Responses <https://docs.everyaction.com/reference/canvass-responses>`__ service.
+    canvass_responses: CanvassResponses
+
+    #: `Changed Entities <https://docs.everyaction.com/reference/changed-entities>`__ service.
+    changed_entities: ChangedEntities
+
+    #: `Codes <https://docs.everyaction.com/reference/codes>`__ service.
+    codes: Codes
+
+    #: `Commitments <https://docs.everyaction.com/reference/commitments>`__ service.
+    commitments: Commitments
+
+    #: `Contributions <https://docs.everyaction.com/reference/contributions>`__ service.
+    contributions: Contributions
+
+    #: `Custom Fields <https://docs.everyaction.com/reference/custom-fields>`__ service.
+    custom_fields: CustomFields
+
+    #: `Departments <https://docs.everyaction.com/reference/departments>`__ service.
+    departments: Departments
+
+    #: `Designations <https://docs.everyaction.com/reference/designations>`__ service.
+    designations: Designations
+
+    #: `Disbursements <https://docs.everyaction.com/reference/disbursements>`__ service.
+    disbursements: Disbursements
+
+    #: `District Fields <https://docs.everyaction.com/reference/district-fields>`__ service.
+    district_fields: DistrictFields
+
+    #: `Email <https://docs.everyaction.com/reference/email>`__ service.
+    email: EmailMessages
+
+    #: `Employers <https://docs.everyaction.com/reference/employers>`__ service.
+    employers: Employers
+
+    #: `Event Types <https://docs.everyaction.com/reference/event-types>`__ service.
+    event_types: EventTypes
+
+    #: `Events <https://docs.everyaction.com/reference/events>`__ service.
+    events: Events
+
+    #: `Export Jobs <https://docs.everyaction.com/reference/export-jobs>`__ service.
+    export_jobs: ExportJobs
+
+    #: `Extended Source Codes <https://docs.everyaction.com/reference/extended-source-codes>`__ service.
+    extended_source_codes: ExtendedSourceCodes
+
+    #: `File-Loading Jobs <https://docs.everyaction.com/reference/file-loading-jobs>`__ service.
+    file_loading_jobs: FileLoadingJobs
+
+    #: `Financial Batches <https://docs.everyaction.com/reference/financial-batches>`__ service.
+    financial_batches: FinancialBatches
+
+    #: `Folders <https://docs.everyaction.com/reference/folders>`__ service.
+    folders: Folders
+
+    #: `Job Classes <https://docs.everyaction.com/reference/job-classes>`__ service.
+    job_classes: JobClasses
+
+    #: `Locations <https://docs.everyaction.com/reference/locations>`__ service.
+    locations: Locations
+
+    #: `Member Statuses <https://docs.everyaction.com/reference/member-statuses>`__ service.
+    member_statuses: MemberStatuses
+
+    #: `MiniVAN Exports <https://docs.everyaction.com/reference/minivan-exports>`__ service.
+    minivan_exports: MiniVANExports
+
+    #: `Notes <https://docs.everyaction.com/reference/notes>`__ service.
+    notes: Notes
+
+    #: `Online Actions Forms <https://docs.everyaction.com/reference/online-actions-forms>`__ service.
+    forms: OnlineActionsForms
+
+    #: `Phones <https://docs.everyaction.com/reference/phones>`__ service.
+    phones: Phones
+
+    #: `Printed Lists <https://docs.everyaction.com/reference/printed-lists>`__ service.
+    printed_lists: PrintedLists
+
+    #: `Relationships <https://docs.everyaction.com/reference/relationships>`__ service.
+    relationships: Relationships
+
+    #: `Reported Demographics <https://docs.everyaction.com/reference/reported-demographics>`__ service.
+    demographics: ReportedDemographics
+
+    #: `Saved Lists <https://docs.everyaction.com/reference/saved-lists>`__ service.
+    saved_lists: SavedLists
+
+    #: `Schedule Types <https://docs.everyaction.com/reference/schedule-types>`__ service.
+    schedule_types: ScheduleTypes
+
+    #: `Score Updates <https://docs.everyaction.com/reference/score-updates>`__ service.
+    score_updates: ScoreUpdates
+
+    #: `Scores <https://docs.everyaction.com/reference/scores>`__ service.
+    scores: Scores
+
+    #: `Shift Types <https://docs.everyaction.com/reference/shift-types>`__ service.
+    shift_types: ShiftTypes
+
+    #: `Signups <https://docs.everyaction.com/reference/signups>`__ service.
+    signups: Signups
+
+    #: `Stories <https://docs.everyaction.com/reference/stories>`__ service.
+    stories: Stories
+
+    #: `Supporter Groups <https://docs.everyaction.com/reference/supporter-groups>`__ service.
+    supporter_groups: SupporterGroups
+
+    #: `Survey Questions <https://docs.everyaction.com/reference/survey-questions>`__ service.
+    questions: SurveyQuestions
+
+    #: `Target Export Jobs <https://docs.everyaction.com/reference/target-export-jobs>`__ service.
+    target_export_jobs: TargetExportJobs
+
+    #: `Targets <https://docs.everyaction.com/reference/targets>`__ service.
+    targets: Targets
+
+    #: `Users <https://docs.everyaction.com/reference/users>`__ service.
+    users: Users
+
+    #: `Voter Registration Batches <https://docs.everyaction.com/reference/voter-registration-batches>`__ service.
+    registration_batches: VoterRegistrationBatches
+
+    #: `Worksites <https://docs.everyaction.com/reference/worksites>`__ service.
+    worksites: Worksites
 
     @ea_endpoint('/apiKeyProfiles', 'get', paginated=True, result_factory=APIKeyProfile)
     def _api_key_profile(self) -> List[APIKeyProfile]:
@@ -219,19 +271,19 @@ class EAClient(EAService):
         """Use the given arguments and environment variables to initialize the client.
 
         :param app_name: The API key's application name. See
-            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/authentication>`__
             for more information.
         :param api_key: The API key for the client to use. If the database `mode` is not specified, the last two
             characters of the key should be the "pipe" (|) character followed by a digit indicating the database mode.
             Conversely, this should not be the case when `mode` is specified. See
-            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/authentication>`__
             for more information.
         :param endpoint: The endpoint to use. Supports the aliases "US" for the endpoint for US-based clients and "INTL"
             for internationally-based clients.
         :param mode: The database mode to use. Supports the case-insensitive names "VoterFile" and "MyCampaign", as well
             as the digit to be appended to the API key. The mode should be explicitly specified if and only if it is not
             implicitly specified in the API key (see `api_key` above). See
-            `EveryAction Authentication <https://docs.everyaction.com/reference/overview#authentication>`__
+            `EveryAction Authentication <https://docs.everyaction.com/reference/authentication>`__
             for more information.
         :param from_env: When `True`, retrieve the application name from the EVERYACTION_APP_NAME environment variable
             and the api key from the EVERYACTION_API_KEY environment variable. `from_env` should be `False` or
@@ -370,7 +422,7 @@ class EAClient(EAService):
         return self._MODES[self._mode_num()]
 
     def api_key_profile(self) -> APIKeyProfile:
-        """Retrieves the `profile <https://docs.everyaction.com/reference/everyaction-8-introspection>`__
+        """Retrieves the `profile <https://docs.everyaction.com/reference/introspection>`__
         associated with the API key this client is using.
 
         :return: The resulting :class:`APIKeyProfile` object.

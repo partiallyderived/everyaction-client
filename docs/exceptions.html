@@ -70,11 +70,30 @@ HTTP errors are raised as instances of the subclass <a class="reference internal
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>response</strong> (<em>Response</em>) – The response with status code &gt;= 400.</p></li>
 <li><p><strong>errors</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="objects.html#everyaction.objects.Error" title="everyaction.objects.Error"><em>Error</em></a><em>]</em>) – List of EveryAction
-<a class="reference external" href="https://docs.everyaction.com/reference/overview#errors">Error</a> objects given in the response.</p></li>
+<a class="reference external" href="https://docs.everyaction.com/reference/errors">Error</a> objects given in the response. May be empty.</p></li>
 <li><p><strong>http_error</strong> (<em>HTTPError</em>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">HTTPError</span></code> associated with the error response.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="everyaction.exception.EAHTTPException.errors">
+<span class="sig-name descname"><span class="pre">errors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Error</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#everyaction.exception.EAHTTPException.errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of EveryAction <a class="reference external" href="https://docs.everyaction.com/reference/errors">Error</a> objects given in the response.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="everyaction.exception.EAHTTPException.http_error">
+<span class="sig-name descname"><span class="pre">http_error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">HTTPError</span></em><a class="headerlink" href="#everyaction.exception.EAHTTPException.http_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>HTTPError https://2.python-requests.org/en/master/api/#requests.HTTPError&gt;</cite> associated with the error
+response.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="everyaction.exception.EAHTTPException.response">
+<span class="sig-name descname"><span class="pre">response</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Response</span></em><a class="headerlink" href="#everyaction.exception.EAHTTPException.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>The response with status code &gt;= 400.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

@@ -30,7 +30,7 @@
       ~VoterRegistrationBatches.programs
    
    
-      ~VoterRegistrationBatches.support_fields
+      ~VoterRegistrationBatches.supported_fields
    
    
       ~VoterRegistrationBatches.update_status

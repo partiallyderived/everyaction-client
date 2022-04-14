@@ -1,13 +1,13 @@
 """
 This module contains EveryAction objects, such as :class:`.Person` or :class:`.CanvassResponse`, which represent
 structured EveryAction data directly corresponding to objects in the
-`EveryAction 8 VAN API docs <https://developers.everyaction.com/van-api>`__.
+`EveryAction 8 VAN API docs <https://docs.everyaction.com/reference/api-overview>`__.
 """
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, Iterable, List, Optional, Union
 
-from everyaction.core import EAObject, EAObjectWithID, EAObjectWithIDAndName, EAObjectWithName, EAProperty, EAValue
+from everyaction.core import EAObject, EAProperty, EAValue
 from everyaction.exception import EAException
 
 
@@ -29,8 +29,6 @@ __all__ = [
     'BankAccount',
     'BargainingUnit',
     'BargainingUnitJobClass',
-    'BatchForm',
-    'BatchProgram',
     'BulkImportAction',
     'BulkImportField',
     'BulkImportJob',
@@ -68,6 +66,7 @@ __all__ = [
     'EmailMessageContentDistributions',
     'Employer',
     'EmployerBargainingUnit',
+    'EmployerPhone',
     'Error',
     'Event',
     'EventRole',
@@ -96,6 +95,7 @@ __all__ = [
     'MappingParent',
     'MappingType',
     'MappingTypeData',
+    'MappingValue',
     'Membership',
     'MembershipSourceCode',
     'MemberStatus',
@@ -103,14 +103,13 @@ __all__ = [
     'Note',
     'NoteCategory',
     'OnlineActionsForm',
-    'Organization',
-    'OrganizationPhone',
     'Person',
     'Phone',
+    'PhonesFileAction',
     'Pledge',
-    'Pronoun',
     'PrintedList',
     'ProgramType',
+    'Pronoun',
     'Registrant',
     'RegistrationForm',
     'RelationalMapping',
@@ -147,7 +146,6 @@ __all__ = [
     'TargetExportJob',
     'UpdateStatistics',
     'User',
-    'ValueMapping',
     'ValueMappingData',
     'VolunteerActivityResponse',
     'VoterRegistrationBatch',
@@ -161,7 +159,7 @@ __all__ = [
 # no higher order than n - 1. A property has order 1 when its factory does not depend on an EAObject child definition.
 # Similarly, a Class has order n > 1 when it has properties of order n or is a subclass of a class of order n - 1 and
 # has no higher order properties/base classes. A Class has order 1 when it has only properties of order 1 or no
-# properties at all and does not inherit except from EAObject, EAObjectWithID, or EAObjectWithIDAndName.
+# properties at all and does not inherit except from EAObject.
 # The organization style is the following, with each component in alphabetical order: 1st order properties in, 1st order
 # classes which may depend on 1st order properties, 2nd order properties whose factories depend on a 1st order class,
 # 2nd order classes which may depend on 1st or 2nd order properties or a 1st order class, and so on. This organizational
@@ -188,10 +186,6 @@ def _expand_factory(arg: Union[str, Iterable[str]]) -> str:
 
 def _employer_factory(*args: Any, **kwargs: Any) -> 'Employer':
     return Employer(*args, **kwargs)
-
-
-def _organization_factory(*args: Any, **kwargs: Any) -> 'Organization':
-    return Organization(*args, **kwargs)
 
 
 # --- First Order Properties and Objects ---
@@ -251,12 +245,14 @@ EAProperty.share(
     columnName=EAProperty('column'),
     committeeId=EAProperty(),
     committeeName=EAProperty('committee'),
+    commonName=EAProperty('common'),
     confidenceLevel=EAProperty('confidence'),
     contact=EAProperty(),
     contactMethodPreferenceCode=EAProperty('contact_preference_code', 'preference_code', 'contact_preference'),
     contactMode=EAProperty(),
     contactModeId=EAProperty('contact_mode'),
     contactTypeId=EAProperty('contact_type'),
+    contentId=EAProperty('content'),
     contributionCount=EAProperty('contributions'),
     contributionId=EAProperty('contribution'),
     contributionSummary=EAProperty(),
@@ -418,6 +414,7 @@ EAProperty.share(
     isUpsellShown=EAProperty('upsell_shown'),
     isViewRestricted=EAProperty('view_restricted'),
     jobStatus=EAProperty('status'),
+    jobTitle=EAProperty(),
     key=EAProperty(),
     keyReference=EAProperty('reference'),
     lastName=EAProperty('last'),
@@ -466,13 +463,15 @@ EAProperty.share(
     numberOfCards=EAProperty('num_cards', 'cards'),
     numberTimesRenewed=EAProperty('times_renewed', 'renewals'),
     occupation=EAProperty(),
+    officialName=EAProperty('official'),
+    omitActivistCodeContactHistory=EAProperty('omit_contact_history', 'omit_history'),
     onlineReferenceNumber=EAProperty('reference_number', 'ref_number'),
     onlyMyBatches=EAProperty('only_mine'),
     openCount=EAProperty('opens'),
     optInStatus=EAProperty('opt_in'),
     orderby=EAProperty('order_by'),
-    organizationContactName=EAProperty('organization_contact', 'org_contact'),
-    organizationContactOfficialName=EAProperty('organization_contact_official', 'org_contact_official'),
+    organizationContactCommonName=EAProperty('organization_contact', 'org_contact_common', 'org_common'),
+    organizationContactOfficialName=EAProperty('organization_contact_official', 'org_contact_official', 'org_official'),
     organizationId=EAProperty('organization', 'org'),
     organizationRoles=EAProperty('org_roles', singular_alias='org_role'),
     organizeAt=EAProperty(),
@@ -485,7 +484,7 @@ EAProperty.share(
     parentFieldId=EAProperty('parent_field', 'parent'),
     parentFieldName=EAProperty('parent_field', 'parent'),
     parentId=EAProperty('parent'),
-    parentOrganization=EAProperty('parent', factory=_organization_factory),
+    parentOrganization=EAProperty('parent', factory=_employer_factory),
     parentValueId=EAProperty('parent_value'),
     party=EAProperty(),
     paymentType=EAProperty(),
@@ -495,6 +494,7 @@ EAProperty.share(
     phone=EAProperty(),
     phoneId=EAProperty('phone'),
     phoneNumber=EAProperty('number'),
+    phoneSourceId=EAProperty('phone_source', 'source'),
     points=EAProperty(),
     preview=EAProperty(),
     primaryContact=EAProperty(),
@@ -543,7 +543,9 @@ EAProperty.share(
     senderEmailAddress=EAProperty('sender_email'),
     sex=EAProperty(),
     shortName=EAProperty('short'),
+    skipMatching=EAProperty(),
     smsOptInStatus=EAProperty('sms_opt_in'),
+    source=EAProperty(),
     sourceUrl=EAProperty('source', 'url'),
     sourceValue=EAProperty('source'),
     startingAfter=EAProperty('after'),
@@ -558,6 +560,8 @@ EAProperty.share(
     status=EAProperty(),
     statuses=EAProperty(),
     statusName=EAProperty('status'),
+    streetAddress=EAProperty('address'),
+    subject=EAProperty('subject'),
     subscriptionStatus=EAProperty('status'),
     supporterGroupId=EAProperty('supporter_group', 'group'),
     suffix=EAProperty(),
@@ -588,45 +592,55 @@ EAProperty.share(
     vanId=EAProperty('van'),
     webhookUrl=EAProperty('webhook'),
     website=EAProperty(),
+    whatIf=EAProperty(),
     zipOrPostalCode=EAProperty('zip_code', 'zip', 'postal_code', 'postal'),
-    ID=EAProperty()
+    Description=EAProperty('desc'),
+    ID=EAProperty('id'),
+    Phone=EAProperty('phone'),
+    PreferredPhone=EAProperty('preferred'),
+    SonarScore=EAProperty('sonar'),
+    VANID=EAProperty('van_id', 'van')
 )
 
 
 class ActivistCode(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='activistCode',
-    _keys={'description', 'isMultiAssign', 'mediumName', 'scriptQuestion', 'shortName', 'status', 'type'}
+    _shared={'description', 'isMultiAssign', 'mediumName', 'scriptQuestion', 'shortName', 'status', 'type'}
 ):
-    """Represents an `Activist Code <https://docs.everyaction.com/reference/common-models-1>`__."""
+    """Represents an `Activist Code <https://docs.everyaction.com/reference/activistcodes-common-models>`__."""
 
 
 class ActivistCodeData(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='activistCode',
     _prefixed={'name', 'typeAndName'},
-    _keys={'canvassedBy', 'dateCanvassed', 'dateCreated'}
+    _shared={'canvassedBy', 'dateCanvassed', 'dateCreated'}
 ):
     """Represents the data associated with responses to `getting Activist Codes
-    <https://docs.everyaction.com/reference/peoplevanidactivistcodes>`__.
+    <https://docs.everyaction.com/reference/people-vanid-activistcodes>`__.
     """
 
 
-class Adjustment(EAObject, _keys={'adjustmentType', 'amount', 'datePosted'}):
+class Adjustment(EAObject, _shared={'adjustmentType', 'amount', 'datePosted'}):
     """Represents the data associated with responses to `adjusting a Contribution
-    <https://docs.everyaction.com/reference/contributionscontributionidadjustments>`__.
+    <https://docs.everyaction.com/reference/contributions-contributionid-adjustments>`__.
     """
 
 
-class AdjustmentResponse(EAObject, _keys={'contributionId', 'dateAdjusted', 'originalAmount', 'remainingAmount'}):
+class AdjustmentResponse(EAObject, _shared={'contributionId', 'dateAdjusted', 'originalAmount', 'remainingAmount'}):
     """Represents the data associated with a response to a `Contribution adjustment
-    <https://docs.everyaction.com/reference/contributionscontributionidadjustments>`__.
+    <https://docs.everyaction.com/reference/contributions-contributionid-adjustments>`__.
     """
 
 
 class APIKeyProfile(
     EAObject,
-    _keys={
+    _shared={
         'apiKeyTypeName',
         'committeeId',
         'committeeName',
@@ -643,68 +657,64 @@ class APIKeyProfile(
     """Represents an `API key profile <https://docs.everyaction.com/reference/introspection>`__."""
 
 
-class Attribution(EAObject, _keys={'amountAttributed', 'attributionType', 'dateThanked', 'notes', 'vanId'}):
-    """Represents an `Attribution object <https://docs.everyaction.com/reference/common-models-8>`__."""
+class Attribution(EAObject, _shared={'amountAttributed', 'attributionType', 'dateThanked', 'notes', 'vanId'}):
+    """Represents an `Attribution object
+    <https://docs.everyaction.com/reference/contribution-common-models#attributions>`__.
+    """
 
 
-class AvailableValue(EAObjectWithIDAndName, _keys={'parentValueId'}):
+class AvailableValue(EAObject, _id='id', _name='name', _shared={'parentValueId'}):
     """Represents
-    `AvailableValues <https://docs.everyaction.com/reference/common-models-9>`__.
+    `AvailableValues <https://docs.everyaction.com/reference/custom-fields-common-models#available-value>`__
     for a Custom Field.
     """
 
 
-class BallotRequestType(EAObjectWithIDAndName, _prefix='ballotRequestType'):
-    """Represents a `Ballot Request Type <https://docs.everyaction.com/reference/common-models-2>`__."""
-
-
-class BallotReturnStatus(EAObjectWithIDAndName, _prefix='ballotReturnStatus'):
-    """Represents a `Ballot Return Status <https://docs.everyaction.com/reference/common-models-2>`__."""
-
-
-class BallotType(EAObjectWithIDAndName, _prefix='ballotType'):
-    """Represents a `Ballot Type <https://docs.everyaction.com/reference/common-models-2>`__."""
-
-
-class BankAccount(EAObjectWithIDAndName, _prefix='bankAccount'):
-    """Represents a `Bank Account object <https://docs.everyaction.com/reference/common-models-8>`__."""
-
-
-class BargainingUnit(EAObjectWithIDAndName, _prefix='bargainingUnit', _keys={'employerBargainingUnitId', 'shortName'}):
-    """Represents a `Bargaining Unit <https://docs.everyaction.com/reference/common-models-3>`__."""
-
-
-class BatchForm(EAObjectWithIDAndName, _prefix='form'):
-    """Represents a form for `Voter Registration Batches
-    <https://docs.everyaction.com/reference/common-models-39>`__.
+class BallotRequestType(EAObject, _id='id', _name='name', _prefix='ballotRequestType'):
+    """Represents a `Ballot Request Type
+    <https://docs.everyaction.com/reference/ballots-common-models#ballot-request-type>`__.
     """
 
 
-class BatchProgram(EAObjectWithID, _prefix='programType'):
-    """Represents a program for `Voter Registration Batches
-    <https://docs.everyaction.com/reference/common-models-39>`__.
+class BallotReturnStatus(EAObject, _id='id', _name='name', _prefix='ballotReturnStatus'):
+    """Represents a `Ballot Return Status
+    <https://docs.everyaction.com/reference/ballots-common-models#ballot-return-status>`__.
     """
 
 
-class Canvasser(EAObjectWithID, _prefix='canvasser'):
+class BallotType(EAObject, _id='id', _name='name', _prefix='ballotType'):
+    """Represents a `Ballot Type <https://docs.everyaction.com/reference/ballots-common-models#ballot-type>`__."""
+
+
+class BankAccount(EAObject, _id='id', _name='name', _prefix='bankAccount'):
+    """Represents a `Contribution Bank Account object
+    <https://docs.everyaction.com/reference/contribution-common-models#contribution-bank-account>`__.
+    """
+
+
+class BargainingUnit(
+    EAObject, _id='id', _name='name', _prefix='bargainingUnit', _shared={'employerBargainingUnitId', 'shortName'}
+):
+    """Represents a `Bargaining Unit <https://docs.everyaction.com/reference/common-models-3#bargaining-unit>`__."""
+
+
+class Canvasser(EAObject, _id='id', _prefix='canvasser'):
     """Represents a `Canvasser <https://docs.everyaction.com/reference/common-models-25>`__."""
 
 
-class CanvassContext(EAObject, _keys={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'phoneId'}):
-    """Represents a `Canvass Context <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__."""
-
-
 class CanvassFileRequest(
-    EAObjectWithID,
-    _keys={'dateExpired', 'downloadUrl', 'errorCode', 'guid', 'savedListId', 'status', 'type', 'webhookUrl'},
+    EAObject,
+    _id='id',
+    _shared={'dateExpired', 'downloadUrl', 'errorCode', 'guid', 'savedListId', 'status', 'type', 'webhookUrl'},
 ):
-    """Represents a `Canvass File Request <https://docs.everyaction.com/reference/canvass-file-requests>`__."""
+    """Represents a `Canvass File Request <https://docs.everyaction.com/reference/canvassfilerequests>`__."""
 
 
 class ChangedEntityExportRequest(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='exportJob',
-    _keys={
+    _shared={
         'dateChangedFrom',
         'dateChangedTo',
         'excludeChangesFromSelf',
@@ -720,31 +730,38 @@ class ChangedEntityExportRequest(
     """
 
 
-class ChangeType(EAObjectWithIDAndName, _prefix='changeType', _prefixed={'name'}, _keys={'description'}):
+class ChangeType(
+    EAObject,
+    _id='ID',
+    _name='name',
+    _prefix='changeType',
+    _prefixed={'name'},
+    _shared={'Description'},
+    ID=EAProperty()
+):
     """Represents a `changeType
-    <https://docs.everyaction.com/reference/changedentityexportjobschangetypesresourcetype>`__.
+    <https://docs.everyaction.com/reference/changedentityexportjobs-changetypes-resourcetype>`__.
     """
-
-    @classmethod
-    def _id_key(cls) -> Optional[str]:
-        return 'ID'
+    # Note: According to the above link, the properties are all upper-cased, but in testing, it appears that actually
+    # only Description is upper-cased and "ID" is used rather than "Id".
 
 
-class CodeResult(EAObjectWithID, _prefix='code', _keys={'message'}):
+class CodeResult(EAObject, _id='id', _prefix='code', _shared={'message'}):
     """Represents the data associated with a response to a code batch request. See `POST /codes/batch
-    <https://docs.everyaction.com/reference/codesbatch>`__
+    <https://docs.everyaction.com/reference/codes-batch>`__
     for an example.
     """
 
 
-class Column(EAObjectWithName):
-    """Represents a `Column <https://docs.everyaction.com/reference/column>`__."""
+class Column(EAObject, _name='name'):
+    """Represents a `Column <https://docs.everyaction.com/reference/bulkimportjobs#column>`__."""
 
 
 class Commitment(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='commitment',
-    _keys={
+    _shared={
         'amount',
         'ccExpirationMonth',
         'ccExpirationYear',
@@ -759,12 +776,12 @@ class Commitment(
         'status'
     }
 ):
-    """Represents a `Commitment <https://docs.everyaction.com/reference/common-models-6>`__."""
+    """Represents a `Commitment <https://docs.everyaction.com/reference/common-models-6#commitment>`__."""
 
 
 class ConfirmationEmailData(
     EAObject,
-    _keys={
+    _shared={
         'copyToEmails',
         'fromEmail',
         'fromName',
@@ -774,29 +791,31 @@ class ConfirmationEmailData(
         'replyToEmail'
     }
 ):
-    """Represents `Confirmation Email Data <https://docs.everyaction.com/reference/confirmation-email-data>`__."""
-
-
-class ContactType(EAObjectWithIDAndName, _prefix='contactType', _keys={'channelTypeName'}):
-    """Represents a `Contact Type <https://docs.everyaction.com/reference/canvassresponsescontacttypes>`__."""
-
-
-class Constraints(EAObject, _keys={'invalidCharacters', 'maxLength'}):
-    """Represents a description of the violated constraints for :class:`.Error` objects."""
-
-
-class ContactHistory(EAObject, _keys={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'resultCodeId'}):
-    """Represents a `Contact History object <https://docs.everyaction.com/reference/peoplevanidnotes-1>`__."""
-
-
-class Currency(EAObject, _keys={'amount', 'currencyType'}):
-    """Represents the type and the amount of a currency. Found, for instance, in the response of
-    `GET /people/{vanId}/membership <https://docs.everyaction.com/reference/peoplevanidmembership>`__.
+    """Represents `Confirmation Email Data
+    <https://docs.everyaction.com/reference/oa-common-models#confirmation-email-data>`__.
     """
 
 
-class CustomFieldValue(EAObject, _keys={'assignedValue', 'customFieldGroupId', 'customFieldId'}):
-    """Represents a `CustomFieldValue <https://docs.everyaction.com/reference/common-models>`__."""
+class ContactType(EAObject, _id='id', _name='name', _prefix='contactType', _shared={'channelTypeName'}):
+    """Represents a `Contact Type <https://docs.everyaction.com/reference/canvassresponsescontacttypes>`__."""
+
+
+class Constraints(EAObject, _shared={'invalidCharacters', 'maxLength'}):
+    """Represents a description of the violated constraints for :class:`.Error` objects."""
+
+
+class ContactHistory(EAObject, _shared={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'resultCodeId'}):
+    """Represents a `Contact History object <https://docs.everyaction.com/reference/post-people-vanid-notes>`__."""
+
+
+class Currency(EAObject, _shared={'amount', 'currencyType'}):
+    """Represents the type and the amount of a currency. Found, for instance, in the response of
+    `GET /people/{vanId}/membership <https://docs.everyaction.com/reference/people-vanid-membership>`__.
+    """
+
+
+class CustomFieldValue(EAObject, _shared={'assignedValue', 'customFieldGroupId', 'customFieldId'}):
+    """Represents a `CustomFieldValue <https://docs.everyaction.com/reference/common-models#custom-field-value>`__."""
 
     def __init__(
         self,
@@ -822,16 +841,20 @@ class CustomFieldValue(EAObject, _keys={'assignedValue', 'customFieldGroupId', '
         )
 
 
-class Department(EAObjectWithIDAndName, _prefix='department', _keys={'employer', 'parentDepartmentId'}):
-    """Represents a `Department <https://docs.everyaction.com/reference/common-models-10>`__."""
+class Department(EAObject, _id='id', _name='name', _prefix='department', _shared={'employer', 'parentDepartmentId'}):
+    """Represents a `Department <https://docs.everyaction.com/reference/common-models-10#department>`__."""
 
 
-class Designation(EAObjectWithIDAndName, _prefix='designation'):
-    """Represents a `Designation <https://docs.everyaction.com/reference/common-models-11>`__."""
+class Designation(EAObject, _id='id', _name='name', _prefix='designation'):
+    """Represents a `Designation <https://docs.everyaction.com/reference/common-models-11#designation>`__."""
 
 
-class DisclosureFieldValue(EAObjectWithID, _prefix='disclosureField', _prefixed={'value'}, _keys={'designationId'}):
-    """Represents a `Disclosure Field Value <https://docs.everyaction.com/reference/common-models>`__."""
+class DisclosureFieldValue(
+    EAObject, _id='id', _prefix='disclosureField', _prefixed={'value'}, _shared={'designationId'}
+):
+    """Represents a `Disclosure Field Value
+    <https://docs.everyaction.com/reference/common-models#disclosure-field-value>`__.
+    """
 
     def __init__(
         self,
@@ -857,12 +880,14 @@ class DisclosureFieldValue(EAObjectWithID, _prefix='disclosureField', _prefixed=
         )
 
 
-class DistrictFieldValue(EAObjectWithIDAndName, _keys={'parentId'}):
-    """Represents a `District Field Value <https://docs.everyaction.com/reference/common-models-13>`__."""
+class DistrictFieldValue(EAObject, _id='id', _name='name', _shared={'parentId'}):
+    """Represents a `District Field Value
+    <https://docs.everyaction.com/reference/common-models-13#district-field-value>`__.
+    """
 
 
-class Email(EAObject, _keys={'dateCreated', 'email', 'isPreferred', 'isSubscribed', 'subscriptionStatus', 'type'}):
-    """Represents an `Email <https://docs.everyaction.com/reference/common-models>`__."""
+class Email(EAObject, _shared={'dateCreated', 'email', 'isPreferred', 'isSubscribed', 'subscriptionStatus', 'type'}):
+    """Represents an `Email <https://docs.everyaction.com/reference/common-models#email>`__."""
 
     def __init__(self, email: Optional[str] = None, **kwargs: EAValue) -> None:
         """
@@ -877,7 +902,7 @@ class Email(EAObject, _keys={'dateCreated', 'email', 'isPreferred', 'isSubscribe
 
 class EmailMessageContentDistributions(
     EAObject,
-    _keys={
+    _shared={
         'bounceCount',
         'contributionCount',
         'contributionTotal',
@@ -894,31 +919,50 @@ class EmailMessageContentDistributions(
     """
 
 
-class EventRole(EAObjectWithIDAndName, _prefix='role', _keys={'goal', 'isEventLead', 'max', 'min'}):
-    """Represents a `Role <https://docs.everyaction.com/reference/common-models-18>`__
+class EmployerPhone(
+    EAObject,
+    _id='id',
+    _prefix='organizationPhone',
+    _shared={
+        'confidenceLevel',
+        'countryCode',
+        'dialingPrefix',
+        'organizationId',
+        'phone',
+        'phoneSourceId'
+    },
+    phoneType=EAProperty('type')
+):
+    """Represents a `Phone for an employer <https://docs.everyaction.com/reference/common-models-15>`__."""
+
+
+class EventRole(EAObject, _id='id', _name='name', _prefix='role', _shared={'goal', 'isEventLead', 'max', 'min'}):
+    """Represents a `Role <https://docs.everyaction.com/reference/common-models-18#role>`__
     for an Event Type.
     """
 
 
-class EventShift(EAObjectWithIDAndName, _prefix='eventShift', _keys={'endTime', 'startTime'}):
-    """Represents a `Shift <https://docs.everyaction.com/reference/common-models-18>`__."""
+class EventShift(EAObject, _id='id', _name='name', _prefix='eventShift', _shared={'endTime', 'startTime'}):
+    """Represents a `Shift <https://docs.everyaction.com/reference/common-models-18#shift>`__."""
 
 
-class ExportJobType(EAObjectWithIDAndName, _prefix='exportJobType'):
+class ExportJobType(EAObject, _id='id', _name='name', _prefix='exportJobType'):
     """Represents an `Export Job Type <https://docs.everyaction.com/reference/exportjobtypes>`__."""
 
 
-class File(EAObject, _keys={'dateExpired', 'downloadUrl', 'recordCount'}):
-    """Represents a `File object <https://docs.everyaction.com/reference/common-models-4>`__
+class File(EAObject, _shared={'dateExpired', 'downloadUrl', 'recordCount'}):
+    """Represents a `File object <https://docs.everyaction.com/reference/targetexportjobsexportjobid#file>`__
     in EveryAction. Used in many contexts.
     """
 
 
 class FinancialBatch(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='financialBatch',
     _prefixed={'name', 'number'},
-    _keys={
+    _shared={
         'bankAccountId',
         'checkDate',
         'checkNumber',
@@ -933,27 +977,29 @@ class FinancialBatch(
         'isOpen'
     }
 ):
-    """Represents a `Financial Batch <https://docs.everyaction.com/reference/common-models-21>`__."""
+    """Represents a `Financial Batch <https://docs.everyaction.com/reference/common-models-21#financial-batch>`__."""
 
 
-class Folder(EAObjectWithIDAndName, _prefix='folder'):
-    """Represents a `folder <https://docs.everyaction.com/reference/folders>`__."""
+class Folder(EAObject, _id='id', _name='name', _prefix='folder'):
+    """Represents a `folder <https://docs.everyaction.com/reference/common-models-31#folder>`__."""
 
 
-class GeoCoordinate(EAObject, _keys={'lat', 'lon'}):
-    """Represents a `Geographic Coordinate <https://docs.everyaction.com/reference/locations>`__."""
+class GeoCoordinate(EAObject, _shared={'lat', 'lon'}):
+    """Represents a `Geographic Coordinate
+    <https://docs.everyaction.com/reference/common-models-23#geographic-coordinate>`__.
+    """
 
 
-class Identifier(EAObject, _keys={'externalId', 'type'}):
-    """Represents an `Identifier <https://docs.everyaction.com/reference/common-models>`__."""
+class Identifier(EAObject, _shared={'externalId', 'type'}):
+    """Represents an `Identifier <https://docs.everyaction.com/reference/common-models#identifier>`__."""
 
 
-class IsCellStatus(EAObjectWithIDAndName, _prefix='status', _prefixed={'name'}):
-    """Represents an `Phone Is a Cell Status <https://docs.everyaction.com/reference/phones-iscellstatuses>`__."""
+class IsCellStatus(EAObject, _id='id', _name='name', _prefix='status', _prefixed={'name'}):
+    """Represents an `Phone Is a Cell Status <https://docs.everyaction.com/reference/phonesiscellstatuses>`__."""
 
 
-class JobActionType(EAObject, _keys={'actionType'}):
-    """Represents a `Job Action Type <https://docs.everyaction.com/reference/action>`__."""
+class JobActionType(EAObject, _shared={'actionType'}):
+    """Represents a `Job Action Type <https://docs.everyaction.com/reference/fileloadingjobs#action>`__."""
 
     @staticmethod
     def make(**kwargs: EAValue) -> 'JobActionType':
@@ -971,160 +1017,157 @@ class JobActionType(EAObject, _keys={'actionType'}):
         raise EAException(f'Unrecognized Job Action Type {action_type}')
 
 
-class JobClass(EAObjectWithIDAndName, _prefix='jobClass', _keys={'shortName'}):
-    """Represents a `Job Class <https://docs.everyaction.com/reference/common-models-22>`__."""
+class JobClass(EAObject, _id='id', _name='name', _prefix='jobClass', _shared={'shortName'}):
+    """Represents a `Job Class <https://docs.everyaction.com/reference/common-models-22#job-class>`__."""
 
 
-class JobNotification(EAObject, _keys={'description', 'message', 'status'}):
-    """Represents a `Notification <https://docs.everyaction.com/reference/notification>`__
+class JobNotification(EAObject, _shared={'description', 'message', 'status'}):
+    """Represents a `Notification <https://docs.everyaction.com/reference/fileloadingjobs#notification>`__
     for File Loading Jobs.
     """
 
 
-class InputType(EAObjectWithIDAndName, _prefix='inputType'):
+class InputType(EAObject, _id='id', _name='name', _prefix='inputType'):
     """Represents an `Input Type <https://docs.everyaction.com/reference/canvassresponsesinputtypes>`__."""
 
 
-class KeyValuePair(EAObject, _keys={'key', 'value'}):
+class KeyValuePair(EAObject, _shared={'key', 'value'}):
     """Represents a key value pair for possible values of a `Support Field
     <https://docs.everyaction.com/reference/voterregistrationbatchesstatesstatesupportedfields>`__.
     """
 
 
-class Listener(EAObject, _keys={'type', 'value'}):
-    """Represents a `Listener <https://docs.everyaction.com/reference/overview-22>`__."""
+class Listener(EAObject, _shared={'type', 'value'}):
+    """Represents a `Listener <https://docs.everyaction.com/reference/fileloadingjobs>`__
+    for a file-loading job.
+    """
 
 
-class MembershipSourceCode(EAObjectWithIDAndName, _prefix='code', _prefixed={'name'}):
-    """Represents a `Membership Source Code <https://docs.everyaction.com/reference/peoplevanidmembership>`__."""
+class MappingValue(EAObject, _id='id', _name='name', _shared={'parentId', 'sourceValue', 'targetValue'}):
+    """Represents a `value <https://docs.everyaction.com/reference/bulkimportjobs#mapping-types>`__
+    in the context of bulk import jobs.
+    """
 
 
-class MemberStatus(EAObjectWithIDAndName, _prefix='memberStatus', _keys={'isMember'}):
-    """Represents a `Member Status <https://docs.everyaction.com/reference/common-models-24>`__."""
+class MembershipSourceCode(EAObject, _id='id', _name='name', _prefix='code', _prefixed={'name'}):
+    """Represents a `Membership Source Code <https://docs.everyaction.com/reference/people-vanid-membership>`__."""
 
 
-class NoteCategory(EAObjectWithIDAndName, _prefix='noteCategory', _keys={'assignableTypes'}):
-    """Represents a `Note Category <https://docs.everyaction.com/reference/common-models-26>`__."""
+class MemberStatus(EAObject, _id='id', _name='name', _prefix='memberStatus', _shared={'isMember'}):
+    """Represents a `Member Status <https://docs.everyaction.com/reference/common-models-24#member-status>`__."""
 
 
-class Organization(
-    EAObjectWithIDAndName,
-    _prefix='organization',
-    _prefixed={'type'},
-    _keys={'parentOrganization', 'shortName', 'website'},
-):
-    """Represents an `Organization <https://docs.everyaction.com/reference/common-models-15>`__."""
+class NoteCategory(EAObject, _id='id', _name='name', _prefix='noteCategory', _shared={'assignableTypes'}):
+    """Represents a `Note Category <https://docs.everyaction.com/reference/common-models-26#note-category>`__."""
 
 
-class OrganizationPhone(
-    EAObjectWithID,
-    _prefix='organizationPhone',
-    _keys={
-        'confidenceLevel',
-        'countryCode',
-        'dialingPrefix',
-        'organizationId',
-        'phone',
-    },
-    phoneType=EAProperty('type')
-):
-    """Represents a `Phone for an organization <https://docs.everyaction.com/reference/common-models-15>`__."""
+class Pledge(EAObject, _id='id', _prefix='pledge'):
+    """Represents a `Pledge object <https://docs.everyaction.com/reference/contribution-common-models#pledge>`__."""
 
 
-class Pledge(EAObjectWithID, _prefix='pledge'):
-    """Represents a `Pledge object <https://docs.everyaction.com/reference/common-models-8>`__."""
+class PrintedList(EAObject, _name='name', _shared={'number'}):
+    """Represents a `Printed List <https://docs.everyaction.com/reference/common-models-28#printed-list>`__."""
+
+
+class ProgramType(EAObject, _id='id', _name='name', _prefix='programType'):
+    """Represents a `Program Type <https://docs.everyaction.com/reference/common-models-39#program-type>`__."""
 
 
 class Pronoun(
-    EAObjectWithIDAndName,
-    _id_aliases={'preferredPronounId', 'preferred_pronoun_id'},
-    _name_aliases={'preferredPronounName', 'preferred_pronoun_name'},
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='pronoun',
-    _prefixed={'name'}
+    _prefixed={'name'},
+    id=EAProperty('preferredPronounId', 'preferred_pronoun_id'),
+    name=EAProperty('preferredPronounName', 'preferred_pronoun_name')
 ):
     """Represents a `pronoun <https://docs.everyaction.com/reference/pronouns>`__."""
 
 
-class PrintedList(EAObjectWithName, _keys={'number'}):
-    """Represents a `Printed List <https://docs.everyaction.com/reference/common-models-28>`__."""
+class RegistrationForm(EAObject, _id='id', _name='name', _prefix='form'):
+    """Represents a `Registration Form <https://docs.everyaction.com/reference/common-models-39#form>`__."""
 
 
-class ProgramType(EAObjectWithIDAndName, _prefix='programType'):
-    """Represents a `Program Type <https://docs.everyaction.com/reference/voterregistrationbatchesprogramtypes>`__."""
-
-
-class RegistrationForm(EAObjectWithIDAndName, _prefix='form'):
-    """Represents a `Registration Form
-    <https://docs.everyaction.com/reference/voterregistrationbatchesregistrationforms>`__.
-    """
-
-
-class RelationalMapping(EAObject, _keys={'fieldName', 'value'}):
+class RelationalMapping(EAObject, _shared={'fieldName', 'value'}):
     """Represents a `Relational Mapping
-    <https://docs.everyaction.com/reference/changedentityexportjobsfieldsresourcetype>`__.
+    <https://docs.everyaction.com/reference/changedentityexportjobs-fields-resourcetype>`__.
     """
 
 
-class Relationship(EAObjectWithIDAndName):
+class Relationship(EAObject, _id='id', _name='name'):
     """Represents a `Relationship <https://docs.everyaction.com/reference/relationships-1>`__."""
 
 
-class ReportedEthnicity(EAObjectWithIDAndName, _prefix='reportedEthnicity', _prefixed={'name'}):
+class ReportedEthnicity(EAObject, _id='id', _name='name', _prefix='reportedEthnicity', _prefixed={'name'}):
     """Represents a `Reported Ethnicity <https://docs.everyaction.com/reference/reportedethnicities>`__."""
 
 
-class ReportedGender(EAObjectWithIDAndName, _prefix='reportedGender', _prefixed={'name'}):
-    """Represents a `Reported Gender <https://docs.everyaction.com/reference/rreportedgenders>`__."""
+class ReportedGender(EAObject, _id='id', _name='name', _prefix='reportedGender', _prefixed={'name'}):
+    """Represents a `Reported Gender <https://docs.everyaction.com/reference/reportedgenders>`__."""
 
 
-class ReportedLanguagePreference(EAObjectWithIDAndName, _prefix='reportedLanguagePreference', _prefixed={'name'}):
+class ReportedLanguagePreference(
+    EAObject, _id='id', _name='name', _prefix='reportedLanguagePreference', _prefixed={'name'}
+):
     """Represents a `Reported Language Preference
     <https://docs.everyaction.com/reference/reportedlanguagepreferences>`__.
     """
 
 
-class ReportedRace(EAObjectWithIDAndName, _prefix='reportedRace', _prefixed={'name'}):
+class ReportedRace(EAObject, _id='id', _name='name', _prefix='reportedRace', _prefixed={'name'}):
     """Represents a `Reported Race <https://docs.everyaction.com/reference/reportedraces>`__."""
 
 
-class ReportedSexualOrientation(EAObjectWithIDAndName, _prefix='reportedSexualOrientation', _prefixed={'name'}):
+class ReportedSexualOrientation(
+    EAObject, _id='id', _name='name', _prefix='reportedSexualOrientation', _prefixed={'name'}
+):
     """Represents a `Reported Sexual Orientation
     <https://docs.everyaction.com/reference/reportedsexualorientations>`__.
     """
 
 
-class ResultCode(EAObjectWithIDAndName, _prefix='resultCode', _keys={'mediumName', 'resultOutcomeGroup', 'shortName'}):
+class ResultCode(
+    EAObject, _id='id', _name='name', _prefix='resultCode', _shared={'mediumName', 'resultOutcomeGroup', 'shortName'}
+):
     """Represents a `Result Code <https://docs.everyaction.com/reference/canvassresponsesresultcodes>`__."""
 
 
-class SavedList(EAObjectWithIDAndName, _prefix='savedList', _keys={'description', 'doorCount', 'listCount'}):
-    """Represents a `Saved List <https://docs.everyaction.com/reference/common-models-29>`__."""
+class SavedList(
+    EAObject, _id='id', _name='name', _prefix='savedList', _shared={'description', 'doorCount', 'listCount'}
+):
+    """Represents a `Saved List <https://docs.everyaction.com/reference/common-models-29#saved-list>`__."""
 
 
 class SavedListData(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='savedList',
-    _keys={'matchedRowsCount', 'originalRowCount', 'unmatchedRowsCount'}
+    _shared={'matchedRowsCount', 'originalRowCount', 'unmatchedRowsCount'}
 ):
-    """Represents `Saved List Data <https://docs.everyaction.com/reference/saved-list-load>`__
+    """Represents `Saved List Data <https://docs.everyaction.com/reference/fileloadingjobs#saved-list-load>`__
     for Saved List Load actions.
     """
 
 
-class ScheduleType(EAObjectWithIDAndName, _prefix='scheduleType'):
-    """Represents a `Schedule Type <https://docs.everyaction.com/reference/common-models-30>`__."""
+class ScheduleType(EAObject, _id='id', _name='name', _prefix='scheduleType'):
+    """Represents a `Schedule Type <https://docs.everyaction.com/reference/common-models-30#schedule-type>`__."""
 
 
-class Score(EAObjectWithIDAndName, _prefix='score', _keys={'description', 'maxValue', 'minValue', 'shortName'}):
-    """Represents a `Score <https://docs.everyaction.com/reference/overview-37>`__."""
+class Score(
+    EAObject, _id='id', _name='name', _prefix='score', _shared={'description', 'maxValue', 'minValue', 'shortName'}
+):
+    """Represents a `Score <https://docs.everyaction.com/reference/scores-overview>`__."""
 
 
-class ScoreApprovalCriteria(EAObject, _keys={'average', 'tolerance'}):
-    """Represents `Score Approval Criteria <https://docs.everyaction.com/reference/score-load-action>`__"""
+class ScoreApprovalCriteria(EAObject, _shared={'average', 'tolerance'}):
+    """Represents `Score Approval Criteria <https://docs.everyaction.com/reference/fileloadingjobs#score-load-action>`__
+    for Score Load actions.
+    """
 
 
-class ScriptResponse(EAObject, _keys={'type'}):
-    """Represents a `Script Response <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__."""
+class ScriptResponse(EAObject, _shared={'type'}):
+    """Represents a `Script Response <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__."""
 
     _PROPERTIES = {
         'type': EAProperty()
@@ -1146,42 +1189,38 @@ class ScriptResponse(EAObject, _keys={'type'}):
         raise EAException(f'Unrecognized Script Response type: {typ}')
 
 
-class ShiftType(EAObjectWithIDAndName, _prefix='shiftType', _keys={'defaultEndTime', 'defaultStartTime'}):
+class ShiftType(EAObject, _id='id', _name='name', _prefix='shiftType', _shared={'defaultEndTime', 'defaultStartTime'}):
     """Represents a `Shift Type <https://docs.everyaction.com/reference/common-models-15>`__."""
 
 
-class Status(EAObjectWithIDAndName, _prefix='status'):
+class Status(EAObject, _id='id', _name='name', _prefix='status'):
     """Represents a `Status <https://docs.everyaction.com/reference/common-models-17>`__
     in EveryAction. Used in multiple contexts.
     """
 
 
-class StoryStatus(EAObjectWithIDAndName, _prefix='storyStatus'):
-    """Represents a `StoryStatus <https://docs.everyaction.com/reference/common-models-34>`__."""
-
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        return 'statusName'
+class StoryStatus(EAObject, _id='id', _name='statusName', _prefix='storyStatus'):
+    """Represents a `StoryStatus <https://docs.everyaction.com/reference/common-models-34#story-status>`__."""
 
 
-class Subgroup(EAObjectWithIDAndName, _prefix='subgroup', _keys={'fullName', 'isAssociatedWithBadges'}):
-    """Represents a `Subgroup <https://docs.everyaction.com/reference/common-models-37>`__
+class Subgroup(EAObject, _id='id', _name='name', _prefix='subgroup', _shared={'fullName', 'isAssociatedWithBadges'}):
+    """Represents a `Subgroup <https://docs.everyaction.com/reference/common-models-37#subgroup>`__
     for a Target.
     """
 
 
-class SupportedEntity(EAObjectWithName, _keys={'isApplicable', 'isSearchable'}):
-    """Represents a `Supported Entity <https://docs.everyaction.com/reference/common-models-7>`__
+class SupportedEntity(EAObject, _name='name', _shared={'isApplicable', 'isSearchable'}):
+    """Represents a `Supported Entity <https://docs.everyaction.com/reference/codes-common-models#supported-entity>`__
     in the context of codes.
     """
 
 
-class SupporterGroup(EAObjectWithIDAndName, _keys={'description'}):
-    """Represents a `Supporter Group <https://docs.everyaction.com/reference/common-models-35>`__."""
+class SupporterGroup(EAObject, _id='id', _name='name', _shared={'description'}):
+    """Represents a `Supporter Group <https://docs.everyaction.com/reference/common-models-35#supporter-group>`__."""
 
 
-class Suppression(EAObjectWithName, _prefix='suppression', _prefixed={'code', 'name'}):
-    """Represents a `Suppression <https://docs.everyaction.com/reference/common-models>`__."""
+class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'code', 'name'}):
+    """Represents a `Suppression <https://docs.everyaction.com/reference/common-models#suppression>`__."""
     _CODE_TO_NAME: ClassVar[Dict[str, str]] = {
         'NC': 'do not call',
         'NE': 'do not email',
@@ -1271,30 +1310,24 @@ Suppression.DO_NOT_MAIL = Suppression('NM')
 Suppression.DO_NOT_WALK = Suppression('NW')
 
 
-class SurveyResponse(EAObjectWithIDAndName, _prefix='surveyResponse', _keys={'mediumName', 'shortName'}):
+class SurveyResponse(EAObject, _id='id', _name='name', _prefix='surveyResponse', _shared={'mediumName', 'shortName'}):
     """
-    Represents a `Survey Response <https://docs.everyaction.com/reference/common-models-36>`__.
+    Represents a `Survey Response <https://docs.everyaction.com/reference/common-models-36#survey-response>`__.
     """
 
 
 class UpdateStatistics(
     EAObject
 ):
-    """Represents an `Update Statistics <https://docs.everyaction.com/reference/score-updates>`__."""
+    """Represents an `Update Statistics <https://docs.everyaction.com/reference/score-updates>`__ object."""
 
 
-class User(EAObjectWithID, _prefix='user', _keys={'firstName', 'lastName'}):
-    """Represents a `VAN User <https://docs.everyaction.com/reference/extended-source-codes>`__."""
+class User(EAObject, _id='id', _prefix='user', _shared={'firstName', 'lastName'}):
+    """Represents a `VAN User <https://docs.everyaction.com/reference/common-models-20>`__."""
 
 
-class ValueMapping(EAObjectWithIDAndName, _keys={'parentId', 'sourceValue', 'targetValue'}):
-    """Represents a `value <https://docs.everyaction.com/reference/bulkimportjobs>`__
-    in the context of bulk import jobs.
-    """
-
-
-class WorkArea(EAObjectWithIDAndName, _prefix='workArea'):
-    """Represents a `Work Area <https://docs.everyaction.com/reference/common-models-16>`__."""
+class WorkArea(EAObject, _id='id', _name='name', _prefix='workArea'):
+    """Represents a `Work Area <https://docs.everyaction.com/reference/common-models-16#worksite>`__."""
 
 
 # --- Second Order Properties and Objects ---
@@ -1305,7 +1338,6 @@ EAProperty.share(
     bargainingUnit=EAProperty(factory=BargainingUnit),
     bargainingUnits=EAProperty(singular_alias='bargaining_unit', factory=BargainingUnit),
     canvassers=EAProperty(singular_alias='canvasser', factory=Canvasser),
-    canvassContext=EAProperty('context', factory=CanvassContext),
     category=EAProperty(factory=NoteCategory),
     columns=EAProperty(singular_alias='column', factory=Column),
     columnsToIncludeInResultsFile=EAProperty(
@@ -1342,7 +1374,7 @@ EAProperty.share(
     file=EAProperty(factory=File),
     files=EAProperty(singular_alias='file', factory=File),
     firstMembershipSourceCode=EAProperty('first_source_code', 'source_code', factory=MembershipSourceCode),
-    form=EAProperty(factory=BatchForm),
+    form=EAProperty(factory=RegistrationForm),
     geoLocation=EAProperty('geo',  'location', factory=GeoCoordinate),
     identifiers=EAProperty(singular_alias='identifier', factory=Identifier),
     isCellStatus=EAProperty('cell_status', 'is_cell', factory=IsCellStatus),
@@ -1351,7 +1383,7 @@ EAProperty.share(
     listeners=EAProperty(singular_alias='listener', factory=Listener),
     pledge=EAProperty(factory=Pledge),
     possibleValues=EAProperty('possible', singular_alias='possible_value', factory=KeyValuePair),
-    programType=EAProperty('program', factory=BatchProgram),
+    programType=EAProperty('program', factory=ProgramType),
     pronouns=EAProperty('pronoun', 'preferredPronoun', factory=Pronoun),
     relationalMappings=EAProperty('relations', singular_alias='relation', factory=RelationalMapping),
     resultFiles=EAProperty('files', singular_alias='file', factory=File),
@@ -1367,12 +1399,14 @@ EAProperty.share(
     suppressions=EAProperty(singular_alias='suppression', factory=Suppression),
     supportedEntities=EAProperty('entities', singular_alias='entity', factory=SupportedEntity),
     updateStatistics=EAProperty('update_stats', 'statistics', 'stats', factory=UpdateStatistics),
-    values=EAProperty(singular_alias='value', factory=ValueMapping)
+    values=EAProperty(singular_alias='value', factory=MappingValue)
 )
 
 
-class ActivistCodeResponse(ScriptResponse, EAObjectWithID, _prefix='activistCode', _keys={'action'}):
-    """Represents an `Activist Code Response <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__."""
+class ActivistCodeResponse(ScriptResponse, EAObject, _id='id', _prefix='activistCode', _shared={'action'}):
+    """Represents an `Activist Code Response
+    <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__.
+    """
 
     def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
         """
@@ -1387,10 +1421,11 @@ class ActivistCodeResponse(ScriptResponse, EAObjectWithID, _prefix='activistCode
 
 
 class Address(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='address',
     _prefixed={'line1', 'line2', 'line3'},
-    _keys={
+    _shared={
         'city',
         'countryCode',
         'displayMode',
@@ -1402,11 +1437,13 @@ class Address(
         'zipOrPostalCode'
     }
 ):
-    """Represents an `Address <https://docs.everyaction.com/reference/common-models>`__."""
+    """Represents an `Address <https://docs.everyaction.com/reference/common-models#address>`__."""
 
 
 class AVEVDataFileAction(JobActionType):
-    """Represents an `AVEV Data File Action <https://docs.everyaction.com/reference/avev-data-file>`__."""
+    """Represents an `AVEV Data File Action
+    <https://docs.everyaction.com/reference/fileloadingjobs#avev-data-file>`__.
+    """
 
     def __init__(self, **kwargs: EAValue) -> None:
         """
@@ -1419,26 +1456,28 @@ class AVEVDataFileAction(JobActionType):
 
 
 class BargainingUnitJobClass(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='employerBargainingUnitJobClass',
-    _keys={'bargainingUnit', 'employerBargainingUnitId', 'jobClass'}
+    _shared={'bargainingUnit', 'employerBargainingUnitId', 'jobClass'}
 ):
     """Represents an `Employer Bargaining Unit Job Class
     <https://docs.everyaction.com/reference/common-models-15>`__.
     """
 
 
-class ChangedEntityBulkImportField(EAObject, _keys={'fieldName', 'mappingTypeName', 'relationalMappings'}):
+class ChangedEntityBulkImportField(EAObject, _shared={'fieldName', 'mappingTypeName', 'relationalMappings'}):
     """Represents a `bulk import field
-    <https://docs.everyaction.com/reference/changedentityexportjobsfieldsresourcetype>`__
+    <https://docs.everyaction.com/reference/changedentityexportjobs-fields-resourcetype>`__
     in the context of changed entities.
     """
 
 
 class ChangedEntityExportJob(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='exportJob',
-    _keys={
+    _shared={
         'dateChangedFrom',
         'dateChangedTo',
         'exportedRecordCount',
@@ -1448,45 +1487,59 @@ class ChangedEntityExportJob(
     }
 ):
     """Represents data for an existing `ChangedEntityExportJob
-    <https://docs.everyaction.com/reference/common-models-5>`__.
+    <https://docs.everyaction.com/reference/changed-entities-common-models>`__.
     """
 
 
 class Code(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='code',
     _prefixed={'type'},
-    _keys={'dateCreated', 'dateModified', 'description', 'parentCodeId', 'supportedEntities'}
+    _shared={'dateCreated', 'dateModified', 'description', 'parentCodeId', 'supportedEntities'}
 ):
-    """Represents a `Code object <https://docs.everyaction.com/reference/common-models-7>`__."""
+    """Represents a `Code object <https://docs.everyaction.com/reference/codes-common-models#code>`__."""
 
 
 class CustomField(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='customField',
     _prefixed={'groupId', 'groupName', 'groupType', 'name', 'parentId', 'typeId'},
-    _keys={'availableValues', 'isEditable', 'isExportable', 'maxTextboxCharacters'}
+    _shared={'availableValues', 'isEditable', 'isExportable', 'maxTextboxCharacters'}
 ):
-    """Represents a `Custom Field <https://docs.everyaction.com/reference/common-models-9>`__."""
+    """Represents a `Custom Field <https://docs.everyaction.com/reference/custom-fields-common-models>`__."""
 
 
 class DistrictField(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='districtField',
     _prefixed={'values'},
-    _keys={'isCustomDistrict', 'parentFieldId'}
+    _shared={'isCustomDistrict', 'parentFieldId'}
 ):
-    """Represents a `District Field <https://docs.everyaction.com/reference/common-models-13>`__."""
+    """Represents a `District Field <https://docs.everyaction.com/reference/common-models-13#district-field>`__."""
 
 
 class EmailMessageContent(
     EAObject,
-    _keys={'createdBy', 'dateCreated', 'emailMessageContentDistributions', 'senderDisplayName', 'senderEmailAddress'}
+    _shared={
+        'createdBy',
+        'dateCreated',
+        'emailMessageContentDistributions',
+        'name',
+        'senderDisplayName',
+        'senderEmailAddress',
+        'subject'
+    }
 ):
     """Represents an `email message content object <https://docs.everyaction.com/reference/common-models-14>`__."""
 
 
-class EmployerBargainingUnit(EAObjectWithID, _prefix='employerBargainingUnit', _keys={'bargainingUnit'}):
+class EmployerBargainingUnit(EAObject, _id='id', _prefix='employerBargainingUnit', _shared={'bargainingUnit'}):
     """Represents an `Employer Bargaining Unit
     <https://docs.everyaction.com/reference/employersemployeridbargainingunitsbargainingunitid>`__.
     """
@@ -1494,41 +1547,47 @@ class EmployerBargainingUnit(EAObjectWithID, _prefix='employerBargainingUnit', _
 
 class Error(
     EAObject,
-    _keys={'code', 'detailedConstraints', 'detailedCode', 'hint', 'properties', 'referenceCode', 'resourceUrl', 'text'}
+    _shared={
+        'code', 'detailedConstraints', 'detailedCode', 'hint', 'properties', 'referenceCode', 'resourceUrl', 'text'
+    }
 ):
-    """Represents an `Error object <https://docs.everyaction.com/reference/common-models-4>`__."""
+    """Represents an `Error object <https://docs.everyaction.com/reference/errors>`__."""
 
 
 class ExtendedSourceCode(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='extendedSourceCode',
     _prefixed={'name'},
-    _keys={'dateCreated', 'dateModified', 'modifiedBy'},
+    _shared={'dateCreated', 'dateModified', 'modifiedBy'},
     createdBy=EAProperty('creator', factory=User)
 ):
-    """Represents an `Extended Source Code <https://docs.everyaction.com/reference/common-models-20>`__."""
+    """Represents an `Extended Source Code
+    <https://docs.everyaction.com/reference/common-models-20#extended-source-code>`__.
+    """
 
 
-class FieldValueMapping(EAObject, _keys={'columnName', 'fieldName', 'staticValue', 'values'}):
-    """Represents a `fieldValueMapping <https://docs.everyaction.com/reference/bulkimportjobs>`__."""
+class FieldValueMapping(EAObject, _shared={'columnName', 'fieldName', 'staticValue', 'values'}):
+    """Represents a `fieldValueMapping <https://docs.everyaction.com/reference/bulkimportjobs#mapping-types>`__."""
 
 
 class JobFile(
     EAObject,
     _prefix='file',
     _prefixed={'name'},
-    _keys={'columns', 'columnDelimiter', 'hasHeader', 'hasQuotes', 'sourceUrl'}
+    _shared={'columns', 'columnDelimiter', 'hasHeader', 'hasQuotes', 'sourceUrl'}
 ):
-    """Represents a `file object for a job <https://docs.everyaction.com/reference/overview-22>`__."""
+    """Represents a `file object for a job <https://docs.everyaction.com/reference/bulkimportjobs#file>`__."""
 
 
-class ListLoadCallbackData(JobNotification, _keys={'description', 'message', 'savedList', 'status'}):
-    """Represents `Callback Data <https://docs.everyaction.com/reference/saved-list-load>`__
+class ListLoadCallbackData(JobNotification, _shared={'description', 'message', 'savedList', 'status'}):
+    """Represents `Callback Data <https://docs.everyaction.com/reference/fileloadingjobs#callback-data>`__
     for a Saved List Load action.
     """
 
 
-class MappingParent(EAObject, _keys={'limitedToParentValues', 'parentFieldName'}):
+class MappingParent(EAObject, _shared={'limitedToParentValues', 'parentFieldName'}):
     """Represents prerequisites for mapping a field as described `here
     <https://docs.everyaction.com/reference/bulkimportmappingtypes>`__.
     """
@@ -1536,7 +1595,7 @@ class MappingParent(EAObject, _keys={'limitedToParentValues', 'parentFieldName'}
 
 class Membership(
     EAObject,
-    _keys={
+    _shared={
         'changeTypeName',
         'dateCardsSent',
         'dateExpireMembership',
@@ -1555,36 +1614,41 @@ class Membership(
         'totalDuesPaid'
     }
 ):
-    """Contains `membership information <https://docs.everyaction.com/reference/peoplevanidmembership>`__
+    """Contains `membership information <https://docs.everyaction.com/reference/people-vanid-membership>`__
     for a person.
     """
 
 
 class MiniVANExport(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='minivanExport',
-    _keys={
+    _shared={
         'canvassers',
         'databaseMode',
         'dateCreated'
     },
     createdBy=EAProperty('creator', factory=User)
 ):
-    """Represents a `MiniVAN Export <https://docs.everyaction.com/reference/common-models-25>`__."""
+    """Represents a `MiniVAN Export <https://docs.everyaction.com/reference/common-models-25#minivan-export>`__."""
 
 
 class Note(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='note',
-    _keys={'category', 'contactHistory', 'createdDate', 'isViewRestricted', 'text'}
+    _shared={'category', 'contactHistory', 'createdDate', 'isViewRestricted', 'text'}
 ):
-    """Represents a `Note <https://docs.everyaction.com/reference/peoplevanidnotes>`__."""
+    """Represents a `Note <https://docs.everyaction.com/reference/people-vanid-notes>`__."""
 
 
 class OnlineActionsForm(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='formName',
     _prefix='formTracking',
-    _keys={
+    _shared={
         'activistCodes',
         'campaignId',
         'codeId',
@@ -1598,23 +1662,23 @@ class OnlineActionsForm(
         'isConfirmedOptInEnabled',
         'modifiedByEmail'
     },
+    formName=EAProperty('name'),
     formType=EAProperty('type'),
-    formTypeId=EAProperty()
+    formTypeId=EAProperty('type_id')
 ):
-    """Represents an `Online Action Form <https://docs.everyaction.com/reference/common-models-27>`__."""
-
-    @classmethod
-    def _name_key(cls) -> Optional[str]:
-        return 'formName'
+    """Represents an `Online Actions Form
+    <https://docs.everyaction.com/reference/oa-common-models#online-actions-form>`__.
+    """
 
 
 class Phone(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='phone',
     _prefixed={'number', 'optInStatus', 'type'},
-    _keys={'countryCode', 'dateCreated', 'dialingPrefix', 'ext', 'isCellStatus', 'isPreferred', 'smsOptInStatus'}
+    _shared={'countryCode', 'dateCreated', 'dialingPrefix', 'ext', 'isCellStatus', 'isPreferred', 'smsOptInStatus'}
 ):
-    """Represents a `Phone <https://docs.everyaction.com/reference/common-models>`__."""
+    """Represents a `Phone <https://docs.everyaction.com/reference/common-models#phone>`__."""
 
     def __init__(self, id_or_number: Optional[Union[int, str]] = None, **kwargs: EAValue) -> None:
         """
@@ -1642,11 +1706,31 @@ class Phone(
             super().__init__(**kwargs)
 
 
+class PhonesFileAction(
+    JobActionType,
+    _shared={'Phone', 'PreferredPhone', 'SonarScore', 'VANID'},
+    _prefix='Phone',
+    _prefixed={'ext', 'optInStatus', 'source', 'type'}
+):
+    """Represents a `Phones File Action <https://docs.everyaction.com/reference/fileloadingjobs#phones-file>`__."""
+
+    def __init__(self, **kwargs: EAValue) -> None:
+        """
+        Initialize by setting the specified property names and aliases. Note that values will automatically be converted
+        to API objects when appropriate.
+
+        :param kwargs: Mapping of (alias or name) -> value.
+        """
+        super().__init__(actionType='phonesFile', **kwargs)
+
+
 class SavedListLoadAction(
     JobActionType,
-    _keys={'folderId', 'listDescription', 'listName', 'overwriteExistingListId', 'personIdColumn', 'personIdType'}
+    _shared={'folderId', 'listDescription', 'listName', 'overwriteExistingListId', 'personIdColumn', 'personIdType'}
 ):
-    """Represents a `Saved List Load action <https://docs.everyaction.com/reference/saved-list-load>`__."""
+    """Represents a `Saved List Load action
+    <https://docs.everyaction.com/reference/fileloadingjobs#saved-list-load>`__.
+    """
 
     def __init__(self, **kwargs: EAValue) -> None:
         """
@@ -1660,9 +1744,9 @@ class SavedListLoadAction(
 
 class ScoreLoadAction(
     JobActionType,
-    _keys={'approvalCriteria', 'personIdColumn', 'personIdType', 'scoreColumn', 'scoreId'}
+    _shared={'approvalCriteria', 'personIdColumn', 'personIdType', 'scoreColumn', 'scoreId'}
 ):
-    """Represents a `Score Load Action <https://docs.everyaction.com/reference/score-load-action>`__."""
+    """Represents a `Score Load Action <https://docs.everyaction.com/reference/fileloadingjobs#score-load-action>`__."""
 
     def __init__(self, **kwargs: EAValue) -> None:
         """
@@ -1675,27 +1759,29 @@ class ScoreLoadAction(
 
 
 class ScoreUpdate(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='scoreUpdate',
-    _keys={'dateProcessed', 'loadStatus', 'score', 'updateStatistics'}
+    _shared={'dateProcessed', 'loadStatus', 'score', 'updateStatistics'}
 ):
     """Represents a `Score Update <https://docs.everyaction.com/reference/scoreupdatesscoreupdateid>`__."""
 
 
 class SupportField(
     EAObject,
-    _keys={'customPropertyKey', 'displayName', 'fieldType', 'maxFieldLength', 'possibleValues'}
+    _shared={'customPropertyKey', 'displayName', 'fieldType', 'maxFieldLength', 'possibleValues'}
 ):
-    """Represents a `Support Field <https://docs.everyaction.com/reference/voterregistrationbatchesregistrationforms>`__
+    """Represents a `Support Field
+    <https://docs.everyaction.com/reference/voterregistrationbatchesstatesstatesupportedfields>`__
     for a Voter Registration Batch.
     """
 
 
 class SurveyCanvassResponse(
     ScriptResponse,
-    _keys={'mediumName', 'name', 'shortName', 'surveyQuestionId', 'surveyResponseId'}
+    _shared={'mediumName', 'name', 'shortName', 'surveyQuestionId', 'surveyResponseId'}
 ):
-    """Represents a `Survey Response <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__
+    """Represents a `Survey Response <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__
     in the context of a canvass response.
     """
 
@@ -1722,23 +1808,28 @@ class SurveyCanvassResponse(
 
 
 class Target(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='target',
-    _keys={'areSubgroupsSticky', 'description', 'points', 'status', 'subgroups', 'type'}
+    _shared={'areSubgroupsSticky', 'description', 'points', 'status', 'subgroups', 'type'}
 ):
-    """Represents a `Target <https://docs.everyaction.com/reference/common-models-37>`__."""
+    """Represents a `Target <https://docs.everyaction.com/reference/common-models-37#target>`__."""
 
 
 class TargetExportJob(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='exportJob',
-    _keys={'file', 'jobStatus', 'targetId', 'webhookUrl'},
+    _shared={'file', 'jobStatus', 'targetId', 'webhookUrl'},
 ):
-    """Represents a `Target Export Job <https://docs.everyaction.com/reference/targetexportjobsexportjobid>`__."""
+    """Represents a `Target Export Job
+    <https://docs.everyaction.com/reference/targetexportjobsexportjobid#target-export-job-result>`__.
+    """
 
 
-class VolunteerActivityResponse(ScriptResponse, _prefix='volunteerActivity', _keys={'action'}):
-    """Represents a `Volunteer Activity <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__."""
+class VolunteerActivityResponse(ScriptResponse, _prefix='volunteerActivity', _shared={'action'}):
+    """Represents a `Volunteer Activity <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__."""
 
     def __init__(self, id: Optional[int] = None, **kwargs: EAValue) -> None:
         """
@@ -1753,11 +1844,15 @@ class VolunteerActivityResponse(ScriptResponse, _prefix='volunteerActivity', _ke
 
 
 class VoterRegistrationBatch(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='voterRegistrationBatch',
-    _keys={'dateCreated', 'description', 'form', 'personType', 'programType', 'stateCode', 'status'}
+    _shared={'dateCreated', 'description', 'form', 'personType', 'programType', 'stateCode', 'status'}
 ):
-    """Represents a `Voter Registration Batch <https://docs.everyaction.com/reference/common-models-39>`__."""
+    """Represents a `Voter Registration Batch
+    <https://docs.everyaction.com/reference/common-models-39#voter-registration-batch>`__.
+    """
 
 
 # --- Third Order Properties and Objects ---
@@ -1797,7 +1892,7 @@ EAProperty.share(
 )
 
 
-class AddRegistrantsResponse(EAObject, _keys={'alternateId', 'errors', 'result', 'vanId'}):
+class AddRegistrantsResponse(EAObject, _shared={'alternateId', 'errors', 'result', 'vanId'}):
     """Represents the data associated with a response to `adding registrants
     <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__
     to a Voter Registration Batch.
@@ -1805,32 +1900,50 @@ class AddRegistrantsResponse(EAObject, _keys={'alternateId', 'errors', 'result',
 
 
 class BulkImportField(
-    EAObjectWithName,
-    _keys={'canBeMappedToColumn', 'description', 'hasPredefinedValues', 'isRequired', 'parents'}
+    EAObject,
+    _name='name',
+    _shared={'canBeMappedToColumn', 'description', 'hasPredefinedValues', 'isRequired', 'parents'}
 ):
     """Represents a `mapping type field <https://docs.everyaction.com/reference/bulkimportmappingtypes>`__."""
 
 
 class BulkImportJobData(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='job',
-    _keys={'errors', 'resourceType', 'resultFileSizeLimitKb', 'resultFiles', 'status'}
+    _shared={'errors', 'resourceType', 'resultFileSizeLimitKb', 'resultFiles', 'status'}
 ):
-    """Represents data for an existing `Bulk Import Job <https://docs.everyaction.com/reference/common-models-4>`__."""
+    """Represents data for an existing `Bulk Import Job
+    <https://docs.everyaction.com/reference/bulk-import-common-models>`__.
+    """
 
 
-class CanvassResponse(EAObject, _keys={'canvassContext', 'responses', 'resultCodeId'}):
-    """Represents a `Canvass Response <https://docs.everyaction.com/reference/peoplevanidcanvassresponses>`__."""
+class CanvassContext(
+    EAObject,
+    _shared={
+        'campaignId',
+        'contactTypeId',
+        'contentId',
+        'dateCanvassed',
+        'inputTypeId',
+        'omitActivistCodeContactHistory',
+        'phoneId',
+        'skipMatching'
+    },
+    phone=EAProperty(factory=Phone)
+):
+    """Represents a `Canvass Context <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__."""
 
 
 class ChangedEntityField(
-    EAObjectWithName,
-    _keys={'availableValues', 'bulkImportFields', 'isCoreField', 'maxTextboxCharacters'},
+    EAObject,
+    _name='name',
+    _shared={'availableValues', 'bulkImportFields', 'isCoreField', 'maxTextboxCharacters'},
     _prefix='field',
     _prefixed={'name', 'type'},
 ):
     """Represents a `changed entity field
-    <https://docs.everyaction.com/reference/changedentityexportjobsfieldsresourcetype>`__.
+    <https://docs.everyaction.com/reference/changedentityexportjobs-fields-resourcetype>`__.
     """
 
     _TYPE_TO_FACTORY = {}
@@ -1848,7 +1961,7 @@ class ChangedEntityField(
     def parse(self, value: str) -> ValueType:
         """Parse the raw string value of a field into a typed result.
         The below table gives the behavior of this function for each `field type
-        <https://docs.everyaction.com/reference/changedentityexportjobsfieldsresourcetype>`__.
+        <https://docs.everyaction.com/reference/changedentityexportjobs-fields-resourcetype>`__.
 
         +------------+--------------------------------------------------------------------------------------------+
         | Field Type | Behavior                                                                                   |
@@ -1883,7 +1996,7 @@ ChangedEntityField._TYPE_TO_FACTORY = {
 
 class Contribution(
     EAObject,
-    _keys={
+    _shared={
         'acceptedOneTimeAmount',
         'acceptedRecurringAmount',
         'amount',
@@ -1920,13 +2033,16 @@ class Contribution(
         'upsellType'
     }
 ):
-    """Represents a `Contribution <https://docs.everyaction.com/reference/common-models-8>`__."""
+    """Represents a `Contribution
+    <https://docs.everyaction.com/reference/contribution-common-models#contribution>`__.
+    """
 
 
 class Disbursement(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='disbursement',
-    _keys={
+    _shared={
         'amount',
         'batchCode',
         'checkDate',
@@ -1941,13 +2057,15 @@ class Disbursement(
         'notes'
     }
 ):
-    """Represents a `Disbursement <https://docs.everyaction.com/reference/common-models-12>`__."""
+    """Represents a `Disbursement <https://docs.everyaction.com/reference/disbursements-common-models>`__."""
 
 
 class EmailMessage(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='foreignMessage',
-    _keys={'createdBy', 'dateCreated', 'dateModified', 'dateScheduled', 'emailMessageContent'},
+    _shared={'createdBy', 'dateCreated', 'dateModified', 'dateScheduled', 'emailMessageContent'},
     campaignID=EAProperty('campaign')
 ):
     """Represents an `email message <https://docs.everyaction.com/reference/common-models-14>`__."""
@@ -1956,27 +2074,31 @@ class EmailMessage(
 
 
 class FileLoadingJob(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='job',
-    _keys={'description', 'interventionCallbackUrl', 'invalidRowsFileUrl', 'listeners'},
+    _shared={'description', 'interventionCallbackUrl', 'invalidRowsFileUrl', 'listeners'},
     actions=EAProperty(singular_alias='action', factory=JobActionType.make),
     file=EAProperty(factory=JobFile)
 ):
-    """Represents a `File Loading Job <https://docs.everyaction.com/reference/file-loading-jobs>`__."""
+    """Represents a `File Loading Job <https://docs.everyaction.com/reference/fileloadingjobs>`__."""
 
 
-class Location(EAObjectWithIDAndName, _prefix='location', _keys={'address', 'displayName'}):
-    """Represents a `Location <https://docs.everyaction.com/reference/locations>`__."""
+class Location(EAObject, _id='id', _name='name', _prefix='location', _shared={'address', 'displayName'}):
+    """Represents a `Location <https://docs.everyaction.com/reference/common-models-23#location>`__."""
 
 
-class MappingType(EAObjectWithName, _keys={'fieldValueMappings', 'resultFileColumnName'}):
-    """Represents a `bulk import mapping type <https://docs.everyaction.com/reference/mapping-types>`__."""
+class MappingType(EAObject, _name='name', _shared={'fieldValueMappings', 'resultFileColumnName'}):
+    """Represents a `bulk import mapping type
+    <https://docs.everyaction.com/reference/bulkimportjobs#mapping-types>`__.
+    """
 
 
 class Person(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='van',
-    _keys={
+    _shared={
         'additionalEnvelopeName',
         'additionalSalutation',
         'addresses',
@@ -2003,10 +2125,12 @@ class Person(
         'formalEnvelopeName',
         'formalSalutation',
         'identifiers',
+        'jobTitle',
         'lastName',
         'middleName',
         'nickname',
         'occupation',
+        'organizationContactCommonName',
         'organizationContactOfficialName',
         'organizationRoles',
         'party',
@@ -2032,7 +2156,7 @@ class Person(
     },
     employer=EAProperty()
 ):
-    """Represents a `Person <https://docs.everyaction.com/reference/common-models>`__."""
+    """Represents a `Person <https://docs.everyaction.com/reference/common-models#match-candidate>`__."""
 
     @staticmethod
     def _find_factory(**kwargs: EAValue) -> Optional['Person']:
@@ -2205,36 +2329,42 @@ class Person(
 
 
 class Story(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='story',
     _prefixed={'text'},
-    _keys={'campaignId', 'storyStatus', 'tags', 'title', 'vanId'}
+    _shared={'campaignId', 'storyStatus', 'tags', 'title', 'vanId'}
 ):
-    """Represents a `Story <https://docs.everyaction.com/reference/common-models-34>`__."""
+    """Represents a `Story <https://docs.everyaction.com/reference/common-models-34#story>`__."""
 
 
 class SurveyQuestion(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='surveyQuestion',
-    _keys={'cycle', 'mediumName', 'scriptQuestion', 'shortName', 'status', 'type'},
+    _shared={'cycle', 'mediumName', 'scriptQuestion', 'shortName', 'status', 'type'},
     responses=EAProperty(singular_alias='response', factory=SurveyCanvassResponse)
 ):
-    """Represents a `Survey Question <https://docs.everyaction.com/reference/common-models-36>`__."""
+    """Represents a `Survey Question <https://docs.everyaction.com/reference/common-models-36#survey-question>`__."""
 
 
-class ValueMappingData(EAObjectWithIDAndName, _keys={'parents'}):
+class ValueMappingData(EAObject, _id='id', _name='name', _shared={'parents'}):
     """Represents data for an existing `value mapping
-    <https://docs.everyaction.com/reference/bulkimportmappingtypesmappingtypenamefieldnamevalues>`__
+    <https://docs.everyaction.com/reference/bulkimportmappingtypes-mappingtypename-fieldname-values>`__
     in the context of bulk import jobs.
     """
 
 
-class Worksite(EAObjectWithIDAndName, _prefix='worksite', _keys={'address', 'employer', 'isPreferred', 'workAreas'}):
-    """Represents a `Worksite <https://docs.everyaction.com/reference/common-models-16>`__."""
+class Worksite(
+    EAObject, _id='id', _name='name', _prefix='worksite', _shared={'address', 'employer', 'isPreferred', 'workAreas'}
+):
+    """Represents a `Worksite <https://docs.everyaction.com/reference/common-models-16#worksite>`__."""
 
 
 # --- Fourth Order Properties and Objects ---
 EAProperty.share(
+    canvassContext=EAProperty('context', factory=CanvassContext),
     defaultLocation=EAProperty(factory=Location),
     fields=EAProperty(singular_alias='field', factory=BulkImportField),
     location=EAProperty(factory=Location),
@@ -2248,15 +2378,21 @@ EAProperty.share(
 
 class BulkImportAction(
     EAObject,
-    _keys={'actionType', 'columnsToIncludeInResultsFile', 'mappingTypes', 'resultFileSizeKbLimit', 'resourceType'}
+    _shared={'actionType', 'columnsToIncludeInResultsFile', 'mappingTypes', 'resultFileSizeKbLimit', 'resourceType'}
 ):
-    """Represents a `bulk import action <https://docs.everyaction.com/reference/action>`__."""
+    """Represents a `bulk import action <https://docs.everyaction.com/reference/bulkimportjobs#action>`__."""
+
+
+class CanvassResponse(EAObject, _shared={'canvassContext', 'responses', 'resultCodeId'}):
+    """Represents a `Canvass Response <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__."""
 
 
 class Employer(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='employer',
-    _keys={
+    _shared={
         'bargainingUnits',
         'departments',
         'isMyOrganization',
@@ -2266,16 +2402,18 @@ class Employer(
         'website',
         'worksites'
     },
-    phones=EAProperty(singular_alias='phone', factory=OrganizationPhone),
+    phones=EAProperty(singular_alias='phone', factory=EmployerPhone),
     shifts=EAProperty(singular_alias='shift', factory=ShiftType)
 ):
-    """Represents an `Employer <https://docs.everyaction.com/reference/common-models-15>`__."""
+    """Represents an `Employer <https://docs.everyaction.com/reference/common-models-15#employer>`__."""
 
 
 class EventType(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='eventType',
-    _keys={
+    _shared={
         'canBeRepeatable',
         'canHaveGoals',
         'canHaveMultipleLocations',
@@ -2292,14 +2430,15 @@ class EventType(
     },
     statuses=EAProperty(is_array=True, factory=Status)
 ):
-    """Represents an `Event Type <https://docs.everyaction.com/reference/common-models-17>`__."""
+    """Represents an `Event Type <https://docs.everyaction.com/reference/common-models-17#event-type>`__."""
 
 
 class ExportJob(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='exportJob',
     _prefixed={'guid'},
-    _keys={
+    _shared={
         'activistCodes',
         'canvassFileRequestId',
         'canvassFileRequestGuid',
@@ -2315,16 +2454,16 @@ class ExportJob(
         'webhookUrl'
     }
 ):
-    """Represents an `Export Job <https://docs.everyaction.com/reference/common-models-19>`__."""
+    """Represents an `Export Job <https://docs.everyaction.com/reference/common-models-19#export-job>`__."""
 
 
-class MappingTypeData(EAObjectWithName, _keys={'allowMultipleMode', 'displayName', 'fields', 'resourceTypes'}):
+class MappingTypeData(EAObject, _name='name', _shared={'allowMultipleMode', 'displayName', 'fields', 'resourceTypes'}):
     """Represents data for an existing `bulk import mapping type
     <https://docs.everyaction.com/reference/bulkimportmappingtypes>`__.
     """
 
 
-class Registrant(EAObject, _keys={'alternateId', 'customProperties', 'person'}):
+class Registrant(EAObject, _shared={'alternateId', 'customProperties', 'person'}):
     """Represents a `Registrant <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__
     for a Voter Registration Batch.
     """
@@ -2337,14 +2476,16 @@ EAProperty.share(
 )
 
 
-class BulkImportJob(EAObject, _keys={'actions', 'description'}, file=EAProperty(factory=JobFile)):
-    """Represents a `Bulk Import Job <https://docs.everyaction.com/reference/bulkimportjobs>`__."""
+class BulkImportJob(EAObject, _shared={'actions', 'description'}, file=EAProperty(factory=JobFile)):
+    """Represents a `Bulk Import Job <https://docs.everyaction.com/reference/bulkimportjobs#bulk-import-job>`__."""
 
 
 class Event(
-    EAObjectWithIDAndName,
+    EAObject,
+    _id='id',
+    _name='name',
     _prefix='event',
-    _keys={
+    _shared={
         'codes',
         'createdDate',
         'description',
@@ -2364,7 +2505,7 @@ class Event(
     },
     notes=EAProperty(singular_alias='note', factory=Note)
 ):
-    """Represents an `Event <https://docs.everyaction.com/reference/common-models-18>`__."""
+    """Represents an `Event <https://docs.everyaction.com/reference/common-models-18#event>`__."""
 
 
 # --- Sixth Order Properties and Objects ---
@@ -2374,9 +2515,10 @@ EAProperty.share(
 
 
 class Signup(
-    EAObjectWithID,
+    EAObject,
+    _id='id',
     _prefix='eventSignup',
-    _keys={
+    _shared={
         'dateModified',
         'endTimeOverride',
         'event',
@@ -2392,4 +2534,4 @@ class Signup(
     },
     status=EAProperty(factory=Status)
 ):
-    """Represents a `Signup <https://docs.everyaction.com/reference/common-models-33>`__."""
+    """Represents a `Signup <https://docs.everyaction.com/reference/common-models-33#signup>`__."""

@@ -23,17 +23,17 @@ def structs_to_dicts(obj):
 class MockResponse:
     def __init__(self, data, code):
         self.data = data
-        self.code = code
+        self.status_code = code
 
     def json(self):
         return self.data
 
     def raise_for_status(self):
         if not self:
-            raise HTTPError(str(self.code))
+            raise HTTPError(str(self.status_code))
 
     def __bool__(self):
-        return self.code < 400
+        return self.status_code < 400
 
 
 class MockEAClient:
