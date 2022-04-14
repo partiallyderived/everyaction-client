@@ -34,11 +34,11 @@ tag:
 
 .PHONY: test
 test: $(VENV_DIR)
-	$(VENV_ACTIVATE) && python3 -m pytest -r sf -v
+	$(VENV_ACTIVATE) && python3 -m pytest -r sf -v everyaction/test
 
 .PHONY: test-failed
 test-failed: $(VENV_DIR)
-	$(VENV_ACTIVATE) && python3 -m pytest -r sf -v --lf
+	$(VENV_ACTIVATE) && python3 -m pytest -r sf -v --lf everyaction/test
 
 $(VENV_DIR): setup.cfg
 	# Do not create new venv if it already exists, but delete it if it did not exist before and did not create without
