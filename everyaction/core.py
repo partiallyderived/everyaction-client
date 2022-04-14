@@ -21,8 +21,8 @@ if TYPE_CHECKING:
     from everyaction.client import EAClient
 
 
-# Name of the anchor of the section of documentation about aliases. Used for linking lists of aliases to this page.
-_ALIAS_ANCHOR = 'Aliases'
+# Name of the reference to the section of documentation about aliases. Used for linking lists of aliases to this page.
+_ALIAS_REF = 'aliases'
 
 # Regex used to insert underscores before all sequences of capital letters in an attribute name to convert from
 # camelCase of UpperCase to snake_case.
@@ -652,7 +652,7 @@ class EAProperties(Mapping):
                 aliases = [f'{alias}' for alias in sorted(list(prop.aliases), key=lambda x: -len(x))]
                 if prop.singular_alias:
                     aliases.append(f'{prop.singular_alias} (singular)')
-                components.append(f'{prop_indent}  `({", ".join(aliases)}) <{_ALIAS_ANCHOR}>`_')
+                components.append(f'{prop_indent}  :ref:`({", ".join(aliases)}) <{_ALIAS_REF}>`')
             else:
                 components.append(prop_str)
         properties_doc = '\n'.join(components)
