@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test-build-publish:
-    name: Test code, then publish Python distributions to PyPI and TestPyPI
+    name: Test code, then publish Python distributions to PyPI and TestPyPI if this commit is tagged.
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master

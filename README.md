@@ -38,8 +38,8 @@ To pass custom options to `pytest`, activate the virtual environment and invoke 
 make docs
 ```
 
-Resulting documentation will be found in the "docs" folder. Note that the actual documentation is hosted on ReadTheDocs
-and thus generated documentation should not be committed.
+Resulting documentation will be found in the "docs" folder. Note that the actual documentation is hosted on
+[Read the Docs](https://readthedocs.org/), and thus generated documentation should not be committed.
 
 ## Check Documentation Links
 
