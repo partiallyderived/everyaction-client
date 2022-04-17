@@ -18,6 +18,7 @@ import re
 # -- Project information -----------------------------------------------------
 
 project = 'Python Client for EveryAction'
+# noinspection PyShadowingBuiltins
 copyright = '2021, Bobbey Reese'
 author = 'Bobbey Reese'
 
@@ -48,6 +49,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'classic'
+html_style = 'css/custom.css'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

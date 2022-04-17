@@ -662,8 +662,8 @@ class EAProperties(Mapping):
         entity.__doc__ = ''.join(components)
 
     def process(self, args: EAMap) -> EAMap:
-        # Process a mapping by retrieving each key's EAProperty and applying EAProperty.value to its value for each
-        # item in args.
+        # Process a mapping by retrieving each key's EAProperty and applying EAProperty.value to its value for each item
+        # in args.
         result = {}
         for k, v in args.items():
             resolved = self.resolve(k)
@@ -675,8 +675,8 @@ class EAProperties(Mapping):
         return result
 
     def resolve(self, alias: str) -> str:
-        # Give the name of the attribute corresponding to the given alias, raising a KeyError if it is not an
-        # alias for any attribute.
+        # Give the name of the attribute corresponding to the given alias, raising a KeyError if it is not an alias for
+        # any attribute.
         result = self._alias_map.get(alias)
         if result is None:
             raise KeyError(alias)
@@ -731,7 +731,7 @@ class EAMeta(ABCMeta):
             converted to API objects when appropriate.
 
             :param kwargs: Mapping of (alias or name) -> value.
-            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise AttributeError: If any unrecognized properties are given in *kwargs*.
             :raise ValueError: If multiple aliases are given for the same property but with different values.
             """
             EAMeta._init_fn(self, **kwargs)
@@ -746,7 +746,7 @@ class EAMeta(ABCMeta):
             :param id: ID to initialize with. When given alone, a simple object results (see
                 `A Note About Simple Objects <https://docs.everyaction.com/reference/events-overview#overview-19>`__).
             :param kwargs: Mapping of (alias or name) -> value.
-            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise AttributeError: If any unrecognized properties are given in *kwargs*.
             :raise ValueError: If multiple aliases are given for the same property but with different values.
             """
             EAMeta._init_fn(self, id=id, **kwargs)
@@ -760,9 +760,9 @@ class EAMeta(ABCMeta):
 
             :param name: Name to initialize the object with.
             :param kwargs: Mapping of (alias or name) -> value.
-            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise AttributeError: If any unrecognized properties are given in *kwargs*.
             :raise ValueError: If multiple aliases are given for the same property but with different values.
-            :raise TypeError: If :code:`id_or_name` is neither an :code:`int` nor a :code:`str`.
+            :raise TypeError: If *id_or_name* is neither an ``int`` nor a ``str``.
             """
             EAMeta._init_fn(self, name=name, **kwargs)
         return __init__
@@ -779,9 +779,9 @@ class EAMeta(ABCMeta):
                 When a string is given instead, it is assumed to correspond to the object's name, accessible via
                 instance.name.
             :param kwargs: Mapping of (alias or name) -> value.
-            :raise AttributeError: If any unrecognized properties are given in :code:`kwargs`.
+            :raise AttributeError: If any unrecognized properties are given in *kwargs*.
             :raise ValueError: If multiple aliases are given for the same property but with different values.
-            :raise TypeError: If :code:`id_or_name` is neither an :code:`int` nor a :code:`str`.
+            :raise TypeError: If *id_or_name* is neither an ``int`` nor a ``str``.
             """
             if id_or_name is not None:
                 if isinstance(id_or_name, int):

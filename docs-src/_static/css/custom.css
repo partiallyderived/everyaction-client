@@ -1,0 +1,26 @@
+@import '../classic.css';
+
+code {
+    font-size: 130%;
+}
+
+code.xref {
+    font-weight: normal;
+}
+
+table.longtable td:first-child a:first-child code.xref, dl.field-list li a:first-child code.xref {
+    font-weight: bold;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: left;
+}
+
+th, dl.field-list > dt, dl.field-list > dd {
+    background-color: #f6f6f6;
+}
+
+dl.field-list dd:not(:last-child)::after {
+    content: "\a";
+    white-space: pre;
+}

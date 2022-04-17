@@ -34,13 +34,7 @@ class EAFindFailedException(EAException):
 
 
 class EAHTTPException(EAException):
-    """Class of exceptions raised if an error response was received for an EveryAction request.
-
-    :ivar Response response: The response with status code >= 400.
-    :ivar Sequence[Error] errors: List of EveryAction
-        `Error <https://docs.everyaction.com/reference/errors>`__ objects given in the response. May be empty.
-    :ivar HTTPError http_error: The :class:`.HTTPError` associated with the error response.
-    """
+    """Class of exceptions raised if an error response was received for an EveryAction request."""
 
     #: The response with status code >= 400.
     response: Response

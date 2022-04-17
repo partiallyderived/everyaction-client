@@ -6,31 +6,33 @@ SPHINX_BUILD_DIR := docs
 SPHINX_SOURCE_DIR := docs-src
 VENV_DIR := venv
 VENV_ACTIVATE := source $(VENV_DIR)/bin/activate
-VERSION := $(shell sed -nE 's/version = (.*)/\1/p' setup.cfg)
+VERSION_INC := patch
 
 .PHONY: clean
 clean:
 	rm -rf .pytest_cache
 	rm -rf $(SPHINX_SOURCE_DIR)/classes
-	rm -rf docs/.buildinfo
+	rm -rf $(SPHINX_BUILD_DIR)
 
 .PHONY: doc
 doc: $(VENV_DIR)
 	rm -rf $(SPHINX_BUILD_DIR)/classes
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
-	git add $(SPHINX_BUILD_DIR)
-
-.PHONY: inc
-inc:
-	bash inc_version.sh
 
 .PHONY: linkcheck
 linkcheck: $(VENV_DIR)
 	$(VENV_ACTIVATE) && sphinx-build -b linkcheck $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
 
-.PHONY: tag
-tag:
-	git tag -a v$(VERSION) -m "Version $(VERSION)"
+.PHONY: publish
+publish:
+	git diff-index --quiet HEAD -- || (echo "Aborting: Uncommitted changes present" 1>&2 && false)
+	git ls-files --other --directory --exclude-standard | sed q1 ||\
+        (echo "Aborting: Untracked files present" 1>&2 && false)
+	bash inc_version.sh $(VERSION_INC)
+	VERSION=$$(sed -nE 's/version = (.*)/\1/p' setup.cfg);\
+		git commit -a -m "Bump to version $$VERSION" &&\
+		git tag -a "v$$VERSION" -m "Version $$VERSION" &&\
+		git push --atomic origin main "v$$VERSION"
 
 .PHONY: test
 test: $(VENV_DIR)

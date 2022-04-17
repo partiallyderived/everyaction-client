@@ -1274,7 +1274,7 @@ class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'cod
     def no_call(self) -> bool:
         """Indicates whether this is a "Do Not Call" suppression.
 
-        :returns: :code:`True` if this is a "Do Not Call" suppression, :code:`False` otherwise.
+        :return: ``True`` if this is a "Do Not Call" suppression, ``False`` otherwise.
         """
         return (self.code or '').upper() == 'NC' or (self.name or '').lower() == 'do not call'
 
@@ -1282,7 +1282,7 @@ class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'cod
     def no_email(self) -> bool:
         """Indicates whether this is a "Do Not Email" suppression.
 
-        :returns: :code:`True` if this is a "Do Not Email" suppression, :code:`False` otherwise.
+        :return: ``True`` if this is a "Do Not Email" suppression, ``False`` otherwise.
         """
         return (self.code or '').upper() == 'NE' or (self.name or '').lower() == 'do not email'
 
@@ -1290,7 +1290,7 @@ class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'cod
     def no_mail(self) -> bool:
         """Indicates whether this is a "Do Not Mail" suppression.
 
-        :returns: :code:`True` if this is a "Do Not Mail" suppression, :code:`False` otherwise.
+        :return: ``True`` if this is a "Do Not Mail" suppression, ``False`` otherwise.
         """
         return (self.code or '').upper() == 'NM' or (self.name or '').lower() == 'do not mail'
 
@@ -1298,7 +1298,7 @@ class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'cod
     def no_walk(self) -> bool:
         """Indicate whether this is a "Do Not Walk" suppression.
 
-        :returns: :code:`True` if this is a "Do Not Walk" suppression, :code:`False` otherwise.
+        :return: ``True`` if this is a "Do Not Walk" suppression, ``False`` otherwise.
         """
         return (self.code or '').upper() == 'NW' or (self.name or '').lower() == 'do not walk'
 
@@ -1965,20 +1965,20 @@ class ChangedEntityField(
         +------------+--------------------------------------------------------------------------------------------+
         | Field Type | Behavior                                                                                   |
         +============+============================================================================================+
-        | B          | Parses "true" to :code:`True` and "false" to :code:`False`.                                |
+        | B          | Parses "true" to ``True`` and "false" to ``False``.                                        |
         +------------+--------------------------------------------------------------------------------------------+
         | D          | Parses into a naive `datetime object <https://docs.python.org/3/library/datetime.html>`__. |
         +------------+--------------------------------------------------------------------------------------------+
         | M          | Keeps the original string value.                                                           |
         +------------+--------------------------------------------------------------------------------------------+
-        | N          | Parses into an :code:`int`.                                                                |
+        | N          | Parses into an ``int``.                                                                    |
         +------------+--------------------------------------------------------------------------------------------+
         | T          | Keeps the original string value.                                                           |
         +------------+--------------------------------------------------------------------------------------------+
 
 
         :param value: The value to parse.
-        :returns: The parsed value.
+        :return: The parsed value.
         """
         return self._TYPE_TO_FACTORY[self.type](value) if value else None
 
@@ -2182,7 +2182,7 @@ class Person(
         """Adds the given suppression to this person if it is not already present.
 
         :param suppression: The suppression to add.
-        :returns: :code:`True` if the suppression was added, :code:`False` if it was already present.
+        :return: ``True`` if the suppression was added, ``False`` if it was already present.
         """
         # noinspection PyAttributeOutsideInit
         self.suppressions = self.suppressions or []
@@ -2195,9 +2195,9 @@ class Person(
         """Determines whether this contact has the given suppression.
 
         :param suppression: The suppression to check for.
-        :returns: :code:`True` if this contact has the suppression, :code:`False` if suppression information is
-            available (when :code:`suppressions` attribute is not :code:`None`) and the suppression was not found, or
-            :code:`None` if no suppression information is available.
+        :return: ``True`` if this contact has the suppression, ``False`` if suppression information is available (when
+            *suppressions* attribute is not ``None``) and the suppression was not found, or ``None`` if no suppression
+            information is available.
         """
         if self.suppressions is not None:
             return suppression in self.suppressions
@@ -2207,7 +2207,7 @@ class Person(
         """Removes the given suppression from this person if it is present.
 
         :param suppression: The suppression to remove.
-        :returns: :code:`True` if the suppression was removed, :code:`False` if the suppression was not found.
+        :return: ``True`` if the suppression was removed, ``False`` if the suppression was not found.
         """
         if self.suppressions:
             try:
@@ -2221,8 +2221,8 @@ class Person(
         """Add or remove the given suppression.
 
         :param suppression: Suppression to add or remove.
-        :param value: :code:`True` to add the suppression, :code:`False` to remove it.
-        :returns: :code:`True` if suppressions were changed, :code:`False` otherwise.
+        :param value: ``True`` to add the suppression, ``False`` to remove it.
+        :return: ``True`` if suppressions were changed, ``False`` otherwise.
         """
         if value:
             return self.add_suppression(suppression)
@@ -2233,8 +2233,8 @@ class Person(
     def do_not_call(self) -> Optional[bool]:
         """Determine if this contact is marked as "Do Not Call".
 
-        :returns: :code:`True` is this contact is marked as "Do Not Call", :code:`False` is suppressions are present
-            and do not contain "Do Not Call", or :code:`None` if no suppression information is available.
+        :return: ``True`` is this contact is marked as "Do Not Call", ``False`` is suppressions are present and do not
+            contain "Do Not Call", or ``None`` if no suppression information is available.
         """
         return self.has_suppression(Suppression.DO_NOT_CALL)
 
@@ -2250,8 +2250,8 @@ class Person(
     def do_not_email(self) -> Optional[bool]:
         """Determine if this contact is marked as "Do Not Email".
 
-        :returns: :code:`True` is this contact is marked as "Do Not Email", :code:`False` is suppressions are present
-            and do not contain "Do Not Email", or :code:`None` if no suppression information is available.
+        :return: ``True`` is this contact is marked as "Do Not Email", ``False`` is suppressions are present and do not
+            contain "Do Not Email", or ``None`` if no suppression information is available.
         """
         return self.has_suppression(Suppression.DO_NOT_EMAIL)
 
@@ -2267,8 +2267,8 @@ class Person(
     def do_not_mail(self) -> Optional[bool]:
         """Determine if this contact is marked as "Do Not Mail".
 
-        :returns: :code:`True` is this contact is marked as "Do Not Mail", :code:`False` is suppressions are present
-            and do not contain "Do Not Mail", or :code:`None` if no suppression information is available.
+        :return: ``True`` is this contact is marked as "Do Not Mail", ``False`` is suppressions are present and do not
+            contain "Do Not Mail", or ``None`` if no suppression information is available.
         """
         return self.has_suppression(Suppression.DO_NOT_MAIL)
 
@@ -2284,8 +2284,8 @@ class Person(
     def do_not_walk(self) -> Optional[bool]:
         """Determine if this contact is marked as "Do Not Mail".
 
-        :returns: :code:`True` is this contact is marked as "Do Not Walk", :code:`False` is suppressions are present
-            and do not contain "Do Not Walk", or :code:`None` if no suppression information is available.
+        :return: ``True`` is this contact is marked as "Do Not Walk", ``False`` is suppressions are present and do not
+            contain "Do Not Walk", or ``None`` if no suppression information is available.
         """
         return self.has_suppression(Suppression.DO_NOT_WALK)
 
@@ -2299,29 +2299,28 @@ class Person(
 
     @property
     def preferred_address(self) -> Optional[Address]:
-        """Get this contact's preferred mailing address as an :class:`.Address` object if it exists, or :code:`None`
-        if this contact has no addresses or if information on what address is preferred is unavailable.
+        """Get this contact's preferred mailing address as an :class:`.Address` object if it exists, or ``None`` if this
+        contact has no addresses or if information on what address is preferred is unavailable.
 
-        :returns: The preferred mailing address object, or :code:`None` if no preferred mailing address could be
-            determined.
+        :return: The preferred mailing address object, or ``None`` if no preferred mailing address could be determined.
         """
         return self._get_preferred(self.addresses)
 
     @property
     def preferred_email(self) -> Optional[str]:
-        """Get the address of this contact's preferred email if it exists, or :code:`None` if this contact has no email
+        """Get the address of this contact's preferred email if it exists, or ``None`` if this contact has no email
         addresses or if information on what address is preferred is unavailable.
 
-        :returns: The preferred email address, or code:`None` if no preferred email address could be determined.
+        :return: The preferred email address, or code:`None` if no preferred email address could be determined.
         """
         return self._get_preferred(self.emails, "email")
 
     @property
     def preferred_phone(self) -> Optional[str]:
-        """Get the number of this contact's preferred phone if it exists, or :code:`None` if this contact has no phone
+        """Get the number of this contact's preferred phone if it exists, or ``None`` if this contact has no phone
         numbers or if information on what number is preferred is unavailable.
 
-        :returns: The preferred phone number, or code:`None` if no preferred phone number could be determined.
+        :return: The preferred phone number, or code:`None` if no preferred phone number could be determined.
         """
         return self._get_preferred(self.phones, "number")
 

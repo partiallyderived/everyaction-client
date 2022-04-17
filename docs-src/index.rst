@@ -30,8 +30,8 @@ To make requests, you must first create an :class:`.EAClient` object:
 
 In this example, it is assumed that the environment variables :code:`EVERYACTION_APP_NAME` and
 :code:`EVERYACTION_API_KEY` are defined as your application name and EveryAction API key respectively, and
-:code:`mode=1` specifies that we are working in MyCampaign mode instead of VoterFile mode. See the
-:meth:`EAClient __init__ method <.EAClient.__init__>` for more information and initialization options.
+:code:`mode=1` specifies that we are working in MyCampaign mode instead of VoterFile mode. See
+:meth:`EAClient.__init__ <.EAClient.__init__>` for more information and initialization options.
 
 Once the client is created, requests may be made by calling methods of :doc:`EAService <services>` objects, which are
 objects that organize methods in the same way that the
@@ -220,7 +220,7 @@ Now that the usage of aliases has been demonstrated, here are some general facts
 * Singular aliases may *not* be used to access attributes on EveryAction Objects due to ambiguity (for example, if more
   than one phone is listed for a person, what should the value of :code:`person.phone` be?). However, they may be used
   to set attributes: :code:`person.phone = '5555555555'`.
-* When an object has property whose name contains a prefix referencing the object it is a property for, such as the
+* When an object has a property whose name contains a prefix referencing the object it is a property for, such as the
   properties :code:`financialBatchId`, :code:`financialBatchNumber`, and :code:`financialBatchName` for a
   :class:`.FinancialBatch`, the "un-prefixed" name will be an alias for that property, in this case :code:`id`,
   :code:`name`, and :code:`number` respectively.
@@ -306,7 +306,7 @@ The previous example will return at most 23 activist codes, starting from the te
 exactly to the EveryAction parameter :code:`$skip` described in the
 `EveryAction documentation <https://docs.everyaction.com/reference/pagination>`__, :code:`limit` does
 not exactly correspond to :code:`$top` because it may be set arbitrarily high: when it exceeds the maximum value for
-:code:`$top` described for the particular paginated method, multiple requests and sent and consolidated in the returned
+:code:`$top` described for the particular paginated method, multiple requests are sent and consolidated in the returned
 :code:`list`. If :code:`limit` is not specified, the configured default value in the :class:`.EAClient` instance will
 be used instead. This default value is, by default ("the default for the default"), 50, but may be changed by setting
 the :code:`default_limit` attribute of :code:`EAClient`:
@@ -314,7 +314,7 @@ the :code:`default_limit` attribute of :code:`EAClient`:
 .. code-block:: python
 
     from everyaction import EAClient
-    client = EAClient
+    client = EAClient()
     client.default_limit = 10
     activist_codes = client.activist_codes.list()  # Gets at most 10 activist codes.
 
