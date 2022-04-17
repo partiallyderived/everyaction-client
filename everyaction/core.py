@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import json
 import re
+import textwrap
 import typing
 from abc import ABC, ABCMeta
 from collections.abc import Mapping, MutableMapping
@@ -28,8 +29,8 @@ _ALIAS_REF = 'aliases'
 # camelCase of UpperCase to snake_case.
 _CAMEL_TO_SNAKE_REGEX = re.compile(r'([A-Z]+)')
 
-# The standard maximum value for top supported by EveryAction
-# (see https://docs.everyaction.com/reference/overview#pagination).
+# The standard maximum value for top supported by EveryAction (see
+# https://docs.everyaction.com/reference/overview#pagination).
 _DEFAULT_MAX_TOP = 200
 
 # For documentation purposes, keep track on properties added to methods decorated with @ea_endpoint.
@@ -56,9 +57,9 @@ EAMap = NewType('EAMap', typing.MutableMapping[str, EAValue])
 
 def _parse_path_params(route: str) -> List[str]:
     # Gives a list of the path parameters of the given string in the order in which they appear.
-    # Assumes a route like e.g. a/b/{var1}/c/{var2}/{var1} where the braces literally appear, and otherwise assumes
-    # that the route is "simple" in that it contains no difficult to parse components/edge cases, as is the case
-    # for EveryAction endpoints.
+    # Assumes a route like e.g. a/b/{var1}/c/{var2}/{var1} where the braces literally appear, and otherwise assumes that
+    # the route is "simple" in that it contains no difficult to parse components/edge cases, as is the case for
+    # EveryAction endpoints.
     with_duplicates = re.findall(r'[^{]*{([^}]*)}', route)
     found = set()
     result = []
@@ -88,64 +89,64 @@ def ea_endpoint(
     none_if_404: bool = False
 ) -> Callable:
     # This decorator uses consistencies and parameters (e.g., max value for top in a paginated request) in the
-    # EveryAction API to "configure" how the request data and arguments are processed, how the request is sent, and
-    # how the response data is processed in order to avoid repeating common logic. In fact, all of the logic for the
+    # EveryAction API to "configure" how the request data and arguments are processed, how the request is sent, and how
+    # the response data is processed in order to avoid repeating common logic. In fact, all of the logic for the
     # requests methods are implemented in this decorator: the methods themselves are placeholders existing for
     # documentation purposes.
 
-    # Here I will describe each argument:
+    # Here is a description of each argument:
 
-    # path_template: An API path which may use literal braces {} to indicate path parameters. See
-    # _parse_path_params above for more info.
+    # path_template: An API path which may use literal braces {} to indicate path parameters. See _parse_path_params
+    # above for more info.
 
     # req_type: The request type (GET, PUT, etc.)
 
-    # query_arg_keys: The names of the query args relevant for this request, excluding $expand, $skip, and $top
-    # which are handled specially. Such names must resolve to a EAProperty (more on how this is done below), and
-    # the aliases for that property may be used by the user to specify query args for this request.
+    # query_arg_keys: The names of the query args relevant for this request, excluding $expand, $skip, and $top which
+    # are handled specially. Such names must resolve to a EAProperty (more on how this is done below), and the aliases
+    # for that property may be used by the user to specify query args for this request.
 
     # paginated: Indicates whether the wrapped method will be for a paginated request. In the case that it is, the
     # keyword arguments "limit" and "skip" may be specified (more below), and the result of the request should be a
     # list.
 
-    # max_top: Indicates what the maximum value for the $top query argument is for this request. When not specified
-    # and paginated=True, _DEFAULT_MAX_TOP is assumed.
+    # max_top: Indicates what the maximum value for the $top query argument is for this request. When not specified and
+    # paginated=True, _DEFAULT_MAX_TOP is assumed.
 
-    # path_params_to_data: Indicates which path arguments should be copied as keys in data. At the time of writing,
-    # this is currently only used for convenience in services.Events.patch.
+    # path_params_to_data: Indicates which path arguments should be copied as keys in data. At the time of writing, this
+    # is currently only used for convenience in services.Events.patch.
 
     # prop_keys: The names of properties relevant for the JSON data of this request. Each name must resolve to an
-    # EAProperty. Typically, prop_keys is used for JSON data keys which are not implicit in the EAObject associated
-    # with this request, if any (see data_type below for more info).
+    # EAProperty. Typically, prop_keys is used for JSON data keys which are not implicit in the EAObject associated with
+    # this request, if any (see data_type below for more info).
 
-    # props: Mapping from property names to EAProperty which are relevant to this request. This is sparsely used, as
-    # it is preferred to use this parameter only when a property name conflicts with a more commonly used property.
-    # Otherwise, the preference is to either get the property implicitly from data_type, or to specify it as a
-    # common EAProperty via EAProperty.add.
+    # props: Mapping from property names to EAProperty which are relevant to this request. This is sparsely used, as it
+    # is preferred to use this parameter only when a property name conflicts with a more commonly used property.
+    # Otherwise, the preference is to either get the property implicitly from data_type, or to specify it as a common
+    # EAProperty via EAProperty.add.
 
-    # data_type: The type of objects represents by the JSON data of this request. The purpose of specifying the
-    # type here is solely as a convenient means of specifying a common set of properties for a method. Usage of the
-    # EAObjects directly is unnecessary by the user, who may use keyword arguments of the names or aliases of the
-    # properties of that object instead if they desire.
+    # data_type: The type of objects represents by the JSON data of this request. The purpose of specifying the type
+    # here is solely as a convenient means of specifying a common set of properties for a method. Usage of the EAObjects
+    # directly is unnecessary by the user, who may use keyword arguments of the names or aliases of the properties of
+    # that object instead if they desire.
 
-    # has_result: When True, response processing is foregone other than checking for an exception and the method
-    # returns early.
+    # has_result: When True, response processing is foregone other than checking for an exception and the method returns
+    # early.
 
-    # result_array: When True, the structure of response data is assumed to be a list of objects which are
-    # individually processed using result_factory.
+    # result_array: When True, the structure of response data is assumed to be a list of objects which are individually
+    # processed using result_factory.
 
-    # result_array_key: When specified, the structure of response data is assumed to be a mapping with only this
-    # key, with its value being a list of objects to be individually processed using result_factory.
+    # result_array_key: When specified, the structure of response data is assumed to be a mapping with only this key,
+    # with its value being a list of objects to be individually processed using result_factory.
 
     # result_key: When specified, the structure of response data (or of individual objects in array data) is assumed
-    # to be a mapping with only this key, with its value being the data to return in this method. The purpose of
-    # this parameter is to conveniently extract single-element maps for the user so they may avoid the frivolous
-    # step of extracting a mapping value.
+    # to be a mapping with only this key, with its value being the data to return in this method. The purpose of this
+    # parameter is to conveniently extract single-element maps for the user so they may avoid the frivolous step of
+    # extracting a mapping value.
 
-    # result_factory: When specified, the response data (or of individual objects in array data) is processed by
-    # calling this, usually resulting in an EAObject corresponding to an EveryAction API object. Typically, the
-    # value for this parameter is just a subclass of EAObject, and calling it just instantiates that object using
-    # its constructor. Sometimes it is a more complicated factory, though.
+    # result_factory: When specified, the response data (or of individual objects in array data) is processed by calling
+    # this, usually resulting in an EAObject corresponding to an EveryAction API object. Typically, the value for this
+    # parameter is just a subclass of EAObject, and calling it just instantiates that object using its constructor.
+    # Sometimes it is a more complicated factory, though.
 
     # exclude_keys: When specified, exclude these keys from the resulting data. Useful when multiple keys are returned
     # for the same property (i.e., both locationId and id in response data for a Location) and one must be suppressed
@@ -159,8 +160,8 @@ def ea_endpoint(
     # Then, any properties specified in props populates the collection, overriding any which were already present.
     #
     # Finally, any properties specified in prop_keys, query_arg_keys, and/or path_params_to_data are assumed to be
-    # common properties accessible via EAProperty.get if they were not specified by props; if they cannot be
-    # resolved this way, an AssertionError is raised.
+    # common properties accessible via EAProperty.get if they were not specified by props; if they cannot be resolved
+    # this way, an AssertionError is raised.
     #
     # Note that query_arg_keys, prop_keys, path_params_to_data are assumed to have no common keys (as that would be
     # redundant), and if they do, an AssertionError in raised.
@@ -168,11 +169,11 @@ def ea_endpoint(
     # These keys are likewise assumed to be disjoint from the keys of data_type._properties(), as a need to specify
     # repeat keys in this way never arose and likely indicates a mistake, and thus an AssertionError is raised.
     #
-    # Additionally, prop_keys and props are assumed to have no common keys (as that is likewise redundant), and if
-    # they do, an AssertionError is raised.
+    # Additionally, prop_keys and props are assumed to have no common keys (as that is likewise redundant), and if they
+    # do, an AssertionError is raised.
     #
-    # If the properties pass all checks, the collection is used to instantiate an EAProperties object, which will
-    # be used to resolve aliases given by the user when calling this method.
+    # If the properties pass all checks, the collection is used to instantiate an EAProperties object, which will be
+    # used to resolve aliases given by the user when calling this method.
 
     # Make sure there are no unexpected request types.
     if req_type not in _SUPPORTED_REQUEST_TYPES:
@@ -207,8 +208,8 @@ def ea_endpoint(
 
     props = props or {}
 
-    # paginated, result_array, and result_array_key all specify different ways to extract a sequence of objects
-    # from response data. They are therefore mutually exclusive.
+    # paginated, result_array, and result_array_key all specify different ways to extract a sequence of objects from
+    # response data. They are therefore mutually exclusive.
     if sum(bool(x) for x in [paginated, result_array, result_array_key] if x) > 1:
         raise AssertionError(
             f'At most one of paginated={paginated}, result_array={result_array}, or '
@@ -230,8 +231,8 @@ def ea_endpoint(
         properties.update(data_type._properties())
 
     all_keys = prop_keys | {q.lstrip('$') for q in query_arg_keys} | path_params_to_data
-    # Specifying keys in more than one of these sets is redundant. Check that they are disjoint sets by confirming
-    # that the size of their unions is the sum of their sizes.
+    # Specifying keys in more than one of these sets is redundant. Check that they are disjoint sets by confirming that
+    # the size of their unions is the sum of their sizes.
     if len(all_keys) != len(prop_keys) + len(query_arg_keys) + len(path_params_to_data):
         raise AssertionError(
             f'At least one key specified in more than one of prop_keys={prop_keys}, '
@@ -241,8 +242,8 @@ def ea_endpoint(
     if data_type and (
         any(k in data_type._properties() for k in all_keys) or any(k in data_type._properties() for k in props)
     ):
-        # No situation arose where it made sense to have keys in both data_type._properties() and any of the
-        # other property sources, so this is assumed to be an error for now.
+        # No situation arose where it made sense to have keys in both data_type._properties() and any of the other
+        # property sources, so this is assumed to be an error for now.
         raise AssertionError(
             f'{data_type.__name__} has at least one property in {data_type._properties()._properties} also specified '
             f'in at least one of prop_keys={prop_keys}, query_arg_keys={query_arg_keys}, '
@@ -252,8 +253,8 @@ def ea_endpoint(
     # Properties specified in props override properties from data_type._properties().
     properties.update(props)
 
-    # Keys in props and prop_keys should be mutually exclusive, as they could have just been specified in props if
-    # they are in both.
+    # Keys in props and prop_keys should be mutually exclusive, as they could have just been specified in props if they
+    # are in both.
     if any(k in props for k in prop_keys):
         raise AssertionError(f'At least one key specified in both prop_keys={prop_keys} and props={props}')
 
@@ -308,19 +309,18 @@ def ea_endpoint(
             # The signature of func is for documentation purposes only.
 
             # *args is used exclusively to specify path parameters, and they may not be specified any other way.
-            # These arguments are always documented explicitly in the decorated method stub as corresponding to a
-            # path parameter.
+            # These arguments are always documented explicitly in the decorated method stub as corresponding to a path
+            # parameter.
             #
             # **kwargs is used to specify both query arguments and JSON data keys and values. Since EAObjects are
-            # MutableMappings, there is no issue serializing them as JSON data and they may be specified here as
-            # if they were mappings with their non-None attributes as keys. Additionally, this has the benefit of
-            # allowing the aliases of that object to be used, either in constructing the EAObject or even when
-            # specifying its properties via **kwargs since its properties are available in the EAProperties object
-            # constructed above.
+            # MutableMappings, there is no issue serializing them as JSON data and they may be specified here as if they
+            # were mappings with their non-None attributes as keys. Additionally, this has the benefit of allowing the
+            # aliases of that object to be used, either in constructing the EAObject or even when specifying its
+            # properties via **kwargs since its properties are available in the EAProperties object constructed above.
             #
-            # data may be specified by users to send unprocessed raw data. It is only documented in the decorated
-            # method when the request JSON data is not a mapping, which is rare but requires data to be specified
-            # instead of the JSON data keys, which assume a mapping.
+            # data may be specified by users to send unprocessed raw data. It is only documented in the decorated method
+            # when the request JSON data is not a mapping, which is rare but requires data to be specified instead of
+            # the JSON data keys, which assume a mapping.
             #
             # expand, skip, and top correspond to the query arguments $expand, $skip, and $top respectively.
             # $top however is not used for this library and an EAException is thrown if it is used.
@@ -367,8 +367,8 @@ def ea_endpoint(
                 query_args['$top'] = min(limit, max_top) or max_top
                 query_args['$skip'] = 0 if skip is None else skip
             else:
-                # Complain if any pagination parameters are specified: since they are not specified as part of
-                # **kwargs, erroneously specifying them will not result in an error response.
+                # Complain if any pagination parameters are specified: since they are not specified as part of **kwargs,
+                # erroneously specifying them will not result in an error response.
                 if top is not None:
                     raise EAException(
                         f'top={top} given for {func_ref_name}, which is not paginated. Also, $top is not supported for '
@@ -596,8 +596,8 @@ EAProperty.share(id=EAProperty(), name=EAProperty())
 
 class EAProperties(Mapping):
     # Represents a collection of EAProperty instances.
-    # Implements a Mapping for ease of use. MutableMapping is unnecessary as EAProperties are assumed to be
-    # immutable after creation.
+    # Implements a Mapping for ease of use. MutableMapping is unnecessary as EAProperties are assumed to be immutable
+    # after creation.
     # Used to resolve aliases for a collection of properties when supplying request keywords or when getting/setting
     # attributes for EAObjects.
 
@@ -632,33 +632,38 @@ class EAProperties(Mapping):
 
     def add_to_doc(self, entity: Any, header_name: str) -> None:
         doc_str = entity.__doc__
-        # Infer indentation by index of last newline.
-        indentation = len(doc_str) - doc_str.rfind('\n') - 1
-        # Generate documentation for this property.
-        components = [' ' * indentation + f':{header_name}:']
-        # Properties are indented one more time.
-        prop_indent = ' ' * (indentation + 4)
+        # These are string components to be joined later to create the documentation with the properties added.
+        components = []
+
+        # Dedent docs since indentation consistent with the definition only matters for the source code, and it is more
+        # efficient and less painful to deal with dedented doc strings.
+        # Need to find where indentation starts in order to dedent (note that the first line of a doc string will not
+        # be indented in the string itself, only in the source code).
+        first_line_and_rest = doc_str.split('\n', 1)
+        if len(first_line_and_rest) == 2:
+            first_line, rest = first_line_and_rest
+            components.append(first_line)
+            components.append('\n')
+            components.append(textwrap.dedent(rest))
+        else:
+            # No newline, just use original doc string.
+            components.append(doc_str)
+        components.append(f'\n\n:{header_name}:')
 
         for name, prop in sorted(list(self.items()), key=lambda x: x[0]):
             if isinstance(prop.factory, type) and issubclass(prop.factory, EAObject):
-                # Put property as a link to the expected type.
-                prop_str = f'{prop_indent}* :class:`{name} <.{prop.factory.__name__}>`'
+                # Put property as a bolded link to the expected type.
+                prop_str = f'\n    * :class:`{name} <.{prop.factory.__name__}>`'
             else:
                 # Put property as a bolded list element.
-                prop_str = f'{prop_indent}* **{name}**'
+                prop_str = f'\n    * **{name}**'
+            components.append(prop_str)
             if prop.aliases or prop.singular_alias:
-                components.append(f'{prop_str}')
                 # List each alias separated by commas in descending order of length.
                 aliases = [f'{alias}' for alias in sorted(list(prop.aliases), key=lambda x: -len(x))]
                 if prop.singular_alias:
                     aliases.append(f'{prop.singular_alias} (singular)')
-                components.append(f'{prop_indent}  :ref:`({", ".join(aliases)}) <{_ALIAS_REF}>`')
-            else:
-                components.append(prop_str)
-        properties_doc = '\n'.join(components)
-
-        # Take out last indent, add properties documentation, put back last indent.
-        components = [doc_str[:-indentation], '\n', properties_doc, f'\n\n{" " * indentation}']
+                components.append(f'\n      :ref:`({", ".join(aliases)}) <{_ALIAS_REF}>`')
         entity.__doc__ = ''.join(components)
 
     def process(self, args: EAMap) -> EAMap:

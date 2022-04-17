@@ -14,8 +14,7 @@ clean:
 	rm -rf $(SPHINX_SOURCE_DIR)/classes
 	rm -rf $(SPHINX_BUILD_DIR)
 
-.PHONY: doc
-doc: $(VENV_DIR)
+$(SPHINX_BUILD_DIR): everyaction/*.py $(shell find docs-src)
 	rm -rf $(SPHINX_BUILD_DIR)/classes
 	$(VENV_ACTIVATE) && sphinx-build -b html -aE $(SPHINX_SOURCE_DIR) $(SPHINX_BUILD_DIR)
 

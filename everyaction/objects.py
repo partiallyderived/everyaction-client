@@ -664,8 +664,8 @@ class Attribution(EAObject, _shared={'amountAttributed', 'attributionType', 'dat
 
 class AvailableValue(EAObject, _id='id', _name='name', _shared={'parentValueId'}):
     """Represents
-    `AvailableValues <https://docs.everyaction.com/reference/custom-fields-common-models#available-value>`__
-    for a Custom Field.
+    `AvailableValues <https://docs.everyaction.com/reference/custom-fields-common-models#available-value>`__ for a
+    Custom Field.
     """
 
 
@@ -694,7 +694,9 @@ class BankAccount(EAObject, _id='id', _name='name', _prefix='bankAccount'):
 class BargainingUnit(
     EAObject, _id='id', _name='name', _prefix='bargainingUnit', _shared={'employerBargainingUnitId', 'shortName'}
 ):
-    """Represents a `Bargaining Unit <https://docs.everyaction.com/reference/common-models-3#bargaining-unit>`__."""
+    """Represents a `Bargaining Unit
+    <https://docs.everyaction.com/reference/bargaining-units-common-models#bargaining-unit>`__.
+    """
 
 
 class Canvasser(EAObject, _id='id', _prefix='canvasser'):
@@ -747,8 +749,7 @@ class ChangeType(
 
 class CodeResult(EAObject, _id='id', _prefix='code', _shared={'message'}):
     """Represents the data associated with a response to a code batch request. See `POST /codes/batch
-    <https://docs.everyaction.com/reference/codes-batch>`__
-    for an example.
+    <https://docs.everyaction.com/reference/codes-batch>`__ for an example.
     """
 
 
@@ -775,7 +776,7 @@ class Commitment(
         'status'
     }
 ):
-    """Represents a `Commitment <https://docs.everyaction.com/reference/common-models-6#commitment>`__."""
+    """Represents a `Commitment <https://docs.everyaction.com/reference/commitments-common-models#commitment>`__."""
 
 
 class ConfirmationEmailData(
@@ -796,7 +797,7 @@ class ConfirmationEmailData(
 
 
 class ContactType(EAObject, _id='id', _name='name', _prefix='contactType', _shared={'channelTypeName'}):
-    """Represents a `Contact Type <https://docs.everyaction.com/reference/canvassresponsescontacttypes>`__."""
+    """Represents a `Contact Type <https://docs.everyaction.com/reference/canvassresponses-contacttypes>`__."""
 
 
 class Constraints(EAObject, _shared={'invalidCharacters', 'maxLength'}):
@@ -841,11 +842,11 @@ class CustomFieldValue(EAObject, _shared={'assignedValue', 'customFieldGroupId',
 
 
 class Department(EAObject, _id='id', _name='name', _prefix='department', _shared={'employer', 'parentDepartmentId'}):
-    """Represents a `Department <https://docs.everyaction.com/reference/common-models-10#department>`__."""
+    """Represents a `Department <https://docs.everyaction.com/reference/departments-common-models#department>`__."""
 
 
 class Designation(EAObject, _id='id', _name='name', _prefix='designation'):
-    """Represents a `Designation <https://docs.everyaction.com/reference/common-models-11#designation>`__."""
+    """Represents a `Designation <https://docs.everyaction.com/reference/designations-common-models#designation>`__."""
 
 
 class DisclosureFieldValue(
@@ -936,9 +937,7 @@ class EmployerPhone(
 
 
 class EventRole(EAObject, _id='id', _name='name', _prefix='role', _shared={'goal', 'isEventLead', 'max', 'min'}):
-    """Represents a `Role <https://docs.everyaction.com/reference/common-models-18#role>`__
-    for an Event Type.
-    """
+    """Represents a `Role <https://docs.everyaction.com/reference/common-models-18#role>`__ for an Event Type."""
 
 
 class EventShift(EAObject, _id='id', _name='name', _prefix='eventShift', _shared={'endTime', 'startTime'}):
@@ -950,8 +949,8 @@ class ExportJobType(EAObject, _id='id', _name='name', _prefix='exportJobType'):
 
 
 class File(EAObject, _shared={'dateExpired', 'downloadUrl', 'recordCount'}):
-    """Represents a `File object <https://docs.everyaction.com/reference/targetexportjobsexportjobid#file>`__
-    in EveryAction. Used in many contexts.
+    """Represents a `File object <https://docs.everyaction.com/reference/targetexportjobsexportjobid#file>`__ in
+    EveryAction. Used in many contexts.
     """
 
 
@@ -1021,13 +1020,13 @@ class JobClass(EAObject, _id='id', _name='name', _prefix='jobClass', _shared={'s
 
 
 class JobNotification(EAObject, _shared={'description', 'message', 'status'}):
-    """Represents a `Notification <https://docs.everyaction.com/reference/fileloadingjobs#notification>`__
-    for File Loading Jobs.
+    """Represents a `Notification <https://docs.everyaction.com/reference/fileloadingjobs#notification>`__ for File
+    Loading Jobs.
     """
 
 
 class InputType(EAObject, _id='id', _name='name', _prefix='inputType'):
-    """Represents an `Input Type <https://docs.everyaction.com/reference/canvassresponsesinputtypes>`__."""
+    """Represents an `Input Type <https://docs.everyaction.com/reference/canvassresponses-inputtypes>`__."""
 
 
 class KeyValuePair(EAObject, _shared={'key', 'value'}):
@@ -1037,14 +1036,12 @@ class KeyValuePair(EAObject, _shared={'key', 'value'}):
 
 
 class Listener(EAObject, _shared={'type', 'value'}):
-    """Represents a `Listener <https://docs.everyaction.com/reference/fileloadingjobs>`__
-    for a file-loading job.
-    """
+    """Represents a `Listener <https://docs.everyaction.com/reference/fileloadingjobs>`__ for a file-loading job."""
 
 
 class MappingValue(EAObject, _id='id', _name='name', _shared={'parentId', 'sourceValue', 'targetValue'}):
-    """Represents a `value <https://docs.everyaction.com/reference/bulkimportjobs#mapping-types>`__
-    in the context of bulk import jobs.
+    """Represents a `value <https://docs.everyaction.com/reference/bulkimportjobs#mapping-types>`__ in the context of
+    bulk import jobs.
     """
 
 
@@ -1129,7 +1126,7 @@ class ReportedSexualOrientation(
 class ResultCode(
     EAObject, _id='id', _name='name', _prefix='resultCode', _shared={'mediumName', 'resultOutcomeGroup', 'shortName'}
 ):
-    """Represents a `Result Code <https://docs.everyaction.com/reference/canvassresponsesresultcodes>`__."""
+    """Represents a `Result Code <https://docs.everyaction.com/reference/canvassresponses-resultcodes>`__."""
 
 
 class SavedList(
@@ -1144,8 +1141,8 @@ class SavedListData(
     _prefix='savedList',
     _shared={'matchedRowsCount', 'originalRowCount', 'unmatchedRowsCount'}
 ):
-    """Represents `Saved List Data <https://docs.everyaction.com/reference/fileloadingjobs#saved-list-load>`__
-    for Saved List Load actions.
+    """Represents `Saved List Data <https://docs.everyaction.com/reference/fileloadingjobs#saved-list-load>`__ for Saved
+    List Load actions.
     """
 
 
@@ -1193,8 +1190,8 @@ class ShiftType(EAObject, _id='id', _name='name', _prefix='shiftType', _shared={
 
 
 class Status(EAObject, _id='id', _name='name', _prefix='status'):
-    """Represents a `Status <https://docs.everyaction.com/reference/common-models-17>`__
-    in EveryAction. Used in multiple contexts.
+    """Represents a `Status <https://docs.everyaction.com/reference/common-models-17>`__ in EveryAction. Used in
+    multiple contexts.
     """
 
 
@@ -1203,9 +1200,7 @@ class StoryStatus(EAObject, _id='id', _name='statusName', _prefix='storyStatus')
 
 
 class Subgroup(EAObject, _id='id', _name='name', _prefix='subgroup', _shared={'fullName', 'isAssociatedWithBadges'}):
-    """Represents a `Subgroup <https://docs.everyaction.com/reference/common-models-37#subgroup>`__
-    for a Target.
-    """
+    """Represents a `Subgroup <https://docs.everyaction.com/reference/common-models-37#subgroup>`__ for a Target."""
 
 
 class SupportedEntity(EAObject, _name='name', _shared={'isApplicable', 'isSearchable'}):
@@ -1238,10 +1233,10 @@ class Suppression(EAObject, _name='name', _prefix='suppression', _prefixed={'cod
         code_or_name: Optional[str] = None,
         **kwargs: EAValue
     ) -> None:
-        """
-        Initialize by setting the specified property names and aliases. Note that values will automatically be converted
-        to API objects when appropriate. When the positional argument `code_or_name` is given, it is assumed to be a
-        code (e.g., "NC" for "Do not call") when it has length at most 2, and otherwise it is assumed to be a name.
+        """Initialize by setting the specified property names and aliases. Note that values will automatically be
+        converted to API objects when appropriate. When the positional argument `code_or_name` is given, it is assumed
+        to be a code (e.g., "NC" for "Do not call") when it has length at most 2, and otherwise it is assumed to be a
+        name.
 
         :param code_or_name: When the given, it is assumed to be a code (e.g., "NC" for "Do not call") when it has
             length at most 2, and otherwise it is assumed to be a name.
@@ -1310,14 +1305,10 @@ Suppression.DO_NOT_WALK = Suppression('NW')
 
 
 class SurveyResponse(EAObject, _id='id', _name='name', _prefix='surveyResponse', _shared={'mediumName', 'shortName'}):
-    """
-    Represents a `Survey Response <https://docs.everyaction.com/reference/common-models-36#survey-response>`__.
-    """
+    """Represents a `Survey Response <https://docs.everyaction.com/reference/common-models-36#survey-response>`__."""
 
 
-class UpdateStatistics(
-    EAObject
-):
+class UpdateStatistics(EAObject):
     """Represents an `Update Statistics <https://docs.everyaction.com/reference/score-updates>`__ object."""
 
 
@@ -1581,8 +1572,8 @@ class JobFile(
 
 
 class ListLoadCallbackData(JobNotification, _shared={'description', 'message', 'savedList', 'status'}):
-    """Represents `Callback Data <https://docs.everyaction.com/reference/fileloadingjobs#callback-data>`__
-    for a Saved List Load action.
+    """Represents `Callback Data <https://docs.everyaction.com/reference/fileloadingjobs#callback-data>`__ for a Saved
+    List Load action.
     """
 
 
@@ -1613,8 +1604,8 @@ class Membership(
         'totalDuesPaid'
     }
 ):
-    """Contains `membership information <https://docs.everyaction.com/reference/people-vanid-membership>`__
-    for a person.
+    """Contains `membership information <https://docs.everyaction.com/reference/people-vanid-membership>`__ for a
+    person.
     """
 
 
@@ -1771,8 +1762,8 @@ class SupportField(
     _shared={'customPropertyKey', 'displayName', 'fieldType', 'maxFieldLength', 'possibleValues'}
 ):
     """Represents a `Support Field
-    <https://docs.everyaction.com/reference/voterregistrationbatchesstatesstatesupportedfields>`__
-    for a Voter Registration Batch.
+    <https://docs.everyaction.com/reference/voterregistrationbatchesstatesstatesupportedfields>`__ for a Voter
+    Registration Batch.
     """
 
 
@@ -1780,8 +1771,8 @@ class SurveyCanvassResponse(
     ScriptResponse,
     _shared={'mediumName', 'name', 'shortName', 'surveyQuestionId', 'surveyResponseId'}
 ):
-    """Represents a `Survey Response <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__
-    in the context of a canvass response.
+    """Represents a `Survey Response <https://docs.everyaction.com/reference/people-vanid-canvassresponses>`__ in the
+    context of a canvass response.
     """
 
     def __init__(
@@ -1893,8 +1884,7 @@ EAProperty.share(
 
 class AddRegistrantsResponse(EAObject, _shared={'alternateId', 'errors', 'result', 'vanId'}):
     """Represents the data associated with a response to `adding registrants
-    <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__
-    to a Voter Registration Batch.
+    <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__ to a Voter Registration Batch.
     """
 
 
@@ -2348,8 +2338,8 @@ class SurveyQuestion(
 
 class ValueMappingData(EAObject, _id='id', _name='name', _shared={'parents'}):
     """Represents data for an existing `value mapping
-    <https://docs.everyaction.com/reference/bulkimportmappingtypes-mappingtypename-fieldname-values>`__
-    in the context of bulk import jobs.
+    <https://docs.everyaction.com/reference/bulkimportmappingtypes-mappingtypename-fieldname-values>`__ in the context
+    of bulk import jobs.
     """
 
 
@@ -2461,8 +2451,8 @@ class MappingTypeData(EAObject, _name='name', _shared={'allowMultipleMode', 'dis
 
 
 class Registrant(EAObject, _shared={'alternateId', 'customProperties', 'person'}):
-    """Represents a `Registrant <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__
-    for a Voter Registration Batch.
+    """Represents a `Registrant <https://docs.everyaction.com/reference/voterregistrationbatchesbatchidpeople>`__ for a
+    Voter Registration Batch.
     """
 
 

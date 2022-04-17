@@ -35,7 +35,7 @@ To pass custom options to `pytest`, activate the virtual environment and invoke 
 ## Make Documentation
 
 ```
-make doc
+make docs
 ```
 
 Resulting documentation will be found in the "docs" folder. Note that the actual documentation is hosted on ReadTheDocs
@@ -49,8 +49,8 @@ This command will report on what links in the generated documentation are valid:
 make linkcheck
 ```
 
-Note that it will report links that depend on the Sphinx HTML build as broken. Useful for testing that EveryAction
-documentation links are up-to-date.
+Note that it will report links that depend on the built Sphinx HTML as broken, so just ignore those. Useful for testing
+that EveryAction documentation links are up-to-date.
 
 ## Remove Generated Files
 
@@ -60,9 +60,10 @@ make clean
 
 ## Publish Changes
 
-This command increments the project version and pushes changes to GitHub. You need to have already committed your
-changes and have no untracked files, otherwise it will fail:
+This command increments the project version and pushes changes to GitHub:
 
 ```
 make publish
 ```
+
+You need to have already committed your changes and have no untracked files, otherwise this will fail.
