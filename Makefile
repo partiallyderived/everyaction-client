@@ -26,7 +26,7 @@ linkcheck: $(VENV_DIR)
 publish:
 	git diff-index --quiet HEAD -- || (echo "Aborting: Uncommitted changes present" 1>&2 && false)
 	git ls-files --other --directory --exclude-standard | sed q1 ||\
-        (echo "Aborting: Untracked files present" 1>&2 && false)
+		(echo "Aborting: Untracked files present" 1>&2 && false)
 	bash inc_version.sh $(VERSION_INC)
 	VERSION=$$(sed -nE 's/version = (.*)/\1/p' setup.cfg);\
 		git commit -a -m "Bump to version $$VERSION" &&\

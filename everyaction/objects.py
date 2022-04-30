@@ -250,6 +250,7 @@ EAProperty.share(
     contact=EAProperty(),
     contactMethodPreferenceCode=EAProperty('contact_preference_code', 'preference_code', 'contact_preference'),
     contactMode=EAProperty(),
+    contactModeId=EAProperty(),
     contactTypeId=EAProperty('contact_type'),
     contentId=EAProperty('content'),
     contributionCount=EAProperty('contributions'),
@@ -387,6 +388,7 @@ EAProperty.share(
     isConfirmedOptInEnabled=EAProperty('confirmed_opt_in_enabled', 'opt_in_enabled', 'opt_in'),
     isCoreField=EAProperty('is_core', 'core_field', 'core'),
     isCustomDistrict=EAProperty('custom_district', 'is_custom', 'custom'),
+    isDeceased=EAProperty('deceased'),
     isEditable=EAProperty('editable'),
     isEventLead=EAProperty('event_lead', 'lead'),
     isExportable=EAProperty('exportable'),
@@ -485,6 +487,7 @@ EAProperty.share(
     parentId=EAProperty('parent'),
     parentOrganization=EAProperty('parent', factory=_employer_factory),
     parentValueId=EAProperty('parent_value'),
+    partialDateOfBirth=EAProperty('partial_birthday'),
     party=EAProperty(),
     paymentType=EAProperty(),
     personIdColumn=EAProperty('id_column', 'id_col'),
@@ -518,6 +521,8 @@ EAProperty.share(
     resourceTypes=EAProperty('resources', singular_alias='resource'),
     resourceUrl=EAProperty('url'),
     responseId=EAProperty('response'),
+    restrictToRelationshipContactMode=EAProperty('restrict_to_mode'),
+    restrictToReverseRelationshipContactMode=EAProperty('restrict_to_reverse_mode'),
     result=EAProperty(),
     resultCodeId=EAProperty('result_code'),
     resultFileColumnName=EAProperty('result_column_name', 'result_column', 'column_name', 'column'),
@@ -1091,7 +1096,12 @@ class RelationalMapping(EAObject, _shared={'fieldName', 'value'}):
     """
 
 
-class Relationship(EAObject, _id='id', _name='name'):
+class Relationship(
+    EAObject,
+    _id='id',
+    _name='name',
+    _shared={'restrictToRelationshipContactMode', 'restrictToReverseRelationshipContactMode'}
+):
     """Represents a `Relationship <https://docs.everyaction.com/reference/relationships-1>`__."""
 
 
@@ -2098,6 +2108,7 @@ class Person(
         'collectedLocationId',
         'contactMethodPreferenceCode',
         'contactMode',
+        'contactModeId',
         'customFieldValues',
         'customProperties',
         'cycle',
@@ -2113,6 +2124,7 @@ class Person(
         'formalEnvelopeName',
         'formalSalutation',
         'identifiers',
+        'isDeceased',
         'jobTitle',
         'lastName',
         'middleName',
@@ -2121,6 +2133,7 @@ class Person(
         'organizationContactCommonName',
         'organizationContactOfficialName',
         'organizationRoles',
+        'partialDateOfBirth',
         'party',
         'phones',
         'pronouns',
