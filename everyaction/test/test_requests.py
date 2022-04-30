@@ -456,7 +456,7 @@ def test_path_params_to_data(client):
                 pass
 
 
-def test_response_data(client):
+def test_response_data(client, capfd):
     class ResponseDataGroup(EAService):
         @ea_endpoint('response/no-result', 'get', has_result=False)
         def no_result(self, **kwargs):
@@ -497,6 +497,15 @@ def test_response_data(client):
     assert group.no_factory() == data
     assert group.with_factory() != data
     assert group.with_factory() == Structure2(**data)
+
+    # Test that unrecognized properties are allowed when factory is present, but result in a warning being printed.
+    data['unrecognized_prop'] = 4
+    s = Structure2(**data, _set_unrecognized=True)
+    assert s.unrecognized_prop == 4
+    assert group.with_factory() == s
+    _, err = capfd.readouterr()
+    assert err.startswith('WARNING')
+    assert 'unrecognized_prop' in err
 
     # Test that result_key and result_keys correctly extract values from specified keys.
     data = {'a': 1, 'b': 2}

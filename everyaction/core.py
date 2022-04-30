@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import json
 import re
+import sys
 import textwrap
 import typing
 from abc import ABC, ABCMeta
@@ -278,7 +279,8 @@ def ea_endpoint(
             if isinstance(x, MutableMapping):
                 for k in exclude_keys:
                     del x[k]
-                return result_factory(**x)
+                # _set_unrecognized=True to prevent errors due to unanticipated properties.
+                return result_factory(**x, _set_unrecognized=True)
             else:
                 return result_factory(x)
     else:
@@ -693,8 +695,12 @@ class EAMeta(ABCMeta):
     # and implements the logic needed to create each class's alias map and EAProperties object.
 
     @staticmethod
-    def _init_fn(self, **kwargs: EAValue) -> None:
+    def _init_fn(self, *, _set_unrecognized: bool = False, **kwargs: EAValue) -> None:
         # Keep track of aliases given to detect when multiple aliases are erroneously specified.
+        # _set_unrecognized will set unrecognized properties, printing a warning rather than raising an exception.
+        # This is used by ea_endpoint so that unanticipated properties do not break the code. This is necessary since
+        # the behavior of the EveryAction server is not configurable by users, so unanticipated response content is
+        # always a possibility when EveryAction developers make changes.
         attr_to_alias = {}
         unrecognized = []
         for k, v in kwargs.items():
@@ -724,10 +730,16 @@ class EAMeta(ABCMeta):
                 str_component = 'property is'
             else:
                 str_component = 'properties are'
-            raise AttributeError(
+            msg = (
                 f'The following {str_component} unrecognized for {self.__class__.__name__}: '
                 f'{", ".join(unrecognized)}'
             )
+            if _set_unrecognized:
+                print(f'WARNING: {msg}', file=sys.stderr)
+                for x in unrecognized:
+                    object.__setattr__(self, x, kwargs[x])
+            else:
+                raise AttributeError(msg)
 
     @staticmethod
     def _default_init() -> Callable[['EAObject', ...], None]:

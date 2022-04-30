@@ -2160,15 +2160,6 @@ class Person(
     """Represents a `Person <https://docs.everyaction.com/reference/common-models#match-candidate>`__."""
 
     @staticmethod
-    def _find_factory(**kwargs: EAValue) -> Optional['Person']:
-        status = kwargs.get('status')
-        if status is not None:
-            if status != 'Unmatched':
-                raise AssertionError(f'Only expected Unmatched status, found "{status}"')
-            return None
-        return Person(**kwargs)
-
-    @staticmethod
     def _get_preferred(of: List[Any], attr: Optional[str] = None) -> Optional[Any]:
         # Get a preferred entity from a list of entities by checking the "preferred" attribute.
         if of:

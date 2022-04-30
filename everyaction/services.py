@@ -180,7 +180,7 @@ class People(EAService):
         :param kwargs: The applicable query arguments and JSON data for the request.
         """
 
-    @ea_endpoint('people/find', 'post', data_type=Person, none_if_404=True, result_factory=Person._find_factory)
+    @ea_endpoint('people/find', 'post', data_type=Person, none_if_404=True, result_factory=Person)
     def find(self, **kwargs: EAValue) -> Optional[Person]:
         """See `POST /people/find <https://docs.everyaction.com/reference/people-find>`__.
 
@@ -197,7 +197,7 @@ class People(EAService):
         :return: The resulting :class:`.Person` object.
         """
 
-    @ea_endpoint('people/findOrCreate', 'post', data_type=Person, result_factory=Person._find_factory)
+    @ea_endpoint('people/findOrCreate', 'post', data_type=Person, result_factory=Person)
     def find_or_create(self, **kwargs: EAValue) -> Person:
         """See `POST /people/findOrCreate <https://docs.everyaction.com/reference/people-findorcreate>`__.
 
@@ -336,17 +336,17 @@ class People(EAService):
         :param kwargs: The applicable query arguments and JSON data for the request.
         """
 
-    @ea_endpoint('people/{vanId}', 'post', data_type=Person, result_factory=Person._find_factory)
+    @ea_endpoint('people/{vanId}', 'post', data_type=Person, none_if_404=True, result_factory=Person)
     def update(self, van_id: int, /, **kwargs: EAValue) -> Optional[Person]:
         """See `POST /people/{vanId} <https://docs.everyaction.com/reference/people-vanid>`__.
 
         :param van_id: The *vanId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Person` is
             appropriate to unpack here.
-        :return: (van id, status) of the updated person.
+        :return: The found :class:`.Person` object, or ``None`` if no person could be found.
         """
 
-    @ea_endpoint('people/{personIdType}:{personId}', 'post', data_type=Person, result_factory=Person._find_factory)
+    @ea_endpoint('people/{personIdType}:{personId}', 'post', data_type=Person, none_if_404=True, result_factory=Person)
     def update_(self, person_id_type: str, person_id: str, /, **kwargs: EAValue) -> Optional[Person]:
         """ See `POST /people/{personIdType}:{personId}
         <https://docs.everyaction.com/reference/people-persoid-type-personid>`__.
@@ -355,7 +355,7 @@ class People(EAService):
         :param person_id: The *personId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Person` is appropriate
             to unpack here.
-        :return: (van id, status) of the resulting person.
+        :return: The found :class:`.Person` object, or ``None`` if no person could be found.
         """
 
     @ea_endpoint('people/{vanId}/names', 'patch', data_type=Person, result_factory=Person)
@@ -900,17 +900,18 @@ class ChangedEntities(EAService):
         field_cache: Optional[List[ChangedEntityField]] = None,
         **kwargs: EAValue
     ) -> List[Dict[str, ChangedEntityField.ValueType]]:
-        """`Creates a ChangedEntityExportJob <https://docs.everyaction.com/reference/changedentityexportjobs>`__,
-        waits for its completion, and then parses the results from the downloadable csv.
+        """`Creates a ChangedEntityExportJob <https://docs.everyaction.com/reference/changedentityexportjobs>`__, waits
+        for its completion, and then parses the results from the downloadable csv.
 
-        :param field_cache: If provided, use these :class:`ChangedEntityFields .ChangedEntityField` to parse the data
+        :param field_cache: If provided, use these :class:`ChangedEntityFields <.ChangedEntityField>` to parse the data
             instead of getting them automatically in this function. Useful for saving bandwidth by reducing the volume
-            of requests, especially if export jobs are made frequently. Note that all other fields will be excluded
-            from the resulting dictionary when this is specified. If a field could not be found as a header in the
-            resulting CSV file, no exception is raised: that field is simply missing from the resulting dictionary.
+            of requests, especially if export jobs are made frequently. Note that all other fields will be excluded from
+            the resulting dictionary when this is specified. If a field could not be found as a header in the resulting
+            CSV file, no exception is raised: that field is simply missing from the resulting dictionary.
         :param kwargs: The applicable query arguments and JSON data to pass to `POST /changedEntityExportJobs
             <https://docs.everyaction.com/reference/changedentityexportjobs>`__.
-        :return: Name of changed entity field -> Value of field.
+        :return: List of mappings, each representing one row in the downloaded CSV, from names of changed entity fields
+            to their corresponding values.
         :raise EAChangedEntityJobFailedException: If the changed entity export job failed.
         """
         created_job = self.create_job(**kwargs)
@@ -961,7 +962,7 @@ class ChangedEntities(EAService):
         return _find(name, self.fields(resource), 'field')
 
     def name_to_change_type(self, resource: str) -> Dict[str, ChangeType]:
-        """Gives a mapping from names to the :class:`ChangeTypes .ChangeType` of the same name, case-insensitive.
+        """Gives a mapping from names to the :class:`ChangeTypes <.ChangeType>` of the same name, case-insensitive.
 
         :param resource: Resource to get change types for.
         :return: Name of Change Type to the resulting :class:`.ChangeType` objects.
@@ -969,7 +970,7 @@ class ChangedEntities(EAService):
         return _named(self.change_types(resource))
 
     def name_to_field(self, resource: str) -> Dict[str, ChangedEntityField]:
-        """Gives a mapping from names to the :class:`Fields .ChangedEntityField` of the same name, case-insensitive.
+        """Gives a mapping from names to the :class:`Fields <.ChangedEntityField>` of the same name, case-insensitive.
 
         :param resource: Resource to get fields for.
         :return: Name of field to the resulting :class:`.ChangedEntityField` objects.
