@@ -26,9 +26,11 @@ if TYPE_CHECKING:
 # Name of the reference to the section of documentation about aliases. Used for linking lists of aliases to this page.
 _ALIAS_REF = 'aliases'
 
-# Regex used to insert underscores before all sequences of capital letters in an attribute name to convert from
-# camelCase of UpperCase to snake_case.
-_CAMEL_TO_SNAKE_REGEX = re.compile(r'([A-Z]+)')
+# Regexes used to insert underscores before all capital letters not at the beginning of a name nor preceding another
+# capital letter. For example, in 'RINGToss', 'GTo' is matched and 'To' is replaced with '_To'. Used as part of
+# converting a camelCased or UpperCased name to a snake_cased name.
+_TO_SNAKE_REGEX1 = re.compile(r'([a-z])([A-Z])')
+_TO_SNAKE_REGEX2 = re.compile(r'([A-Z])([A-Z][a-z])')
 
 # The standard maximum value for top supported by EveryAction (see
 # https://docs.everyaction.com/reference/overview#pagination).
@@ -440,7 +442,8 @@ def ea_endpoint(
 def to_snake(attr: str) -> str:
     # Convert camelCased or UpperCased attribute name to a snake_cased attribute name.
     # Use lower() to force all characters to be lower-cased after they are replaced.
-    return attr[0].lower() + _CAMEL_TO_SNAKE_REGEX.sub(r'_\1', attr[1:]).lower()
+
+    return _TO_SNAKE_REGEX2.sub(r'\1_\2', _TO_SNAKE_REGEX1.sub(r'\1_\2', attr)).lower()
 
 
 class EAService(ABC):

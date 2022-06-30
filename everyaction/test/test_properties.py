@@ -23,6 +23,9 @@ class TestProperties:
         assert core.to_snake('firstName') == 'first_name'
         assert core.to_snake('first') == 'first'
         assert core.to_snake('first_name') == 'first_name'
+        assert core.to_snake('ID') == 'id'
+        assert core.to_snake('RINGToss') == 'ring_toss'
+        assert core.to_snake('RING_TOSS') == 'ring_toss'
 
     def test_property_find(self):
         property_map = {

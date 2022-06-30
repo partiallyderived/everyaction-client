@@ -1253,12 +1253,12 @@ class Disbursements(EAService):
 
 
 class DistrictFields(EAService):
-    """Represents the `District Fields <https://docs.everyaction.com/reference/district-fields>`__ service."""
+    """Represents the `District Fields <https://docs.everyaction.com/reference/districtfields>`__ service."""
 
     @ea_endpoint('districtFields/{districtFieldId}', 'get', result_factory=DistrictField)
     def get(self, field_id: int, /) -> DistrictField:
         """ See `GET /districtFields/{districtFieldId}
-        <https://docs.everyaction.com/reference/districtfieldsdistrictfieldid>`__.
+        <https://docs.everyaction.com/reference/districtfields-districtfieldid>`__.
 
         :param field_id: The *districtFieldId* path parameter.
         :return: The resulting :class:`.DistrictField` object.
@@ -1285,7 +1285,7 @@ class EmailMessages(EAService):
 
     @ea_endpoint('email/messages/{emailId}', 'get', query_arg_keys={'$expand'}, result_factory=EmailMessage)
     def get(self, email_id: int, /, **kwargs: EAValue) -> EmailMessage:
-        """See `GET /email/messages/{emailId} <https://docs.everyaction.com/reference/emailmessageemailid>`__.
+        """See `GET /email/messages/{emailId} <https://docs.everyaction.com/reference/email-message-emailid>`__.
 
         :param email_id: The *emailId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1296,7 +1296,7 @@ class EmailMessages(EAService):
         'email/messages', 'get', query_arg_keys={'$orderby'}, result_array_key='items', result_factory=EmailMessage
     )
     def list(self, **kwargs: EAValue) -> List[EmailMessage]:
-        """See `GET /email/messages <https://docs.everyaction.com/reference/emailmessages>`__.
+        """See `GET /email/messages <https://docs.everyaction.com/reference/email-messages>`__.
 
         :return: List of the resulting :class:`.EmailMessage` objects.
         """
@@ -1312,7 +1312,7 @@ class Employers(EAService):
     )
     def add_bargaining_unit(self, employer_id: int, bargaining_unit_id: int, /) -> EmployerBargainingUnit:
         """ See `POST /employers/{employerId}/bargainingUnits/{bargainingUnitId}
-        <https://docs.everyaction.com/reference/employersemployeridbargainingunitsbargainingunitid>`__.
+        <https://docs.everyaction.com/reference/employers-employerid-bargainingunits-bargainingunitid>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param bargaining_unit_id: The *bargainingUnitId* path parameter.
@@ -1326,7 +1326,7 @@ class Employers(EAService):
     )
     def add_job_class(self, employer_id: int, bargaining_unit_id: int, job_class_id: int, /) -> BargainingUnitJobClass:
         """ See `POST /employers/{employerId}/bargainingUnits/{bargainingUnitId}/jobClasses/{jobClassId}
-        <https://docs.everyaction.com/reference/employersemployeridbargainingunitsbargainingunitidjobclassesjobclassid>`__.
+        <https://docs.everyaction.com/reference/employers-employerid-bargainingunits-bargainingunitid-jobclassesjobclassid>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param bargaining_unit_id: The *bargainingUnitId* path parameter.
@@ -1342,7 +1342,7 @@ class Employers(EAService):
     )
     def add_shift_type(self, employer_id: int, shift_type_id: int, /, **kwargs) -> ShiftType:
         """ See `POST /employers/{employerId}/shiftTypes/{shiftTypeId}
-        <https://docs.everyaction.com/reference/employersemployeridshifttypesshifttypeid>`__.
+        <https://docs.everyaction.com/reference/employers-employerid-shifttypes-shifttypeid>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param shift_type_id: The *shiftTypeId* path parameter.
@@ -1353,7 +1353,7 @@ class Employers(EAService):
 
     @ea_endpoint('employers', 'post', data_type=Employer, result_factory=Employer)
     def create(self, **kwargs: EAValue) -> Employer:
-        """See `POST /employers <https://docs.everyaction.com/reference/employers-2>`__.
+        """See `POST /employers <https://docs.everyaction.com/reference/post-employers>`__.
 
         :param kwargs: The applicable query arguments and JSON data for the request. An :class:`.Employer` is
             appropriate to unpack here.
@@ -1363,7 +1363,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}/departments', 'post', data_type=Department, result_factory=Department)
     def create_department(self, employer_id: int, /, **kwargs: EAValue) -> Department:
         """ See `POST /employers/{employerId}/departments
-        <https://docs.everyaction.com/reference/employersemployeriddeparments>`__.
+        <https://docs.everyaction.com/reference/employers-employerid-deparments>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Department` is
@@ -1374,7 +1374,7 @@ class Employers(EAService):
     @ea_endpoint('employers/{employer_id}/worksites', 'post', data_type=Worksite, result_factory=Worksite)
     def create_worksite(self, employer_id: int, /, **kwargs: EAValue) -> Worksite:
         """ See `POST /employers/{employer_id}/worksites
-        <https://docs.everyaction.com/reference/employersemployeridworksites>`__.
+        <https://docs.everyaction.com/reference/employers-employerid-worksites>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request. A :class:`.Worksite` is
@@ -1384,7 +1384,7 @@ class Employers(EAService):
 
     @ea_endpoint('employers/{employer_id}', 'get', query_arg_keys={'$expand'}, result_factory=Employer)
     def get(self, employer_id: int, /, **kwargs: EAValue) -> Employer:
-        """See `GET /employers/{employerId} <https://docs.everyaction.com/reference/employersemployerid>`__.
+        """See `GET /employers/{employerId} <https://docs.everyaction.com/reference/employers-employerid>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1400,7 +1400,7 @@ class Employers(EAService):
         result_factory=Employer
     )
     def list(self, *, limit: Optional[int] = None, **kwargs) -> List[Employer]:
-        """See `GET /employers <https://docs.everyaction.com/reference/employers-1>`__.
+        """See `GET /employers <https://docs.everyaction.com/reference/get-employers>`__.
 
         :param limit: Maximum number of records to get for this request.
         :param kwargs: The applicable query arguments and JSON data for the request.
@@ -1409,7 +1409,7 @@ class Employers(EAService):
 
     @ea_endpoint('employers/{employer_id}', 'patch', prop_keys={'isMyOrganization'}, result_factory=Employer)
     def update(self, employer_id: int, /, **kwargs: EAValue) -> Employer:
-        """See `PATCH /employers/{employerId} <https://docs.everyaction.com/reference/employersemployerid-1>`__.
+        """See `PATCH /employers/{employerId} <https://docs.everyaction.com/reference/patch-employers-employerid>`__.
 
         :param employer_id: The *employerId* path parameter.
         :param kwargs: The applicable query and JSON arguments for the request.
@@ -1422,7 +1422,7 @@ class EventTypes(EAService):
 
     @ea_endpoint('events/types/{eventTypeId}', 'get', result_factory=EventType)
     def get(self, type_id: int, /) -> EventType:
-        """See `GET /events/types/{eventTypeId} <https://docs.everyaction.com/reference/eventstypeseventtypeid>`__.
+        """See `GET /events/types/{eventTypeId} <https://docs.everyaction.com/reference/events-types-eventtypeid>`__.
 
         :param type_id: The *eventTypeId* path parameter.
         :return: The resulting :class:`.EventType` object.
@@ -1430,7 +1430,7 @@ class EventTypes(EAService):
 
     @ea_endpoint('events/types', 'get', result_array=True, result_factory=EventType)
     def list(self) -> List[EventType]:
-        """See `GET /events/types <https://docs.everyaction.com/reference/eventstypes>`__.
+        """See `GET /events/types <https://docs.everyaction.com/reference/events-types>`__.
 
         :return: List of the resulting :class:`.EventType` objects.
         """

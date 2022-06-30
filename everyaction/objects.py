@@ -437,6 +437,7 @@ EAProperty.share(
     listName=EAProperty('list', 'name'),
     loadStatus=EAProperty('status'),
     lon=EAProperty(),
+    machineOpenCount=EAProperty(),
     mappingTypeName=EAProperty('mapping_type', 'mapping'),
     matchedRows=EAProperty('matched'),
     matchedRowsCount=EAProperty('matched_count', 'matched'),
@@ -887,12 +888,12 @@ class DisclosureFieldValue(
 
 class DistrictFieldValue(EAObject, _id='id', _name='name', _shared={'parentId'}):
     """Represents a `District Field Value
-    <https://docs.everyaction.com/reference/common-models-13#district-field-value>`__.
+    <https://docs.everyaction.com/reference/district-fields-common-models#district-field-value>`__.
     """
 
 
 class Email(EAObject, _shared={'dateCreated', 'email', 'isPreferred', 'isSubscribed', 'subscriptionStatus', 'type'}):
-    """Represents an `Email <https://docs.everyaction.com/reference/common-models#email>`__."""
+    """Represents an `Email <https://docs.everyaction.com/reference/email-common-models>`__."""
 
     def __init__(self, email: Optional[str] = None, **kwargs: EAValue) -> None:
         """
@@ -914,13 +915,14 @@ class EmailMessageContentDistributions(
         'dateSent',
         'formSubmissionCount',
         'linksClickedCount',
+        'machineOpenCount',
         'openCount',
         'recipientCount',
         'unsubscribeCount'
     }
 ):
     """Represents an `Email Message Content Distributions object
-    <https://docs.everyaction.com/reference/common-models-14>`__.
+    <https://docs.everyaction.com/reference/email-common-models>`__.
     """
 
 
@@ -938,15 +940,15 @@ class EmployerPhone(
     },
     phoneType=EAProperty('type')
 ):
-    """Represents a `Phone for an employer <https://docs.everyaction.com/reference/common-models-15>`__."""
+    """Represents a `Phone for an employer <https://docs.everyaction.com/reference/employers-common-models>`__."""
 
 
 class EventRole(EAObject, _id='id', _name='name', _prefix='role', _shared={'goal', 'isEventLead', 'max', 'min'}):
-    """Represents a `Role <https://docs.everyaction.com/reference/common-models-18#role>`__ for an Event Type."""
+    """Represents a `Role <https://docs.everyaction.com/reference/events-common-models#role>`__ for an Event Type."""
 
 
 class EventShift(EAObject, _id='id', _name='name', _prefix='eventShift', _shared={'endTime', 'startTime'}):
-    """Represents a `Shift <https://docs.everyaction.com/reference/common-models-18#shift>`__."""
+    """Represents a `Shift <https://docs.everyaction.com/reference/events-common-models#shift>`__."""
 
 
 class ExportJobType(EAObject, _id='id', _name='name', _prefix='exportJobType'):
@@ -1196,12 +1198,12 @@ class ScriptResponse(EAObject, _shared={'type'}):
 
 
 class ShiftType(EAObject, _id='id', _name='name', _prefix='shiftType', _shared={'defaultEndTime', 'defaultStartTime'}):
-    """Represents a `Shift Type <https://docs.everyaction.com/reference/common-models-15>`__."""
+    """Represents a `Shift Type <https://docs.everyaction.com/reference/common-models-32>`__."""
 
 
 class Status(EAObject, _id='id', _name='name', _prefix='status'):
-    """Represents a `Status <https://docs.everyaction.com/reference/common-models-17>`__ in EveryAction. Used in
-    multiple contexts.
+    """Represents a `Status <https://docs.everyaction.com/reference/event-types-common-models>`__ in EveryAction. Used
+    in multiple contexts.
     """
 
 
@@ -1462,7 +1464,7 @@ class BargainingUnitJobClass(
     _shared={'bargainingUnit', 'employerBargainingUnitId', 'jobClass'}
 ):
     """Represents an `Employer Bargaining Unit Job Class
-    <https://docs.everyaction.com/reference/common-models-15>`__.
+    <https://docs.everyaction.com/reference/employers-common-models>`__.
     """
 
 
@@ -1521,7 +1523,9 @@ class DistrictField(
     _prefixed={'values'},
     _shared={'isCustomDistrict', 'parentFieldId'}
 ):
-    """Represents a `District Field <https://docs.everyaction.com/reference/common-models-13#district-field>`__."""
+    """Represents a `District Field
+    <https://docs.everyaction.com/reference/district-fields-common-models#district-field>`__.
+    """
 
 
 class EmailMessageContent(
@@ -1536,12 +1540,12 @@ class EmailMessageContent(
         'subject'
     }
 ):
-    """Represents an `email message content object <https://docs.everyaction.com/reference/common-models-14>`__."""
+    """Represents an `email message content object <https://docs.everyaction.com/reference/email-common-models>`__."""
 
 
 class EmployerBargainingUnit(EAObject, _id='id', _prefix='employerBargainingUnit', _shared={'bargainingUnit'}):
     """Represents an `Employer Bargaining Unit
-    <https://docs.everyaction.com/reference/employersemployeridbargainingunitsbargainingunitid>`__.
+    <https://docs.everyaction.com/reference/employers-employerid-bargainingunits-bargainingunitid>`__.
     """
 
 
@@ -2067,9 +2071,7 @@ class EmailMessage(
     _shared={'createdBy', 'dateCreated', 'dateModified', 'dateScheduled', 'emailMessageContent'},
     campaignID=EAProperty('campaign')
 ):
-    """Represents an `email message <https://docs.everyaction.com/reference/common-models-14>`__."""
-
-    # TODO: Is emailMessageContent really an array? If so, can it actually contain multiple entities?
+    """Represents an `email message <https://docs.everyaction.com/reference/email-common-models>`__."""
 
 
 class FileLoadingJob(
@@ -2396,7 +2398,7 @@ class Employer(
     phones=EAProperty(singular_alias='phone', factory=EmployerPhone),
     shifts=EAProperty(singular_alias='shift', factory=ShiftType)
 ):
-    """Represents an `Employer <https://docs.everyaction.com/reference/common-models-15#employer>`__."""
+    """Represents an `Employer <https://docs.everyaction.com/reference/employers-common-models>`__."""
 
 
 class EventType(
@@ -2421,7 +2423,7 @@ class EventType(
     },
     statuses=EAProperty(is_array=True, factory=Status)
 ):
-    """Represents an `Event Type <https://docs.everyaction.com/reference/common-models-17#event-type>`__."""
+    """Represents an `Event Type <https://docs.everyaction.com/reference/event-types-common-models#event-type>`__."""
 
 
 class ExportJob(
@@ -2496,7 +2498,7 @@ class Event(
     },
     notes=EAProperty(singular_alias='note', factory=Note)
 ):
-    """Represents an `Event <https://docs.everyaction.com/reference/common-models-18#event>`__."""
+    """Represents an `Event <https://docs.everyaction.com/reference/events-common-models#event>`__."""
 
 
 # --- Sixth Order Properties and Objects ---
