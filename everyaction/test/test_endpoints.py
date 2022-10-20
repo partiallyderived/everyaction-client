@@ -5,6 +5,7 @@ from makefun import wraps
 
 import pytest
 
+import everyaction.core
 from everyaction import EAClient, EAHTTPException
 
 DATA_FILE = 'test_data.json'
@@ -37,6 +38,15 @@ def _skip_if_empty_else_first(resource_name, records):
     if not records:
         pytest.skip(f'No {resource_name} found.')
     return records[0]
+
+
+@pytest.fixture(autouse=True)
+def setup():
+    everyaction.core._fail_on_unrecognized = True
+    try:
+        yield
+    finally:
+        everyaction.core._fail_on_unrecognized = False
 
 
 def skip_if_403(func):

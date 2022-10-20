@@ -22,6 +22,9 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from everyaction.client import EAClient
 
+# Change this to True to always fail in the presence of unrecognized attributes.
+_fail_on_unrecognized = False
+
 
 # Name of the reference to the section of documentation about aliases. Used for linking lists of aliases to this page.
 _ALIAS_REF = 'aliases'
@@ -737,7 +740,7 @@ class EAMeta(ABCMeta):
                 f'The following {str_component} unrecognized for {self.__class__.__name__}: '
                 f'{", ".join(unrecognized)}'
             )
-            if _set_unrecognized:
+            if _set_unrecognized and not _fail_on_unrecognized:
                 print(f'WARNING: {msg}', file=sys.stderr)
                 for x in unrecognized:
                     object.__setattr__(self, x, kwargs[x])

@@ -10,7 +10,6 @@ from typing import Any, ClassVar, Dict, Iterable, List, Optional, Union
 from everyaction.core import EAObject, EAProperty, EAValue
 from everyaction.exception import EAException
 
-
 __all__ = [
     'ActivistCode',
     'ActivistCodeData',
@@ -251,6 +250,7 @@ EAProperty.share(
     contactMethodPreferenceCode=EAProperty('contact_preference_code', 'preference_code', 'contact_preference'),
     contactMode=EAProperty(),
     contactModeId=EAProperty(),
+    contactSource=EAProperty(),
     contactTypeId=EAProperty('contact_type'),
     contentId=EAProperty('content'),
     contributionCount=EAProperty('contributions'),
@@ -277,6 +277,7 @@ EAProperty.share(
     cycle=EAProperty(),
     databaseMode=EAProperty('mode'),
     databaseName=EAProperty(),
+    dateAcquired=EAProperty(),
     dateAdjusted=EAProperty('adjusted', 'date'),
     dateCanvassed=EAProperty('canvassed'),
     dateCardsSent=EAProperty('cards_sent'),
@@ -2111,9 +2112,12 @@ class Person(
         'contactMethodPreferenceCode',
         'contactMode',
         'contactModeId',
+        'contactSource',
         'customFieldValues',
         'customProperties',
         'cycle',
+        'dateAcquired',
+        'dateCreated',
         'dateOfBirth',
         'disclosureFieldValues',
         'districts',
