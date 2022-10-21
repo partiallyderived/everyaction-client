@@ -32,6 +32,8 @@ __all__ = [
     'BulkImportField',
     'BulkImportJob',
     'BulkImportJobData',
+    'Campaign',
+    'CampaignType',
     'Canvasser',
     'CanvassContext',
     'CanvassFileRequest',
@@ -49,6 +51,8 @@ __all__ = [
     'Constraints',
     'ContactHistory',
     'ContactType',
+    'Content',
+    'ContentType',
     'Contribution',
     'Currency',
     'CustomField',
@@ -313,6 +317,7 @@ EAProperty.share(
     disclosureFieldValue=EAProperty('field_value', 'disclosure_value', 'value'),
     displayMode=EAProperty(),
     displayName=EAProperty('display'),
+    disposition=EAProperty(),
     doorCount=EAProperty('door'),
     dotNetTimeZoneId=EAProperty('dot_net_time_zone', 'time_zone'),
     downloadUrl=EAProperty('download'),
@@ -706,6 +711,10 @@ class BargainingUnit(
     """
 
 
+class CampaignType(EAObject, _id='id', _name='name', _prefix="campaignType"):
+    """Represents a `Campaign Type <https://docs.everyaction.com/reference/campaigns-common-models#campaign-type>`__."""
+
+
 class Canvasser(EAObject, _id='id', _prefix='canvasser'):
     """Represents a `Canvasser <https://docs.everyaction.com/reference/common-models-25>`__."""
 
@@ -813,6 +822,10 @@ class Constraints(EAObject, _shared={'invalidCharacters', 'maxLength'}):
 
 class ContactHistory(EAObject, _shared={'contactTypeId', 'dateCanvassed', 'inputTypeId', 'resultCodeId'}):
     """Represents a `Contact History object <https://docs.everyaction.com/reference/post-people-vanid-notes>`__."""
+
+
+class ContentType(EAObject, _id='id', _name='name', _prefix='contentType'):
+    """Represents a `Content Type <https://docs.everyaction.com/reference/campaigns-common-models#content-type>`__."""
 
 
 class Currency(EAObject, _shared={'amount', 'currencyType'}):
@@ -1505,6 +1518,18 @@ class Code(
     """Represents a `Code object <https://docs.everyaction.com/reference/codes-common-models#code>`__."""
 
 
+class Content(
+    EAObject,
+    _id='id',
+    _name='name',
+    _prefix='content',
+    _prefixed={'type'},
+    _shared={'description', 'displayName', 'disposition', 'shortName'},
+    type=EAProperty(factory=ContentType)
+):
+    """Represents a `Content object <https://docs.everyaction.com/reference/campaigns-common-models#contents>`__."""
+
+
 class CustomField(
     EAObject,
     _id='id',
@@ -1866,6 +1891,7 @@ EAProperty.share(
     addresses=EAProperty(singular_alias='address', factory=Address),
     bulkImportFields=EAProperty(singular_alias='bulk_import_field', factory=ChangedEntityBulkImportField),
     codes=EAProperty(singular_alias='code', factory=Code),
+    contents=EAProperty(singular_alias='content', factory=Content),
     customFields=EAProperty(singular_alias='custom_field', factory=CustomField),
     districts=EAProperty(singular_alias='district', factory=DistrictField),
     districtFields=EAProperty(singular_alias='district_field', factory=DistrictField),
@@ -1920,6 +1946,18 @@ class BulkImportJobData(
     """Represents data for an existing `Bulk Import Job
     <https://docs.everyaction.com/reference/bulk-import-common-models>`__.
     """
+
+
+class Campaign(
+    EAObject,
+    _id='id',
+    _name='name',
+    _prefix='campaign',
+    _prefixed={'displayName', 'type'},
+    _shared={'contents', 'displayName', 'status'},
+    type=EAProperty(factory=CampaignType)
+):
+    """Represents a `Campaign <https://docs.everyaction.com/reference/campaigns-common-models#campaign>`__."""
 
 
 class CanvassContext(

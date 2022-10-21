@@ -13,6 +13,7 @@ Services
     Ballots
     BargainingUnits
     BulkImport
+    Campaigns
     CanvassFileRequests
     CanvassResponses
     ChangedEntities

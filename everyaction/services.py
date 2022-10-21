@@ -17,6 +17,7 @@ __all__ = [
     'Ballots',
     'BargainingUnits',
     'BulkImport',
+    'Campaigns',
     'CanvassFileRequests',
     'CanvassResponses',
     'ChangedEntities',
@@ -693,6 +694,26 @@ class BulkImport(EAService):
         """
 
 
+class Campaigns(EAService):
+    """Represents the `Campaigns <https://docs.everyaction.com/reference/campaigns-overview>`__ service."""
+
+    @ea_endpoint('campaigns/{campaignId}', 'get', result_factory=Campaign)
+    def get(self, campaign_id: int, /) -> Campaign:
+        """See `GET /campaigns/{campaign_id} <https://docs.everyaction.com/reference/get-campaign-by-id>`__.
+
+        :param campaign_id: ID of the campaign to get.
+        :return: The resulting :class:`.Campaign` object.
+        """
+
+    @ea_endpoint('campaigns', 'get', paginated=True, result_factory=Campaign)
+    def list(self, **kwargs: EAValue) -> List[Campaign]:
+        """See `GET /campaigns <https://docs.everyaction.com/reference/get-campaigns>`__.
+
+        :param kwargs: The applicable query arguments and JSON data for the request.
+        :return: List of the resulting :class:`.Campaign` objects.
+        """
+
+
 class CanvassFileRequests(EAService):
     """Represents the `Canvass File Requests
     <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
@@ -712,7 +733,7 @@ class CanvassFileRequests(EAService):
         """
 
     @ea_endpoint('canvassFileRequests/{canvassFileRequestId}', 'get', result_factory=CanvassFileRequest)
-    def get(self, request_id: int, **kwargs: EAValue) -> CanvassFileRequest:
+    def get(self, request_id: int, /, **kwargs: EAValue) -> CanvassFileRequest:
         """ See `GET /canvassFileRequests/{canvassFileRequestId}
         <https://docs.everyaction.com/reference/canvassfilereqeusts-canvassfilerequestid>`__.
 

@@ -67,6 +67,9 @@ class EAClient(EAService):
     #: `Bulk Import <https://docs.everyaction.com/reference/bulk-import>`__ service.
     bulk_import: BulkImport
 
+    #: `Campaigns <https://docs.everyaction.com/reference/campaigns-overview>`__ service.
+    campaigns: Campaigns
+
     #: `Canvass File Requests <https://docs.everyaction.com/reference/canvass-file-requests>`__ service.
     canvass_file_requests: CanvassFileRequests
 
@@ -344,6 +347,7 @@ class EAClient(EAService):
         self.ballots = services.Ballots(self)
         self.bargaining_units = services.BargainingUnits(self)
         self.bulk_import = services.BulkImport(self)
+        self.campaigns = services.Campaigns(self)
         self.canvass_file_requests = services.CanvassFileRequests(self)
         self.canvass_responses = services.CanvassResponses(self)
         self.changed_entities = services.ChangedEntities(self)

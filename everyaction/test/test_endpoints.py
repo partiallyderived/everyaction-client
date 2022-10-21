@@ -208,6 +208,11 @@ def test_bulk_resources(client):
 
 
 @skip_if_403
+def test_campaigns(client):
+    _skip_if_empty_else_first('campaigns', client.campaigns.list())
+
+
+@skip_if_403
 def test_canvass_file_requests(client, canvass_file_request):
     client.canvass_file_requests.get(canvass_file_request)
 
